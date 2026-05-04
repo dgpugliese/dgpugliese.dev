@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Boot, Starfield, Clock } from './components/fx.jsx';
 import { Hero } from './components/Hero.jsx';
 import { About, Skills, Projects } from './components/sections1.jsx';
-import { Resume, GitHub, Certs, Contact } from './components/sections2.jsx';
+import { Resume, Press, GitHub, Certs, Contact } from './components/sections2.jsx';
 import { CLI } from './components/CLI.jsx';
 
 export default function App() {
@@ -38,7 +38,7 @@ export default function App() {
 
   useEffect(() => {
     if (!booted) return;
-    const ids = ['home', 'about', 'stack', 'projects', 'resume', 'github', 'certs', 'contact'];
+    const ids = ['home', 'about', 'stack', 'projects', 'resume', 'press', 'github', 'certs', 'contact'];
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
     }, { rootMargin: '-30% 0px -60% 0px' });
@@ -63,8 +63,8 @@ export default function App() {
 
   const navItems = [
     ['home', '01', 'HOME'], ['about', '02', 'ABOUT'], ['stack', '03', 'STACK'],
-    ['projects', '04', 'OPS'], ['resume', '05', 'LOG'], ['github', '06', 'GIT'],
-    ['certs', '07', 'CERT'], ['contact', '08', 'TX'],
+    ['projects', '04', 'OPS'], ['resume', '05', 'LOG'], ['press', '06', 'PRESS'],
+    ['github', '07', 'GIT'], ['certs', '08', 'CERT'], ['contact', '09', 'TX'],
   ];
 
   return (
@@ -103,6 +103,7 @@ export default function App() {
         <Skills />
         <Projects />
         <Resume />
+        <Press />
         <GitHub />
         <Certs />
         <Contact />

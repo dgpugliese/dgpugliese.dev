@@ -35,6 +35,7 @@ credly    credly.com/users/dpugliese`,
 const SECTIONS = {
   home: 'home', about: 'about', stack: 'stack', ops: 'projects',
   projects: 'projects', log: 'resume', resume: 'resume',
+  press: 'press', speaking: 'press',
   git: 'github', github: 'github', cert: 'certs', certs: 'certs',
   tx: 'contact', contact: 'contact',
 };
@@ -55,7 +56,7 @@ function run(input) {
   switch (cmd.toLowerCase()) {
     case 'help': return HELP;
     case 'whoami': return WHOAMI;
-    case 'ls': return 'home  about  stack  ops  log  git  cert  tx';
+    case 'ls': return 'home  about  stack  ops  log  press  git  cert  tx';
     case 'cat': {
       const f = arg.replace(/^\.?\//, '');
       return FILES[f] || `cat: ${arg || '<file>'}: no such file. try: ${Object.keys(FILES).join(', ')}`;

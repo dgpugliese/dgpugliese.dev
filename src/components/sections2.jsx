@@ -6,14 +6,12 @@ export function Resume() {
       title: 'Director of Information Technology', co: 'Kappa Alpha Psi Fraternity, Inc.', loc: 'Philadelphia, PA',
       range: 'Feb 2024 — Present', current: true,
       bullets: [
-        'Lead IT strategy, engineering, and operations for a national nonprofit with ~150K constituents across 770 sites.',
-        <>Profiled in <i>The Journal of Kappa Alpha Psi</i> (page 28) — <a href="https://online.flippingbook.com/view/282754758/28/" target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)', textDecoration: 'underline' }}>read the feature ↗</a>.</>,
+        'Lead IT strategy, engineering, and operations for an international fraternity with ~150K members across 770 chapters.',
         'Designed and run production MCP server infrastructure connecting Claude to M365, Google Workspace, Cloudflare, Supabase, and Granola; established access patterns, scoping, and audit posture for non-human (agent) identities.',
+        'Lead architect on KAPSI Connect — headless React/Next.js portal (Cloudflare Pages → Node/Express middleware → Salesforce/Fonteva REST) with Stripe dues processing, WebAuthn/passkey auth, role-based JWT, and webhook-driven document signing.',
         'Built physical + cloud infrastructure from the ground up — hypervisor environment, enterprise switching + UniFi access, AD remediation in tandem with Entra ID consolidation.',
-        'Lead architect on a headless React/Next.js membership portal — Cloudflare Pages → Node/Express middleware → Salesforce/Fonteva REST. Stripe dues processing, WebAuthn/passkey auth, role-based JWT, webhook-driven document signing.',
         'Delivered org\'s first enterprise cybersecurity milestone — NIST 800-53 / CIS aligned. Commissioned org\'s first annual third-party pen test.',
-        'Driving zero-touch employee lifecycle — modernized M365 / Entra ID provisioning, shared-mailbox permissioning via PowerShell across 12+ mailboxes, standardized onboarding/offboarding SOPs. Stood up internal ticketing, runbooks, and call-flow routing.',
-        'Manage direct reports (Tech Support Engineer, Vuln/Patch Mgmt Lead), annual IT budget, and vendor contracts; primary escalation owner for incident response with blameless post-mortem discipline.',
+        'Drive zero-touch employee lifecycle (M365/Entra ID provisioning, PowerShell automation, onboarding/offboarding SOPs); manage IT staff, annual budget, and vendor contracts; own incident response with structured root-cause analysis.',
       ],
     },
     {
@@ -33,7 +31,6 @@ export function Resume() {
       title: 'Lead Professional Service Engineer', co: 'SWK Technologies', loc: 'Remote',
       range: 'Apr 2022 — Jul 2023',
       bullets: [
-        'Featured as "A Day in the Life of an Engineer" at SWK\'s One Voice conference — selected as the engineering profile for the company-wide event.',
         'Influenced strategic migration of the company\'s RMM platform from N-central to NinjaRMM — contributed technical evaluation, feature comparison, and feasibility analysis that shaped the executive decision.',
         'Senior technical escalation point across Microsoft 365, firewalls, and backup/DR.',
         'Mentored helpdesk and junior engineers; partnered with sales on scoping and technical discovery for new client engagements.',
@@ -134,6 +131,66 @@ export function Resume() {
   );
 }
 
+export function Press() {
+  const items = [
+    {
+      kind: 'SPEAKING',
+      title: 'Panelist · Cybersecurity Summit Philadelphia',
+      sub: 'Cybersecurity posture for member-driven nonprofits',
+      year: '2026',
+      kindColor: 'amber',
+    },
+    {
+      kind: 'FEATURED',
+      title: <i>The Journal of Kappa Alpha Psi</i>,
+      sub: 'Profile feature · page 28',
+      year: '2026',
+      href: 'https://online.flippingbook.com/view/282754758/28/',
+      kindColor: 'cyan',
+    },
+    {
+      kind: 'FEATURED',
+      title: '"A Day in the Life of an Engineer" · SWK One Voice',
+      sub: 'Engineering profile selected for the company-wide conference',
+      year: '2023',
+      kindColor: 'cyan',
+    },
+  ];
+  return (
+    <section className="sect" id="press" data-screen-label="06 Press">
+      <div className="sect-head">
+        <span className="sect-num">06 //</span>
+        <h2 className="sect-title">Press / Speaking</h2>
+        <span className="sect-sub">selected features &amp; appearances</span>
+      </div>
+      <div className="panel panel-corners" style={{ padding: '20px 28px' }}>
+        <span className="panel-label">SIGNAL</span>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          {items.map((it, i) => {
+            const inner = (
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 18, padding: '14px 0', borderTop: i === 0 ? 'none' : '1px dashed var(--line)' }}>
+                <span className={`chip chip-${it.kindColor}`} style={{ marginTop: 2, flexShrink: 0 }}>{it.kind}</span>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 15, fontWeight: 600, color: 'var(--fg)', lineHeight: 1.4 }}>
+                    {it.title}{it.href && <span style={{ color: 'var(--cyan)', marginLeft: 6 }}>↗</span>}
+                  </div>
+                  <div className="mono" style={{ fontSize: 12, color: 'var(--fg-dim)', marginTop: 4 }}>// {it.sub}</div>
+                </div>
+                <span className="mono" style={{ fontSize: 11, color: 'var(--fg-faint)', letterSpacing: '0.12em', flexShrink: 0, marginTop: 4 }}>{it.year}</span>
+              </div>
+            );
+            return it.href ? (
+              <a key={i} href={it.href} target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>{inner}</a>
+            ) : (
+              <div key={i}>{inner}</div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function GitHub() {
   const [user, setUser] = useState(null);
   const [repos, setRepos] = useState([]);
@@ -162,9 +219,9 @@ export function GitHub() {
   }, []);
 
   return (
-    <section className="sect" id="github" data-screen-label="06 GitHub">
+    <section className="sect" id="github" data-screen-label="07 GitHub">
       <div className="sect-head">
-        <span className="sect-num">06 //</span>
+        <span className="sect-num">07 //</span>
         <h2 className="sect-title">GitHub / Live Feed</h2>
         <span className="sect-sub">api.github.com/users/dgpugliese</span>
       </div>
@@ -262,9 +319,9 @@ export function Certs() {
     { n: 'ITIL Foundation v5', t: 'ITIL', img: 'https://badges.peoplecert.org/Badges/Template/en/180/a40e5baa-5391-4ea9-bf2a-1cc471286c3e' },
   ];
   return (
-    <section className="sect" id="certs" data-screen-label="07 Certifications">
+    <section className="sect" id="certs" data-screen-label="08 Certifications">
       <div className="sect-head">
-        <span className="sect-num">07 //</span>
+        <span className="sect-num">08 //</span>
         <h2 className="sect-title">Certifications / Credentials</h2>
         <a className="sect-sub" href="https://credly.com/users/dpugliese" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'var(--cyan)' }}>↗ credly.com/users/dpugliese</a>
       </div>
@@ -284,9 +341,9 @@ export function Certs() {
 
 export function Contact() {
   return (
-    <section className="sect" id="contact" data-screen-label="08 Contact" style={{ paddingBottom: 120 }}>
+    <section className="sect" id="contact" data-screen-label="09 Contact" style={{ paddingBottom: 120 }}>
       <div className="sect-head">
-        <span className="sect-num">08 //</span>
+        <span className="sect-num">09 //</span>
         <h2 className="sect-title">Contact / Open Channel</h2>
         <span className="sect-sub">end of transmission</span>
       </div>
