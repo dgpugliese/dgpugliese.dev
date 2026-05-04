@@ -226,6 +226,9 @@ export function Certs() {
     { n: 'CompTIA Cloud Admin Professional (CCAP)', t: 'CCAP', img: credly('18218ce6-e7d4-4479-9500-b7499645b763', 'CompTIA_CCAP.png') },
     { n: 'Parallels RAS Technical Professional', t: 'RAS', img: credly('a0b0cb85-45a0-4aa9-8184-408e72fe092c', 'blob') },
     { n: 'Parallels RAS Technical Professional Advanced', t: 'RAS+', img: credly('0c751535-2db1-4204-8ab0-3ccccea0f985', 'blob') },
+    { n: 'IT Glue Certified Professional', t: 'ITG' },
+    { n: 'UniFi Wireless Administrator', t: 'UWA' },
+    { n: 'UniFi Full Stack Professional', t: 'UFS' },
     { n: 'GitHub Foundations', t: 'GH' },
     { n: 'ITIL Foundation v5', t: 'ITIL', img: 'https://badges.peoplecert.org/Badges/Template/en/180/a40e5baa-5391-4ea9-bf2a-1cc471286c3e' },
   ];
