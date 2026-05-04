@@ -55,7 +55,7 @@ export function Resume() {
     },
     {
       title: 'IT Contractor', co: 'Independent — Multi-Industry', loc: 'Philadelphia, PA / Remote',
-      range: '2010 — 2018',
+      range: '2011 — 2018',
       bullets: [
         'Delivered contract desktop and network support to small and mid-sized businesses across a range of industries.',
         'Hands-on across Windows endpoints, peripherals, consumer-to-small-business networking gear, and Tier 1–2 troubleshooting.',
