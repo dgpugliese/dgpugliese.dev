@@ -32,6 +32,7 @@ export function Resume() {
       title: 'Lead Professional Service Engineer', co: 'SWK Technologies', loc: 'Remote',
       range: 'Apr 2022 — Jul 2023',
       bullets: [
+        'Featured as "A Day in the Life of an Engineer" at SWK\'s One Voice conference — selected as the engineering profile for the company-wide event.',
         'Influenced strategic migration of the company\'s RMM platform from N-central to NinjaRMM — contributed technical evaluation, feature comparison, and feasibility analysis that shaped the executive decision.',
         'Senior technical escalation point across Microsoft 365, firewalls, and backup/DR.',
         'Mentored helpdesk and junior engineers; partnered with sales on scoping and technical discovery for new client engagements.',
