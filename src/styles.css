@@ -388,3 +388,85 @@ section.sect {
 ::-webkit-scrollbar-track { background: rgba(5, 8, 16, 0.5); }
 ::-webkit-scrollbar-thumb { background: rgba(78, 201, 224, 0.3); border: 1px solid var(--bg); }
 ::-webkit-scrollbar-thumb:hover { background: rgba(78, 201, 224, 0.5); }
+
+/* ─────────────────────────────────────
+   Tablet / mobile responsive overrides
+   Inline grid styles in JSX win specificity, so we use !important
+   here rather than refactoring every section.
+   ───────────────────────────────────── */
+
+/* Tablet (≤900px) — collapse multi-col grids */
+@media (max-width: 900px) {
+  body { cursor: auto; }
+
+  .statusbar { font-size: 10px; padding: 0 12px; letter-spacing: 0.08em; }
+  .statusbar .sep { margin: 0 8px; }
+  .statusbar .right { gap: 10px; }
+  .statusbar .right > span:nth-child(2) { display: none; } /* hide LAT/LON */
+
+  .rail { width: 44px; }
+  .rail-btn { width: 30px; height: 30px; font-size: 9px; }
+  main { margin-left: 44px; }
+
+  section.sect { padding: 48px 24px; }
+  .sect-title { font-size: 22px; }
+  .sect-sub { display: none; }
+
+  /* Hero: stack into single column */
+  #home { grid-template-columns: 1fr !important; padding: 32px 24px !important; min-height: auto !important; }
+  #home .panel:first-child { padding: 32px 28px !important; transform: none !important; }
+  #home > div:last-child { transform: none !important; }
+  #home h1 { font-size: clamp(56px, 14vw, 96px) !important; }
+
+  /* About / Skills / Projects / GitHub: collapse columns */
+  #about > div { grid-template-columns: 1fr !important; }
+  #stack > div { grid-template-columns: 1fr !important; }
+  #projects > div { grid-template-columns: 1fr !important; }
+  #github > div { grid-template-columns: 1fr !important; }
+  #certs > div { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Contact hero text */
+  #contact h3 { font-size: clamp(28px, 7vw, 44px) !important; }
+  #contact .panel { padding: 32px 24px !important; }
+  #contact .mono:last-child { flex-direction: column; gap: 6px; align-items: center; }
+
+  .reveal-detail { max-height: none; opacity: 1; margin-top: 10px; } /* always-shown on touch */
+}
+
+/* Phone (≤560px) — tighter type, smaller chrome */
+@media (max-width: 560px) {
+  .statusbar { height: 32px; font-size: 9px; }
+  .statusbar > span:nth-child(3) { display: none; } /* hide SYS / DGPUGLIESE.DEV */
+  .rail { top: 32px; width: 40px; }
+  .rail-btn { width: 28px; height: 28px; font-size: 8px; }
+  .rail-btn .tip { display: none; }
+  main { margin-left: 40px; margin-top: 32px; }
+
+  section.sect { padding: 40px 16px; }
+  .sect-head { gap: 10px; margin-bottom: 24px; }
+  .sect-num { font-size: 11px; }
+  .sect-title { font-size: 19px; }
+
+  #home { padding: 24px 16px !important; gap: 16px !important; }
+  #home .panel:first-child { padding: 24px 20px !important; }
+  #home h1 { font-size: clamp(44px, 13vw, 72px) !important; line-height: 0.95 !important; }
+  #home .mono { font-size: 14px !important; }
+
+  .btn { padding: 10px 14px; font-size: 11px; letter-spacing: 0.1em; }
+
+  /* Resume: tighter timeline */
+  #resume .panel { padding: 24px 20px !important; }
+  #resume h3 { font-size: 16px !important; }
+
+  /* Certs: 1 col on phones */
+  #certs > div { grid-template-columns: 1fr !important; }
+
+  /* GitHub repo cards */
+  #github > div:last-child { grid-template-columns: 1fr !important; }
+
+  /* Boot overlay */
+  .boot-inner { padding: 18px 16px; font-size: 11px; }
+
+  /* Hero CTA buttons wrap nicely */
+  #home a.btn { flex: 1 1 auto; justify-content: center; }
+}
