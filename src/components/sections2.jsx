@@ -161,20 +161,22 @@ export function GitHub() {
 }
 
 export function Certs() {
+  // Badge image URLs are real Credly badge images, served via their /size/ CDN path.
+  const credly = (id, file) => `https://images.credly.com/size/110x110/images/${id}/${file}`;
   const certs = [
-    { n: 'CompTIA Security+ (ce)', t: 'SEC' },
-    { n: 'CompTIA Network+ (ce)', t: 'NET' },
-    { n: 'CompTIA Cloud+ (ce)', t: 'CLD' },
-    { n: 'CompTIA Server+ (ce)', t: 'SRV' },
-    { n: 'CompTIA A+', t: 'A+' },
-    { n: 'CompTIA ITF+', t: 'ITF' },
-    { n: 'AWS Cloud Practitioner', t: 'AWS' },
-    { n: 'VMware VCP — DCV', t: 'VCP' },
-    { n: '(ISC)² Certified in Cybersecurity', t: 'CC' },
-    { n: 'MS Azure Fundamentals (AZ-900)', t: 'AZ' },
-    { n: 'MS SC&I Fundamentals (SC-900)', t: 'SC' },
-    { n: 'MS 365 Fundamentals (MS-900)', t: 'M365' },
-    { n: 'LPI Linux Essentials', t: 'LPI' },
+    { n: 'CompTIA Security+ (ce)', t: 'SEC', img: credly('80d8a06a-c384-42bf-ad36-db81bce5adce', 'blob') },
+    { n: 'CompTIA Network+ (ce)', t: 'NET', img: credly('c70ba73e-3c8a-46fa-9d60-4a9af94ad662', 'blob') },
+    { n: 'CompTIA Cloud+ (ce)', t: 'CLD', img: credly('b2e3c623-cc4a-4f0c-8a3b-aa6231e138fe', 'blob') },
+    { n: 'CompTIA Server+ (ce)', t: 'SRV', img: credly('07378420-4407-4f09-a4d7-9301d87dec34', 'blob') },
+    { n: 'CompTIA A+', t: 'A+', img: credly('2d9ba442-a3ce-4105-9d69-57f478540f70', 'CompTIA_A_2B.png') },
+    { n: 'CompTIA ITF+', t: 'ITF', img: credly('a49be93a-34ff-4224-996c-b2c976a5dc9d', 'blob') },
+    { n: 'AWS Cloud Practitioner', t: 'AWS', img: credly('00634f82-b07f-4bbd-a6bb-53de397fc3a6', 'image.png') },
+    { n: 'VMware VCP — DCV', t: 'VCP', img: credly('5287aa23-f179-46a9-9683-678077d3aa45', 'image.png') },
+    { n: '(ISC)² Certified in Cybersecurity', t: 'CC', img: credly('2030e43f-8003-4d4b-9630-847add403c87', 'image.png') },
+    { n: 'MS Azure Fundamentals (AZ-900)', t: 'AZ', img: credly('be8fcaeb-c769-4858-b567-ffaaa73ce8cf', 'image.png') },
+    { n: 'MS SC&I Fundamentals (SC-900)', t: 'SC', img: credly('fc1352af-87fa-4947-ba54-398a0e63322e', 'security-compliance-and-identity-fundamentals-600x600.png') },
+    { n: 'MS 365 Fundamentals (MS-900)', t: 'M365', img: credly('0c6d9839-f468-4adc-987d-5cfae4a9ee67', 'image.png') },
+    { n: 'LPI Linux Essentials', t: 'LPI', img: credly('1d36cb36-20fc-4961-8d70-6307c015d1aa', 'blob') },
     { n: 'GitHub Foundations', t: 'GH' },
     { n: 'ITIL Foundation v5', t: 'ITIL' },
   ];
@@ -190,9 +192,13 @@ export function Certs() {
           <div key={c.n} className="panel" style={{ padding: '18px 16px', display: 'flex', alignItems: 'center', gap: 12, transition: 'all 0.15s' }}
                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--cyan)'; e.currentTarget.style.boxShadow = '0 0 14px rgba(78, 201, 224, 0.25)'; }}
                onMouseLeave={e => { e.currentTarget.style.borderColor = ''; e.currentTarget.style.boxShadow = ''; }}>
-            <div className="mono" style={{ width: 44, height: 44, border: '1px solid var(--cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: 'var(--cyan)', flexShrink: 0, fontWeight: 700, letterSpacing: '0.05em' }}>
-              {c.t}
-            </div>
+            {c.img ? (
+              <img src={c.img} alt="" loading="lazy" style={{ width: 48, height: 48, flexShrink: 0, objectFit: 'contain' }} />
+            ) : (
+              <div className="mono" style={{ width: 44, height: 44, border: '1px solid var(--cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: 'var(--cyan)', flexShrink: 0, fontWeight: 700, letterSpacing: '0.05em' }}>
+                {c.t}
+              </div>
+            )}
             <div className="mono" style={{ fontSize: 11, lineHeight: 1.4, color: 'var(--fg)' }}>{c.n}</div>
           </div>
         ))}
