@@ -10,19 +10,18 @@ export function About() {
         <div className="panel panel-corners" style={{ padding: '32px 36px' }}>
           <span className="panel-label">SUMMARY</span>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg)', margin: 0 }}>
-            Director of IT with <span style={{ color: 'var(--cyan)' }}>10+ years</span> spanning physical and cloud infrastructure,
-            cybersecurity, and full-stack engineering. Currently leading an AI-integrated IT function for a
-            <span style={{ color: 'var(--violet)' }}> large nonprofit</span> with a national footprint.
+            <span style={{ color: 'var(--cyan)' }}>Ten years in IT.</span> Came up the hands-on way — racks, hypervisors,
+            AD remediation, OAuth flows — and grew into platform architecture and IT leadership.
           </p>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-dim)', marginTop: 18 }}>
-            I run production <span style={{ color: 'var(--cyan)' }}>MCP server infrastructure</span> with identity patterns
-            for both human and agent users, and ship platforms end-to-end on React/Next.js, Node/Express,
-            Cloudflare, and Supabase against Salesforce/Fonteva.
+            These days I split my time between two surfaces: production <span style={{ color: 'var(--violet)' }}>MCP server infrastructure</span> that
+            lets AI agents act safely against enterprise SaaS, and the <span style={{ color: 'var(--cyan)' }}>headless React/Node platforms</span> that
+            real people touch. Recent work: shipped a passwordless membership portal serving ~150K users on Cloudflare, built MCP integrations across M365 / Google Workspace / Cloudflare / Supabase / Granola, and stood up the org's first NIST 800-53 / CIS posture.
           </p>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-dim)', marginTop: 18 }}>
-            Hands-on across Entra ID (Conditional Access, SSO, MFA), endpoint security (Defender, Intune), and
-            NIST 800-53 / CIS Controls compliance — equally comfortable mentoring engineers, briefing executives,
-            and debugging OAuth flows.
+            I work best with teams that actually ship — recruiters with technical roles, operators who need fractional
+            infra leadership, founders who want someone who can both architect the system and write the OAuth callback
+            that fixes it at 2 a.m.
           </p>
         </div>
         <div className="panel panel-corners" style={{ padding: '24px 28px' }}>
