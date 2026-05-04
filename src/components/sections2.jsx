@@ -3,11 +3,11 @@ import { useEffect, useMemo, useState } from 'react';
 export function Resume() {
   const jobs = [
     {
-      title: 'Director of Information Technology', co: 'International Membership Organization (Nonprofit · ~150K constituents)', loc: 'Philadelphia, PA',
+      title: 'Director of Information Technology', co: 'Kappa Alpha Psi Fraternity, Inc.', loc: 'Philadelphia, PA',
       range: 'Feb 2024 — Present', current: true,
       bullets: [
         'Lead IT strategy, engineering, and operations for a national nonprofit with ~150K constituents across 770 sites.',
-        <>Profiled in the organization's official member journal (page 28) — <a href="https://online.flippingbook.com/view/282754758/28/" target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)', textDecoration: 'underline' }}>read the feature ↗</a>.</>,
+        <>Profiled in <i>The Journal of Kappa Alpha Psi</i> (page 28) — <a href="https://online.flippingbook.com/view/282754758/28/" target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)', textDecoration: 'underline' }}>read the feature ↗</a>.</>,
         'Designed and run production MCP server infrastructure connecting Claude to M365, Google Workspace, Cloudflare, Supabase, and Granola; established access patterns, scoping, and audit posture for non-human (agent) identities.',
         'Built physical + cloud infrastructure from the ground up — hypervisor environment, enterprise switching + UniFi access, AD remediation in tandem with Entra ID consolidation.',
         'Lead architect on a headless React/Next.js membership portal — Cloudflare Pages → Node/Express middleware → Salesforce/Fonteva REST. Stripe dues processing, WebAuthn/passkey auth, role-based JWT, webhook-driven document signing.',
