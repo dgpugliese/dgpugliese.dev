@@ -11,8 +11,8 @@ export function About() {
           <span className="panel-label">SUMMARY</span>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg)', margin: 0 }}>
             Director of IT with <span style={{ color: 'var(--cyan)' }}>10+ years</span> spanning physical and cloud infrastructure,
-            cybersecurity, and full-stack engineering. Currently leading an AI-integrated IT function for an
-            international nonprofit serving <span style={{ color: 'var(--violet)' }}>~150K members</span> across 770 chapters.
+            cybersecurity, and full-stack engineering. Currently leading an AI-integrated IT function for a
+            <span style={{ color: 'var(--violet)' }}> large nonprofit</span> with a national footprint.
           </p>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-dim)', marginTop: 18 }}>
             I run production <span style={{ color: 'var(--cyan)' }}>MCP server infrastructure</span> with identity patterns
@@ -55,7 +55,10 @@ export function Skills() {
   const groups = [
     { name: 'Identity & Access', items: ['Entra ID', 'Conditional Access', 'SSO', 'MFA', 'WebAuthn', 'OAuth 2.0', 'AD'], c: 'cyan' },
     { name: 'AI / Agent Tooling', items: ['Claude Sonnet/Opus', 'Claude Code', 'MCP Servers', 'Agentic Workflows', 'Prompt Eng.'], c: 'violet' },
-    { name: 'Cloud & Platforms', items: ['Azure', 'AWS', 'Cloudflare Workers', 'Supabase', 'Vercel', 'VMware ESXi', 'Hyper-V'], c: 'cyan' },
+    { name: 'Cloud & Platforms', items: ['Azure', 'AWS', 'Cloudflare Workers', 'Supabase', 'Vercel'], c: 'cyan' },
+    { name: 'Virtualization', items: ['VMware ESXi', 'Hyper-V', 'Proxmox', 'XCP-ng'], c: 'cyan' },
+    { name: 'Containers & IaC', items: ['Docker', 'Terraform', 'Ansible', 'GitHub Actions'], c: 'amber' },
+    { name: 'Observability', items: ['Grafana', 'Prometheus', 'Uptime Kuma'], c: 'green' },
     { name: 'Security & Compliance', items: ['NIST 800-53', 'CIS Controls', 'SOC 2', 'SIEM', 'Defender', 'Intune', 'Veeam'], c: 'green' },
     { name: 'Engineering Stack', items: ['TypeScript', 'Python', 'SQL', 'PowerShell', 'React', 'Next.js', 'Node/Express', 'Stripe', 'Salesforce/Fonteva'], c: 'amber' },
     { name: 'Networking', items: ['FortiGate', 'Cisco Catalyst', 'UniFi', '802.1Q VLAN', 'IPsec VPN', 'SD-WAN'], c: 'cyan' },
@@ -84,11 +87,11 @@ export function Skills() {
 export function Projects() {
   const projects = [
     {
-      id: 'KAPSI-CONNECT', tag: 'PRODUCTION', tagC: 'green',
-      title: 'KAPSI Connect',
-      sub: 'Headless membership portal · ~150K members',
+      id: 'MEMBERSHIP-PORTAL', tag: 'PRODUCTION', tagC: 'green',
+      title: 'Headless Membership Portal',
+      sub: 'Constituent platform · ~150K users',
       stack: ['React', 'Next.js', 'Cloudflare Pages', 'Node/Express', 'Salesforce/Fonteva', 'Stripe', 'WebAuthn'],
-      detail: 'Lead architect. Designed and shipped headless portal with Stripe-based dues processing, passkey auth, role-based JWT (Member/Officer/Chapter Admin), and webhook-driven document signing. Talks to Salesforce/Fonteva REST.',
+      detail: 'Lead architect. Designed and shipped a headless portal with Stripe-based subscription/dues processing, passkey auth, role-based JWT, and webhook-driven document signing. Talks to Salesforce/Fonteva REST under a Node/Express middleware layer.',
     },
     {
       id: 'MCP-OPS', tag: 'PRODUCTION', tagC: 'green',
@@ -99,10 +102,10 @@ export function Projects() {
     },
     {
       id: 'INFRA-REBUILD', tag: 'SHIPPED', tagC: 'cyan',
-      title: 'KAΨ HQ Infra Buildout',
-      sub: 'Greenfield physical + cloud',
+      title: 'Greenfield Hybrid Infra',
+      sub: 'Physical + cloud, built from scratch',
       stack: ['Hyper-V', 'UniFi', 'Entra ID', 'Active Directory', 'Intune'],
-      detail: 'Built physical + cloud infra from scratch. Deployed hypervisor environment, replaced legacy networking with enterprise switching + UniFi, remediated neglected AD in tandem with Entra ID consolidation.',
+      detail: 'Built physical + cloud infra from the ground up. Deployed hypervisor environment, replaced legacy networking with enterprise switching + UniFi, remediated neglected AD in tandem with Entra ID consolidation.',
     },
     {
       id: 'BVFD-POINTS', tag: 'PROTOTYPE', tagC: 'amber',

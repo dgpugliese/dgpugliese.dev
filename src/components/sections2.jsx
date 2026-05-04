@@ -3,12 +3,12 @@ import { useEffect, useMemo, useState } from 'react';
 export function Resume() {
   const jobs = [
     {
-      title: 'Director of Information Technology', co: 'Kappa Alpha Psi Fraternity, Inc.', loc: 'Philadelphia, PA',
+      title: 'Director of Information Technology', co: 'International Membership Organization (Nonprofit · ~150K constituents)', loc: 'Philadelphia, PA',
       range: 'Feb 2024 — Present', current: true,
       bullets: [
-        'Lead IT strategy, engineering, and operations for an international nonprofit serving ~150K members across 770 chapters.',
-        'Designed and run production MCP server infrastructure connecting Claude to M365, Google Workspace, Cloudflare, Supabase, Granola.',
-        'Lead architect on KAPSI Connect — headless React/Next.js portal on Cloudflare → Node middleware → Salesforce/Fonteva.',
+        'Lead IT strategy, engineering, and operations for a national nonprofit with ~150K constituents across 770 sites.',
+        'Designed and run production MCP server infrastructure connecting Claude to M365, Google Workspace, Cloudflare, Supabase, and Granola.',
+        'Lead architect on a headless React/Next.js membership portal — Cloudflare → Node middleware → Salesforce/Fonteva.',
         'Delivered org\'s first enterprise cybersecurity milestone — NIST 800-53 / CIS aligned. Panelist, Cybersecurity Summit Philadelphia 2026.',
         'Manage direct reports (Tech Support Engineer, Vuln/Patch Mgmt Lead), annual IT budget, and vendor contracts.',
       ],

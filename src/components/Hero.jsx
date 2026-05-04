@@ -34,8 +34,8 @@ export function Hero() {
           </div>
           <div style={{ marginTop: 28, maxWidth: 580, fontSize: 16, lineHeight: 1.6, color: 'var(--fg-dim)' }}>
             10+ years across hybrid infrastructure, cybersecurity, and full-stack engineering. Currently leading
-            an AI-integrated IT function for an international nonprofit serving ~150K members. Equally comfortable
-            mentoring engineers, briefing executives, and debugging OAuth flows.
+            an AI-integrated IT function for a large nonprofit. Comfortable architecting platforms end-to-end,
+            mentoring engineers, briefing executives, and debugging OAuth flows at 2 a.m.
           </div>
         </div>
 
@@ -103,9 +103,9 @@ function Telemetry() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginTop: 4 }}>
         {[
           ['YRS_EXP', '10+', 'var(--cyan)'],
-          ['MEMBERS_SVC', '~150K', 'var(--violet)'],
-          ['CHAPTERS', '770', 'var(--amber)'],
+          ['MCP_SERVERS', '5+', 'var(--violet)'],
           ['UPTIME_SLA', '98%+', 'var(--green)'],
+          ['CERTS', '15', 'var(--amber)'],
         ].map(([k, v, c]) => (
           <div key={k} style={{ borderLeft: `2px solid ${c}`, paddingLeft: 10 }}>
             <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', letterSpacing: '0.1em' }}>{k}</div>
