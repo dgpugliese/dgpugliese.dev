@@ -11,7 +11,7 @@ export function Resume() {
         'Designed and run production MCP server infrastructure connecting Claude to M365, Google Workspace, Cloudflare, Supabase, and Granola; established access patterns, scoping, and audit posture for non-human (agent) identities.',
         'Built physical + cloud infrastructure from the ground up — hypervisor environment, enterprise switching + UniFi access, AD remediation in tandem with Entra ID consolidation.',
         'Lead architect on a headless React/Next.js membership portal — Cloudflare Pages → Node/Express middleware → Salesforce/Fonteva REST. Stripe dues processing, WebAuthn/passkey auth, role-based JWT, webhook-driven document signing.',
-        'Delivered org\'s first enterprise cybersecurity milestone — NIST 800-53 / CIS aligned. Commissioned org\'s first annual third-party pen test. Panelist, Cybersecurity Summit Philadelphia 2026.',
+        'Delivered org\'s first enterprise cybersecurity milestone — NIST 800-53 / CIS aligned. Commissioned org\'s first annual third-party pen test.',
         'Driving zero-touch employee lifecycle — modernized M365 / Entra ID provisioning, shared-mailbox permissioning via PowerShell across 12+ mailboxes, standardized onboarding/offboarding SOPs. Stood up internal ticketing, runbooks, and call-flow routing.',
         'Manage direct reports (Tech Support Engineer, Vuln/Patch Mgmt Lead), annual IT budget, and vendor contracts; primary escalation owner for incident response with blameless post-mortem discipline.',
       ],
