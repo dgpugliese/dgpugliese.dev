@@ -1,10 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
 export function Starfield() {
   const ref = useRef(null);
   useEffect(() => {
     const c = ref.current; if (!c) return;
     const ctx = c.getContext('2d');
+    const reduced = prefersReducedMotion();
     let raf, stars = [];
     const resize = () => {
       c.width = window.innerWidth * devicePixelRatio;
@@ -17,9 +22,20 @@ export function Starfield() {
         z: Math.random(),
         s: Math.random() * 1.4 + 0.2,
       }));
+      if (reduced) drawStatic();
+    };
+    const drawStatic = () => {
+      ctx.clearRect(0, 0, c.width, c.height);
+      stars.forEach(s => {
+        ctx.fillStyle = `rgba(127, 223, 255, ${s.z * 0.5})`;
+        ctx.fillRect(s.x, s.y, s.s * devicePixelRatio, s.s * devicePixelRatio);
+      });
     };
     resize();
     window.addEventListener('resize', resize);
+    if (reduced) {
+      return () => window.removeEventListener('resize', resize);
+    }
     let t = 0;
     const tick = () => {
       t += 0.003;
@@ -40,6 +56,10 @@ export function Starfield() {
 }
 
 export function Boot({ onDone }) {
+  // Reduced motion → skip the animation entirely
+  useEffect(() => {
+    if (prefersReducedMotion()) onDone?.();
+  }, [onDone]);
   const lines = [
     { t: '[ 0.001 ]', l: 'COLD START / CPU=APPLE_M-CLASS / MEM=OK', c: 'ok' },
     { t: '[ 0.014 ]', l: 'mounting /dev/dgpugliese.dev', c: 'ok' },
@@ -89,6 +109,10 @@ export function Typer({ phrases, speed = 55, hold = 1800 }) {
   const [text, setText] = useState('');
   const [del, setDel] = useState(false);
   useEffect(() => {
+    if (prefersReducedMotion()) {
+      setText(phrases[0]);
+      return;
+    }
     const cur = phrases[i];
     if (!del && text === cur) {
       const t = setTimeout(() => setDel(true), hold);

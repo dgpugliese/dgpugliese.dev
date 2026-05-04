@@ -388,6 +388,17 @@ section.sect {
 ::-webkit-scrollbar-thumb { background: rgba(78, 201, 224, 0.3); border: 1px solid var(--bg); }
 ::-webkit-scrollbar-thumb:hover { background: rgba(78, 201, 224, 0.5); }
 
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .scanline { display: none; }
+  .cursor { animation: none; opacity: 1; }
+}
+
 /* ─────────────────────────────────────
    Tablet / mobile responsive overrides
    Inline grid styles in JSX win specificity, so we use !important

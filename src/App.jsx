@@ -5,9 +5,15 @@ import { About, Skills, Projects } from './components/sections1.jsx';
 import { Resume, GitHub, Certs, Contact } from './components/sections2.jsx';
 
 export default function App() {
-  const [booted, setBooted] = useState(false);
+  // Skip boot if user already saw it this session
+  const [booted, setBooted] = useState(() => sessionStorage.getItem('booted') === '1');
   const [soundOn, setSoundOn] = useState(false);
   const [active, setActive] = useState('home');
+
+  const finishBoot = () => {
+    sessionStorage.setItem('booted', '1');
+    setBooted(true);
+  };
 
   useEffect(() => {
     if (!booted) return;
@@ -42,7 +48,7 @@ export default function App() {
 
   return (
     <>
-      {!booted && <Boot onDone={() => setBooted(true)} />}
+      {!booted && <Boot onDone={finishBoot} />}
       <Starfield />
       <div className="grid-bg" />
       <div className="glow glow-1" />
