@@ -177,6 +177,13 @@ export function Certs() {
     { n: 'MS SC&I Fundamentals (SC-900)', t: 'SC', img: credly('fc1352af-87fa-4947-ba54-398a0e63322e', 'security-compliance-and-identity-fundamentals-600x600.png') },
     { n: 'MS 365 Fundamentals (MS-900)', t: 'M365', img: credly('0c6d9839-f468-4adc-987d-5cfae4a9ee67', 'image.png') },
     { n: 'LPI Linux Essentials', t: 'LPI', img: credly('1d36cb36-20fc-4961-8d70-6307c015d1aa', 'blob') },
+    { n: 'CompTIA IT Operations Specialist (CIOS)', t: 'CIOS', img: credly('7f7657b9-4d1b-4b8d-b5ee-5fdf6d7ccd71', '04294_CompTIA_Cert_Badges_Specialist_-_CIOS.png') },
+    { n: 'CompTIA Secure Infrastructure Specialist (CSIS)', t: 'CSIS', img: credly('8090280a-311f-425f-a1cd-a32770b5a444', 'CompTIA_CSIS.png') },
+    { n: 'CompTIA Network Infrastructure Professional (CNIP)', t: 'CNIP', img: credly('f308a5b0-18e3-4e93-ae15-9f27dd0a94cc', 'CompTIA_CNIP.png') },
+    { n: 'CompTIA Secure Cloud Professional (CSCP)', t: 'CSCP', img: credly('9f54bf46-dc18-408c-a74e-2637facd1856', 'CompTIA_CSCP.png') },
+    { n: 'CompTIA Cloud Admin Professional (CCAP)', t: 'CCAP', img: credly('18218ce6-e7d4-4479-9500-b7499645b763', 'CompTIA_CCAP.png') },
+    { n: 'Parallels RAS Technical Professional', t: 'RAS', img: credly('a0b0cb85-45a0-4aa9-8184-408e72fe092c', 'blob') },
+    { n: 'Parallels RAS Technical Professional Advanced', t: 'RAS+', img: credly('0c751535-2db1-4204-8ab0-3ccccea0f985', 'blob') },
     { n: 'GitHub Foundations', t: 'GH' },
     { n: 'ITIL Foundation v5', t: 'ITIL' },
   ];
