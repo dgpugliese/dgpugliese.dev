@@ -59,9 +59,11 @@ export function Skills() {
     { name: 'Virtualization', items: ['VMware ESXi', 'Hyper-V', 'Proxmox', 'XCP-ng'], c: 'cyan' },
     { name: 'Containers & IaC', items: ['Docker', 'Terraform', 'Ansible', 'GitHub Actions'], c: 'amber' },
     { name: 'Observability', items: ['Grafana', 'Prometheus', 'Uptime Kuma'], c: 'green' },
-    { name: 'Security & Compliance', items: ['NIST 800-53', 'CIS Controls', 'SOC 2', 'SIEM', 'Defender', 'Intune', 'Veeam'], c: 'green' },
+    { name: 'Security & Compliance', items: ['NIST 800-53', 'CIS Controls', 'SOC 2', 'SIEM', 'Defender', 'Intune', 'Huntress', 'Automox'], c: 'green' },
+    { name: 'Backup & Storage', items: ['Veeam', 'Acronis Cyber Backup', 'Datto', 'Synology'], c: 'green' },
+    { name: 'MSP / RMM Tooling', items: ['NinjaRMM', 'Datto RMM', 'N-able', 'ITGlue'], c: 'amber' },
     { name: 'Engineering Stack', items: ['TypeScript', 'Python', 'SQL', 'PowerShell', 'React', 'Next.js', 'Node/Express', 'Stripe', 'Salesforce/Fonteva'], c: 'amber' },
-    { name: 'Networking', items: ['FortiGate', 'Cisco Catalyst', 'UniFi', '802.1Q VLAN', 'IPsec VPN', 'SD-WAN'], c: 'cyan' },
+    { name: 'Networking', items: ['FortiGate', 'Cisco Catalyst', 'Cisco Meraki', 'UniFi', '802.1Q VLAN', 'IPsec VPN', 'SD-WAN'], c: 'cyan' },
   ];
   return (
     <section className="sect" id="stack" data-screen-label="03 Stack">
