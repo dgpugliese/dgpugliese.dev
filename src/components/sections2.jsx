@@ -54,6 +54,23 @@ export function Resume() {
       ],
     },
     {
+      title: 'IT Support', co: 'Strongcity Technology Solutions', loc: 'Philadelphia, PA',
+      range: '2009 — 2010',
+      bullets: [
+        'Provided desktop and end-user support across Windows environments — hardware troubleshooting, software installs, peripheral setup, and account resets.',
+        'Triaged and resolved Tier-1 tickets; escalated complex issues to senior engineers.',
+      ],
+    },
+    {
+      title: 'Computer Literacy Instructor', co: 'Honickman Learning Center', loc: 'Philadelphia, PA',
+      range: '2007 — 2009', award: true,
+      bullets: [
+        'Taught computer literacy to community learners — Windows fundamentals, Microsoft Office, internet navigation, and email essentials.',
+        'Adapted lesson plans for mixed skill levels; coached students one-on-one when needed.',
+        'Recipient of a recognition award for instructional contribution.',
+      ],
+    },
+    {
       title: 'Director of IT (Volunteer)', co: 'Bensalem Volunteer Fire Dept.', loc: 'Bensalem, PA',
       range: 'Aug 2018 — Present', volunteer: true,
       bullets: [
@@ -78,12 +95,13 @@ export function Resume() {
           <div style={{ position: 'absolute', left: 8, top: 8, bottom: 8, width: 1, background: 'var(--line)' }} />
           {jobs.map((j, i) => (
             <div key={i} style={{ position: 'relative', paddingLeft: 36, marginBottom: i === jobs.length - 1 ? 0 : 32 }}>
-              <div style={{ position: 'absolute', left: 4, top: 6, width: 9, height: 9, background: j.current ? 'var(--green)' : (j.volunteer ? 'var(--violet)' : 'var(--cyan)'), boxShadow: j.current ? '0 0 10px var(--green)' : 'none' }} />
+              <div style={{ position: 'absolute', left: 4, top: 6, width: 9, height: 9, background: j.current ? 'var(--green)' : (j.volunteer ? 'var(--violet)' : (j.award ? 'var(--amber)' : 'var(--cyan)')), boxShadow: j.current ? '0 0 10px var(--green)' : (j.award ? '0 0 10px var(--amber)' : 'none') }} />
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: 8 }}>
                 <h3 style={{ margin: 0, fontSize: 18, fontWeight: 600 }}>
                   {j.title}
                   {j.current && <span style={{ marginLeft: 12, fontSize: 10, color: 'var(--green)', background: 'rgba(126, 231, 135, 0.1)', border: '1px solid var(--green)', padding: '2px 8px', letterSpacing: '0.15em', verticalAlign: 'middle' }} className="mono">CURRENT</span>}
                   {j.volunteer && <span style={{ marginLeft: 12, fontSize: 10, color: 'var(--violet)', background: 'rgba(210, 168, 255, 0.1)', border: '1px solid var(--violet)', padding: '2px 8px', letterSpacing: '0.15em', verticalAlign: 'middle' }} className="mono">VOLUNTEER</span>}
+                  {j.award && <span style={{ marginLeft: 12, fontSize: 10, color: 'var(--amber)', background: 'rgba(255, 166, 87, 0.1)', border: '1px solid var(--amber)', padding: '2px 8px', letterSpacing: '0.15em', verticalAlign: 'middle' }} className="mono">★ AWARD</span>}
                 </h3>
                 <span className="mono" style={{ fontSize: 11, color: 'var(--fg-faint)', letterSpacing: '0.12em' }}>{j.range}</span>
               </div>
