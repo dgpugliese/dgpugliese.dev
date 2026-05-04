@@ -227,7 +227,7 @@ export function Certs() {
     { n: 'Parallels RAS Technical Professional', t: 'RAS', img: credly('a0b0cb85-45a0-4aa9-8184-408e72fe092c', 'blob') },
     { n: 'Parallels RAS Technical Professional Advanced', t: 'RAS+', img: credly('0c751535-2db1-4204-8ab0-3ccccea0f985', 'blob') },
     { n: 'GitHub Foundations', t: 'GH' },
-    { n: 'ITIL Foundation v5', t: 'ITIL' },
+    { n: 'ITIL Foundation v5', t: 'ITIL', img: 'https://badges.peoplecert.org/Badges/Template/en/180/a40e5baa-5391-4ea9-bf2a-1cc471286c3e' },
   ];
   return (
     <section className="sect" id="certs" data-screen-label="07 Certifications">
