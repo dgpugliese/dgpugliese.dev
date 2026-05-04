@@ -101,7 +101,17 @@ export function GitHub() {
     })();
   }, []);
 
-  const cells = useMemo(() => Array.from({ length: 52 * 7 }).map(() => Math.random()), []);
+  // Deterministic PRNG (mulberry32) so the concept heatmap stays stable across reloads
+  const cells = useMemo(() => {
+    let s = 0x9e3779b1;
+    return Array.from({ length: 52 * 7 }).map(() => {
+      s = (s + 0x6d2b79f5) | 0;
+      let t = s;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    });
+  }, []);
 
   return (
     <section className="sect" id="github" data-screen-label="06 GitHub">
@@ -124,12 +134,12 @@ export function GitHub() {
               </div>
             </div>
           ) : err ? <div className="mono" style={{ fontSize: 12, color: 'var(--amber)' }}>// rate-limited or offline · check: github.com/dgpugliese</div>
-                : <div className="mono" style={{ fontSize: 12, color: 'var(--fg-faint)' }}>connecting...</div>}
+                : <div className="mono pulse" style={{ fontSize: 12, color: 'var(--cyan)' }}>● handshaking with api.github.com...</div>}
         </div>
         <div className="panel panel-corners" style={{ padding: '24px 28px' }}>
           <span className="panel-label">CONTRIB_MATRIX</span>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12 }}>
-            <span className="mono" style={{ fontSize: 11, color: 'var(--fg-dim)' }}>last 365d · simulated heatmap</span>
+            <span className="mono" style={{ fontSize: 11, color: 'var(--fg-dim)' }}>last 365d · concept matrix</span>
             <span className="mono" style={{ fontSize: 11, color: 'var(--green)' }}>● synced</span>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(52, 1fr)', gap: 2 }}>
@@ -157,6 +167,19 @@ export function GitHub() {
         ))}
       </div>
     </section>
+  );
+}
+
+function CertBadge({ img, t }) {
+  const [broken, setBroken] = useState(false);
+  if (img && !broken) {
+    return <img src={img} alt="" loading="lazy" onError={() => setBroken(true)}
+                style={{ width: 48, height: 48, flexShrink: 0, objectFit: 'contain' }} />;
+  }
+  return (
+    <div className="mono" style={{ width: 44, height: 44, border: '1px solid var(--cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: 'var(--cyan)', flexShrink: 0, fontWeight: 700, letterSpacing: '0.05em' }}>
+      {t}
+    </div>
   );
 }
 
@@ -199,13 +222,7 @@ export function Certs() {
           <div key={c.n} className="panel" style={{ padding: '18px 16px', display: 'flex', alignItems: 'center', gap: 12, transition: 'all 0.15s' }}
                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--cyan)'; e.currentTarget.style.boxShadow = '0 0 14px rgba(78, 201, 224, 0.25)'; }}
                onMouseLeave={e => { e.currentTarget.style.borderColor = ''; e.currentTarget.style.boxShadow = ''; }}>
-            {c.img ? (
-              <img src={c.img} alt="" loading="lazy" style={{ width: 48, height: 48, flexShrink: 0, objectFit: 'contain' }} />
-            ) : (
-              <div className="mono" style={{ width: 44, height: 44, border: '1px solid var(--cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: 'var(--cyan)', flexShrink: 0, fontWeight: 700, letterSpacing: '0.05em' }}>
-                {c.t}
-              </div>
-            )}
+            <CertBadge img={c.img} t={c.t} />
             <div className="mono" style={{ fontSize: 11, lineHeight: 1.4, color: 'var(--fg)' }}>{c.n}</div>
           </div>
         ))}

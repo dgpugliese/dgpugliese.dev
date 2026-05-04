@@ -28,6 +28,9 @@ body {
   overflow-x: hidden;
   cursor: crosshair;
 }
+/* Restore expected cursors over interactive elements */
+a, button, [role="button"], .btn, .rail-btn, .sound-toggle, .reveal { cursor: pointer; }
+input, textarea, select { cursor: text; }
 
 .mono { font-family: 'JetBrains Mono', monospace; }
 
@@ -305,6 +308,12 @@ section.sect {
   0%, 100% { box-shadow: 0 0 12px rgba(78, 201, 224, 0.3); }
   50% { box-shadow: 0 0 24px rgba(78, 201, 224, 0.6); }
 }
+
+@keyframes pulse-text {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.pulse { animation: pulse-text 1.4s ease-in-out infinite; }
 
 /* Boot overlay */
 .boot {
