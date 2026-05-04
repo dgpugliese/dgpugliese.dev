@@ -345,7 +345,6 @@ section.sect {
 /* Hover-reveal */
 .reveal {
   position: relative;
-  overflow: hidden;
 }
 .reveal-detail {
   max-height: 0;
