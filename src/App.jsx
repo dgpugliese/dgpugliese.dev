@@ -30,7 +30,7 @@ export default function App() {
       '%cif you got this far, you\'re probably my kind of person.\n' +
       'source: %chttps://github.com/dgpugliese/dgpugliese.dev\n' +
       '%cif you\'re hiring or want to build something:\n' +
-      '  ↳ %cdgpugliese@icloud.com',
+      '  ↳ %cdp@dgpugliese.dev',
       body, accent, body, accent
     );
     console.log('%cps. press ` (backtick) anywhere on the page.', dim);

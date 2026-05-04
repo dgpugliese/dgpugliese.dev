@@ -40,7 +40,7 @@ export function Hero() {
         </div>
 
         <div style={{ display: 'flex', gap: 14, marginTop: 40, flexWrap: 'wrap' }}>
-          <a className="btn" href="mailto:dgpugliese@icloud.com">→ TRANSMIT_MSG</a>
+          <a className="btn" href="mailto:dp@dgpugliese.dev">→ TRANSMIT_MSG</a>
           <a className="btn btn-ghost" href="https://linkedin.com/in/dgpugliese" target="_blank" rel="noreferrer">↗ LINKEDIN</a>
           <a className="btn btn-ghost" href="https://github.com/dgpugliese" target="_blank" rel="noreferrer">↗ GITHUB</a>
           <a className="btn btn-ghost" href="https://credly.com/users/dpugliese" target="_blank" rel="noreferrer">↗ CREDLY</a>

@@ -249,7 +249,7 @@ export function Contact() {
           Recruiters, engineers, fractional advisory — all welcome. Best response window: weekday mornings ET.
         </div>
         <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 32, flexWrap: 'wrap' }}>
-          <a className="btn" href="mailto:dgpugliese@icloud.com">→ dgpugliese@icloud.com</a>
+          <a className="btn" href="mailto:dp@dgpugliese.dev">→ dp@dgpugliese.dev</a>
           <a className="btn btn-ghost" href="https://linkedin.com/in/dgpugliese" target="_blank" rel="noreferrer">↗ LINKEDIN/DGPUGLIESE</a>
         </div>
         <div className="mono" style={{ marginTop: 40, fontSize: 11, color: 'var(--fg-faint)', display: 'flex', justifyContent: 'space-between', borderTop: '1px dashed var(--line)', paddingTop: 16 }}>

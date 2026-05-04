@@ -26,7 +26,7 @@ apr 2022 — jul 2023  · lead PSE             SWK technologies
 aug 2018 — apr 2022  · network engineer     moving forward IT
 aug 2018 — present   · director of IT       bensalem VFD (volunteer)
 full timeline: scroll to /log`,
-  'contact.md': `email     dgpugliese@icloud.com
+  'contact.md': `email     dp@dgpugliese.dev
 linkedin  linkedin.com/in/dgpugliese
 github    github.com/dgpugliese
 credly    credly.com/users/dpugliese`,
@@ -43,7 +43,7 @@ const LINKS = {
   github: 'https://github.com/dgpugliese',
   linkedin: 'https://linkedin.com/in/dgpugliese',
   credly: 'https://credly.com/users/dpugliese',
-  mail: 'mailto:dgpugliese@icloud.com',
+  mail: 'mailto:dp@dgpugliese.dev',
 };
 
 function run(input) {
