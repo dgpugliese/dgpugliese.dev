@@ -54,6 +54,15 @@ export function Resume() {
       ],
     },
     {
+      title: 'IT Contractor', co: 'Independent — Multi-Industry', loc: 'Philadelphia, PA / Remote',
+      range: '2010 — 2018',
+      bullets: [
+        'Delivered contract desktop and network support to small and mid-sized businesses across a range of industries.',
+        'Hands-on across Windows endpoints, peripherals, consumer-to-small-business networking gear, and Tier 1–2 troubleshooting.',
+        'Built returning-client relationships through reliability and follow-through — foundation work that informed the network engineering and MSP roles that followed.',
+      ],
+    },
+    {
       title: 'IT Support', co: 'Strongcity Technology Solutions', loc: 'Philadelphia, PA',
       range: '2009 — 2010',
       bullets: [
