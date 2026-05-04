@@ -3,6 +3,7 @@ import { Boot, Starfield, Clock } from './components/fx.jsx';
 import { Hero } from './components/Hero.jsx';
 import { About, Skills, Projects } from './components/sections1.jsx';
 import { Resume, GitHub, Certs, Contact } from './components/sections2.jsx';
+import { CLI } from './components/CLI.jsx';
 
 export default function App() {
   // Skip boot if user already saw it this session
@@ -14,6 +15,26 @@ export default function App() {
     sessionStorage.setItem('booted', '1');
     setBooted(true);
   };
+
+  // Console signature — for the engineers who actually open DevTools.
+  useEffect(() => {
+    if (sessionStorage.getItem('greeted') === '1') return;
+    sessionStorage.setItem('greeted', '1');
+    const hdr = 'color:#7fdfff;font-weight:700;font-family:JetBrains Mono,monospace;font-size:13px;line-height:1.6;';
+    const body = 'color:#d8e8f4;font-family:JetBrains Mono,monospace;font-size:12px;line-height:1.6;';
+    const accent = 'color:#7ee787;font-family:JetBrains Mono,monospace;font-size:12px;line-height:1.6;';
+    const dim = 'color:rgba(216,232,244,0.5);font-family:JetBrains Mono,monospace;font-size:11px;';
+    console.log('%c> _', hdr);
+    console.log('%c◆ DGPUGLIESE.DEV  // operator console', hdr);
+    console.log(
+      '%cif you got this far, you\'re probably my kind of person.\n' +
+      'source: %chttps://github.com/dgpugliese/dgpugliese.dev\n' +
+      '%cif you\'re hiring or want to build something:\n' +
+      '  ↳ %cdgpugliese@icloud.com',
+      body, accent, body, accent
+    );
+    console.log('%cps. press ` (backtick) anywhere on the page.', dim);
+  }, []);
 
   useEffect(() => {
     if (!booted) return;
@@ -90,6 +111,8 @@ export default function App() {
       <button className="sound-toggle" onClick={() => setSoundOn(s => !s)} title={soundOn ? 'Mute' : 'Enable sounds'}>
         {soundOn ? '♪' : '×'}
       </button>
+
+      <CLI />
     </>
   );
 }

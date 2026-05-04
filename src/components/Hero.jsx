@@ -93,10 +93,23 @@ function Avatar() {
 
 function Telemetry() {
   const [hb, setHb] = useState(72);
+  const [flatline, setFlatline] = useState(false);
+  const clicksRef = useRef([]);
   useEffect(() => {
+    if (flatline) return;
     const id = setInterval(() => setHb(70 + Math.floor(Math.random() * 6)), 1100);
     return () => clearInterval(id);
-  }, []);
+  }, [flatline]);
+  const onHbClick = () => {
+    if (flatline) return;
+    const now = Date.now();
+    clicksRef.current = [...clicksRef.current.filter(t => now - t < 1500), now];
+    if (clicksRef.current.length >= 5) {
+      clicksRef.current = [];
+      setFlatline(true);
+      setTimeout(() => setFlatline(false), 1600);
+    }
+  };
   return (
     <div className="panel panel-corners" style={{ padding: 20 }}>
       <span className="panel-label">TELEMETRY</span>
@@ -115,7 +128,10 @@ function Telemetry() {
       </div>
       <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', marginTop: 14, display: 'flex', justifyContent: 'space-between', borderTop: '1px dashed var(--line)', paddingTop: 10 }}>
         <span>OPERATOR_HB</span>
-        <span style={{ color: 'var(--green)' }}>{hb} bpm ●</span>
+        <span onClick={onHbClick} title="don't push it"
+              style={{ color: flatline ? 'var(--amber)' : 'var(--green)', cursor: 'pointer', userSelect: 'none' }}>
+          {flatline ? '0 bpm ─── flatline ───' : `${hb} bpm ●`}
+        </span>
       </div>
     </div>
   );
