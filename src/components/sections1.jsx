@@ -29,16 +29,15 @@ export function About() {
           <span className="panel-label">CORE_COMPETENCIES</span>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 4 }}>
             {[
-              ['AI Agent Infrastructure', 'cyan'],
-              ['Cloud IAM (Entra ID, SSO, MFA)', 'cyan'],
-              ['Zero-Trust Architecture', 'cyan'],
-              ['MCP Servers & LLM Tooling', 'violet'],
-              ['Hybrid Infra (VMware/Hyper-V)', 'amber'],
-              ['SaaS Orchestration & Automation', 'amber'],
-              ['Endpoint Security (Intune/Defender)', 'green'],
-              ['IT Strategy & Vendor Mgmt', 'green'],
-              ['NIST 800-53 / CIS / SOC 2', 'green'],
+              ['AI Agent Infrastructure & MCP Servers', 'violet'],
+              ['Cloud Identity & Zero-Trust', 'cyan'],
+              ['Hybrid Virtualization at Scale', 'cyan'],
+              ['Full-Stack Platform Engineering', 'amber'],
+              ['Endpoint Hardening & EDR', 'green'],
+              ['NIST 800-53 / CIS / SOC 2 Posture', 'green'],
               ['Incident Response & RCA', 'green'],
+              ['IT Org Leadership', 'amber'],
+              ['Mentorship & Executive Briefing', 'amber'],
             ].map(([t, c]) => (
               <div key={t} className="mono" style={{ fontSize: 12, padding: '6px 10px', borderLeft: `2px solid var(--${c})`, background: 'rgba(78, 201, 224, 0.04)', color: 'var(--fg)' }}>
                 <span style={{ color: `var(--${c})`, opacity: 0.6, marginRight: 8 }}>▸</span>{t}
