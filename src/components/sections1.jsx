@@ -55,7 +55,7 @@ export function Skills() {
   const groups = [
     { name: 'Identity & Access', items: ['Entra ID', 'Conditional Access', 'SSO', 'MFA', 'WebAuthn', 'OAuth 2.0', 'AD'], c: 'cyan' },
     { name: 'AI / Agent Tooling', items: ['Claude Sonnet/Opus', 'Claude Code', 'MCP Servers', 'n8n', 'Agentic Workflows', 'Prompt Eng.'], c: 'violet' },
-    { name: 'Cloud & Platforms', items: ['Azure', 'AWS', 'Cloudflare Workers', 'Supabase', 'Vercel'], c: 'cyan' },
+    { name: 'Cloud & SaaS', items: ['Azure', 'AWS', 'Microsoft 365', 'Google Workspace', 'Cloudflare Workers', 'Supabase', 'Vercel'], c: 'cyan' },
     { name: 'Virtualization', items: ['VMware ESXi', 'Hyper-V', 'Proxmox', 'XCP-ng'], c: 'cyan' },
     { name: 'Containers & IaC', items: ['Docker', 'Terraform', 'Ansible', 'GitHub Actions'], c: 'amber' },
     { name: 'Observability', items: ['Grafana', 'Prometheus', 'Uptime Kuma'], c: 'green' },
