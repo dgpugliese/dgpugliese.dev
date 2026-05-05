@@ -118,7 +118,7 @@ function Telemetry() {
           ['YRS_EXP', '10+', 'var(--cyan)'],
           ['MCP_SERVERS', '5+', 'var(--violet)'],
           ['UPTIME_SLA', '98%+', 'var(--green)'],
-          ['CERTS', '15', 'var(--amber)'],
+          ['CERTS', '25', 'var(--amber)'],
         ].map(([k, v, c]) => (
           <div key={k} className="telemetry-cell" style={{ borderLeft: `2px solid ${c}`, paddingLeft: 10 }}>
             <div className="mono telemetry-label" style={{ fontSize: 10, color: 'var(--fg-faint)', letterSpacing: '0.1em' }}>{k}</div>
