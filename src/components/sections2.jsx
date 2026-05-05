@@ -10,7 +10,7 @@ export function Resume() {
         'Designed and run production MCP server infrastructure connecting Claude to M365, Google Workspace, Cloudflare, Supabase, and Granola; established access patterns, scoping, and audit posture for non-human (agent) identities.',
         'Lead architect on KAPSI Connect — headless React/Next.js portal (Cloudflare Pages → Node/Express middleware → Salesforce/Fonteva REST) with Stripe dues processing, WebAuthn/passkey auth, role-based JWT, and webhook-driven document signing.',
         'Built physical + cloud infrastructure from the ground up — hypervisor environment, enterprise switching + UniFi access, AD remediation in tandem with Entra ID consolidation.',
-        'Delivered org\'s first enterprise cybersecurity milestone — NIST 800-53 / CIS aligned. Commissioned org\'s first annual third-party pen test.',
+        'Delivered org\'s first enterprise cybersecurity milestone — NIST 800-53 / CIS aligned with SOC 2-aligned controls. Commissioned org\'s first annual third-party pen test.',
         'Drive zero-touch employee lifecycle (M365/Entra ID provisioning, PowerShell automation, onboarding/offboarding SOPs); manage IT staff, annual budget, and vendor contracts; own incident response with structured root-cause analysis.',
       ],
     },

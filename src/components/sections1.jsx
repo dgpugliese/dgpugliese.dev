@@ -136,11 +136,11 @@ export function Projects() {
       href: 'https://bensalemvfd.org',
     },
     {
-      id: 'COMPLIANCE', tag: 'IN PROGRESS', tagC: 'amber',
+      id: 'COMPLIANCE', tag: 'COMPLETE', tagC: 'green',
       title: 'NIST 800-53 / SOC 2 Posture',
       sub: 'Org-first cybersecurity milestone',
       stack: ['NIST 800-53', 'CIS', 'Defender', 'Intune', 'Pen Test'],
-      detail: 'Aligned endpoint hardening + identity posture to NIST 800-53 / CIS. Commissioned org\'s first annual third-party pen test. Standing up SOC 2-aligned controls. Panelist, Cybersecurity Summit Philadelphia 2026.',
+      detail: 'Aligned endpoint hardening + identity posture to NIST 800-53 / CIS. Commissioned org\'s first annual third-party pen test. Stood up SOC 2-aligned controls. Panelist, Cybersecurity Summit Philadelphia 2026.',
     },
   ];
   return (
