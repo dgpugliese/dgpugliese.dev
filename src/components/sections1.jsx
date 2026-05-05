@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export function About() {
   return (
     <section className="sect" id="about" data-screen-label="02 About">
@@ -91,9 +93,10 @@ export function Projects() {
       id: 'OBSCURA', tag: 'LIVE', tagC: 'green',
       title: 'Obscura',
       sub: 'Zero-knowledge secure file transfer · obscr.app',
-      stack: ['Web Crypto API', 'AES-256', 'Client-Side Encryption', 'Zero-Knowledge'],
-      detail: 'Minimalist secure file transfer with client-side AES-256 encryption — the server never sees decryption keys; sender and recipient hold them. Built as a public demonstration of zero-knowledge architecture as a primitive.',
-      href: 'https://obscr.app/',
+      stack: ['Web Crypto API', 'AES-256-GCM', 'Argon2id', 'Zero-Knowledge'],
+      detail: 'Browser-only file transfer with client-side AES-256-GCM encryption and Argon2id key derivation — the server only ever sees ciphertext. Built solo end-to-end as a demonstrable zero-knowledge primitive.',
+      caseStudy: '/obscura',
+      live: 'https://obscr.app/',
       repo: 'https://github.com/dgpugliese/obscura',
     },
     {
@@ -149,15 +152,26 @@ export function Projects() {
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 18 }}>
         {projects.map(p => {
-          const Tag = p.href ? 'a' : 'div';
-          const linkProps = p.href ? { href: p.href, target: '_blank', rel: 'noreferrer' } : {};
+          // Click priority: internal case study > external href
+          const isInternal = !!p.caseStudy;
+          const isExternal = !p.caseStudy && !!p.href;
+          let Tag = 'div';
+          let wrapperProps = {};
+          if (isInternal) {
+            Tag = Link;
+            wrapperProps = { to: p.caseStudy };
+          } else if (isExternal) {
+            Tag = 'a';
+            wrapperProps = { href: p.href, target: '_blank', rel: 'noreferrer' };
+          }
+          const isClickable = isInternal || isExternal;
           return (
-            <Tag key={p.id} {...linkProps} className="panel panel-corners reveal" style={{ padding: '24px 28px', textDecoration: 'none', color: 'inherit', display: 'block' }}>
+            <Tag key={p.id} {...wrapperProps} className="panel panel-corners reveal" style={{ padding: '24px 28px', textDecoration: 'none', color: 'inherit', display: 'block' }}>
               <span className="panel-label">{p.id}</span>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
                 <div>
                   <h3 style={{ margin: 0, fontSize: 22, fontWeight: 600, letterSpacing: '-0.01em' }}>
-                    {p.title}{p.href && <span style={{ color: 'var(--cyan)', marginLeft: 8, fontSize: 16 }}>↗</span>}
+                    {p.title}{isClickable && <span style={{ color: 'var(--cyan)', marginLeft: 8, fontSize: 16 }}>↗</span>}
                   </h3>
                   <div className="mono" style={{ fontSize: 12, color: 'var(--fg-dim)', marginTop: 4 }}>// {p.sub}</div>
                 </div>
@@ -168,6 +182,8 @@ export function Projects() {
               </div>
               <div className="reveal-detail" style={{ fontSize: 13, color: 'var(--fg-dim)', lineHeight: 1.6, borderLeft: '2px solid var(--cyan)', paddingLeft: 12 }}>
                 {p.detail}
+                {p.caseStudy && <> · <Link to={p.caseStudy} onClick={e => e.stopPropagation()} style={{ color: 'var(--cyan)' }}>case study ↗</Link></>}
+                {p.live && <> · <a href={p.live} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()} style={{ color: 'var(--cyan)' }}>live demo ↗</a></>}
                 {p.repo && <> · <a href={p.repo} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()} style={{ color: 'var(--cyan)' }}>source ↗</a></>}
               </div>
             </Tag>
