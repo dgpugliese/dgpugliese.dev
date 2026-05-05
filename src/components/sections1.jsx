@@ -60,7 +60,7 @@ export function Skills() {
     { name: 'Security & Compliance', items: ['NIST 800-53', 'CIS Controls', 'SOC 2', 'SIEM'], c: 'green' },
     { name: 'Endpoint Protection', items: ['Defender', 'SentinelOne', 'Bitdefender', 'ESET', 'Webroot', 'Huntress', 'Automox', 'Intune'], c: 'green' },
     { name: 'MSP / Backup Tooling', items: ['NinjaRMM', 'Datto RMM', 'N-able', 'ConnectWise Manage', 'ITGlue', 'Liongard', 'Passportal', 'Veeam', 'Acronis Cyber Backup', 'Datto', 'Dropsuite', 'Unitrends', 'Synology'], c: 'amber' },
-    { name: 'Engineering Stack', items: ['TypeScript', 'Python', 'SQL', 'PowerShell', 'React', 'Next.js', 'Node/Express', 'Stripe', 'Salesforce/Fonteva'], c: 'amber' },
+    { name: 'Engineering Stack', items: ['TypeScript', 'Python', 'SQL', 'PowerShell', 'React', 'Next.js', 'Vite', 'Tailwind CSS', 'Node/Express', 'Web Crypto API', 'Stripe', 'Salesforce/Fonteva'], c: 'amber' },
     { name: 'Design Tooling', items: ['Figma', 'Claude Design', 'Stitch'], c: 'violet' },
     { name: 'Networking', items: ['FortiGate', 'SonicWall', 'Cisco Catalyst', 'Cisco Meraki', 'UniFi', '802.1Q VLAN', 'IPsec VPN', 'SD-WAN'], c: 'cyan' },
   ];
