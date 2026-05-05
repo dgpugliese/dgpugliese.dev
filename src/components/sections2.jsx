@@ -83,7 +83,7 @@ export function Resume() {
       range: 'Aug 2018 — Present', volunteer: true,
       bullets: [
         'Own IT direction, public-facing web presence, and digital tooling for crew operations.',
-        'Built and maintain bensalemvfd.org; roster and dynamic content sourced from a Google Sheets CSV pipeline.',
+        'Built and maintain bensalemvfd.org; Tailwind-styled frontend with a Supabase backend for dynamic content, deployed on Cloudflare.',
         'Prototyped an API-driven points auto-award app — polls the First Due API to cross-reference on-scene roster data and automatically credit crew members for fire calls, replacing manual tracking.',
         'Manage station IT, dispatch integrations, and vendor relationships on a volunteer basis.',
         'Advise leadership on technology budgeting, grant-funded equipment refreshes, and member-facing communications.',
