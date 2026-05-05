@@ -12,13 +12,19 @@ export function About() {
         <div className="panel panel-corners" style={{ padding: '32px 36px' }}>
           <span className="panel-label">SUMMARY</span>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg)', margin: 0 }}>
-            <span style={{ color: 'var(--cyan)' }}>Ten years in IT.</span> Came up the hands-on way — racks, hypervisors,
-            AD remediation, OAuth flows — and grew into platform architecture and IT leadership.
+            <span style={{ color: 'var(--cyan)' }}>Ten years in IT, infra-first.</span> Came up the hands-on way —
+            racks, hypervisors, networking, backups &amp; DR, AD remediation. Grew into full-stack engineering and
+            platform architecture in parallel — these days I do <span style={{ color: 'var(--cyan)' }}>both</span>,
+            end to end.
           </p>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-dim)', marginTop: 18 }}>
-            These days I split my time between two surfaces: production <span style={{ color: 'var(--violet)' }}>MCP server infrastructure</span> that
-            lets AI agents act safely against enterprise SaaS, and the <span style={{ color: 'var(--cyan)' }}>headless React/Node platforms</span> that
-            real people touch. Recent work: shipped a passwordless membership portal serving ~150K users on Cloudflare, built MCP integrations across M365 / Google Workspace / Cloudflare / Supabase / Granola, and stood up the org's first NIST 800-53 / CIS posture.
+            Day to day I work three surfaces: <span style={{ color: 'var(--violet)' }}>AI agent infrastructure</span> (production
+            MCP servers connecting Claude to enterprise SaaS), <span style={{ color: 'var(--cyan)' }}>full-stack platforms</span> (headless
+            React/Node against Salesforce/Fonteva, Cloudflare, Supabase), and <span style={{ color: 'var(--cyan)' }}>applied security primitives</span> like
+            {' '}<a href="https://obscr.app" target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)', textDecoration: 'underline' }}>Obscura</a> — a
+            zero-knowledge file transfer tool with browser-side AES-256-GCM and Argon2id. On the IT-leadership side:
+            stood up the org's first NIST 800-53 / CIS aligned posture and SOC 2-aligned controls, and architected a
+            passwordless membership portal end-to-end for 150K-member scale on Cloudflare.
           </p>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-dim)', marginTop: 18 }}>
             I work best with teams that actually ship — recruiters with technical roles, operators who need fractional
