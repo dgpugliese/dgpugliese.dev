@@ -10,6 +10,7 @@ export default function App() {
   const [booted, setBooted] = useState(() => sessionStorage.getItem('booted') === '1');
   const [soundOn, setSoundOn] = useState(false);
   const [active, setActive] = useState('home');
+  const [showTop, setShowTop] = useState(false);
 
   const finishBoot = () => {
     sessionStorage.setItem('booted', '1');
@@ -34,6 +35,12 @@ export default function App() {
       body, accent, body, accent
     );
     console.log('%cps. press ` (backtick) anywhere on the page.', dim);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > window.innerHeight * 0.8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
@@ -112,6 +119,15 @@ export default function App() {
       <button className="sound-toggle" onClick={() => setSoundOn(s => !s)} title={soundOn ? 'Mute' : 'Enable sounds'}>
         {soundOn ? '♪' : '×'}
       </button>
+
+      {showTop && (
+        <button
+          className="back-to-top"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          title="Back to top"
+          aria-label="Back to top"
+        >↑</button>
+      )}
 
       <CLI />
     </>
