@@ -128,8 +128,9 @@ export function Projects() {
       id: 'BVFD-SITE', tag: 'LIVE', tagC: 'green',
       title: 'bensalemvfd.org',
       sub: 'Public web presence + crew tooling',
-      stack: ['Next.js', 'Firestore→CSV', 'Cloudflare'],
-      detail: 'Built and maintain public-facing site for Bensalem Volunteer Fire Department. Migrated roster from Firestore to a Google Sheets CSV pipeline.',
+      stack: ['Next.js', 'Google Sheets CSV', 'Cloudflare'],
+      detail: 'Built and maintain the public-facing site for Bensalem Volunteer Fire Department. Roster and dynamic content sourced from a Google Sheets CSV pipeline served on Cloudflare.',
+      href: 'https://bensalemvfd.org',
     },
     {
       id: 'COMPLIANCE', tag: 'IN PROGRESS', tagC: 'amber',
