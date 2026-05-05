@@ -436,6 +436,29 @@ section.sect {
    here rather than refactoring every section.
    ───────────────────────────────────── */
 
+/* Case-study page (route /obscura) — its own responsive treatment */
+@media (max-width: 900px) {
+  .case-study { padding: 48px 20px 80px !important; }
+  .case-study .sect-head { gap: 10px; margin-bottom: 20px; }
+  .case-study .sect-title { font-size: 22px; }
+  .case-study .sect-sub { display: none; }
+  .case-study > .panel { padding: 28px 24px !important; }
+  .case-study section > .panel { padding: 22px 24px !important; }
+}
+@media (max-width: 560px) {
+  .case-study { padding: 32px 14px 80px !important; }
+  .case-study > .panel { padding: 24px 18px !important; }
+  .case-study section > .panel { padding: 18px 18px !important; }
+  .case-study h1 { font-size: clamp(40px, 13vw, 64px) !important; }
+  /* ASCII flow diagram — shrink type, allow horizontal scroll for the wide layout */
+  .case-study pre { font-size: 9px !important; line-height: 1.45 !important; }
+  /* Stack columns: stack vertically on phone */
+  .case-study section > .panel > div[style*="auto-fit"] {
+    grid-template-columns: 1fr !important;
+  }
+  .case-study .btn { flex: 1 1 auto; justify-content: center; }
+}
+
 /* Tablet (≤900px) — collapse multi-col grids */
 @media (max-width: 900px) {
   body { cursor: auto; }

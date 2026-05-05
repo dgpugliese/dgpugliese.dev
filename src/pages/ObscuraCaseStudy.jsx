@@ -21,7 +21,7 @@ export default function ObscuraCaseStudy() {
       </div>
 
       <main style={{ marginLeft: 0, marginTop: 36, position: 'relative', zIndex: 10 }}>
-        <article className="sect" style={{ maxWidth: 980, margin: '0 auto', padding: '60px 32px 120px' }}>
+        <article className="case-study" style={{ maxWidth: 980, margin: '0 auto', padding: '60px 32px 120px' }}>
 
           {/* Back nav */}
           <Link to="/" style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 12, color: 'var(--cyan)', textDecoration: 'none', letterSpacing: '0.15em', display: 'inline-block', marginBottom: 32 }}>
@@ -90,18 +90,18 @@ export default function ObscuraCaseStudy() {
             <Diagram />
             <p style={P}>The flow, end to end:</p>
             <ol style={OL}>
-              <li><Cyan>Sender drops a file</Cyan> + sets a password.</li>
-              <li>Browser derives an encryption key from the password using <Cyan>Argon2id</Cyan> (memory-hard, modern KDF). Salt + parameters travel with the ciphertext, never the key.</li>
-              <li>File is encrypted with <Cyan>AES-256-GCM</Cyan> (authenticated encryption — tampering breaks decryption) using the Web Crypto API.</li>
-              <li>Ciphertext + public metadata uploaded to a Cloudflare-fronted store. Server only sees ciphertext.</li>
-              <li>Browser produces a short share URL plus a <Cyan>QR code</Cyan> for mobile pickup.</li>
-              <li>Recipient opens the link, enters the password, browser pulls ciphertext, derives the key, decrypts locally, downloads the plaintext.</li>
-              <li>Files are <Cyan>ephemeral</Cyan> — pruned automatically after their TTL or on first successful retrieval.</li>
+              <li><Cyan>Sender drops a file</Cyan> (or pastes text) into the page. Browser generates a random 256-bit key via <Cyan>WebCrypto</Cyan>.</li>
+              <li>File is encrypted in-browser with <Cyan>AES-256-GCM</Cyan> (authenticated encryption — tampering breaks decryption).</li>
+              <li>Ciphertext is uploaded to a Cloudflare Worker, stored in <Cyan>R2</Cyan>; per-share metadata (TTL, remaining downloads, size) lands in <Cyan>KV</Cyan>. Server only ever sees ciphertext.</li>
+              <li>The key stays in the URL fragment (<code style={CODE}>#k=…</code>), which browsers do not transmit to servers. Browser produces a short share URL plus a <Cyan>QR code</Cyan> for mobile pickup.</li>
+              <li>Recipient opens the link, page fetches ciphertext, decrypts in-browser using the key from the fragment, downloads the plaintext.</li>
+              <li>Files are <Cyan>ephemeral</Cyan> — Worker purges R2 ciphertext + KV metadata on TTL expiry, on read-count exhaustion, or on manual burn from the sender's Done screen.</li>
+              <li>Optional <Cyan>passphrase mode</Cyan>: data key is wrapped under an Argon2id-derived KEK; recipient enters the passphrase out-of-band and the link no longer carries the key.</li>
             </ol>
             <p style={P}>
-              The crucial property: the password and the derived key never travel to the server. The host
-              cannot decrypt the file even if compelled, breached, or curious. This is what "zero-knowledge"
-              actually means here — not a marketing line.
+              The crucial property: the key never reaches the server in either mode. The host cannot decrypt
+              the file even if compelled, breached, or curious. This is what "zero-knowledge" actually means
+              here — not a marketing line.
             </p>
           </Section>
 
@@ -111,7 +111,7 @@ export default function ObscuraCaseStudy() {
               <StackPanel label="FRONTEND" items={['React 18', 'JetBrains Mono / Inter', 'Vanilla CSS · monospace HUD']} c="cyan" />
               <StackPanel label="CRYPTOGRAPHY" items={['Web Crypto API', 'AES-256-GCM (AEAD)', 'Argon2id (KDF)']} c="violet" />
               <StackPanel label="DELIVERY" items={['QR code share-links', 'URL fragment key carrier', 'Ephemeral TTL on storage']} c="amber" />
-              <StackPanel label="HOSTING" items={['Cloudflare Pages', 'Cloudflare edge storage', 'Custom domain · obscr.app']} c="green" />
+              <StackPanel label="HOSTING" items={['Cloudflare Workers', 'R2 (ciphertext)', 'KV (TTL metadata)', 'Custom domain · obscr.app']} c="green" />
             </div>
           </Section>
 
@@ -121,8 +121,8 @@ export default function ObscuraCaseStudy() {
                       body="PBKDF2 is fine but old; bcrypt has password-length quirks. Argon2id is the modern memory-hard winner of the Password Hashing Competition and is the OWASP-recommended default. Slightly heavier in browser, worth it." />
             <Decision title="AES-256-GCM, not CBC + HMAC"
                       body="GCM gives authenticated encryption in one primitive — tampered ciphertext fails decryption rather than silently producing garbage. Lower footgun surface than rolling MAC-then-encrypt manually." />
-            <Decision title="Password-based, not link-based key"
-                      body="Many zero-knowledge clones put the key in the URL fragment (after #). That's fine, but it means anyone with the link decrypts. Password-based requires the recipient to actually possess a shared secret — better fit for the 'I'm sending this to a specific person' use case." />
+            <Decision title="Default link-fragment key, optional passphrase wrap"
+                      body="Default mode puts the random data key in the URL fragment (#k=…). Browsers don't transmit fragments, so the server never sees it — anyone with the link can decrypt, which is the correct trust model for 'send a link to one person.' Passphrase mode wraps the data key under an Argon2id-derived KEK so the link alone isn't enough; the recipient also needs the out-of-band passphrase. Two distinct trust models, one toggle." />
             <Decision title="Ephemeral by default"
                       body="Files prune after TTL or first download. This isn't archival. Encouraging short retention makes the trust story simpler — even a hypothetically compromised host can only leak what's currently in flight." />
             <Decision title="Zero-account, zero-install"
@@ -148,6 +148,18 @@ export default function ObscuraCaseStudy() {
             <p style={P}>If you're reading this and want one of these, or have an integration use case — <a href="mailto:dp@dgpugliese.dev" style={LINK}>dp@dgpugliese.dev</a>.</p>
           </Section>
 
+          {/* Disclaimer */}
+          <div className="panel" style={{ padding: '16px 20px', borderLeft: '2px solid var(--amber)', marginBottom: 18 }}>
+            <div className="mono" style={{ fontSize: 10, color: 'var(--amber)', letterSpacing: '0.18em', marginBottom: 8 }}>// DISCLAIMER</div>
+            <div style={{ fontSize: 13, color: 'var(--fg-dim)', lineHeight: 1.65 }}>
+              OBSCURA is a personal project distributed under the MIT License on an <strong>AS-IS</strong> basis.
+              The integration is not independently security-audited and is <strong>not appropriate for regulated data</strong>
+              (HIPAA / PCI / CJIS / classified). No SLA, no key recovery. Read the
+              {' '}<a href="https://github.com/dgpugliese/obscura/blob/main/DISCLAIMER.md" target="_blank" rel="noreferrer" style={LINK}>full disclaimer</a> and
+              {' '}<a href="https://github.com/dgpugliese/obscura/blob/main/PRIVACY.md" target="_blank" rel="noreferrer" style={LINK}>privacy policy</a> before relying on it.
+            </div>
+          </div>
+
           {/* CTA bottom */}
           <div className="panel panel-corners" style={{ padding: '32px 36px', textAlign: 'center', marginTop: 12 }}>
             <span className="panel-label">END_OF_TRANSMISSION</span>
@@ -171,6 +183,7 @@ const P = { fontSize: 16, lineHeight: 1.7, color: 'var(--fg-dim)', margin: '0 0 
 const OL = { fontSize: 15, lineHeight: 1.75, color: 'var(--fg-dim)', paddingLeft: 22, margin: '0 0 16px' };
 const UL = { fontSize: 15, lineHeight: 1.75, color: 'var(--fg-dim)', paddingLeft: 22, margin: '0 0 16px', listStyle: '"▸  "' };
 const LINK = { color: 'var(--cyan)', textDecoration: 'underline' };
+const CODE = { fontFamily: 'JetBrains Mono, monospace', fontSize: '0.92em', background: 'rgba(78,201,224,0.08)', border: '1px solid var(--line)', padding: '1px 6px', color: 'var(--cyan)' };
 
 function Cyan({ children }) { return <span style={{ color: 'var(--cyan)' }}>{children}</span>; }
 function Dim({ children }) { return <span style={{ color: 'var(--fg-faint)', fontStyle: 'italic' }}>{children}</span>; }
@@ -222,22 +235,25 @@ function Diagram() {
     <div style={{ background: 'rgba(5, 8, 16, 0.5)', border: '1px dashed var(--line)', padding: '20px 24px', marginBottom: 18, overflow: 'auto' }}>
       <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', letterSpacing: '0.2em', marginBottom: 12 }}>// FLOW</div>
       <pre className="mono" style={{ fontSize: 12, color: 'var(--fg)', lineHeight: 1.55, margin: 0, whiteSpace: 'pre' }}>{`
-  SENDER (browser)                 CLOUDFLARE EDGE              RECIPIENT (browser)
-  ────────────────                 ───────────────              ──────────────────
-   file ──┐
-          ▼
-   Argon2id(password) ──► key
-          │
-          ▼
-   AES-256-GCM(file, key) ──────► [ ciphertext ] ◄─── pull ────  fetch share URL
-                                      │                                │
-                                  TTL expiry                     enter password
-                                      │                                ▼
-                                      ▼                         Argon2id(password) ──► key
-                                  pruned                                ▼
-                                                                  AES-256-GCM⁻¹  ──► plaintext
+  SENDER (browser)              CLOUDFLARE WORKER              RECIPIENT (browser)
+  ────────────────              ─────────────────              ──────────────────
+   file
+     │
+     ▼
+   key = WebCrypto.random(256)
+     │
+     ▼
+   AES-256-GCM(file, key) ───► R2     [ ciphertext ]   ◄── GET ──   fetch share URL
+                              KV     { ttl, reads,                       │
+                                       size, createdAt }                key from #k=…
+                                          │                              ▼
+                                     TTL/reads expiry             AES-256-GCM⁻¹(ct, key)
+                                          │                              ▼
+                                       pruned                       plaintext
 
-  ───  the key is never transmitted. the server stores ciphertext + metadata only.  ───
+   share URL: https://obscr.app/#k=<base64>      ← fragment never sent to server
+
+  ────  optional passphrase mode wraps the key under Argon2id(passphrase) before share  ────
 `}</pre>
     </div>
   );
