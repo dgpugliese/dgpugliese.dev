@@ -456,10 +456,9 @@ section.sect {
 @media (max-width: 560px) {
   .statusbar { height: 32px; font-size: 9px; }
   .statusbar > span:nth-child(3) { display: none; } /* hide SYS / DGPUGLIESE.DEV */
-  .rail { top: 32px; width: 40px; }
-  .rail-btn { width: 28px; height: 28px; font-size: 8px; }
-  .rail-btn .tip { display: none; }
-  main { margin-left: 40px; margin-top: 32px; }
+  /* Hide side rail on phones — feel cramped at this width; users scroll instead */
+  .rail { display: none; }
+  main { margin-left: 0; margin-top: 32px; }
 
   section.sect { padding: 40px 16px; }
   .sect-head { gap: 10px; margin-bottom: 24px; }

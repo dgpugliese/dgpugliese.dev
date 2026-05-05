@@ -88,6 +88,15 @@ export function Skills() {
 export function Projects() {
   const projects = [
     {
+      id: 'OBSCURA', tag: 'LIVE', tagC: 'green',
+      title: 'Obscura',
+      sub: 'Zero-knowledge secure file transfer · obscr.app',
+      stack: ['Web Crypto API', 'AES-256', 'Client-Side Encryption', 'Zero-Knowledge'],
+      detail: 'Minimalist secure file transfer with client-side AES-256 encryption — the server never sees decryption keys; sender and recipient hold them. Built as a public demonstration of zero-knowledge architecture as a primitive.',
+      href: 'https://obscr.app/',
+      repo: 'https://github.com/dgpugliese/obscura',
+    },
+    {
       id: 'MEMBERSHIP-PORTAL', tag: 'PRODUCTION', tagC: 'green',
       title: 'Headless Membership Portal',
       sub: 'Constituent platform · ~150K users',
@@ -138,24 +147,31 @@ export function Projects() {
         <span className="sect-sub">hover: expand briefing</span>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 18 }}>
-        {projects.map(p => (
-          <div key={p.id} className="panel panel-corners reveal" style={{ padding: '24px 28px' }}>
-            <span className="panel-label">{p.id}</span>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
-              <div>
-                <h3 style={{ margin: 0, fontSize: 22, fontWeight: 600, letterSpacing: '-0.01em' }}>{p.title}</h3>
-                <div className="mono" style={{ fontSize: 12, color: 'var(--fg-dim)', marginTop: 4 }}>// {p.sub}</div>
+        {projects.map(p => {
+          const Tag = p.href ? 'a' : 'div';
+          const linkProps = p.href ? { href: p.href, target: '_blank', rel: 'noreferrer' } : {};
+          return (
+            <Tag key={p.id} {...linkProps} className="panel panel-corners reveal" style={{ padding: '24px 28px', textDecoration: 'none', color: 'inherit', display: 'block' }}>
+              <span className="panel-label">{p.id}</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
+                <div>
+                  <h3 style={{ margin: 0, fontSize: 22, fontWeight: 600, letterSpacing: '-0.01em' }}>
+                    {p.title}{p.href && <span style={{ color: 'var(--cyan)', marginLeft: 8, fontSize: 16 }}>↗</span>}
+                  </h3>
+                  <div className="mono" style={{ fontSize: 12, color: 'var(--fg-dim)', marginTop: 4 }}>// {p.sub}</div>
+                </div>
+                <span className={`chip chip-${p.tagC}`}>● {p.tag}</span>
               </div>
-              <span className={`chip chip-${p.tagC}`}>● {p.tag}</span>
-            </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 14 }}>
-              {p.stack.map(s => <span key={s} className="chip">{s}</span>)}
-            </div>
-            <div className="reveal-detail" style={{ fontSize: 13, color: 'var(--fg-dim)', lineHeight: 1.6, borderLeft: '2px solid var(--cyan)', paddingLeft: 12 }}>
-              {p.detail}
-            </div>
-          </div>
-        ))}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 14 }}>
+                {p.stack.map(s => <span key={s} className="chip">{s}</span>)}
+              </div>
+              <div className="reveal-detail" style={{ fontSize: 13, color: 'var(--fg-dim)', lineHeight: 1.6, borderLeft: '2px solid var(--cyan)', paddingLeft: 12 }}>
+                {p.detail}
+                {p.repo && <> · <a href={p.repo} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()} style={{ color: 'var(--cyan)' }}>source ↗</a></>}
+              </div>
+            </Tag>
+          );
+        })}
       </div>
     </section>
   );

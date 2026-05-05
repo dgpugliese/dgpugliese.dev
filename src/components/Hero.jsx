@@ -138,15 +138,40 @@ function Telemetry() {
 }
 
 function NowPlaying() {
+  const [now, setNow] = useState(null);
+  useEffect(() => {
+    fetch('/now.json', { cache: 'no-cache' })
+      .then(r => r.ok ? r.json() : null)
+      .then(setNow)
+      .catch(() => setNow(null));
+  }, []);
+
+  const data = now || {
+    shipping: { title: 'kapsi-connect v2.4 → cloudflare.pages', detail: 'webauthn flow + dues processor patch · eta 0:42' },
+  };
+  const rows = [
+    data.shipping && { key: 'shipping', glyph: '●', glyphColor: 'var(--green)', ...data.shipping },
+    data.studying && { key: 'studying', glyph: '◆', glyphColor: 'var(--violet)', ...data.studying },
+    data.next && { key: 'next', glyph: '▶', glyphColor: 'var(--amber)', ...data.next },
+  ].filter(Boolean);
+
   return (
     <div className="panel" style={{ padding: '14px 18px' }}>
-      <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', letterSpacing: '0.18em', marginBottom: 6 }}>// NOW_DEPLOYING</div>
-      <div className="mono" style={{ fontSize: 12, color: 'var(--cyan)' }}>
-        <span style={{ color: 'var(--green)' }}>●</span> kapsi-connect v2.4 → cloudflare.pages
-      </div>
-      <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', marginTop: 4 }}>
-        eta 0:42 · webauthn flow + dues processor patch
-      </div>
+      <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', letterSpacing: '0.18em', marginBottom: 8 }}>// NOW</div>
+      {rows.map((r, i) => (
+        <div key={r.key} style={{ marginTop: i === 0 ? 0 : 8 }}>
+          <div className="mono" style={{ fontSize: 12, color: 'var(--cyan)', display: 'flex', alignItems: 'baseline', gap: 8 }}>
+            <span style={{ color: r.glyphColor, flexShrink: 0 }}>{r.glyph}</span>
+            <span style={{ color: 'var(--fg-faint)', letterSpacing: '0.12em', textTransform: 'uppercase', fontSize: 10, width: 56, flexShrink: 0 }}>{r.key}</span>
+            <span style={{ color: 'var(--fg)' }}>{r.title}</span>
+          </div>
+          {r.detail && (
+            <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', marginTop: 2, marginLeft: 80 }}>
+              {r.detail}
+            </div>
+          )}
+        </div>
+      ))}
     </div>
   );
 }
