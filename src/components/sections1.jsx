@@ -127,18 +127,11 @@ export function Projects() {
       detail: 'Built physical + cloud infra from the ground up. Deployed hypervisor environment, replaced legacy networking with enterprise switching + UniFi, remediated neglected AD in tandem with Entra ID consolidation.',
     },
     {
-      id: 'BVFD-POINTS', tag: 'PROTOTYPE', tagC: 'amber',
-      title: 'BVFD Auto-Points',
-      sub: 'API-driven crew points engine',
-      stack: ['Node', 'First Due API', 'Google Sheets'],
-      detail: 'Polls First Due API to cross-reference on-scene roster data and auto-credit crew members for fire calls — replacing manual tracking.',
-    },
-    {
-      id: 'BVFD-SITE', tag: 'LIVE', tagC: 'green',
+      id: 'BVFD', tag: 'LIVE', tagC: 'green',
       title: 'bensalemvfd.org',
       sub: 'Public web presence + crew tooling',
-      stack: ['HTML/JS', 'Tailwind', 'Supabase', 'Cloudflare'],
-      detail: 'Built and maintain the public-facing site for Bensalem Volunteer Fire Department. Tailwind-styled frontend with a Supabase backend powering dynamic content, deployed on Cloudflare.',
+      stack: ['HTML/JS', 'Tailwind', 'Supabase', 'Cloudflare', 'Node', 'First Due API'],
+      detail: 'Direct IT for Bensalem Volunteer Fire Department. Built and maintain bensalemvfd.org — Tailwind frontend on a Supabase backend, deployed on Cloudflare. Also prototyped an API-driven crew-points engine that polls the First Due API to cross-reference on-scene roster data and auto-credit members for fire calls, replacing manual tracking.',
       href: 'https://bensalemvfd.org',
     },
     {
