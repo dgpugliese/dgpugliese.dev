@@ -106,6 +106,16 @@ export function Projects() {
       repo: 'https://github.com/dgpugliese/obscura',
     },
     {
+      id: 'SILENTBEAT', tag: 'LIVE', tagC: 'green',
+      title: 'SilentBeat',
+      sub: 'Honest dead man\'s switch · silentbeat.app',
+      stack: ['Cloudflare Workers', 'Durable Objects', 'D1', 'Split-Key', 'ECIES', 'Argon2id'],
+      detail: 'A check-in you keep. A message that ships if you don\'t. Split-key trust model — server holds share A, recipient holds share B (in a browser-generated rescue file). Neither half decrypts on its own; combined K never exists on a server.',
+      caseStudy: '/silentbeat',
+      live: 'https://silentbeat.app/',
+      repo: 'https://github.com/dgpugliese/silentbeat',
+    },
+    {
       id: 'MEMBERSHIP-PORTAL', tag: 'PRODUCTION', tagC: 'green',
       title: 'Headless Membership Portal',
       sub: 'Constituent platform · ~150K users',
