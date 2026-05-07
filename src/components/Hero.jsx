@@ -125,9 +125,19 @@ function Avatar() {
           ))}
           <span className="vid-scanline" aria-hidden />
         </button>
-        <div className={'vid-stamp' + (scanned ? ' vid-stamp-decoded' : '')}>
-          {scanned ? '[ DECODING… ]' : '[ CLEARED · CLASS-A ]'}
-        </div>
+        {scanned ? (
+          <div className="vid-stamp vid-stamp-decoded">[ DECODING… ]</div>
+        ) : (
+          <a
+            href="https://credly.com/users/dpugliese"
+            target="_blank"
+            rel="noreferrer"
+            className="vid-stamp vid-stamp-link"
+            title="verify on Credly"
+          >
+            [ SEC+ · CC · VERIFIED ↗ ]
+          </a>
+        )}
       </div>
 
       {revealed && (

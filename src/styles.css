@@ -650,6 +650,15 @@ section.sect {
   white-space: nowrap;
   opacity: 0.85;
   transform: rotate(-1.5deg);
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.15s, transform 0.15s, color 0.15s, border-color 0.15s;
+}
+.vid-stamp-link:hover {
+  opacity: 1;
+  transform: rotate(0deg);
+  color: var(--cyan);
+  border-color: var(--cyan);
 }
 @media (max-width: 480px) {
   .vid-stamp { transform: none; font-size: 8px; padding: 2px 6px; }
