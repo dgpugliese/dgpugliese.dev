@@ -19,7 +19,7 @@ export function Hero() {
         <span className="panel-label">OPERATOR_PROFILE</span>
         <div>
           <div className="mono" style={{ fontSize: 12, color: 'var(--cyan)', letterSpacing: '0.25em', marginBottom: 16 }}>
-            ◢ INITIALIZED · CLASS-A CLEARANCE ◣
+            ◢ SECURE_CHANNEL OPEN · INBOUND OK ◣
           </div>
           <h1 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(72px, 9vw, 132px)', fontWeight: 700, lineHeight: 0.92, letterSpacing: '-0.03em', margin: 0, color: 'var(--fg)' }}>
             DAVID<br /><span style={{ position: 'relative' }}>PUGLIESE<span style={{ color: 'var(--cyan)' }}>.</span></span>
