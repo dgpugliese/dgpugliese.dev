@@ -476,6 +476,19 @@ section.sect {
 .vid-tick-tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
 .vid-tick-bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
 .vid-tick-br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+.vid-fingerprint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 78%;
+  height: auto;
+  transform: translate(-50%, -54%);
+  color: var(--cyan);
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+  filter: drop-shadow(0 0 4px rgba(78,201,224,0.4));
+}
 .vid-initials {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 38px;
@@ -483,9 +496,9 @@ section.sect {
   letter-spacing: -0.04em;
   color: var(--cyan-bright);
   line-height: 1;
-  text-shadow: 0 0 12px rgba(127,223,255,0.35);
+  text-shadow: 0 0 12px rgba(127,223,255,0.35), 0 0 2px rgba(5,8,16,0.9);
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 .vid-id {
   font-family: 'JetBrains Mono', monospace;
@@ -494,7 +507,7 @@ section.sect {
   color: var(--fg-faint);
   margin-top: 8px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .vid-rows .vid-row {

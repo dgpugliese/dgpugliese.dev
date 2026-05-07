@@ -58,6 +58,26 @@ export function Hero() {
   );
 }
 
+function FingerprintWatermark() {
+  return (
+    <svg viewBox="0 0 64 80" className="vid-fingerprint" aria-hidden>
+      <g fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
+        <path d="M6 50 C 6 22, 26 6, 32 6 C 38 6, 58 22, 58 50" />
+        <path d="M10 56 C 10 26, 26 12, 32 12 C 38 12, 54 26, 54 56" />
+        <path d="M14 60 C 14 30, 26 18, 32 18 C 38 18, 50 30, 50 58" />
+        <path d="M18 60 C 18 34, 28 24, 32 24 C 36 24, 46 34, 46 58" />
+        <path d="M22 58 C 22 40, 28 30, 32 30 C 36 30, 42 40, 42 58" />
+        <path d="M26 56 C 26 46, 30 38, 32 38 C 34 38, 38 46, 38 56" />
+        <circle cx="32" cy="46" r="2" fill="currentColor" stroke="none" />
+        <path d="M20 50 L 24 50" />
+        <path d="M40 52 L 44 52" />
+        <path d="M16 44 L 20 44" />
+        <path d="M44 44 L 48 44" />
+      </g>
+    </svg>
+  );
+}
+
 function Avatar() {
   // Deterministic-but-irregular barcode pattern. 40 bars, widths 1–3px.
   const bars = [2,1,3,1,2,2,1,3,2,1,1,2,3,1,2,1,3,2,1,2,2,1,1,3,1,2,2,3,1,1,2,3,1,2,1,2,3,1,2,1];
@@ -92,6 +112,7 @@ function Avatar() {
           <span className="vid-tick vid-tick-tr" />
           <span className="vid-tick vid-tick-bl" />
           <span className="vid-tick vid-tick-br" />
+          <FingerprintWatermark />
           <div className="vid-initials">DP</div>
           <div className="vid-id">ID-04 · 2026</div>
         </div>
