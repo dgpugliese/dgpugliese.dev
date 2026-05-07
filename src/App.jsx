@@ -42,6 +42,7 @@ export default function App() {
       body, accent, body, accent
     );
     console.log('%cps. press ` (backtick) anywhere on the page.', dim);
+    console.log('%c// rev 2026-05-07-r2', dim);
   }, []);
 
   useEffect(() => {
