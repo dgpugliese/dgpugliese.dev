@@ -96,16 +96,18 @@ function Avatar() {
           <div className="vid-id">ID-04 · 2026</div>
         </div>
 
-        <div className="mono" style={{ fontSize: 11, lineHeight: 1.65, flex: 1, minWidth: 0 }}>
-          <div style={{ color: 'var(--fg-faint)', letterSpacing: '0.1em' }}>HANDLE</div>
-          <div style={{ color: 'var(--fg)', fontSize: 14, fontWeight: 600, marginBottom: 6 }}>dgpugliese</div>
+        <div className="mono vid-rows" style={{ fontSize: 11, lineHeight: 1.65, flex: 1, minWidth: 0 }}>
+          <div style={{ color: 'var(--fg-faint)', letterSpacing: '0.12em' }}>HANDLE</div>
+          <div style={{ color: 'var(--fg)', fontSize: 14, fontWeight: 600, marginBottom: 8 }}>dgpugliese</div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: 10, rowGap: 2 }}>
-            <div style={{ color: 'var(--fg-faint)' }}>LOC // PHL</div>
-            <div style={{ color: 'var(--fg-faint)' }}>TZ // ET</div>
+          <div className="vid-row"><span className="vid-key">ROLE</span><span className="vid-val">director_of_it</span></div>
+          <div className="vid-row"><span className="vid-key">DOMAIN</span><span className="vid-val">ai_infra · platforms · zero-trust</span></div>
+          <div className="vid-row"><span className="vid-key">KEY</span><span className="vid-val vid-key-hex">4ec9 · e07f · a3d2 · 1c84</span></div>
+          <div className="vid-row"><span className="vid-key">NODE</span><span className="vid-val">phl // et</span></div>
+
+          <div style={{ color: 'var(--green)', marginTop: 8, letterSpacing: '0.04em' }}>
+            ● channel open — inbound transmissions ok
           </div>
-
-          <div style={{ color: 'var(--green)', marginTop: 6 }}>● avail. for collab</div>
         </div>
       </div>
 

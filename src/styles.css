@@ -478,6 +478,30 @@ section.sect {
   z-index: 1;
 }
 
+.vid-rows .vid-row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  column-gap: 10px;
+  align-items: baseline;
+  padding: 1px 0;
+}
+.vid-rows .vid-key {
+  color: var(--fg-faint);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
+.vid-rows .vid-val {
+  color: var(--fg-dim);
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vid-rows .vid-key-hex {
+  color: var(--cyan);
+  letter-spacing: 0.04em;
+}
+
 .vid-footer {
   margin-top: 14px;
   padding-top: 10px;
