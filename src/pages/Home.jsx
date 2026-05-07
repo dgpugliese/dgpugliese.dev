@@ -4,6 +4,30 @@ import { Hero } from '../components/Hero.jsx';
 import { About, Skills, Projects } from '../components/sections1.jsx';
 import { Resume, Press, GitHub, Certs, Contact } from '../components/sections2.jsx';
 import { useSeo } from '../lib/seo';
+import { posts } from '../data/posts.js';
+
+const STATS = [
+  ['LAST_DEPLOY', __BUILD_DATE__],
+  ['COMMIT', __COMMIT_SHA__],
+  ['POSTS', `${posts.length} · PROJECTS 7`],
+  ['ROUTES', '5 · UPLINK OK'],
+];
+
+function StatTicker() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setI(n => (n + 1) % STATS.length), 4000);
+    return () => clearInterval(id);
+  }, []);
+  const [k, v] = STATS[i];
+  return (
+    <span key={i} className="stat-ticker">
+      <span className="stat-key">{k}</span>
+      <span className="stat-sep">·</span>
+      <span className="stat-val">{v}</span>
+    </span>
+  );
+}
 
 export default function Home({ booted }) {
   useSeo({
@@ -42,7 +66,7 @@ export default function Home({ booted }) {
       <div className="statusbar">
         <span><span className="dot">●</span> ONLINE</span>
         <span className="sep">/</span>
-        <span>SYS / DGPUGLIESE.DEV / v2.6.0</span>
+        <StatTicker />
         <div className="right">
           <span><Clock /></span>
           <span>LAT 39.95°N · LON 75.16°W</span>
