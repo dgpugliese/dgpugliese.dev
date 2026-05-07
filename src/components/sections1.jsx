@@ -96,7 +96,7 @@ export function Skills() {
 export function Projects() {
   const projects = [
     {
-      id: 'OBSCURA', tag: 'LIVE', tagC: 'green',
+      id: 'OBSCURA', kind: 'WEB APP', tag: 'LIVE', tagC: 'green',
       title: 'Obscura',
       sub: 'Zero-knowledge secure file transfer · obscr.app',
       stack: ['Web Crypto API', 'AES-256-GCM', 'Argon2id', 'Zero-Knowledge'],
@@ -106,7 +106,7 @@ export function Projects() {
       repo: 'https://github.com/dgpugliese/obscura',
     },
     {
-      id: 'SILENTBEAT', tag: 'LIVE', tagC: 'green',
+      id: 'SILENTBEAT', kind: 'WEB APP', tag: 'LIVE', tagC: 'green',
       title: 'SilentBeat',
       sub: 'Honest dead man\'s switch · silentbeat.app',
       stack: ['Cloudflare Workers', 'Durable Objects', 'D1', 'Split-Key', 'ECIES', 'Argon2id'],
@@ -116,28 +116,28 @@ export function Projects() {
       repo: 'https://github.com/dgpugliese/silentbeat',
     },
     {
-      id: 'MEMBERSHIP-PORTAL', tag: 'PRODUCTION', tagC: 'green',
+      id: 'MEMBERSHIP-PORTAL', kind: 'WEB APP', tag: 'PRODUCTION', tagC: 'green',
       title: 'Headless Membership Portal',
       sub: 'Constituent platform · ~150K users',
       stack: ['React', 'Next.js', 'Cloudflare Pages', 'Node/Express', 'Salesforce/Fonteva', 'Stripe', 'WebAuthn'],
       detail: 'Lead architect. Designed and shipped a headless portal with Stripe-based subscription/dues processing, passkey auth, role-based JWT, and webhook-driven document signing. Talks to Salesforce/Fonteva REST under a Node/Express middleware layer.',
     },
     {
-      id: 'MCP-OPS', tag: 'PRODUCTION', tagC: 'green',
+      id: 'MCP-OPS', kind: 'PLATFORM', tag: 'PRODUCTION', tagC: 'green',
       title: 'MCP Server Infrastructure',
       sub: 'AI agent ↔ enterprise SaaS bridge',
       stack: ['Anthropic Claude', 'MCP', 'M365', 'Google Workspace', 'Cloudflare', 'Supabase'],
       detail: 'Designed and run production MCP servers connecting Claude to Microsoft 365, Google Workspace, Cloudflare, Supabase, and Granola. Established access patterns, scoping, and audit posture for non-human (agent) identities.',
     },
     {
-      id: 'INFRA-REBUILD', tag: 'SHIPPED', tagC: 'cyan',
+      id: 'INFRA-REBUILD', kind: 'INFRA', tag: 'SHIPPED', tagC: 'cyan',
       title: 'Greenfield Hybrid Infra',
       sub: 'Physical + cloud, built from scratch',
       stack: ['Hyper-V', 'UniFi', 'Entra ID', 'Active Directory', 'Intune'],
       detail: 'Built physical + cloud infra from the ground up. Deployed hypervisor environment, replaced legacy networking with enterprise switching + UniFi, remediated neglected AD in tandem with Entra ID consolidation.',
     },
     {
-      id: 'BVFD', tag: 'LIVE', tagC: 'green',
+      id: 'BVFD', kind: 'WEB APP', tag: 'LIVE', tagC: 'green',
       title: 'bensalemvfd.org',
       sub: 'Public web presence + crew tooling',
       stack: ['HTML/JS', 'Tailwind', 'Supabase', 'Cloudflare', 'Node', 'First Due API'],
@@ -145,7 +145,7 @@ export function Projects() {
       href: 'https://bensalemvfd.org',
     },
     {
-      id: 'COMPLIANCE', tag: 'COMPLETE', tagC: 'green',
+      id: 'COMPLIANCE', kind: 'PROGRAM', tag: 'COMPLETE', tagC: 'green',
       title: 'NIST 800-53 / SOC 2 Posture',
       sub: 'Org-first cybersecurity milestone',
       stack: ['NIST 800-53', 'CIS', 'Defender', 'Intune', 'Pen Test'],
@@ -176,7 +176,7 @@ export function Projects() {
           const isClickable = isInternal || isExternal;
           return (
             <Tag key={p.id} {...wrapperProps} className="panel panel-corners reveal" style={{ padding: '24px 28px', textDecoration: 'none', color: 'inherit', display: 'block' }}>
-              <span className="panel-label">{p.id}</span>
+              <span className="panel-label">{p.kind || p.id}</span>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
                 <div>
                   <h3 style={{ margin: 0, fontSize: 22, fontWeight: 600, letterSpacing: '-0.01em' }}>
