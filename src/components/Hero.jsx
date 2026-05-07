@@ -89,9 +89,9 @@ function DuotoneFilter() {
             0.30 0.59 0.11 0 0
             0    0    0    1 0" />
           <feComponentTransfer>
-            <feFuncR tableValues="0.04 0.50" />
-            <feFuncG tableValues="0.06 0.79" />
-            <feFuncB tableValues="0.09 0.88" />
+            <feFuncR tableValues="0.03 0.32" />
+            <feFuncG tableValues="0.05 0.62" />
+            <feFuncB tableValues="0.08 0.74" />
           </feComponentTransfer>
         </filter>
       </defs>
@@ -137,13 +137,16 @@ function Avatar() {
           <span className="vid-tick vid-tick-br" />
           <FingerprintWatermark />
           {hasPhoto && (
-            <img
-              src="/me.jpg"
-              alt=""
-              aria-hidden
-              className="vid-photo"
-              onError={() => setHasPhoto(false)}
-            />
+            <>
+              <img
+                src="/me.jpg"
+                alt=""
+                aria-hidden
+                className="vid-photo"
+                onError={() => setHasPhoto(false)}
+              />
+              <span className="vid-photo-vignette" aria-hidden />
+            </>
           )}
           <div className="vid-initials">DP</div>
           <div className="vid-id">ID-04 · 2026</div>
