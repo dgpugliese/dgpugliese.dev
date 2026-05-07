@@ -3,8 +3,16 @@ import { Starfield, Clock } from '../components/fx.jsx';
 import { Hero } from '../components/Hero.jsx';
 import { About, Skills, Projects } from '../components/sections1.jsx';
 import { Resume, Press, GitHub, Certs, Contact } from '../components/sections2.jsx';
+import { useSeo } from '../lib/seo';
 
 export default function Home({ booted }) {
+  useSeo({
+    title: 'David Pugliese · Director of IT, AI Agent Infrastructure',
+    description:
+      'David Pugliese — Director of IT in Philadelphia. AI agent infrastructure, MCP servers, cloud identity, full-stack platforms, and zero-trust security.',
+    path: '/',
+    image: 'https://dgpugliese.dev/og.svg',
+  });
   const [active, setActive] = useState('home');
 
   useEffect(() => {

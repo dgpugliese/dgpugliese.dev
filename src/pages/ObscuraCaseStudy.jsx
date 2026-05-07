@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Starfield, Clock } from '../components/fx.jsx';
+import { useSeo } from '../lib/seo';
 
 export default function ObscuraCaseStudy() {
+  useSeo({
+    title: 'Obscura · Zero-Knowledge File Transfer — Case Study · dgpugliese.dev',
+    description:
+      'Case study: Obscura, a browser-side zero-knowledge file transfer tool. AES-256-GCM, Argon2id, Web Crypto API. The server only ever sees ciphertext.',
+    path: '/obscura',
+    image: 'https://dgpugliese.dev/og.svg',
+  });
   return (
     <>
       <Starfield />

@@ -1,11 +1,36 @@
 import { Link, useParams } from 'react-router-dom';
 import { posts } from '../data/posts';
 import { Starfield } from '../components/fx.jsx';
+import { useSeo } from '../lib/seo';
 
 // ─── Individual Post Page ──────────────────────────────────────────────────
 export function LogPost() {
   const { slug } = useParams();
   const post = posts.find(p => p.slug === slug);
+
+  useSeo(post ? {
+    title: `${post.title} · Signal Log · dgpugliese.dev`,
+    description: post.summary,
+    path: `/log/${post.slug}`,
+    image: 'https://dgpugliese.dev/og.svg',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: post.summary,
+      datePublished: post.date,
+      dateModified: post.date,
+      author: { '@type': 'Person', name: 'David Pugliese', url: 'https://dgpugliese.dev/' },
+      publisher: { '@type': 'Person', name: 'David Pugliese' },
+      mainEntityOfPage: `https://dgpugliese.dev/log/${post.slug}`,
+      articleSection: post.category,
+      url: `https://dgpugliese.dev/log/${post.slug}`,
+    },
+  } : {
+    title: 'Not found · Signal Log · dgpugliese.dev',
+    description: 'Transmission not found.',
+    path: `/log/${slug || ''}`,
+  });
 
   if (!post) {
     return (
@@ -86,6 +111,27 @@ export function LogPost() {
 
 // ─── Log Index Page ────────────────────────────────────────────────────────
 export default function Log() {
+  useSeo({
+    title: 'Signal Log · dgpugliese.dev',
+    description:
+      'Notes from the field on AI agent infrastructure, zero-knowledge crypto, NIST 800-53 / SOC 2 compliance, and shipping platforms end-to-end.',
+    path: '/log',
+    image: 'https://dgpugliese.dev/og.svg',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      name: 'Signal Log',
+      description: 'Engineering notes by David Pugliese.',
+      url: 'https://dgpugliese.dev/log',
+      author: { '@type': 'Person', name: 'David Pugliese' },
+      blogPost: posts.map(p => ({
+        '@type': 'BlogPosting',
+        headline: p.title,
+        datePublished: p.date,
+        url: `https://dgpugliese.dev/log/${p.slug}`,
+      })),
+    },
+  });
   const categories = ['ALL', ...Array.from(new Set(posts.map(p => p.category)))];
 
   return (

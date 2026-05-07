@@ -1,8 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Starfield, Clock } from '../components/fx.jsx';
+import { useSeo } from '../lib/seo';
 
 export default function SilentBeatCaseStudy() {
+  useSeo({
+    title: 'SilentBeat · Honest Dead Man\'s Switch — Case Study · dgpugliese.dev',
+    description:
+      'Case study: SilentBeat, a zero-knowledge dead man\'s switch dispatcher built on Cloudflare Workers, Durable Objects, D1, split-key ECIES, and Argon2id.',
+    path: '/silentbeat',
+    image: 'https://dgpugliese.dev/og.svg',
+  });
   return (
     <>
       <Starfield />
