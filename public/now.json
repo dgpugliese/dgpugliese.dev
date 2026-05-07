@@ -1,12 +1,12 @@
 {
   "shipping": {
-    "title": "silentbeat — in development",
-    "detail": "dead-man's-switch dispatcher · zero-knowledge · public ledger"
+    "title": "tessera — in design",
+    "detail": "shamir secret sharing · k-of-n recovery · zero-knowledge primitives"
   },
   "studying": {
     "title": "ai agent infra patterns + claude code skills"
   },
   "next": {
-    "title": "kapsi-connect v2.4 → cloudflare.pages"
+    "title": "latent — stego layer over the obscura primitive"
   }
 }
