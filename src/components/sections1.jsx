@@ -130,6 +130,13 @@ export function Projects() {
       detail: 'Designed and run production MCP servers connecting Claude to Microsoft 365, Google Workspace, Cloudflare, Supabase, and Granola. Established access patterns, scoping, and audit posture for non-human (agent) identities.',
     },
     {
+      id: 'KINETIC-BRAIN', kind: 'KNOWLEDGE-OPS', tag: 'IN-USE', tagC: 'cyan',
+      title: 'Kinetic Brain',
+      sub: 'Structured memory vault for Claude Code · context-problem solver',
+      stack: ['Claude Code', 'Obsidian', 'Markdown', 'Git', 'MCP'],
+      detail: "A vault-as-memory architecture that fixes the 'every session starts cold' problem. Bootstrap reads, decision logs, append-only knowledge files, and session protocols give the agent stable context across projects. Not a second brain — Claude Code's brain.",
+    },
+    {
       id: 'INFRA-REBUILD', kind: 'INFRA', tag: 'SHIPPED', tagC: 'cyan',
       title: 'Greenfield Hybrid Infra',
       sub: 'Physical + cloud, built from scratch',
