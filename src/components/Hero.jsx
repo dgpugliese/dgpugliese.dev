@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Typer } from './fx.jsx';
+import { channels } from '../data/channels.js';
 
 export function Hero() {
   const heroRef = useRef(null);
@@ -76,8 +77,8 @@ function Avatar() {
       );
     }
     timersRef.current.push(setTimeout(() => setRevealed(true), 600));
-    timersRef.current.push(setTimeout(() => setRevealed(false), 5200));
-    timersRef.current.push(setTimeout(() => setScanned(false), 5600));
+    timersRef.current.push(setTimeout(() => setRevealed(false), 12000));
+    timersRef.current.push(setTimeout(() => setScanned(false), 12400));
   };
 
   useEffect(() => () => timersRef.current.forEach(clearTimeout), []);
@@ -131,10 +132,32 @@ function Avatar() {
 
       {revealed && (
         <div className="vid-decoded" role="status">
-          <span className="mono" style={{ color: 'var(--amber)', letterSpacing: '0.15em', fontSize: 10 }}>&gt; DECODED</span>
-          <a href="mailto:dp@dgpugliese.dev" className="mono vid-decoded-msg">
-            » secure_channel_open · dp@dgpugliese.dev
-          </a>
+          <div className="mono vid-decoded-head">
+            <span style={{ color: 'var(--amber)', letterSpacing: '0.18em' }}>&gt; DECODED</span>
+            <span style={{ color: 'var(--fg-faint)', letterSpacing: '0.1em' }}>// TX_CHANNELS</span>
+          </div>
+          <ul className="vid-channels mono">
+            {channels.map((c, i) => (
+              <li key={c.key} className="vid-channel" style={{ animationDelay: `${i * 90}ms` }}>
+                <span className="vid-channel-key">{c.label}</span>
+                {c.href ? (
+                  <a href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className={'vid-channel-val' + (c.pending ? ' vid-channel-pending' : '')}>
+                    {c.value}
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    className="vid-channel-val vid-channel-copy"
+                    onClick={() => { try { navigator.clipboard?.writeText(c.value); } catch {} }}
+                    title="copy"
+                  >
+                    {c.value}
+                  </button>
+                )}
+                <span className="vid-channel-note">{c.note}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>
