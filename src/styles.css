@@ -419,6 +419,44 @@ section.sect {
 ::-webkit-scrollbar-thumb { background: rgba(78, 201, 224, 0.3); border: 1px solid var(--bg); }
 ::-webkit-scrollbar-thumb:hover { background: rgba(78, 201, 224, 0.5); }
 
+/* ─────────────────────────────────────
+   Blog / Signal Log
+   ───────────────────────────────────── */
+.log-shell {
+  min-height: 100vh;
+  padding-top: 36px;  /* clear status bar */
+}
+
+.log-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--fg-dim);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.log-back:hover { color: var(--cyan); }
+
+.log-card { transition: border-color 0.15s, box-shadow 0.15s; }
+.log-card:hover { border-color: var(--cyan); box-shadow: 0 0 16px rgba(78,201,224,0.18); }
+
+@media (max-width: 900px) {
+  .log-shell > div:not(.statusbar) { padding: 48px 24px 80px !important; }
+}
+
+@media (max-width: 560px) {
+  .log-shell > div:not(.statusbar) { padding: 32px 16px 80px !important; }
+}
+
+/* Touch devices: reveal-detail always visible (no hover on touch screens) */
+@media (hover: none) {
+  .reveal-detail { max-height: none !important; opacity: 1 !important; margin-top: 10px !important; }
+  #projects .sect-sub { display: none; }
+}
+
 /* Respect reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

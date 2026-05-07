@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Typer } from './fx.jsx';
 
 export function Hero() {
@@ -41,6 +42,7 @@ export function Hero() {
 
         <div style={{ display: 'flex', gap: 14, marginTop: 40, flexWrap: 'wrap' }}>
           <a className="btn" href="mailto:dp@dgpugliese.dev">→ TRANSMIT_MSG</a>
+          <Link className="btn btn-ghost" to="/log">→ SIGNAL_LOG</Link>
           <a className="btn btn-ghost" href="https://linkedin.com/in/dgpugliese" target="_blank" rel="noreferrer">↗ LINKEDIN</a>
           <a className="btn btn-ghost" href="https://github.com/dgpugliese" target="_blank" rel="noreferrer">↗ GITHUB</a>
           <a className="btn btn-ghost" href="https://credly.com/users/dpugliese" target="_blank" rel="noreferrer">↗ CREDLY</a>
