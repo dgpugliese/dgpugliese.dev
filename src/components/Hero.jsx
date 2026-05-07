@@ -59,36 +59,82 @@ export function Hero() {
 }
 
 function Avatar() {
+  // Deterministic-but-irregular barcode pattern. 40 bars, widths 1–3px.
+  const bars = [2,1,3,1,2,2,1,3,2,1,1,2,3,1,2,1,3,2,1,2,2,1,1,3,1,2,2,3,1,1,2,3,1,2,1,2,3,1,2,1];
+  const [scanned, setScanned] = useState(false);
+  const [revealed, setRevealed] = useState(false);
+  const timersRef = useRef([]);
+
+  const onScan = () => {
+    if (scanned) return;
+    setScanned(true);
+    if (typeof window !== 'undefined' && 'console' in window) {
+      console.log(
+        '%c> BARCODE_DECODED\n%c» SECURE_CHANNEL_OPEN · dp@dgpugliese.dev',
+        'color:#ffa657;font-family:JetBrains Mono,monospace;font-size:12px;letter-spacing:0.15em;',
+        'color:#7ee787;font-family:JetBrains Mono,monospace;font-size:12px;'
+      );
+    }
+    timersRef.current.push(setTimeout(() => setRevealed(true), 600));
+    timersRef.current.push(setTimeout(() => setRevealed(false), 5200));
+    timersRef.current.push(setTimeout(() => setScanned(false), 5600));
+  };
+
+  useEffect(() => () => timersRef.current.forEach(clearTimeout), []);
+
   return (
-    <div className="panel panel-corners" style={{ padding: 20, position: 'relative' }}>
+    <div className="panel panel-corners visual-id" style={{ padding: 20, position: 'relative' }}>
       <span className="panel-label">VISUAL_ID</span>
-      <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-        <div style={{ width: 88, height: 88, position: 'relative', flexShrink: 0 }}>
-          <svg viewBox="0 0 100 100" width="100%" height="100%">
-            <defs>
-              <radialGradient id="orb" cx="35%" cy="30%">
-                <stop offset="0%" stopColor="#7fdfff" />
-                <stop offset="55%" stopColor="#4ec9e0" />
-                <stop offset="100%" stopColor="#1a3a4a" />
-              </radialGradient>
-            </defs>
-            <circle cx="50" cy="50" r="44" fill="url(#orb)" />
-            <circle cx="50" cy="50" r="44" fill="none" stroke="#7fdfff" strokeWidth="0.6" opacity="0.5" />
-            <circle cx="50" cy="50" r="38" fill="none" stroke="#7fdfff" strokeWidth="0.4" strokeDasharray="2 4" opacity="0.6">
-              <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="22s" repeatCount="indefinite" />
-            </circle>
-            <circle cx="50" cy="50" r="48" fill="none" stroke="#4ec9e0" strokeWidth="0.5" strokeDasharray="1 8" opacity="0.7">
-              <animateTransform attributeName="transform" type="rotate" from="360 50 50" to="0 50 50" dur="40s" repeatCount="indefinite" />
-            </circle>
-          </svg>
+
+      <div style={{ display: 'flex', gap: 18, alignItems: 'flex-start' }}>
+        <div className="vid-portrait" aria-hidden>
+          <span className="vid-tick vid-tick-tl" />
+          <span className="vid-tick vid-tick-tr" />
+          <span className="vid-tick vid-tick-bl" />
+          <span className="vid-tick vid-tick-br" />
+          <div className="vid-initials">DP</div>
+          <div className="vid-id">ID-04 · 2026</div>
         </div>
-        <div className="mono" style={{ fontSize: 11, lineHeight: 1.7 }}>
-          <div style={{ color: 'var(--fg-faint)' }}>HANDLE</div>
-          <div style={{ color: 'var(--fg)', fontSize: 14, fontWeight: 600 }}>dgpugliese</div>
-          <div style={{ color: 'var(--fg-faint)', marginTop: 4 }}>LOC // PHL</div>
-          <div style={{ color: 'var(--green)', marginTop: 4 }}>● avail. for collab</div>
+
+        <div className="mono" style={{ fontSize: 11, lineHeight: 1.65, flex: 1, minWidth: 0 }}>
+          <div style={{ color: 'var(--fg-faint)', letterSpacing: '0.1em' }}>HANDLE</div>
+          <div style={{ color: 'var(--fg)', fontSize: 14, fontWeight: 600, marginBottom: 6 }}>dgpugliese</div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: 10, rowGap: 2 }}>
+            <div style={{ color: 'var(--fg-faint)' }}>LOC // PHL</div>
+            <div style={{ color: 'var(--fg-faint)' }}>TZ // ET</div>
+          </div>
+
+          <div style={{ color: 'var(--green)', marginTop: 6 }}>● avail. for collab</div>
         </div>
       </div>
+
+      <div className="vid-footer">
+        <button
+          type="button"
+          onClick={onScan}
+          aria-label="Scan credential barcode"
+          title={scanned ? 'scanning…' : 'scan'}
+          className={'vid-barcode' + (scanned ? ' vid-barcode-scanning' : '')}
+        >
+          {bars.map((w, i) => (
+            <span key={i} style={{ width: w, height: '100%', background: 'var(--fg)', opacity: 0.85 }} />
+          ))}
+          <span className="vid-scanline" aria-hidden />
+        </button>
+        <div className={'vid-stamp' + (scanned ? ' vid-stamp-decoded' : '')}>
+          {scanned ? '[ DECODING… ]' : '[ CLEARED · CLASS-A ]'}
+        </div>
+      </div>
+
+      {revealed && (
+        <div className="vid-decoded" role="status">
+          <span className="mono" style={{ color: 'var(--amber)', letterSpacing: '0.15em', fontSize: 10 }}>&gt; DECODED</span>
+          <a href="mailto:dp@dgpugliese.dev" className="mono vid-decoded-msg">
+            » secure_channel_open · dp@dgpugliese.dev
+          </a>
+        </div>
+      )}
     </div>
   );
 }

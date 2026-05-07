@@ -420,6 +420,157 @@ section.sect {
 ::-webkit-scrollbar-thumb:hover { background: rgba(78, 201, 224, 0.5); }
 
 /* ─────────────────────────────────────
+   VISUAL_ID — operator credential
+   ───────────────────────────────────── */
+.vid-portrait {
+  position: relative;
+  width: 92px;
+  height: 112px;
+  flex-shrink: 0;
+  border: 1px solid var(--line-strong);
+  background:
+    linear-gradient(135deg, rgba(78,201,224,0.08), rgba(127,223,255,0.02) 60%, transparent),
+    repeating-linear-gradient(0deg, rgba(78,201,224,0.05) 0 1px, transparent 1px 4px),
+    var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.vid-portrait::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0 1px, transparent 1px 3px);
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+.vid-tick {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--cyan);
+  z-index: 1;
+}
+.vid-tick-tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.vid-tick-tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+.vid-tick-bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+.vid-tick-br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+.vid-initials {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--cyan-bright);
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(127,223,255,0.35);
+  position: relative;
+  z-index: 1;
+}
+.vid-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--fg-faint);
+  margin-top: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.vid-footer {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.vid-barcode {
+  display: flex;
+  align-items: stretch;
+  gap: 1px;
+  height: 22px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.vid-barcode:hover { filter: brightness(1.15); }
+.vid-barcode:focus-visible { outline: 1px solid var(--cyan); outline-offset: 2px; }
+.vid-scanline {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: -2px;
+  width: 2px;
+  background: #ff4d6d;
+  box-shadow: 0 0 12px #ff4d6d, 0 0 4px #ff4d6d;
+  opacity: 0;
+  pointer-events: none;
+}
+.vid-barcode-scanning .vid-scanline {
+  animation: vid-scan 1100ms cubic-bezier(.55,.05,.4,.95) forwards;
+}
+@keyframes vid-scan {
+  0%   { left: -2px; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { left: calc(100% + 2px); opacity: 0; }
+}
+.vid-stamp-decoded {
+  color: var(--green) !important;
+  border-color: var(--green) !important;
+  transform: rotate(0deg) !important;
+}
+.vid-decoded {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border: 1px dashed var(--amber);
+  background: rgba(255,166,87,0.04);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  animation: vid-fade-in 240ms ease-out;
+}
+.vid-decoded-msg {
+  font-size: 11px;
+  color: var(--green);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  border-bottom: 1px dotted transparent;
+  transition: border-color 0.15s;
+}
+.vid-decoded-msg:hover { border-bottom-color: var(--green); }
+@keyframes vid-fade-in {
+  from { opacity: 0; transform: translateY(-2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.vid-stamp {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--amber);
+  border: 1px solid var(--amber);
+  padding: 3px 8px;
+  white-space: nowrap;
+  opacity: 0.85;
+  transform: rotate(-1.5deg);
+}
+@media (max-width: 480px) {
+  .vid-stamp { transform: none; font-size: 8px; padding: 2px 6px; }
+  .vid-portrait { width: 80px; height: 96px; }
+  .vid-initials { font-size: 32px; }
+}
+
+/* ─────────────────────────────────────
    Blog / Signal Log
    ───────────────────────────────────── */
 .log-shell {
