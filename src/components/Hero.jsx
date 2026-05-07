@@ -78,11 +78,33 @@ function FingerprintWatermark() {
   );
 }
 
+function DuotoneFilter() {
+  return (
+    <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden>
+      <defs>
+        <filter id="duotone-cyan" colorInterpolationFilters="sRGB">
+          <feColorMatrix type="matrix" values="
+            0.30 0.59 0.11 0 0
+            0.30 0.59 0.11 0 0
+            0.30 0.59 0.11 0 0
+            0    0    0    1 0" />
+          <feComponentTransfer>
+            <feFuncR tableValues="0.04 0.50" />
+            <feFuncG tableValues="0.06 0.79" />
+            <feFuncB tableValues="0.09 0.88" />
+          </feComponentTransfer>
+        </filter>
+      </defs>
+    </svg>
+  );
+}
+
 function Avatar() {
   // Deterministic-but-irregular barcode pattern. 40 bars, widths 1–3px.
   const bars = [2,1,3,1,2,2,1,3,2,1,1,2,3,1,2,1,3,2,1,2,2,1,1,3,1,2,2,3,1,1,2,3,1,2,1,2,3,1,2,1];
   const [scanned, setScanned] = useState(false);
   const [revealed, setRevealed] = useState(false);
+  const [hasPhoto, setHasPhoto] = useState(true);
   const timersRef = useRef([]);
 
   const onScan = () => {
@@ -107,14 +129,25 @@ function Avatar() {
       <span className="panel-label">VISUAL_ID</span>
 
       <div style={{ display: 'flex', gap: 18, alignItems: 'flex-start' }}>
-        <div className="vid-portrait" aria-hidden>
+        <div className={'vid-portrait' + (hasPhoto ? ' vid-portrait-has-photo' : '')} aria-hidden>
+          <DuotoneFilter />
           <span className="vid-tick vid-tick-tl" />
           <span className="vid-tick vid-tick-tr" />
           <span className="vid-tick vid-tick-bl" />
           <span className="vid-tick vid-tick-br" />
           <FingerprintWatermark />
+          {hasPhoto && (
+            <img
+              src="/me.jpg"
+              alt=""
+              aria-hidden
+              className="vid-photo"
+              onError={() => setHasPhoto(false)}
+            />
+          )}
           <div className="vid-initials">DP</div>
           <div className="vid-id">ID-04 · 2026</div>
+          <span className="vid-glitch-noise" aria-hidden />
         </div>
 
         <div className="mono vid-rows" style={{ fontSize: 11, lineHeight: 1.65, flex: 1, minWidth: 0 }}>
