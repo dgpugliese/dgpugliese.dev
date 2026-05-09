@@ -123,18 +123,18 @@ export function Projects() {
       detail: "Productized white-label of a portal I lead-architected for a fraternal organization with ~150K members. Each tenant gets an isolated Supabase project, Stripe account, and Cloudflare Pages deployment; per-deploy branding flows through env vars and CSS custom properties at runtime. Postgres schema spans ~25 tables with RLS enforced on every one — no permissive USING(true) writes — plus helper functions (is_admin(), has_grand_role(), current_member_id()) for role-based policies and a BEFORE-UPDATE trigger blocking self-elevation. Type-clean end-to-end against v1 schema; public marketing pages and email templates are next.",
     },
     {
-      id: 'MCP-OPS', kind: 'PLATFORM', tag: 'PRODUCTION', tagC: 'green',
-      title: 'MCP Server Infrastructure',
-      sub: 'AI agent ↔ enterprise SaaS bridge',
-      stack: ['Anthropic Claude', 'MCP', 'M365', 'Google Workspace', 'Cloudflare', 'Supabase'],
-      detail: 'Designed and run production MCP servers connecting Claude to Microsoft 365, Google Workspace, Cloudflare, Supabase, and Granola. Established access patterns, scoping, and audit posture for non-human (agent) identities.',
-    },
-    {
       id: 'KINETIC-BRAIN', kind: 'KNOWLEDGE-OPS', tag: 'IN-USE', tagC: 'cyan',
       title: 'Kinetic Brain',
       sub: 'Structured memory vault for Claude Code · context-problem solver',
       stack: ['Claude Code', 'Obsidian', 'Markdown', 'Git', 'MCP'],
       detail: "A vault-as-memory architecture that fixes the 'every session starts cold' problem. Bootstrap reads, decision logs, append-only knowledge files, and session protocols give the agent stable context across projects. Not a second brain — Claude Code's brain.",
+    },
+    {
+      id: 'MCP-OPS', kind: 'PLATFORM', tag: 'PRODUCTION', tagC: 'green',
+      title: 'MCP Server Infrastructure',
+      sub: 'AI agent ↔ enterprise SaaS bridge',
+      stack: ['Anthropic Claude', 'MCP', 'M365', 'Google Workspace', 'Cloudflare', 'Supabase'],
+      detail: 'Designed and run production MCP servers connecting Claude to Microsoft 365, Google Workspace, Cloudflare, Supabase, and Granola. Established access patterns, scoping, and audit posture for non-human (agent) identities.',
     },
     {
       id: 'INFRA-REBUILD', kind: 'INFRA', tag: 'SHIPPED', tagC: 'cyan',
