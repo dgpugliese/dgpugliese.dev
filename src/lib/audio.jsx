@@ -81,10 +81,25 @@ export function AudioProvider({ children }) {
       {children}
       {armed && (
         <div
-          ref={containerRef}
           aria-hidden
-          style={{ position: 'fixed', width: 1, height: 1, opacity: 0, pointerEvents: 'none', left: -10, bottom: -10, overflow: 'hidden' }}
-        />
+          style={{
+            // position: absolute (not fixed) so the iframe scrolls out of the
+            // viewport with the page. Browsers stop compositing it once off-
+            // screen — fixes mobile + desktop scroll crashes that happened
+            // when YT's video layer recomposited on every scroll frame.
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: 2,
+            height: 2,
+            opacity: 0,
+            pointerEvents: 'none',
+            overflow: 'hidden',
+            contain: 'strict',
+          }}
+        >
+          <div ref={containerRef} />
+        </div>
       )}
     </AudioCtx.Provider>
   );
