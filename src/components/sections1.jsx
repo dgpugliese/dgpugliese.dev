@@ -116,11 +116,11 @@ export function Projects() {
       repo: 'https://github.com/dgpugliese/silentbeat',
     },
     {
-      id: 'MEMBERSHIP-PORTAL', kind: 'WEB APP', tag: 'PRODUCTION', tagC: 'green',
-      title: 'Headless Membership Portal',
-      sub: 'Constituent platform · ~150K users',
-      stack: ['React', 'Next.js', 'Cloudflare Pages', 'Node/Express', 'Salesforce/Fonteva', 'Stripe', 'WebAuthn'],
-      detail: 'Lead architect. Designed and shipped a headless portal with Stripe-based subscription/dues processing, passkey auth, role-based JWT, and webhook-driven document signing. Talks to Salesforce/Fonteva REST under a Node/Express middleware layer.',
+      id: 'CHAPTER-PATH', kind: 'WEB APP', tag: 'IN DEVELOPMENT', tagC: 'amber',
+      title: 'Chapter Path',
+      sub: 'White-label member portal platform · multi-tenant SaaS',
+      stack: ['SvelteKit 2', 'Svelte 5', 'Tailwind 4', 'Supabase', 'Stripe', 'Cloudflare Pages'],
+      detail: "Productized white-label of a portal I lead-architected for a fraternal organization with ~150K members. Each tenant gets an isolated Supabase project, Stripe account, and Cloudflare Pages deployment; per-deploy branding flows through env vars and CSS custom properties at runtime. Postgres schema spans ~25 tables with RLS enforced on every one — no permissive USING(true) writes — plus helper functions (is_admin(), has_grand_role(), current_member_id()) for role-based policies and a BEFORE-UPDATE trigger blocking self-elevation. Type-clean end-to-end against v1 schema; public marketing pages and email templates are next.",
     },
     {
       id: 'MCP-OPS', kind: 'PLATFORM', tag: 'PRODUCTION', tagC: 'green',
