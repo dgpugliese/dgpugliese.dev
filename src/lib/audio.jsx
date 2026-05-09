@@ -19,12 +19,16 @@ const AudioCtx = createContext(null);
 
 export function AudioProvider({ children }) {
   const [playing, setPlaying] = useState(false);
+  const [armed, setArmed] = useState(false); // becomes true on first toggle
   const playerRef = useRef(null);
   const containerRef = useRef(null);
   const readyRef = useRef(false);
 
-  // Load the YouTube IFrame API once, then construct the player.
+  // Lazy-load the YouTube IFrame API only after the user opts in.
+  // Eager loading was crashing mobile Safari during long-page scroll
+  // (extra ~100KB of JS + an audio surface in memory before any intent).
   useEffect(() => {
+    if (!armed) return;
     let cancelled = false;
     const ensureApi = () => new Promise((resolve) => {
       if (window.YT && window.YT.Player) return resolve();
@@ -40,7 +44,7 @@ export function AudioProvider({ children }) {
     });
 
     ensureApi().then(() => {
-      if (cancelled || !containerRef.current) return;
+      if (cancelled || !containerRef.current || playerRef.current) return;
       playerRef.current = new window.YT.Player(containerRef.current, {
         videoId: TRACK.videoId,
         playerVars: { autoplay: 0, controls: 0, modestbranding: 1, rel: 0, playsinline: 1 },
@@ -48,18 +52,16 @@ export function AudioProvider({ children }) {
           onReady: () => {
             readyRef.current = true;
             try { playerRef.current.setVolume(45); } catch {}
+            if (playing) { try { playerRef.current.playVideo(); } catch {} }
           },
         },
       });
     });
 
-    return () => {
-      cancelled = true;
-      try { playerRef.current?.destroy(); } catch {}
-    };
-  }, []);
+    return () => { cancelled = true; };
+  }, [armed]);
 
-  // Sync play/pause with state.
+  // Sync play/pause with state once the player exists.
   useEffect(() => {
     const p = playerRef.current;
     if (!p || !readyRef.current) return;
@@ -69,16 +71,21 @@ export function AudioProvider({ children }) {
     } catch {}
   }, [playing]);
 
-  const toggle = useCallback(() => setPlaying(s => !s), []);
+  const toggle = useCallback(() => {
+    setArmed(true);
+    setPlaying(s => !s);
+  }, []);
 
   return (
     <AudioCtx.Provider value={{ playing, toggle, track: TRACK }}>
       {children}
-      <div
-        ref={containerRef}
-        aria-hidden
-        style={{ position: 'fixed', width: 1, height: 1, opacity: 0, pointerEvents: 'none', left: -10, bottom: -10, overflow: 'hidden' }}
-      />
+      {armed && (
+        <div
+          ref={containerRef}
+          aria-hidden
+          style={{ position: 'fixed', width: 1, height: 1, opacity: 0, pointerEvents: 'none', left: -10, bottom: -10, overflow: 'hidden' }}
+        />
+      )}
     </AudioCtx.Provider>
   );
 }

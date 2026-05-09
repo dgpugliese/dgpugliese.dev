@@ -143,6 +143,8 @@ function Avatar() {
                 src="/me.jpg"
                 alt=""
                 aria-hidden
+                loading="lazy"
+                decoding="async"
                 className="vid-photo"
                 onError={() => setHasPhoto(false)}
               />
