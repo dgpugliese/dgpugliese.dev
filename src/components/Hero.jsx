@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Typer } from './fx.jsx';
 import { channels } from '../data/channels.js';
+import { useAudio } from '../lib/audio.jsx';
 
 export function Hero() {
   const heroRef = useRef(null);
@@ -265,14 +266,45 @@ function Telemetry() {
           </div>
         ))}
       </div>
-      <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', marginTop: 14, display: 'flex', justifyContent: 'space-between', borderTop: '1px dashed var(--line)', paddingTop: 10 }}>
+      <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', marginTop: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px dashed var(--line)', paddingTop: 10, gap: 10, flexWrap: 'wrap' }}>
         <span>OPERATOR_HB</span>
         <span onClick={onHbClick} title="don't push it"
               style={{ color: flatline ? 'var(--amber)' : 'var(--green)', cursor: 'pointer', userSelect: 'none' }}>
           {flatline ? '0 bpm ─── flatline ───' : `${hb} bpm ●`}
         </span>
+        <AudioToggle />
       </div>
     </div>
+  );
+}
+
+function AudioToggle() {
+  const { playing, toggle, track } = useAudio();
+  return (
+    <span className="audio-toggle-row">
+      <button
+        type="button"
+        onClick={toggle}
+        className={'audio-toggle' + (playing ? ' audio-toggle-on' : '')}
+        title={playing ? 'pause score' : 'play score'}
+        aria-pressed={playing}
+        aria-label={playing ? 'pause background score' : 'play background score'}
+      >
+        <span className="audio-toggle-glyph">{playing ? '◼' : '▶'}</span>
+        <span className="audio-toggle-label">{playing ? 'SCORE · ON' : 'SCORE'}</span>
+      </button>
+      {playing && (
+        <a
+          href={track.href}
+          target="_blank"
+          rel="noreferrer"
+          className="audio-credit"
+          title={`${track.title} — Music by ${track.artist} ${track.artistHandle}`}
+        >
+          ♪ {track.artist} <span className="audio-credit-handle">{track.artistHandle}</span> ↗
+        </a>
+      )}
+    </span>
   );
 }
 

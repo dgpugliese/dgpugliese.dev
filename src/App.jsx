@@ -6,6 +6,7 @@ import SilentBeatCaseStudy from './pages/SilentBeatCaseStudy.jsx';
 import Log, { LogPost } from './pages/Log.jsx';
 import { Boot } from './components/fx.jsx';
 import { CLI } from './components/CLI.jsx';
+import { AudioProvider } from './lib/audio.jsx';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -16,7 +17,6 @@ function ScrollToTop() {
 export default function App() {
   // Skip boot if user already saw it this session
   const [booted, setBooted] = useState(() => sessionStorage.getItem('booted') === '1');
-  const [soundOn, setSoundOn] = useState(false);
   const [showTop, setShowTop] = useState(false);
 
   const finishBoot = () => {
@@ -51,49 +51,32 @@ export default function App() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => {
-    if (!soundOn) return;
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const beep = (freq = 880, dur = 0.04) => {
-      const o = ctx.createOscillator(), g = ctx.createGain();
-      o.type = 'square'; o.frequency.value = freq;
-      g.gain.value = 0.04;
-      o.connect(g); g.connect(ctx.destination);
-      o.start(); o.stop(ctx.currentTime + dur);
-    };
-    const click = () => beep(1200, 0.025);
-    document.addEventListener('click', click);
-    return () => { document.removeEventListener('click', click); ctx.close(); };
-  }, [soundOn]);
-
   return (
     <BrowserRouter>
       <ScrollToTop />
-      {!booted && <Boot onDone={finishBoot} />}
+      <AudioProvider>
+        {!booted && <Boot onDone={finishBoot} />}
 
-      <Routes>
-        <Route path="/" element={<Home booted={booted} />} />
-        <Route path="/obscura" element={<ObscuraCaseStudy />} />
-        <Route path="/silentbeat" element={<SilentBeatCaseStudy />} />
-        <Route path="/log" element={<Log />} />
-        <Route path="/log/:slug" element={<LogPost />} />
-        <Route path="*" element={<Home booted={booted} />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home booted={booted} />} />
+          <Route path="/obscura" element={<ObscuraCaseStudy />} />
+          <Route path="/silentbeat" element={<SilentBeatCaseStudy />} />
+          <Route path="/log" element={<Log />} />
+          <Route path="/log/:slug" element={<LogPost />} />
+          <Route path="*" element={<Home booted={booted} />} />
+        </Routes>
 
-      <button className="sound-toggle" onClick={() => setSoundOn(s => !s)} title={soundOn ? 'Mute' : 'Enable sounds'}>
-        {soundOn ? '♪' : '×'}
-      </button>
+        {showTop && (
+          <button
+            className="back-to-top"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            title="Back to top"
+            aria-label="Back to top"
+          >↑</button>
+        )}
 
-      {showTop && (
-        <button
-          className="back-to-top"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          title="Back to top"
-          aria-label="Back to top"
-        >↑</button>
-      )}
-
-      <CLI />
+        <CLI />
+      </AudioProvider>
     </BrowserRouter>
   );
 }

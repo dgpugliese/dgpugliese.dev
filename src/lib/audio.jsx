@@ -1,0 +1,90 @@
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
+
+// Track playing through hidden YouTube IFrame embed.
+// Iframe approach relies on YouTube's existing rights deals with the
+// uploader / rights holder — we're not redistributing audio ourselves.
+// Track licensing: FilFar grants creators permission to use this music in
+// personal projects with required credit ("Music by FilFar / @filfar").
+// Source: video description on the linked YouTube video.
+export const TRACK = {
+  videoId: 'qfDc10opQf0',
+  title: 'Chapter I',
+  artist: 'FilFar',
+  artistHandle: '@filfar',
+  artistHref: 'https://www.youtube.com/@filfar',
+  href: 'https://www.youtube.com/watch?v=qfDc10opQf0&list=PLEM4vOSCprStzppPemEYAF6ZEUrQYj5N5',
+};
+
+const AudioCtx = createContext(null);
+
+export function AudioProvider({ children }) {
+  const [playing, setPlaying] = useState(false);
+  const playerRef = useRef(null);
+  const containerRef = useRef(null);
+  const readyRef = useRef(false);
+
+  // Load the YouTube IFrame API once, then construct the player.
+  useEffect(() => {
+    let cancelled = false;
+    const ensureApi = () => new Promise((resolve) => {
+      if (window.YT && window.YT.Player) return resolve();
+      if (!document.querySelector('script[data-yt-api]')) {
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        tag.async = true;
+        tag.dataset.ytApi = '1';
+        document.head.appendChild(tag);
+      }
+      const prev = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => { if (prev) prev(); resolve(); };
+    });
+
+    ensureApi().then(() => {
+      if (cancelled || !containerRef.current) return;
+      playerRef.current = new window.YT.Player(containerRef.current, {
+        videoId: TRACK.videoId,
+        playerVars: { autoplay: 0, controls: 0, modestbranding: 1, rel: 0, playsinline: 1 },
+        events: {
+          onReady: () => {
+            readyRef.current = true;
+            try { playerRef.current.setVolume(45); } catch {}
+          },
+        },
+      });
+    });
+
+    return () => {
+      cancelled = true;
+      try { playerRef.current?.destroy(); } catch {}
+    };
+  }, []);
+
+  // Sync play/pause with state.
+  useEffect(() => {
+    const p = playerRef.current;
+    if (!p || !readyRef.current) return;
+    try {
+      if (playing) p.playVideo();
+      else p.pauseVideo();
+    } catch {}
+  }, [playing]);
+
+  const toggle = useCallback(() => setPlaying(s => !s), []);
+
+  return (
+    <AudioCtx.Provider value={{ playing, toggle, track: TRACK }}>
+      {children}
+      <div
+        ref={containerRef}
+        aria-hidden
+        style={{ position: 'fixed', width: 1, height: 1, opacity: 0, pointerEvents: 'none', left: -10, bottom: -10, overflow: 'hidden' }}
+      />
+    </AudioCtx.Provider>
+  );
+}
+
+export function useAudio() {
+  const ctx = useContext(AudioCtx);
+  if (!ctx) return { playing: false, toggle: () => {}, track: TRACK };
+  return ctx;
+}
