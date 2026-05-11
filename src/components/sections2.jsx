@@ -278,13 +278,10 @@ export function GitHub() {
 function CertBadge({ img, t }) {
   const [broken, setBroken] = useState(false);
   if (img && !broken) {
-    return <img src={img} alt="" loading="lazy" onError={() => setBroken(true)}
-                style={{ width: 48, height: 48, flexShrink: 0, objectFit: 'contain' }} />;
+    return <img src={img} alt="" loading="lazy" onError={() => setBroken(true)} className="cert-badge-img" />;
   }
   return (
-    <div className="mono" style={{ width: 44, height: 44, border: '1px solid var(--cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: 'var(--cyan)', flexShrink: 0, fontWeight: 700, letterSpacing: '0.05em' }}>
-      {t}
-    </div>
+    <div className="mono cert-badge-fallback">{t}</div>
   );
 }
 
