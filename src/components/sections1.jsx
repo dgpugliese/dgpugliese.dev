@@ -116,6 +116,15 @@ export function Projects() {
       repo: 'https://github.com/dgpugliese/silentbeat',
     },
     {
+      id: 'TRISKELE', kind: 'WEB APP', tag: 'IN DEVELOPMENT', tagC: 'amber',
+      title: 'Triskele',
+      sub: 'Quorum vault · k-of-n guardians',
+      stack: ['Next.js', 'TypeScript', 'Shamir SSS', 'ECDH P-256', 'HKDF-SHA256', 'Supabase', 'Cloudflare Pages'],
+      detail: 'Privacy-first encrypted vault that requires k of n trusted guardians to unseal. Three-layer control: AES-GCM-256 envelope on the payload, Shamir Secret Sharing of the data-encryption key, and per-guardian ECDH(P-256)→HKDF→AES-GCM wrapping of each fragment. To recover, guardians decrypt their fragment locally and re-wrap it to the requester\'s ephemeral pubkey — the server only ever sees ciphertext and cannot reconstruct the key or bypass the quorum.',
+      live: 'https://triskele-6ct.pages.dev',
+      repo: 'https://github.com/dgpugliese/triskele',
+    },
+    {
       id: 'CHAPTER-PATH', kind: 'WEB APP', tag: 'IN DEVELOPMENT', tagC: 'amber',
       title: 'Chapter Path',
       sub: 'White-label member portal platform · multi-tenant SaaS',
