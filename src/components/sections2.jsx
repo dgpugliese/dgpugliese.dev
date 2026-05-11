@@ -341,6 +341,7 @@ export function Certs() {
     },
   ];
   const total = groups.reduce((n, g) => n + g.certs.length, 0);
+  const [tappedGroup, setTappedGroup] = useState(null);
   return (
     <section className="sect" id="certs" data-screen-label="08 Certifications">
       <div className="sect-head">
@@ -348,25 +349,34 @@ export function Certs() {
         <h2 className="sect-title">Certifications / Credentials</h2>
         <a className="sect-sub" href="https://credly.com/users/dpugliese" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'var(--cyan)' }}>↗ {total} verified · credly.com/users/dpugliese</a>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
-        {groups.map(g => (
-          <div key={g.key}>
-            <div className="mono certs-group-head">
-              <span className="certs-group-key">// {g.key}</span>
-              <span className="certs-group-count">{String(g.certs.length).padStart(2, '0')}</span>
+      <div className="certs-stack">
+        {groups.map(g => {
+          const isOpen = tappedGroup === g.key;
+          const preview = g.certs.slice(0, 5).map(c => c.t).join(' · ');
+          return (
+            <div key={g.key} className={'cert-group' + (isOpen ? ' is-open' : '')}>
+              <button
+                type="button"
+                className="mono certs-group-head"
+                onClick={() => setTappedGroup(k => k === g.key ? null : g.key)}
+                aria-expanded={isOpen}
+              >
+                <span className="certs-group-key">// {g.key}</span>
+                <span className="certs-group-preview">{preview}</span>
+                <span className="certs-group-count">{String(g.certs.length).padStart(2, '0')}</span>
+                <span className="certs-group-chev" aria-hidden>▾</span>
+              </button>
+              <div className="certs-grid">
+                {g.certs.map(c => (
+                  <div key={c.n} className="panel certs-card">
+                    <CertBadge img={c.img} t={c.t} />
+                    <div className="mono" style={{ fontSize: 11, lineHeight: 1.4, color: 'var(--fg)' }}>{c.n}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="certs-grid">
-              {g.certs.map(c => (
-                <div key={c.n} className="panel certs-card"
-                     onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--cyan)'; e.currentTarget.style.boxShadow = '0 0 14px rgba(78, 201, 224, 0.25)'; }}
-                     onMouseLeave={e => { e.currentTarget.style.borderColor = ''; e.currentTarget.style.boxShadow = ''; }}>
-                  <CertBadge img={c.img} t={c.t} />
-                  <div className="mono" style={{ fontSize: 11, lineHeight: 1.4, color: 'var(--fg)' }}>{c.n}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
