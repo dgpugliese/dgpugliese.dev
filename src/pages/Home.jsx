@@ -31,9 +31,9 @@ function StatTicker() {
 
 export default function Home({ booted }) {
   useSeo({
-    title: 'David Pugliese · Director of IT, AI Agent Infrastructure',
+    title: 'David Pugliese · AI Agent Infrastructure Engineer · MCP, Identity, Full-Stack',
     description:
-      'David Pugliese — Director of IT in Philadelphia. AI agent infrastructure, MCP servers, cloud identity, full-stack platforms, and zero-trust security.',
+      'David Pugliese — engineer building AI agent infrastructure. Production MCP servers for Claude, non-human identity systems, zero-trust security, and full-stack platforms. Philadelphia.',
     path: '/',
     image: 'https://dgpugliese.dev/og.svg',
   });

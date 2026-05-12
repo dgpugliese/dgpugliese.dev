@@ -28,17 +28,19 @@ export function Hero() {
           <div className="mono" style={{ fontSize: 18, marginTop: 24, color: 'var(--fg-dim)', minHeight: 32 }}>
             <span style={{ color: 'var(--cyan)' }}>&gt; </span>
             <Typer phrases={[
-              'director of IT // ai agent infrastructure',
-              'ships full-stack platforms end-to-end',
-              'runs production MCP servers for claude',
-              'cloud identity, security, zero-trust ops',
-              'mentor · architect · operator',
+              'ai agent infrastructure // forward-deployed engineer',
+              'ships production MCP servers for claude in the enterprise',
+              'designs non-human identity & access scoping for agents',
+              'full-stack platforms · zero-trust · cloud identity',
+              'engineer who ships in production, not slides',
             ]} />
           </div>
-          <div style={{ marginTop: 28, maxWidth: 580, fontSize: 16, lineHeight: 1.6, color: 'var(--fg-dim)' }}>
-            10+ years across hybrid infrastructure, cybersecurity, and full-stack engineering. Currently leading
-            an AI-integrated IT function for a large nonprofit. Comfortable architecting platforms end-to-end,
-            mentoring engineers, briefing executives, and debugging OAuth flows at 2 a.m.
+          <div style={{ marginTop: 28, maxWidth: 600, fontSize: 16, lineHeight: 1.6, color: 'var(--fg-dim)' }}>
+            10+ years building and operating AI agent infrastructure, identity systems, and full-stack platforms in
+            production. Currently runs MCP servers connecting Claude to Microsoft 365, Google Workspace, Cloudflare,
+            and Supabase for a ~150K-user organization — and authored the non-human identity model the org now
+            defaults to for any new agent integration. Comfortable shipping end-to-end, briefing a CISO Friday
+            afternoon, and debugging OAuth at 2 a.m. Saturday.
           </div>
         </div>
 
