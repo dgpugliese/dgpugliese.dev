@@ -46,7 +46,7 @@ export const posts = [
       },
       {
         heading: 'The Crypto Stack',
-        text: `Obscura uses AES-256-GCM for file encryption. The key is derived from a user passphrase using Argon2id (via a WASM build) — memory-hard, resistant to GPU cracking. The IV is randomly generated per file. The derived key never leaves the browser; what gets uploaded is the encrypted blob and a hash of the metadata for integrity verification. That's it.`,
+        text: `Obscura uses AES-256-GCM for file encryption. In default mode the data key is a random 256-bit WebCrypto key carried in the URL fragment — browsers don't transmit fragments, so the server never sees the key. Optional passphrase mode wraps that key under an Argon2id-derived KEK (memory-hard, GPU-resistant) so the link alone isn't enough; the recipient enters a passphrase out-of-band. The IV is randomly generated per file, and AES-GCM's built-in authentication tag catches any tampered ciphertext at decrypt time — no separate metadata hash needed. That's it.`,
       },
       {
         heading: 'Why Web Crypto API',

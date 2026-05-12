@@ -57,7 +57,8 @@ export default function ObscuraCaseStudy() {
               <span><span style={{ color: 'var(--green)' }}>●</span> LIVE</span>
               <span>SOLO BUILD</span>
               <span>SHIPPED 2026-05-05</span>
-              <span style={{ color: 'var(--cyan)' }}>v1.0</span>
+              <span>50 MB · 7d TTL</span>
+              <a href="https://github.com/dgpugliese/obscura/releases" target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>v0.1.1 ↗</a>
             </div>
           </div>
 
@@ -65,9 +66,10 @@ export default function ObscuraCaseStudy() {
           <Section num="01" title="TL;DR" sub="60-second summary">
             <p style={P}>
               Obscura is a public, browser-only file transfer tool that encrypts your files with <Cyan>AES-256-GCM</Cyan> in
-              the browser before they ever leave your device. The server only ever sees ciphertext. The key
-              never reaches the server. You share a link (or QR code); the recipient unlocks it with a password
-              you set. Files are <Cyan>ephemeral</Cyan> — they expire by design.
+              the browser before they ever leave your device. The server only ever sees ciphertext, and the key
+              never reaches the server. You share a link (or QR code); the recipient opens it and the file decrypts
+              in their browser. Optional <Cyan>passphrase mode</Cyan> adds an out-of-band password wrap. Files are
+              ephemeral — <Cyan>50 MB cap, 7-day max TTL</Cyan>, pruned by design.
             </p>
             <p style={P}>
               I built it solo as a demonstrable, end-to-end answer to a question that comes up constantly in
@@ -139,12 +141,63 @@ export default function ObscuraCaseStudy() {
                       body="Real-world scenario: encrypt a file at a desk, hand it off to a phone in the same room. Scanning a QR is faster than typing a URL and avoids the SMS-link footgun." />
           </Section>
 
+          {/* Trust posture */}
+          <Section num="06" title="Trust posture is the product" sub="verifiable, not theoretical">
+            <p style={P}>
+              "Zero-knowledge" is a marketing word until the operator gives you a way to check. Three pieces of
+              public scaffolding make Obscura's claim auditable:
+            </p>
+            <ul style={UL}>
+              <li><a href="https://obscr.app/transparency" target="_blank" rel="noreferrer" style={LINK}>/transparency</a> — a daily aggregate counter log (uploads, downloads, manual burns). <Cyan>Server-side counters only</Cyan>; no per-share data, no IPs, no filenames.</li>
+              <li><a href="https://obscr.app/status" target="_blank" rel="noreferrer" style={LINK}>/status</a> — a 30-day calendar rendered from a <code style={CODE}>status.json</code> committed to the public repo. Every incident is a Git commit; the history is the audit trail.</li>
+              <li><a href="https://obscr.app/privacy" target="_blank" rel="noreferrer" style={LINK}>/privacy</a> — spells out exactly what Cloudflare retains on our behalf (their standard access logs) vs. what the application stores (ciphertext, TTL, read counts — nothing else). No dark-pattern footnotes.</li>
+            </ul>
+            <p style={P}>
+              Repo posture matches: branch protection on <code style={CODE}>main</code>, tag-creation ruleset, Dependabot,
+              secret-scanning push protection. MIT-licensed, ~108 KB of source — you can read every line in an
+              evening. Trust is something you build by making yourself easy to check.
+            </p>
+          </Section>
+
+          {/* What it isn't */}
+          <Section num="07" title="What it isn't" sub="the honest gap">
+            <p style={P}>
+              Obscura's wedge is <Cyan>anonymity-by-default and source-you-can-read</Cyan>. It is intentionally
+              not an enterprise tool. The honest gap vs. commercial competitors:
+            </p>
+            <ul style={UL}>
+              <li><Cyan>No third-party security audit yet.</Cyan> Roadmap, not funded.</li>
+              <li><Cyan>50 MB design ceiling, 64 MiB hard cap.</Cyan> Tresorit Send: 5 GB. Bitwarden Send: 100 MB. Obscura optimizes for ephemeral, not archival.</li>
+              <li><Cyan>No SOC 2, no BAA.</Cyan> Not appropriate for HIPAA / PCI / CJIS / classified.</li>
+              <li><Cyan>No SLA, no key recovery, no accounts.</Cyan> Provided AS IS under MIT.</li>
+              <li><Cyan>No per-recipient audit trail.</Cyan> Trust model is "send link to one person you trust," not "regulated workflow with non-repudiation."</li>
+            </ul>
+            <p style={P}>
+              Tresorit Send and Bitwarden Send win on enterprise parity. Obscura wins on
+              <Cyan> anonymous, ephemeral, audit-the-code-yourself</Cyan>. Different lanes, on purpose.
+            </p>
+          </Section>
+
+          {/* Shipped with Claude Code */}
+          <Section num="08" title="Shipped with Claude Code" sub="AI as engineering partner">
+            <p style={P}>
+              Designed in Claude. Frontend and Cloudflare Worker written collaboratively in <Cyan>Claude Code</Cyan>.
+              Cloudflare resources (Workers, R2, KV, custom domain) provisioned through the
+              <Cyan> Cloudflare MCP</Cyan>. Security review pass done with the same toolchain.
+            </p>
+            <p style={P}>
+              End-to-end in days, not weeks — and the engineering log shows it: Lighthouse a11y 100, LCP ~130 ms,
+              ~92 KB total app payload on first load. AI as a serious engineering partner, not a code-completion toy.
+            </p>
+          </Section>
+
           {/* Outcome */}
-          <Section num="06" title="Outcome &amp; what's next" sub="the result">
+          <Section num="09" title="Outcome &amp; what's next" sub="the result">
             <p style={P}>
               Obscura is live at <a href="https://obscr.app/" target="_blank" rel="noreferrer" style={LINK}>obscr.app</a> and
               public-source at <a href="https://github.com/dgpugliese/obscura" target="_blank" rel="noreferrer" style={LINK}>github.com/dgpugliese/obscura</a>.
-              Built solo, end-to-end, in days — frontend, cryptography choices, storage layer, hosting, branding.
+              Free, ad-free; donations optional via <a href="https://buymeacoffee.com/dgpugliese" target="_blank" rel="noreferrer" style={LINK}>Buy Me a Coffee</a>.
+              Built solo, end-to-end, in days — frontend, cryptography choices, storage layer, hosting, branding, trust scaffolding.
             </p>
             <p style={P}>The interesting part wasn't the code; it was the <Cyan>system design</Cyan> — picking primitives that compose to "the host can't see your file" without leaning on a heavy framework or a third-party crypto SaaS. Roadmap:</p>
             <ul style={UL}>
