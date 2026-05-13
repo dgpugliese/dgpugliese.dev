@@ -9,7 +9,7 @@ import { posts } from '../data/posts.js';
 const STATS = [
   ['LAST_DEPLOY', __BUILD_DATE__],
   ['COMMIT', __COMMIT_SHA__],
-  ['POSTS', `${posts.length} · PROJECTS 9`],
+  ['POSTS', `${posts.length} · PROJECTS 10`],
   ['ROUTES', '5 · UPLINK OK'],
 ];
 

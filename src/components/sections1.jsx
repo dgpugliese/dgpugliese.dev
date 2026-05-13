@@ -139,6 +139,13 @@ export function Projects() {
       detail: "A vault-as-memory architecture that fixes the 'every session starts cold' problem. Bootstrap reads, decision logs, append-only knowledge files, and session protocols give the agent stable context across projects. Not a second brain — Claude Code's brain.",
     },
     {
+      id: 'KAPSI-990', kind: 'DATA TOOL', tag: 'IN DEVELOPMENT', tagC: 'amber',
+      title: 'Chapter Compliance Dashboard',
+      sub: 'IRS Form 990 filing status · ~770 chapters · IHQ internal',
+      stack: ['React', 'Vite', 'Tailwind', 'Supabase', 'ProPublica API', 'Edge Functions'],
+      detail: "Internal IHQ tool for tracking IRS Form 990 filing status across ~770 Kappa Alpha Psi chapters. Frontend shipped across five screens with realistic data shapes — overview with 7-region heat grid + filter bar, chapter detail with current / missing / revoked status variants and revocation guidance, admin data-refresh run log, and a mobile treasurer view scoped to a single chapter. Backend planned as a standalone Supabase project: ProPublica fetcher on an Edge Function cron, JWT-claim RLS so each treasurer sees only their own chapter, mergeable into Chapter Path later via a `compliance` schema swap.",
+    },
+    {
       id: 'MCP-OPS', kind: 'PLATFORM', tag: 'PRODUCTION', tagC: 'green',
       title: 'MCP Server Infrastructure',
       sub: 'AI agent ↔ enterprise SaaS bridge',
