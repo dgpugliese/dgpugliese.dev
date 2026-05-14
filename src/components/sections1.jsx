@@ -141,9 +141,10 @@ export function Projects() {
     {
       id: 'KAPSI-990', kind: 'DATA TOOL', tag: 'IN-USE', tagC: 'cyan',
       title: 'Chapter Compliance Dashboard',
-      sub: 'IRS Form 990 filing status · ~770 chapters · IHQ internal',
-      stack: ['React', 'Vite', 'Tailwind', 'Supabase', 'ProPublica API', 'GitHub Actions'],
-      detail: "Internal IHQ tool tracking IRS Form 990 filing status across ~770 Kappa Alpha Psi chapters. Five screens — overview with 7-region heat grid + filter bar, chapter detail with current / missing / revoked status variants and revocation guidance, admin data-refresh run log, and a mobile treasurer view scoped to a single chapter. Data refresh runs daily via a GitHub Actions cron pulling ProPublica's nonprofit API and upserting into Supabase; JWT-claim RLS so each treasurer sees only their own chapter. Mergeable into Chapter Path later via a `compliance` schema swap.",
+      sub: 'IRS Form 990 compliance · 858 chapters · compliance.kapsi1911.com',
+      stack: ['React', 'Vite', 'Tailwind', 'Supabase', 'IRS TEOS API', 'Edge Functions', 'GitHub Actions', 'Cloudflare Pages'],
+      detail: "Live IHQ tool tracking IRS Form 990 compliance across 858 Kappa Alpha Psi chapters at compliance.kapsi1911.com (staff login). Aggregates four IRS data sources — ProPublica Nonprofit Explorer (year-by-year 990 / 990-EZ / 990-PF), IRS e-Postcard bulk ZIP, IRS Auto-Revocation List, and a custom scraper against the IRS TEOS internal JSON API for full historical 990-N back to 2008 (3,672 filings imported on last run; data the IRS bulk feeds don't publish). Surfaces a 12-province heat grid, drill-into-chapter 990 history with timestamped activity logs, and one-click audit packets that bundle every PDF return on record. Refresh runs across Supabase Edge Functions, GitHub Actions, and pg_cron; every run writes an audit row. Built on infrastructure that scales for free at IHQ's volume — under $300/yr vs. vendor quotes of $110K–$246K.",
+      live: 'https://compliance.kapsi1911.com',
     },
     {
       id: 'MCP-OPS', kind: 'PLATFORM', tag: 'PRODUCTION', tagC: 'green',
