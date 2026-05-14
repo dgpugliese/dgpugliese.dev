@@ -3,6 +3,34 @@
 
 export const posts = [
   {
+    slug: 'reverse-engineering-irs-teos',
+    date: '2026-05-13',
+    category: 'DATA',
+    categoryColor: 'amber',
+    title: 'The IRS Has a JSON API. Most People Don\'t Know It Exists.',
+    summary:
+      "The IRS publishes 990-N e-Postcard filings as a single 'latest-per-EIN' bulk file — no public feed for year-by-year history. That history lives in TEOS, the search UI. Here's how a 30-second devtools inspection revealed it's actually a clean JSON API, and how I pulled 16 years of nonprofit filings without scraping a single HTML page.",
+    readTime: '5 min',
+    body: [
+      {
+        heading: 'The Bulk-Data Problem',
+        text: `The IRS publishes a generous amount of nonprofit data. The Exempt Organizations Business Master File. The Auto-Revocation List. An AWS public dataset with full 990 returns at s3://irs-form-990/. But for 990-N e-Postcard filings — the form roughly 70% of small nonprofits file — the bulk feed contains exactly one row per organization: the most recent filing. No year-by-year history, no chronological view. If you want to know whether a particular nonprofit filed in 2018 and 2019 and 2020, the bulk feed will not tell you. That's the data gap I hit building a compliance dashboard for 858 fraternity chapters.`,
+      },
+      {
+        heading: 'The Network Tab Tells the Truth',
+        text: `I needed historical 990-N per chapter, 16 years back, with no obvious bulk source. The IRS's Tax Exempt Organization Search (TEOS) at apps.irs.gov/teos has the data — type in an EIN, get the full history rendered as a table. So I opened DevTools, pulled up the Network tab, and submitted a single EIN. The page made exactly one XHR: a GET to apps.irs.gov/teos/details/ePostSearch/{EIN}. No API key. No auth header. JSON response. Clean shape: an array of filings, one per row, each with tax_year, filing_date, form_type. Exactly the data I needed, served by the IRS's own backend in the cleanest format possible. The HTML page was a thin wrapper around it.`,
+      },
+      {
+        heading: 'Building the Scraper That Doesn\'t Scrape',
+        text: `A 30-line Node script: read the EIN list from Supabase, throttle to one request per second to be a good citizen, hit the TEOS endpoint for each EIN, parse the JSON, upsert into a filings table. No HTML parsing, no headless browser, no Cheerio or Playwright. Critically: no fragile DOM selectors to break when the IRS updates its UI. The JSON shape is the surface I'm coupling to, not the markup. After one full pass: 3,672 filings imported across 434 chapters, going back to 2008. The fetcher runs on a GitHub Actions schedule for free; the data lands in Supabase free tier; the IRS serves the JSON at no cost to me. The whole pipeline runs at roughly $0/yr.`,
+      },
+      {
+        heading: 'The Lesson',
+        text: `Before you build a scraper, read the network tab. The public web is full of search UIs that are actually thin frontends over clean JSON APIs the operator never officially exposed. Government data sites, university portals, vendor dashboards, internal-feeling enterprise tools — most of them serve JSON to a JavaScript client somewhere, and that JSON is your fastest path to the data. If you're writing a scraper that fights with HTML, you've probably skipped a step. The IRS isn't hiding TEOS's API. They just didn't document it as one. That distinction matters a lot less than people think — and a lot more than it should.`,
+      },
+    ],
+  },
+  {
     slug: 'building-production-mcp-servers',
     date: '2026-04-22',
     category: 'AI',

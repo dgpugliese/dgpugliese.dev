@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import ObscuraCaseStudy from './pages/ObscuraCaseStudy.jsx';
 import SilentBeatCaseStudy from './pages/SilentBeatCaseStudy.jsx';
+import ComplianceDashboardCaseStudy from './pages/ComplianceDashboardCaseStudy.jsx';
 import Log, { LogPost } from './pages/Log.jsx';
 import { Boot } from './components/fx.jsx';
 import { CLI } from './components/CLI.jsx';
@@ -61,6 +62,7 @@ export default function App() {
           <Route path="/" element={<Home booted={booted} />} />
           <Route path="/obscura" element={<ObscuraCaseStudy />} />
           <Route path="/silentbeat" element={<SilentBeatCaseStudy />} />
+          <Route path="/compliance" element={<ComplianceDashboardCaseStudy />} />
           <Route path="/log" element={<Log />} />
           <Route path="/log/:slug" element={<LogPost />} />
           <Route path="*" element={<Home booted={booted} />} />
