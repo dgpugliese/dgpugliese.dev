@@ -11,6 +11,13 @@ export const posts = [
     summary:
       'Fixed-price product builds. 4–8 weeks. Concept to shipped. For founders, nonprofits, and small organizations that need real software — not a Gantt chart. Here\'s what I build, who it\'s for, and how it works.',
     readTime: '4 min',
+    cta: {
+      label: 'HAVE A PRODUCT IN MIND?',
+      text: 'Book a free 30-minute scoping call. We\'ll figure out together whether it\'s the right fit — no pressure, no sales pitch.',
+      button: '→ SEE BUILD SERVICES',
+      href: '/build',
+      secondary: { button: '✉ dp@dgpugliese.dev', href: 'mailto:dp@dgpugliese.dev' },
+    },
     body: [
       {
         heading: 'Why I\'m Doing This',

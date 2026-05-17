@@ -99,6 +99,25 @@ export function LogPost() {
           ))}
         </div>
 
+        {/* Optional CTA panel */}
+        {post.cta && (
+          <div className="panel panel-corners" style={{ marginTop: 32, padding: '32px 36px', textAlign: 'center' }}>
+            <span className="panel-label">CTA</span>
+            <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.25em', marginBottom: 14 }}>◆ {post.cta.label || 'NEXT'} ◆</div>
+            <p style={{ fontSize: 16, color: 'var(--fg-dim)', maxWidth: 560, margin: '0 auto 22px', lineHeight: 1.6 }}>
+              {post.cta.text}
+            </p>
+            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+              {post.cta.href.startsWith('/')
+                ? <Link to={post.cta.href} className="btn" style={{ textDecoration: 'none' }}>{post.cta.button}</Link>
+                : <a className="btn" href={post.cta.href} target="_blank" rel="noreferrer">{post.cta.button}</a>}
+              {post.cta.secondary && (
+                <a className="btn btn-ghost" href={post.cta.secondary.href}>{post.cta.secondary.button}</a>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Footer nav */}
         <div style={{ marginTop: 40, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16, borderTop: '1px dashed var(--line)', paddingTop: 24 }}>
           <Link to="/log" className="btn btn-ghost">← ALL POSTS</Link>
