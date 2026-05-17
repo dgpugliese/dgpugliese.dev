@@ -15,7 +15,7 @@
 ## The call (30 minutes)
 
 ### 1. Opening (2 min)
-Brief intro. "I'm David, I run Visionary LLC. The goal of this call is to understand what you want to build and whether I'm the right person to build it. No pressure either way."
+Brief intro. "I'm David. The goal of this call is to understand what you want to build and whether I'm the right person to build it. No pressure either way."
 
 ### 2. The product (8 min)
 - [ ] **What is it?** Have them describe the product in their own words. Don't interrupt.

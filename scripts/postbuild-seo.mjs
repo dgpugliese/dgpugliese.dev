@@ -35,7 +35,7 @@ const routes = [
   },
   {
     path: '/build',
-    title: 'Build Services · Visionary LLC — dgpugliese.dev',
+    title: 'Build Services · dgpugliese.dev',
     description:
       'Fixed-price product builds in 4–8 weeks. Privacy-minded internal tools, compliance products, and B2B web apps. Concept to shipped, by one experienced builder.',
     image: `${SITE}/build-og.png`,
@@ -58,7 +58,7 @@ const routes = [
     path: '/compliance',
     title: 'Compliance Dashboard · KAPSI 990 Tracker — Case Study · dgpugliese.dev',
     description:
-      'Case study: chapter-level IRS 990 compliance monitoring for a national fraternity. GitHub Actions cron, in production.',
+      'Case study: chapter-level IRS 990 compliance monitoring for an international fraternity. GitHub Actions cron, in production.',
     image: `${SITE}/og.svg`,
   },
 ];

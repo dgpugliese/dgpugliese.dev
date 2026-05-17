@@ -39,7 +39,7 @@
     <text x="14" y="20" font-family="JetBrains Mono, monospace" font-size="11" fill="#4ec9e0" letter-spacing="1.5">BUILD_SHELL · v1.0</text>
     <circle cx="350" cy="15" r="4" fill="#7ee787"/>
 
-    <text x="14" y="62" font-family="JetBrains Mono, monospace" font-size="14" fill="rgba(216,232,244,0.55)">$ visionary --status</text>
+    <text x="14" y="62" font-family="JetBrains Mono, monospace" font-size="14" fill="rgba(216,232,244,0.55)">$ build --status</text>
     <text x="14" y="86" font-family="JetBrains Mono, monospace" font-size="14" fill="#7ee787">  ● accepting work</text>
 
     <text x="14" y="120" font-family="JetBrains Mono, monospace" font-size="14" fill="rgba(216,232,244,0.55)">$ build --tier</text>
@@ -53,6 +53,6 @@
   </g>
 
   <rect x="40" y="554" width="1120" height="36" fill="rgba(5,8,16,0.85)" stroke="rgba(78,201,224,0.45)"/>
-  <text x="60" y="578" font-family="JetBrains Mono, monospace" font-size="14" fill="#4ec9e0" letter-spacing="2">// visionary llc — dgpugliese.dev/build</text>
+  <text x="60" y="578" font-family="JetBrains Mono, monospace" font-size="14" fill="#4ec9e0" letter-spacing="2">// david pugliese — dgpugliese.dev/build</text>
   <text x="1140" y="578" font-family="JetBrains Mono, monospace" font-size="14" fill="#7ee787" text-anchor="end">● U.S. CLIENTS</text>
 </svg>

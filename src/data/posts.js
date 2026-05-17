@@ -3,18 +3,18 @@
 
 export const posts = [
   {
-    slug: 'opening-visionary-llc-build-services',
+    slug: 'taking-on-build-work',
     date: '2026-05-17',
     category: 'OPS',
     categoryColor: 'cyan',
-    title: 'I\'m Taking On Build Work Through Visionary LLC',
+    title: 'I\'m Taking On Build Work for Clients',
     summary:
       'Fixed-price product builds. 4–8 weeks. Concept to shipped. For founders, nonprofits, and small organizations that need real software — not a Gantt chart. Here\'s what I build, who it\'s for, and how it works.',
     readTime: '4 min',
     body: [
       {
         heading: 'Why I\'m Doing This',
-        text: `For a decade I\'ve built and operated infrastructure, identity systems, and full-stack platforms — most recently as Director of IT for a national organization with chapters across the United States. I\'ve also been shipping things on the side: a zero-knowledge file transfer tool (Obscura), a split-key dead-man\'s switch (SilentBeat), a compliance dashboard tracking 858 nonprofit chapters\' IRS 990 filings. The through-line is privacy, security, and products that have to actually work — not demos. Through Visionary LLC, I\'m formalizing all of that into a build service. Fixed scope, fixed price, fixed timeline, one builder, one accountable name.`,
+        text: `For a decade I\'ve built and operated infrastructure, identity systems, and full-stack platforms — most recently as Director of IT for an international fraternity with members across North America. I\'ve also been shipping things on the side: a zero-knowledge file transfer tool (Obscura), a split-key dead-man\'s switch (SilentBeat), a compliance dashboard tracking 858 nonprofit chapters\' IRS 990 filings. The through-line is privacy, security, and products that have to actually work — not demos. I\'m formalizing all of that into a build service: fixed scope, fixed price, fixed timeline, one builder, one accountable name.`,
       },
       {
         heading: 'What I Build',

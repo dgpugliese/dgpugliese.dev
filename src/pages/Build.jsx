@@ -7,7 +7,7 @@ const EMAIL = 'dp@dgpugliese.dev';
 
 export default function Build() {
   useSeo({
-    title: 'Build Services · Visionary LLC — dgpugliese.dev',
+    title: 'Build Services · dgpugliese.dev',
     description:
       'Fixed-price product builds in 4–8 weeks. Privacy-minded internal tools, compliance products, and B2B web apps. Concept to shipped, by one experienced builder.',
     path: '/build',
@@ -18,7 +18,7 @@ export default function Build() {
         {
           '@type': 'ProfessionalService',
           '@id': 'https://dgpugliese.dev/build#service',
-          name: 'Visionary LLC — Fixed-Price Product Builds',
+          name: 'David Pugliese — Fixed-Price Product Builds',
           description:
             'Fixed-price product builds in 4–8 weeks. Privacy-minded internal tools, compliance products, and B2B web apps. Concept to shipped, by one experienced builder.',
           url: 'https://dgpugliese.dev/build',
@@ -155,7 +155,7 @@ export default function Build() {
       <div className="statusbar">
         <span><span className="dot">●</span> ONLINE</span>
         <span className="sep">/</span>
-        <span>SYS / DGPUGLIESE.DEV / BUILD · VISIONARY LLC</span>
+        <span>SYS / DGPUGLIESE.DEV / BUILD</span>
         <div className="right">
           <span><Clock /></span>
           <span style={{ color: 'var(--green)' }}>● ACCEPTING WORK</span>
@@ -172,7 +172,7 @@ export default function Build() {
 
           {/* Hero */}
           <div className="panel panel-corners" style={{ padding: '40px 44px', marginBottom: 32 }}>
-            <span className="panel-label">BUILD · VISIONARY LLC</span>
+            <span className="panel-label">BUILD · CONCEPT TO SHIPPED</span>
             <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.25em', marginBottom: 14 }}>
               ◢ CONCEPT TO SHIPPED ◣
             </div>
@@ -191,7 +191,6 @@ export default function Build() {
             </div>
             <div className="mono" style={{ display: 'flex', flexWrap: 'wrap', gap: 18, marginTop: 28, fontSize: 11, color: 'var(--fg-faint)', borderTop: '1px dashed var(--line)', paddingTop: 16, letterSpacing: '0.12em' }}>
               <span><span style={{ color: 'var(--green)' }}>●</span> ACCEPTING WORK</span>
-              <span>VISIONARY LLC</span>
               <span>U.S. CLIENTS</span>
               <span style={{ color: 'var(--cyan)' }}>{EMAIL}</span>
             </div>
@@ -310,9 +309,9 @@ export default function Build() {
           {/* 06 — About */}
           <Section num="06" title="About" sub="who's building this">
             <p style={P}>
-              I'm <Cyan>David Pugliese</Cyan>. By day, I'm Director of IT at a national organization, running infrastructure,
-              security, and software for a member network across the United States. Through <Cyan>Visionary LLC</Cyan>, I take on
-              build work for clients on contract.
+              I'm <Cyan>David Pugliese</Cyan>. By day, I'm Director of IT for an international fraternity, running infrastructure,
+              security, and software for a member network across North America. On contract, I take on build work for clients
+              who need real software shipped without the agency markup.
             </p>
             <p style={P}>
               I've shipped privacy tools, compliance software, and internal systems for real organizations with real constraints. I
@@ -370,7 +369,7 @@ export default function Build() {
               <a className="btn btn-ghost" href={`mailto:${EMAIL}`}>✉ {EMAIL}</a>
             </div>
             <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', letterSpacing: '0.18em', marginTop: 24 }}>
-              VISIONARY LLC · © 2026
+              DAVID PUGLIESE · © 2026
             </div>
           </div>
 
