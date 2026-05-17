@@ -50,6 +50,7 @@ export function Hero() {
           <Link className="btn btn-ghost" to="/log">→ SIGNAL_LOG</Link>
           <a className="btn btn-ghost" href="https://linkedin.com/in/dgpugliese" target="_blank" rel="noreferrer">↗ LINKEDIN</a>
           <a className="btn btn-ghost" href="https://github.com/dgpugliese" target="_blank" rel="noreferrer">↗ GITHUB</a>
+          <a className="btn btn-ghost" href="https://davidguypugliese.com" target="_blank" rel="noreferrer">↗ DAVID PUGLIESE · RESUME</a>
         </div>
       </div>
 
