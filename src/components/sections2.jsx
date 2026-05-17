@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export function Resume() {
   const jobs = [
@@ -396,11 +397,13 @@ export function Contact() {
         <h3 style={{ fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 700, margin: 0, letterSpacing: '-0.02em' }}>
           Let's build something <span style={{ color: 'var(--cyan)' }}>fast</span> and <span style={{ color: 'var(--violet)' }}>reliable</span>.
         </h3>
-        <div style={{ fontSize: 16, color: 'var(--fg-dim)', marginTop: 18, maxWidth: 560, margin: '18px auto 0' }}>
-          Recruiters, engineers, fractional advisory — all welcome. Best response window: weekday mornings ET.
+        <div style={{ fontSize: 16, color: 'var(--fg-dim)', marginTop: 18, maxWidth: 620, margin: '18px auto 0' }}>
+          Recruiters, engineers, fractional advisory, and build clients — all welcome. Best response window: weekday mornings ET.
         </div>
         <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 32, flexWrap: 'wrap' }}>
           <a className="btn" href="mailto:dp@dgpugliese.dev">→ dp@dgpugliese.dev</a>
+          <Link className="btn btn-ghost" to="/build" style={{ textDecoration: 'none' }}>→ BUILD SERVICES</Link>
+          <a className="btn btn-ghost" href="https://davidguypugliese.com" target="_blank" rel="noreferrer">↗ DAVID PUGLIESE · RESUME</a>
           <a className="btn btn-ghost" href="https://linkedin.com/in/dgpugliese" target="_blank" rel="noreferrer">↗ LINKEDIN/DGPUGLIESE</a>
         </div>
         <div className="mono" style={{ marginTop: 40, fontSize: 11, color: 'var(--fg-faint)', display: 'flex', justifyContent: 'space-between', borderTop: '1px dashed var(--line)', paddingTop: 16 }}>
