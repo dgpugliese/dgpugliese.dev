@@ -11,7 +11,7 @@ export default function Build() {
     description:
       'Fixed-price product builds in 4–8 weeks. Privacy-minded internal tools, compliance products, and B2B web apps. Concept to shipped, by one experienced builder.',
     path: '/build',
-    image: 'https://dgpugliese.dev/og.svg',
+    image: 'https://dgpugliese.dev/build-og.png',
   });
 
   return (
