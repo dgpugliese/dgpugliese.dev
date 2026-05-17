@@ -27,6 +27,13 @@ const blogRoutes = posts.map(p => ({
 
 const routes = [
   {
+    path: '/log',
+    title: 'Signal Log · dgpugliese.dev',
+    description:
+      'Notes from the field on AI agent infrastructure, zero-knowledge crypto, NIST 800-53 / SOC 2 compliance, and shipping platforms end-to-end.',
+    image: `${SITE}/og.svg`,
+  },
+  {
     path: '/build',
     title: 'Build Services · Visionary LLC — dgpugliese.dev',
     description:
