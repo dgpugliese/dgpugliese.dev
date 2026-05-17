@@ -10,11 +10,20 @@
  */
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = join(__dirname, '..', 'dist');
 const SITE = 'https://dgpugliese.dev';
+
+const { posts } = await import(pathToFileURL(join(__dirname, '..', 'src', 'data', 'posts.js')).href);
+
+const blogRoutes = posts.map(p => ({
+  path: `/log/${p.slug}`,
+  title: `${p.title} · Signal Log · dgpugliese.dev`,
+  description: p.summary,
+  image: `${SITE}/og.svg`,
+}));
 
 const routes = [
   {
@@ -89,9 +98,11 @@ function replaceMeta(html, { title, description, image, url }) {
   return out;
 }
 
+const allRoutes = [...routes, ...blogRoutes];
+
 const indexHtml = await readFile(join(distDir, 'index.html'), 'utf8');
 
-for (const route of routes) {
+for (const route of allRoutes) {
   const url = `${SITE}${route.path}`;
   const html = replaceMeta(indexHtml, { ...route, url });
   const outDir = join(distDir, route.path.replace(/^\//, ''));
@@ -100,4 +111,4 @@ for (const route of routes) {
   console.log(`  → ${route.path}/index.html`);
 }
 
-console.log(`✓ Emitted ${routes.length} per-route HTML files`);
+console.log(`✓ Emitted ${allRoutes.length} per-route HTML files`);

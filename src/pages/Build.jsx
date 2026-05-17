@@ -12,6 +12,136 @@ export default function Build() {
       'Fixed-price product builds in 4–8 weeks. Privacy-minded internal tools, compliance products, and B2B web apps. Concept to shipped, by one experienced builder.',
     path: '/build',
     image: 'https://dgpugliese.dev/build-og.png',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'ProfessionalService',
+          '@id': 'https://dgpugliese.dev/build#service',
+          name: 'Visionary LLC — Fixed-Price Product Builds',
+          description:
+            'Fixed-price product builds in 4–8 weeks. Privacy-minded internal tools, compliance products, and B2B web apps. Concept to shipped, by one experienced builder.',
+          url: 'https://dgpugliese.dev/build',
+          image: 'https://dgpugliese.dev/build-og.png',
+          email: 'dp@dgpugliese.dev',
+          areaServed: { '@type': 'Country', name: 'United States' },
+          provider: {
+            '@type': 'Person',
+            name: 'David Pugliese',
+            url: 'https://dgpugliese.dev/',
+          },
+          serviceType: 'Custom software development',
+          offers: [
+            {
+              '@type': 'Offer',
+              name: 'Starter build',
+              description:
+                'One focused product: a main feature set, authentication, database, deployment, and documentation. 3–4 weeks.',
+              priceCurrency: 'USD',
+              price: '12000',
+              priceSpecification: {
+                '@type': 'PriceSpecification',
+                price: '12000',
+                priceCurrency: 'USD',
+                valueAddedTaxIncluded: false,
+                minPrice: '12000',
+              },
+            },
+            {
+              '@type': 'Offer',
+              name: 'Standard build',
+              description:
+                'A real product: multiple features, billing where needed, integrations with existing systems, polish. 6–8 weeks.',
+              priceCurrency: 'USD',
+              price: '25000',
+              priceSpecification: {
+                '@type': 'PriceSpecification',
+                price: '25000',
+                priceCurrency: 'USD',
+                valueAddedTaxIncluded: false,
+                minPrice: '25000',
+              },
+            },
+          ],
+        },
+        {
+          '@type': 'FAQPage',
+          '@id': 'https://dgpugliese.dev/build#faq',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: 'What if I want to cancel mid-build?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text:
+                  'You can, anytime. The deposit is non-refundable; you owe nothing further. You keep whatever has been built and deployed up to that point.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'What if the scope changes mid-project?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text:
+                  'Scope changes are re-quoted in writing before any new work begins. You approve the new quote, or we ship the original scope as agreed. No surprise invoices.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'What tech stack do you build with?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text:
+                  'A modern, production-ready stack by default: Next.js with TypeScript, Postgres via Supabase, Stripe for payments, and Cloudflare or Vercel for deployment. Custom stacks discussed during scoping.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Do you handle design?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text:
+                  'Functional design — clean, usable, professional interfaces — is included. For brand-level visual design, I work with a designer or use yours.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Will you sign an NDA?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Yes. A mutual NDA is available before the scoping call if your project requires it.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Who owns the code?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text:
+                  'You do, fully, on final payment. The repository, the deployment credentials, the documentation — all yours. No licensing tricks, no held-back components, no per-seat fees.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'What happens after the 30-day support window?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text:
+                  'Bug fixes are covered for free during the 30-day window. After that, monthly retainers for ongoing work or hourly engagements for one-off changes are available on request.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Where are you based?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'United States. I work remotely with clients anywhere in the U.S.',
+              },
+            },
+          ],
+        },
+      ],
+    },
   });
 
   return (

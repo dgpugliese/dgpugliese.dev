@@ -3,6 +3,38 @@
 
 export const posts = [
   {
+    slug: 'opening-visionary-llc-build-services',
+    date: '2026-05-17',
+    category: 'OPS',
+    categoryColor: 'cyan',
+    title: 'I\'m Taking On Build Work Through Visionary LLC',
+    summary:
+      'Fixed-price product builds. 4–8 weeks. Concept to shipped. For founders, nonprofits, and small organizations that need real software — not a Gantt chart. Here\'s what I build, who it\'s for, and how it works.',
+    readTime: '4 min',
+    body: [
+      {
+        heading: 'Why I\'m Doing This',
+        text: `For a decade I\'ve built and operated infrastructure, identity systems, and full-stack platforms — most recently as Director of IT for a national organization with chapters across the United States. I\'ve also been shipping things on the side: a zero-knowledge file transfer tool (Obscura), a split-key dead-man\'s switch (SilentBeat), a compliance dashboard tracking 858 nonprofit chapters\' IRS 990 filings. The through-line is privacy, security, and products that have to actually work — not demos. Through Visionary LLC, I\'m formalizing all of that into a build service. Fixed scope, fixed price, fixed timeline, one builder, one accountable name.`,
+      },
+      {
+        heading: 'What I Build',
+        text: `The lane is products where doing it right matters — where "ship fast" and "don\'t leak data" both have to be true. Compliance dashboards and reporting tools for nonprofits, associations, and regulated organizations. Internal tools handling sensitive data — member portals, case management, financial workflows. Privacy- and security-forward web apps, consumer or B2B, built with the right defaults from day one. Replacements for spreadsheets-that-became-a-business — when the workflow outgrew Excel and you need real software. If you\'re looking at agency quotes in the $50–100k range for something a single builder could ship in two months, I\'m the alternative.`,
+      },
+      {
+        heading: 'How It Works',
+        text: `One free 30-minute scoping call. If we\'re a fit, you get a written proposal within 48 hours: fixed scope, fixed price, fixed timeline. Sign the contract, pay 50% deposit, and your build slot is locked. The deposit secures the engagement and is non-refundable if you cancel — fair to both of us. Then we build. Weekly demos every Friday, so you see real software growing week by week. Scope changes get re-quoted in writing before any work happens — no creep, no surprises. On delivery, you pay the remaining 50% and receive the code, the deployment, the documentation, and 30 days of bug-fix support. Full ownership transferred to you, no licensing tricks. Starter builds are 3–4 weeks from $12,000. Standard builds are 6–8 weeks from $25,000. Larger or unusual scopes get quoted after the call.`,
+      },
+      {
+        heading: 'Why a Solo Builder vs. an Agency',
+        text: `Agencies have to charge agency rates because they have agency overhead — account managers, project managers, designers, multiple ICs, executive layers. For products in the $50–100k range you\'re paying mostly for coordination, not code. A solo builder who can actually ship end-to-end produces the same software for a third the cost in less time, because the coordination cost is zero. The tradeoff: you get me, not a team. If you need a five-person engagement, hire an agency. If you need one experienced person to take your idea and ship it without a status meeting in sight, that\'s what this is. The day job stays — this is a parallel contract practice, deliberately sized to the work I can do well alongside it.`,
+      },
+      {
+        heading: 'How to Start',
+        text: `If you have a product in mind, book a scoping call at dgpugliese.dev/build. It\'s free, it\'s 30 minutes, and the worst case is I tell you it\'s not a fit and point you toward someone better. If you don\'t have a project yourself but know someone who might — a founder friend, a nonprofit you serve on the board of, an association struggling with spreadsheets — forward the link. The first few engagements will come through warm introductions; that\'s how it always works for this kind of business. dp@dgpugliese.dev for everything else.`,
+      },
+    ],
+  },
+  {
     slug: 'reverse-engineering-irs-teos',
     date: '2026-05-13',
     category: 'DATA',
