@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Starfield, Clock } from '../components/fx.jsx';
 import { useSeo } from '../lib/seo';
 
-const CAL_URL = 'https://cal.com/dgpugliese/build-scoping';
+const CAL_URL = 'https://cal.com/dgpugliese.dev/build-scoping';
 const EMAIL = 'dp@dgpugliese.dev';
 
 export default function Build() {
