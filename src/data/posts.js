@@ -48,7 +48,7 @@ export const posts = [
     categoryColor: 'amber',
     title: 'The IRS Has a JSON API. Most People Don\'t Know It Exists.',
     summary:
-      "The IRS publishes 990-N e-Postcard filings as a single 'latest-per-EIN' bulk file — no public feed for year-by-year history. That history lives in TEOS, the search UI. Here's how a 30-second devtools inspection revealed it's actually a clean JSON API, and how I pulled 16 years of nonprofit filings without scraping a single HTML page.",
+      "The IRS publishes 990-N e-Postcard filings as a single 'latest-per-EIN' bulk file — no public feed for year-by-year history. That history lives in TEOS, the search UI. Here's how a 30-second devtools inspection revealed it's actually a clean JSON API, and how I pulled every available year of nonprofit filings (back to 2008) without scraping a single HTML page.",
     readTime: '5 min',
     body: [
       {
@@ -57,11 +57,11 @@ export const posts = [
       },
       {
         heading: 'The Network Tab Tells the Truth',
-        text: `I needed historical 990-N per chapter, 16 years back, with no obvious bulk source. The IRS's Tax Exempt Organization Search (TEOS) at apps.irs.gov/teos has the data — type in an EIN, get the full history rendered as a table. So I opened DevTools, pulled up the Network tab, and submitted a single EIN. The page made exactly one XHR: a GET to apps.irs.gov/teos/details/ePostSearch/{EIN}. No API key. No auth header. JSON response. Clean shape: an array of filings, one per row, each with tax_year, filing_date, form_type. Exactly the data I needed, served by the IRS's own backend in the cleanest format possible. The HTML page was a thin wrapper around it.`,
+        text: `I needed historical 990-N per chapter, back to 2008, with no obvious bulk source. The IRS's Tax Exempt Organization Search (TEOS) at apps.irs.gov/teos has the data — type in an EIN, get the full history rendered as a table. So I opened DevTools, pulled up the Network tab, and submitted a single EIN. The page made exactly one XHR: a GET to apps.irs.gov/teos/details/ePostSearch/{EIN}. No API key. No auth header. JSON response. Clean shape: an array of filings, one per row, each with tax_year, filing_date, form_type. Exactly the data I needed, served by the IRS's own backend in the cleanest format possible. The HTML page was a thin wrapper around it.`,
       },
       {
         heading: 'Building the Scraper That Doesn\'t Scrape',
-        text: `A 30-line Node script: read the EIN list from Supabase, throttle to one request per second to be a good citizen, hit the TEOS endpoint for each EIN, parse the JSON, upsert into a filings table. No HTML parsing, no headless browser, no Cheerio or Playwright. Critically: no fragile DOM selectors to break when the IRS updates its UI. The JSON shape is the surface I'm coupling to, not the markup. After one full pass: 3,672 filings imported across 434 chapters, going back to 2008. The fetcher runs on a GitHub Actions schedule for free; the data lands in Supabase free tier; the IRS serves the JSON at no cost to me. The whole pipeline runs at roughly $0/yr.`,
+        text: `The proof-of-concept was a 30-line Node script: read the EIN list from Supabase, throttle to one request per second to be a good citizen, hit the TEOS endpoint for each EIN, parse the JSON, upsert into a filings table. No HTML parsing, no headless browser, no Cheerio or Playwright. Critically: no fragile DOM selectors to break when the IRS updates its UI. The JSON shape is the surface I'm coupling to, not the markup. After one full pass: 3,672 filings imported across 434 chapters, going back to 2008. Since then the script has hardened — it now handles Akamai bot mitigation, retry/backoff, and a dry-run flag — but the shape is the same: hit the JSON API, upsert, write an audit row. The fetcher runs weekly on a GitHub Actions schedule for free; the data lands in Supabase free tier; the IRS serves the JSON at no cost to me. The whole pipeline runs at roughly $0/yr.`,
       },
       {
         heading: 'The Lesson',
