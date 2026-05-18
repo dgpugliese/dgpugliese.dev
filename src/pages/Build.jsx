@@ -246,10 +246,10 @@ export default function Build() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 14 }}>
               <BuildCard
                 name="Compliance Dashboard"
-                tagline="KAPSI 990 tracker · chapter-level IRS 990 compliance monitoring"
+                tagline="KAPSI 990 tracker · chapter-level IRS 990 compliance across 702 active chapters"
                 replaces="an annual scramble through spreadsheets to confirm which chapters had filed"
-                does="automated chapter-level 990 status checks, surfaces filers vs. non-filers, runs on a weekly cron"
-                stack="GitHub Actions cron · in production"
+                does="aggregates five sources (ProPublica, IRS e-Postcard, Auto-Revocation List, TEOS, Salesforce/Fonteva), nightly refresh, audit-packet export, per-province RLS"
+                stack="Supabase + Edge Functions + GH Actions · in production"
                 href="/compliance"
                 live={null}
               />

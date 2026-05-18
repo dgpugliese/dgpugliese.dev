@@ -21,7 +21,7 @@ export const posts = [
     body: [
       {
         heading: 'Why I\'m Doing This',
-        text: `For a decade I\'ve built and operated infrastructure, identity systems, and full-stack platforms — most recently as Director of IT for an international fraternity with members across North America. I\'ve also been shipping things on the side: a zero-knowledge file transfer tool (Obscura), a split-key dead-man\'s switch (SilentBeat), a compliance dashboard tracking 858 nonprofit chapters\' IRS 990 filings. The through-line is privacy, security, and products that have to actually work — not demos. I\'m formalizing all of that into a build service: fixed scope, fixed price, fixed timeline, one builder, one accountable name.`,
+        text: `For a decade I\'ve built and operated infrastructure, identity systems, and full-stack platforms — most recently as Director of IT for an international fraternity with members across North America. I\'ve also been shipping things on the side: a zero-knowledge file transfer tool (Obscura), a split-key dead-man\'s switch (SilentBeat), a compliance dashboard tracking 702 active nonprofit chapters\' IRS 990 filings. The through-line is privacy, security, and products that have to actually work — not demos. I\'m formalizing all of that into a build service: fixed scope, fixed price, fixed timeline, one builder, one accountable name.`,
       },
       {
         heading: 'What I Build',
@@ -53,7 +53,7 @@ export const posts = [
     body: [
       {
         heading: 'The Bulk-Data Problem',
-        text: `The IRS publishes a generous amount of nonprofit data. The Exempt Organizations Business Master File. The Auto-Revocation List. An AWS public dataset with full 990 returns at s3://irs-form-990/. But for 990-N e-Postcard filings — the form roughly 70% of small nonprofits file — the bulk feed contains exactly one row per organization: the most recent filing. No year-by-year history, no chronological view. If you want to know whether a particular nonprofit filed in 2018 and 2019 and 2020, the bulk feed will not tell you. That's the data gap I hit building a compliance dashboard for 858 fraternity chapters.`,
+        text: `The IRS publishes a generous amount of nonprofit data. The Exempt Organizations Business Master File. The Auto-Revocation List. An AWS public dataset with full 990 returns at s3://irs-form-990/. But for 990-N e-Postcard filings — the form roughly 70% of small nonprofits file — the bulk feed contains exactly one row per organization: the most recent filing. No year-by-year history, no chronological view. If you want to know whether a particular nonprofit filed in 2018 and 2019 and 2020, the bulk feed will not tell you. That's the data gap I hit building a compliance dashboard for 702 active fraternity chapters.`,
       },
       {
         heading: 'The Network Tab Tells the Truth',
