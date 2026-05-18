@@ -50,7 +50,7 @@ export default function ComplianceDashboardCaseStudy() {
               702 active chapters + 12 provinces · 5 data sources · refreshed nightly · $300/yr
             </div>
             <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
-              <a className="btn" href="https://compliance.kapsi1911.com/" target="_blank" rel="noreferrer">→ LIVE SITE (IHQ STAFF LOGIN)</a>
+              <a className="btn" href="https://compliance.kappaalphapsi1911.com/" target="_blank" rel="noreferrer">→ LIVE SITE (IHQ STAFF LOGIN)</a>
               <Link to="/log/reverse-engineering-irs-teos" className="btn btn-ghost" style={{ textDecoration: 'none' }}>↗ TEOS WRITEUP</Link>
             </div>
             <div className="mono" style={{ display: 'flex', flexWrap: 'wrap', gap: 18, marginTop: 28, fontSize: 11, color: 'var(--fg-faint)', borderTop: '1px dashed var(--line)', paddingTop: 16, letterSpacing: '0.12em' }}>
@@ -229,7 +229,7 @@ export default function ComplianceDashboardCaseStudy() {
             <ol style={OL}>
               <li>Activate Phase 2: register the auth hook + invite Province KOEs in the Supabase dashboard, ship the session-aware login UI</li>
               <li>16-chapter EIN punch list — chapters whose EINs are missing or malformed in Fonteva (already surfaced via the "Needs EIN in Fonteva" KPI card; needs data-entry on the Fonteva side)</li>
-              <li>Restyle the login page to match kapsi1911.com's look</li>
+              <li>Restyle the login page to match the main fraternity site's look</li>
               <li>Nav/IA rework — Overview as default landing, drop the standalone "Chapters" nav item, move Data Refresh to admin-only</li>
               <li>Audit a data quirk: 3 chapters returned 18 entries from TEOS (more than the 17 years 2008–2024 available — likely two filings in one tax year)</li>
               <li>Public-facing read-only demo for portfolio purposes (separate Supabase project, sample data)</li>
