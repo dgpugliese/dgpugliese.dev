@@ -276,13 +276,18 @@ export function GitHub() {
   );
 }
 
-function CertBadge({ img, t }) {
+function CertBadge({ img, t, inProgress }) {
   const [broken, setBroken] = useState(false);
   if (img && !broken) {
     return <img src={img} alt="" loading="lazy" onError={() => setBroken(true)} className="cert-badge-img" />;
   }
   return (
-    <div className="mono cert-badge-fallback">{t}</div>
+    <div 
+      className="mono cert-badge-fallback"
+      style={inProgress ? { borderColor: 'var(--amber)', color: 'var(--amber)' } : {}}
+    >
+      {t}
+    </div>
   );
 }
 
@@ -306,6 +311,7 @@ export function Certs() {
         { n: 'AWS Cloud Practitioner', t: 'AWS', img: credly('00634f82-b07f-4bbd-a6bb-53de397fc3a6', 'image.png') },
         { n: 'CompTIA Cloud+ (ce)', t: 'CLD', img: credly('b2e3c623-cc4a-4f0c-8a3b-aa6231e138fe', 'blob') },
         { n: 'MS Azure Fundamentals (AZ-900)', t: 'AZ', img: credly('be8fcaeb-c769-4858-b567-ffaaa73ce8cf', 'image.png') },
+        { n: 'MS Azure AI Fundamentals (AI-900)', t: 'AI-900', inProgress: true },
         { n: 'MS 365 Fundamentals (MS-900)', t: 'M365', img: credly('0c6d9839-f468-4adc-987d-5cfae4a9ee67', 'image.png') },
         { n: 'CompTIA Cloud Admin Professional (CCAP)', t: 'CCAP', img: credly('18218ce6-e7d4-4479-9500-b7499645b763', 'CompTIA_CCAP.png') },
       ],
@@ -341,14 +347,14 @@ export function Certs() {
       ],
     },
   ];
-  const total = groups.reduce((n, g) => n + g.certs.length, 0);
+  const verifiedCount = groups.reduce((n, g) => n + g.certs.filter(c => !c.inProgress).length, 0);
   const [tappedGroup, setTappedGroup] = useState(null);
   return (
     <section className="sect" id="certs" data-screen-label="08 Certifications">
       <div className="sect-head">
         <span className="sect-num">08 //</span>
         <h2 className="sect-title">Certifications / Credentials</h2>
-        <a className="sect-sub" href="https://credly.com/users/dpugliese" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'var(--cyan)' }}>↗ {total} verified · credly.com/users/dpugliese</a>
+        <a className="sect-sub" href="https://credly.com/users/dpugliese" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'var(--cyan)' }}>↗ {verifiedCount} verified · credly.com/users/dpugliese</a>
       </div>
       <div className="certs-stack">
         {groups.map(g => {
@@ -369,9 +375,20 @@ export function Certs() {
               </button>
               <div className="certs-grid">
                 {g.certs.map(c => (
-                  <div key={c.n} className="panel certs-card">
-                    <CertBadge img={c.img} t={c.t} />
-                    <div className="mono" style={{ fontSize: 11, lineHeight: 1.4, color: 'var(--fg)' }}>{c.n}</div>
+                  <div 
+                    key={c.n} 
+                    className="panel certs-card"
+                    style={c.inProgress ? { borderStyle: 'dashed', borderColor: 'var(--amber)', opacity: 0.85 } : {}}
+                  >
+                    <CertBadge img={c.img} t={c.t} inProgress={c.inProgress} />
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                      <div className="mono" style={{ fontSize: 11, lineHeight: 1.4, color: 'var(--fg)' }}>{c.n}</div>
+                      {c.inProgress && (
+                        <span className="mono" style={{ fontSize: 9, color: 'var(--amber)', letterSpacing: '0.05em' }}>
+                          [IN PROGRESS]
+                        </span>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
