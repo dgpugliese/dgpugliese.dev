@@ -58,6 +58,7 @@ export function Hero() {
         <Avatar />
         <Telemetry />
         <NowPlaying />
+        <FocusSignal />
       </div>
     </section>
   );
@@ -311,6 +312,31 @@ function AudioToggle() {
         </a>
       )}
     </span>
+  );
+}
+
+function FocusSignal() {
+  return (
+    <div className="panel panel-corners" style={{ padding: 20 }}>
+      <span className="panel-label">FOCUS_SIGNAL</span>
+      <div className="telemetry-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginTop: 4 }}>
+        {[
+          ['PRODUCTIVE', '93%', 'var(--cyan)'],
+          ['FOCUS_HRS', '244h', 'var(--green)'],
+          ['UNPRODUCTIVE', '<3.5%', 'var(--violet)'],
+          ['OUTPUT_RANK', '#1', 'var(--amber)'],
+        ].map(([k, v, c]) => (
+          <div key={k} className="telemetry-cell" style={{ borderLeft: `2px solid ${c}`, paddingLeft: 10 }}>
+            <div className="mono telemetry-label" style={{ fontSize: 10, color: 'var(--fg-faint)', letterSpacing: '0.1em' }}>{k}</div>
+            <div className="mono telemetry-value" style={{ fontSize: 22, fontWeight: 700, color: c }}>{v}</div>
+          </div>
+        ))}
+      </div>
+      <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', marginTop: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px dashed var(--line)', paddingTop: 10, gap: 10 }}>
+        <span>FOCUS_30D</span>
+        <span style={{ color: 'var(--fg-dim)' }}>SRC // ACTIVTRAK</span>
+      </div>
+    </div>
   );
 }
 
