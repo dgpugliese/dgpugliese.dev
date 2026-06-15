@@ -117,7 +117,7 @@ export const posts = [
       },
       {
         heading: 'Why Web Crypto API',
-        text: `The Web Crypto API is implemented natively in every modern browser. No dependencies, no supply-chain attack surface. SubtleCrypto.encrypt() and .decrypt() are async, non-blocking, and hardware-accelerated on most devices. The only external dependency is the Argon2id WASM module — and you can audit the source yourself. I didn't want a library between me and the primitive.`,
+        text: `The Web Crypto API is implemented natively in every modern browser. SubtleCrypto.encrypt() and .decrypt() are async, non-blocking, and hardware-accelerated on most devices. Default link-fragment mode keeps the file-encryption path on browser-native primitives; optional passphrase mode adds the Argon2id WASM module for memory-hard key wrapping.`,
       },
       {
         heading: 'The Threat Model',

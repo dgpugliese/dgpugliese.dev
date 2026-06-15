@@ -57,8 +57,8 @@ export default function ObscuraCaseStudy() {
               <span><span style={{ color: 'var(--green)' }}>●</span> LIVE</span>
               <span>SOLO BUILD</span>
               <span>SHIPPED 2026-05-05</span>
-              <span>50 MB · 7d TTL</span>
-              <a href="https://github.com/dgpugliese/obscura/releases" target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>v0.1.1 ↗</a>
+              <span>50 MB · 7d TTL · 1/3/5/10 downloads</span>
+              <a href="https://github.com/dgpugliese/obscura/releases" target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>v0.1.2 ↗</a>
             </div>
           </div>
 
@@ -69,7 +69,7 @@ export default function ObscuraCaseStudy() {
               the browser before they ever leave your device. The server only ever sees ciphertext, and the key
               never reaches the server. You share a link (or QR code); the recipient opens it and the file decrypts
               in their browser. Optional <Cyan>passphrase mode</Cyan> adds an out-of-band password wrap. Files are
-              ephemeral — <Cyan>50 MB cap, 7-day max TTL</Cyan>, pruned by design.
+              ephemeral — <Cyan>50 MB design ceiling, 64 MiB hard cap, 7-day max TTL</Cyan>, pruned by design.
             </p>
             <p style={P}>
               I built it solo as a demonstrable, end-to-end answer to a question that comes up constantly in
@@ -118,10 +118,11 @@ export default function ObscuraCaseStudy() {
           {/* Stack */}
           <Section num="04" title="The stack" sub="what's under the hood">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 14 }}>
-              <StackPanel label="FRONTEND" items={['React 18', 'JetBrains Mono / Inter', 'Vanilla CSS · monospace HUD']} c="cyan" />
+              <StackPanel label="FRONTEND" items={['React 18', 'Single app view', 'Vanilla CSS · monospace HUD']} c="cyan" />
               <StackPanel label="CRYPTOGRAPHY" items={['Web Crypto API', 'AES-256-GCM (AEAD)', 'Argon2id (KDF)']} c="violet" />
               <StackPanel label="DELIVERY" items={['QR code share-links', 'URL fragment key carrier', 'Ephemeral TTL on storage']} c="amber" />
               <StackPanel label="HOSTING" items={['Cloudflare Workers', 'R2 (ciphertext)', 'KV (TTL metadata)', 'Custom domain · obscr.app']} c="green" />
+              <StackPanel label="PUBLIC LIMITS" items={['50 MB design ceiling', '64 MiB hard server cap', '1h-7d TTL', '1 / 3 / 5 / 10 downloads', 'No accounts', 'No regulated data']} c="amber" />
             </div>
           </Section>
 
@@ -144,16 +145,16 @@ export default function ObscuraCaseStudy() {
           {/* Trust posture */}
           <Section num="06" title="Trust posture is the product" sub="verifiable, not theoretical">
             <p style={P}>
-              "Zero-knowledge" is a marketing word until the operator gives you a way to check. Three pieces of
-              public scaffolding make Obscura's claim auditable:
+              "Zero-knowledge" is a marketing word until the operator gives you a way to check. The unified Trust Center and
+              public repo make Obscura's claim easier to audit:
             </p>
             <ul style={UL}>
-              <li><a href="https://obscr.app/transparency" target="_blank" rel="noreferrer" style={LINK}>/transparency</a> — a daily aggregate counter log (uploads, downloads, manual burns). <Cyan>Server-side counters only</Cyan>; no per-share data, no IPs, no filenames.</li>
-              <li><a href="https://obscr.app/status" target="_blank" rel="noreferrer" style={LINK}>/status</a> — a 30-day calendar rendered from a <code style={CODE}>status.json</code> committed to the public repo. Every incident is a Git commit; the history is the audit trail.</li>
-              <li><a href="https://obscr.app/privacy" target="_blank" rel="noreferrer" style={LINK}>/privacy</a> — spells out exactly what Cloudflare retains on our behalf (their standard access logs) vs. what the application stores (ciphertext, TTL, read counts — nothing else). No dark-pattern footnotes.</li>
+              <li><a href="https://obscr.app/transparency.html" target="_blank" rel="noreferrer" style={LINK}>Trust Center</a> — one page for aggregate counters, 30-day service status, privacy posture, security policy, abuse reporting, and support. Legacy /status, /privacy, and /support URLs now land on the matching Trust Center sections.</li>
+              <li><Cyan>Aggregate counters only</Cyan>: uploads, manual burns, TTL expirations, and exhausted shares. No per-share data, no IPs, no filenames in the app counters.</li>
+              <li><Cyan>Privacy posture is explicit</Cyan>: the app stores ciphertext, TTL, and read counts; Cloudflare can still retain platform request logs, including IPs and paths, under its own retention model.</li>
             </ul>
             <p style={P}>
-              Repo posture matches: branch protection on <code style={CODE}>main</code>, tag-creation ruleset, Dependabot,
+              Repo posture matches: branch protection on <code style={CODE}>main</code>, release-tag ruleset, Dependabot,
               secret-scanning push protection. MIT-licensed, ~108 KB of source — you can read every line in an
               evening. Trust is something you build by making yourself easy to check.
             </p>
@@ -186,8 +187,7 @@ export default function ObscuraCaseStudy() {
               <Cyan> Cloudflare MCP</Cyan>. Security review pass done with the same toolchain.
             </p>
             <p style={P}>
-              End-to-end in days, not weeks — and the engineering log shows it: Lighthouse a11y 100, LCP ~130 ms,
-              ~92 KB total app payload on first load. AI as a serious engineering partner, not a code-completion toy.
+              End-to-end in days, not weeks. AI as a serious engineering partner, not a code-completion toy.
             </p>
           </Section>
 
@@ -204,6 +204,7 @@ export default function ObscuraCaseStudy() {
               <li>Optional public-key recipient mode (recipient publishes a pubkey, sender encrypts to it — no shared password)</li>
               <li>File-size streaming (currently buffers; needs chunked AES-GCM for &gt;1GB)</li>
               <li>WebAuthn-gated unlocks for repeat recipients</li>
+              <li>Anonymous paid transfer-limit tokens for larger ephemeral sends</li>
               <li>Self-hostable distribution as a single Docker image for orgs with strict data-residency rules</li>
             </ul>
             <p style={P}>If you're reading this and want one of these, or have an integration use case — <a href="mailto:dp@dgpugliese.dev" style={LINK}>dp@dgpugliese.dev</a>.</p>

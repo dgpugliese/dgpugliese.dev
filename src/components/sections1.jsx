@@ -100,7 +100,7 @@ export function Projects() {
       title: 'Obscura',
       sub: 'Zero-knowledge secure file transfer · obscr.app',
       stack: ['Web Crypto API', 'AES-256-GCM', 'Argon2id', 'Zero-Knowledge'],
-      detail: "Browser-only file transfer with client-side AES-256-GCM. A random WebCrypto key lives in the URL fragment — never transmitted to the server. Optional passphrase mode wraps the key under an Argon2id-derived KEK. The server only ever sees ciphertext. Built solo end-to-end with a public transparency log, status page, and privacy policy.",
+      detail: "Browser-only file transfer with client-side AES-256-GCM. A random WebCrypto key lives in the URL fragment — never transmitted to the server. Optional passphrase mode wraps the key under an Argon2id-derived KEK. The server only ever sees ciphertext. Built solo end-to-end with a public Trust Center, privacy policy, and support posture.",
       caseStudy: '/obscura',
       live: 'https://obscr.app/',
       repo: 'https://github.com/dgpugliese/obscura',
