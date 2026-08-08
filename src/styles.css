@@ -207,6 +207,70 @@ section.sect {
   padding: 80px 60px;
   position: relative;
 }
+.hero-hero {
+  min-height: calc(100vh - 36px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.hero-identity {
+  max-width: 860px;
+  width: 100%;
+  padding: 56px 56px 66px;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+}
+.hero-initials {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(94px, 20vw, 182px);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--cyan-bright);
+  text-shadow: 0 0 26px rgba(127, 223, 255, 0.28);
+}
+.hero-title {
+  margin-top: 18px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(28px, 4.4vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+.hero-tag {
+  margin: 22px auto 0;
+  max-width: 680px;
+  color: var(--fg-dim);
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+}
+.hero-scroll-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  color: var(--fg-faint);
+  text-decoration: none;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.24em;
+  font-size: 10px;
+}
+.hero-scroll-label { text-transform: uppercase; }
+.hero-scroll-arrow {
+  font-size: 22px;
+  line-height: 1;
+  animation: hero-scroll 1.35s ease-in-out infinite;
+}
+@keyframes hero-scroll {
+  0%, 100% { transform: translateY(0); opacity: 0.72; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
 .sect-head {
   display: flex;
   align-items: baseline;

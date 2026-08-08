@@ -1,64 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Typer } from './fx.jsx';
-import { channels } from '../data/channels.js';
-import { useAudio } from '../lib/audio.jsx';
 
 export function Hero() {
-  const heroRef = useRef(null);
-  const onMove = (e) => {
-    const r = heroRef.current?.getBoundingClientRect(); if (!r) return;
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    heroRef.current.style.setProperty('--mx', x);
-    heroRef.current.style.setProperty('--my', y);
-  };
   return (
-    <section className="sect" id="home" data-screen-label="01 Home" ref={heroRef} onMouseMove={onMove}
-             style={{ minHeight: 'calc(100vh - 36px)', padding: '60px 60px 40px', display: 'grid', gridTemplateColumns: '1.55fr 1fr', gap: 24 }}>
-      <div className="panel panel-corners" style={{ padding: '48px 56px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', transform: 'translate3d(calc(var(--mx, 0) * -8px), calc(var(--my, 0) * -6px), 0)', transition: 'transform 0.3s cubic-bezier(.2,.8,.2,1)' }}>
+    <section className="sect hero-hero" id="home" data-screen-label="01 Home">
+      <div className="panel panel-corners hero-identity">
         <span className="panel-label">OPERATOR_PROFILE</span>
-        <div>
-          <div className="mono" style={{ fontSize: 12, color: 'var(--cyan)', letterSpacing: '0.25em', marginBottom: 16 }}>
-            ◢ SECURE_CHANNEL OPEN · INBOUND OK ◣
-          </div>
-          <h1 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(72px, 9vw, 132px)', fontWeight: 700, lineHeight: 0.92, letterSpacing: '-0.03em', margin: 0, color: 'var(--fg)' }}>
-            DAVID<br /><span style={{ position: 'relative' }}>PUGLIESE<span style={{ color: 'var(--cyan)' }}>.</span></span>
-          </h1>
-          <div className="mono" style={{ fontSize: 18, marginTop: 24, color: 'var(--fg-dim)', minHeight: 32 }}>
-            <span style={{ color: 'var(--cyan)' }}>&gt; </span>
-            <Typer phrases={[
-              'it director // lead solutions architect // msp founder',
-              'ships production MCP servers for claude in the enterprise',
-              'designs non-human identity & access scoping for agents',
-              'full-stack platforms · zero-trust · cloud identity',
-              'engineer who ships in production, not slides',
-            ]} />
-          </div>
-          <div style={{ marginTop: 28, maxWidth: 600, fontSize: 16, lineHeight: 1.6, color: 'var(--fg-dim)' }}>
-            16+ years designing resilient infrastructure, secure systems, and practical cloud software across enterprise
-            IT, cybersecurity, and modern application development. Through The IT Visionary, David delivers tailored
-            infrastructure, automation, and technology strategy while continuing to build open-source software and
-            cloud utilities. Comfortable shipping end-to-end, briefing a CISO Friday afternoon, and debugging OAuth at
-            2 a.m. Saturday.
-          </div>
-        </div>
-
-        <div style={{ display: 'flex', gap: 14, marginTop: 40, flexWrap: 'wrap' }}>
-          <Link className="btn" to="/build">→ AVAILABLE FOR BUILDS</Link>
-          <a className="btn btn-ghost" href="mailto:dp@dgpugliese.dev">→ TRANSMIT_MSG</a>
-          <Link className="btn btn-ghost" to="/log">→ SIGNAL_LOG</Link>
-          <a className="btn btn-ghost" href="https://linkedin.com/in/dgpugliese" target="_blank" rel="noreferrer">↗ LINKEDIN</a>
-          <a className="btn btn-ghost" href="https://github.com/dgpugliese" target="_blank" rel="noreferrer">↗ GITHUB</a>
-          <a className="btn btn-ghost" href="https://davidguypugliese.com" target="_blank" rel="noreferrer">↗ DAVID PUGLIESE · RESUME</a>
-        </div>
-      </div>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, transform: 'translate3d(calc(var(--mx, 0) * 12px), calc(var(--my, 0) * 8px), 0)', transition: 'transform 0.3s cubic-bezier(.2,.8,.2,1)' }}>
-        <Avatar />
-        <Telemetry />
-        <NowPlaying />
-        <FocusSignal />
+        <div className="hero-initials">DGP</div>
+        <div className="hero-title">DAVID GUY PUGLIESE</div>
+        <p className="hero-tag">IT Director · Solutions Architect · MSP Founder</p>
+        <a className="hero-scroll-indicator" href="#about" aria-label="Scroll to About section">
+          <span className="hero-scroll-label">SCROLL</span>
+          <span className="hero-scroll-arrow">⤓</span>
+        </a>
       </div>
     </section>
   );

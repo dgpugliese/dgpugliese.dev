@@ -6,7 +6,6 @@ import SilentBeatCaseStudy from './pages/SilentBeatCaseStudy.jsx';
 import ComplianceDashboardCaseStudy from './pages/ComplianceDashboardCaseStudy.jsx';
 import Build from './pages/Build.jsx';
 import Log, { LogPost } from './pages/Log.jsx';
-import { Boot } from './components/fx.jsx';
 import { CLI } from './components/CLI.jsx';
 import { AudioProvider } from './lib/audio.jsx';
 
@@ -17,14 +16,9 @@ function ScrollToTop() {
 }
 
 export default function App() {
-  // Skip boot if user already saw it this session
-  const [booted, setBooted] = useState(() => sessionStorage.getItem('booted') === '1');
+  // Boot splash intentionally disabled for a clean first paint.
+  const booted = true;
   const [showTop, setShowTop] = useState(false);
-
-  const finishBoot = () => {
-    sessionStorage.setItem('booted', '1');
-    setBooted(true);
-  };
 
   // Console signature — for the engineers who actually open DevTools.
   useEffect(() => {
@@ -57,8 +51,6 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <AudioProvider>
-        {!booted && <Boot onDone={finishBoot} />}
-
         <Routes>
           <Route path="/" element={<Home booted={booted} />} />
           <Route path="/obscura" element={<ObscuraCaseStudy />} />
