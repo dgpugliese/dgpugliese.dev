@@ -8,7 +8,7 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState } f
 // Source: video description on the linked YouTube video.
 export const TRACK = {
   videoId: 'qfDc10opQf0',
-  title: 'Chapter I',
+  title: 'Track I',
   artist: 'FilFar',
   artistHandle: '@filfar',
   artistHref: 'https://www.youtube.com/@filfar',

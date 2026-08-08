@@ -246,9 +246,9 @@ export default function Build() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 14 }}>
               <BuildCard
                 name="Compliance Dashboard"
-                tagline="KAPSI 990 tracker · chapter-level IRS 990 compliance across 702 active chapters"
-                replaces="an annual scramble through spreadsheets to confirm which chapters had filed"
-                does="aggregates five sources (ProPublica, IRS e-Postcard, Auto-Revocation List, TEOS, Salesforce/Fonteva), nightly refresh, audit-packet export, per-province RLS"
+                tagline="IRS 990 compliance dashboard for a distributed nonprofit affiliate set"
+                replaces="an annual scramble through spreadsheets to confirm filing status across dozens of entities"
+                does="aggregates five sources (ProPublica, IRS e-Postcard, Auto-Revocation List, TEOS, Salesforce/Fonteva), nightly refresh, audit-packet export"
                 stack="Supabase + Edge Functions + GH Actions · in production"
                 href="/compliance"
                 live={null}
@@ -307,10 +307,10 @@ export default function Build() {
           </Section>
 
           {/* 06 — About */}
-          <Section num="06" title="About" sub="who's building this">
+            <Section num="06" title="About" sub="who's building this">
             <p style={P}>
-              I'm <Cyan>David Pugliese</Cyan>. By day, I'm Director of IT for an international fraternity, running infrastructure,
-              security, and software for a member network across North America. On contract, I take on build work for clients
+              I'm <Cyan>David Pugliese</Cyan>. By day, I run engineering leadership for distributed organizations, building and
+              operating infrastructure, security, and software. On contract, I take on build work for clients
               who need real software shipped without the agency markup.
             </p>
             <p style={P}>

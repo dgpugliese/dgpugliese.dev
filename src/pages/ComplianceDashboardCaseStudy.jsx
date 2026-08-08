@@ -4,9 +4,9 @@ import { useSeo } from '../lib/seo';
 
 export default function ComplianceDashboardCaseStudy() {
   useSeo({
-    title: 'Chapter Compliance Dashboard · IRS Form 990 Tracking — Case Study · dgpugliese.dev',
+    title: 'Compliance Dashboard · IRS Form 990 Tracking — Case Study · dgpugliese.dev',
     description:
-      'Case study: an internal IHQ tool tracking IRS Form 990 compliance across 702 active fraternity chapters plus 12 provinces and the Grand Chapter. Five data sources (four IRS feeds + Salesforce/Fonteva), automated refresh, $300/yr vs $110K–$246K vendor quotes.',
+      'Private case study: an internal compliance dashboard tracking IRS Form 990 obligations across a multi-region nonprofit network. Five data sources (four IRS feeds + Salesforce/Fonteva), automated refresh, $300/yr vs $110K–$246K vendor quotes.',
     path: '/compliance',
     image: 'https://dgpugliese.dev/og.svg',
   });
@@ -37,27 +37,26 @@ export default function ComplianceDashboardCaseStudy() {
           </Link>
 
           {/* Hero */}
-          <div className="panel panel-corners" style={{ padding: '40px 44px', marginBottom: 32 }}>
+            <div className="panel panel-corners" style={{ padding: '40px 44px', marginBottom: 32 }}>
             <span className="panel-label">CASE_STUDY · COMPLIANCE</span>
             <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.25em', marginBottom: 14 }}>
-              ◢ IRS FORM 990 COMPLIANCE · 702 ACTIVE CHAPTERS + 12 PROVINCES + GRAND CHAPTER ◣
+              ◢ IRS FORM 990 COMPLIANCE · 702 ENTITIES + 12 REGIONS ◣
             </div>
             <h1 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(40px, 7vw, 80px)', fontWeight: 700, lineHeight: 1, letterSpacing: '-0.03em', margin: 0, color: 'var(--fg)' }}>
-              CHAPTER<br/>COMPLIANCE<span style={{ color: 'var(--cyan)' }}>.</span>
+              COMPLIANCE<br/>PLATFORM<span style={{ color: 'var(--cyan)' }}>.</span>
             </h1>
             <div className="mono" style={{ fontSize: 16, marginTop: 16, color: 'var(--fg-dim)' }}>
               <span style={{ color: 'var(--cyan)' }}>&gt; </span>
-              702 active chapters + 12 provinces · 5 data sources · refreshed nightly · $300/yr
+              702 entities tracked across 12 regions · 5 data sources · refreshed nightly · $300/yr
             </div>
             <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
-              <a className="btn" href="https://compliance.kappaalphapsi1911.com/" target="_blank" rel="noreferrer">→ LIVE SITE (IHQ STAFF LOGIN)</a>
               <Link to="/log/reverse-engineering-irs-teos" className="btn btn-ghost" style={{ textDecoration: 'none' }}>↗ TEOS WRITEUP</Link>
             </div>
             <div className="mono" style={{ display: 'flex', flexWrap: 'wrap', gap: 18, marginTop: 28, fontSize: 11, color: 'var(--fg-faint)', borderTop: '1px dashed var(--line)', paddingTop: 16, letterSpacing: '0.12em' }}>
               <span><span style={{ color: 'var(--green)' }}>●</span> IN-USE</span>
-              <span>INTERNAL · IHQ STAFF</span>
-              <span>702 ACTIVE CHAPTERS</span>
-              <span>12 PROVINCES + GRAND CHAPTER</span>
+              <span>PRIVATE · STAFF ACCESS</span>
+              <span>702 ENTITIES</span>
+              <span>12 REGIONS</span>
               <span>3,672 FILINGS</span>
               <span>BACK TO 2008</span>
             </div>
@@ -66,20 +65,19 @@ export default function ComplianceDashboardCaseStudy() {
           {/* TL;DR */}
           <Section num="01" title="TL;DR" sub="60-second summary">
             <p style={P}>
-              An internal tool tracking <Cyan>IRS Form 990</Cyan> filing status across 702 active Kappa Alpha Psi
-              chapters (plus all 12 provinces and the Grand Chapter), so IHQ can spot compliance gaps before
-              chapters drift into auto-revocation — and reconcile its own chapter-certification records against
-              what the IRS actually shows. IHQ-staff login only; accounts issued manually.
+              An internal tool tracking <Cyan>IRS Form 990</Cyan> filing status across 702 active nonprofit entities
+              across 12 regions, so leadership can spot compliance gaps before entities drift into auto-revocation — and
+              reconcile certification records against what the IRS actually shows. Internal staff login only; accounts issued manually.
             </p>
             <p style={P}>
               Aggregates <Cyan>five data sources</Cyan> — ProPublica Nonprofit Explorer, the IRS e-Postcard bulk
               ZIP, the IRS Auto-Revocation List, a custom scraper against the IRS TEOS internal JSON API
               (the only way to get historical 990-N data — the IRS doesn't publish it in bulk), and a daily
-              Salesforce/Fonteva sync that anchors the chapter roster and pulls in each chapter's most recent
+              Salesforce/Fonteva sync that anchors the entity roster and pulls in each entity's most recent
               certification submission + signed 990 PDF.
             </p>
             <p style={P}>
-              Built end-to-end on free-tier infrastructure that scales for IHQ's volume: under <Cyan>$300/yr</Cyan>{' '}
+              Built end-to-end on infrastructure that scales for a mid-size nonprofit operation: under <Cyan>$300/yr</Cyan>{' '}
               total, against vendor alternatives quoting <Cyan>$110K–$246K</Cyan>.
             </p>
           </Section>
@@ -89,18 +87,18 @@ export default function ComplianceDashboardCaseStudy() {
             <p style={P}>
               Nonprofits that fail to file IRS Form 990 (or its 990-EZ / 990-N variants) for three consecutive
               years lose their tax-exempt status automatically. Reinstatement is painful, expensive, and visible
-              on the IRS Auto-Revocation List. For an org with hundreds of chapter affiliates filing under their
-              own EINs, that's not a hypothetical — it's a recurring operational risk.
+              on the IRS Auto-Revocation List. For an org with hundreds of affiliates filing under their
+              own EINs, that's a recurring operational risk.
             </p>
             <p style={P}>
               The challenge: the data exists across at least four IRS surfaces, none of them designed for the
-              "show me all my chapters' filing status" question. ProPublica covers full 990 / 990-EZ / 990-PF
+              "show me all filing entities' status" question. ProPublica covers full 990 / 990-EZ / 990-PF
               year-by-year. The IRS e-Postcard bulk ZIP covers latest 990-N per EIN (no history). The Auto-Revocation
-              List covers revocations and reinstatements. Historical 990-N — the form most small chapters file —
+              List covers revocations and reinstatements. Historical 990-N — the form most small affiliates file —
               has <Dim>no public bulk source at all</Dim>.
             </p>
             <p style={P}>
-              Vendor quotes for a managed equivalent: $110K–$246K/yr. The build for what IHQ actually needs:
+              Vendor quotes for a managed equivalent: $110K–$246K/yr. The build for what this project needed:
               ~$300/yr, finished in weeks, on infrastructure I already understand.
             </p>
           </Section>
@@ -110,10 +108,10 @@ export default function ComplianceDashboardCaseStudy() {
             <Diagram />
             <p style={P}>The pipeline, end to end:</p>
             <ol style={OL}>
-              <li><Cyan>Roster anchor</Cyan> — chapter EINs live in Supabase, synced nightly from Salesforce (Fonteva). The roster is the source of truth for which orgs we care about; the sync also pulls each chapter's most recent Chapter Certification submission and its signed 990 PDF link.</li>
+              <li><Cyan>Roster anchor</Cyan> — entity EINs live in Supabase, synced nightly from Salesforce (Fonteva). The roster is the source of truth for which orgs we care about; the sync also pulls each entity's most recent certification submission and its signed 990 PDF link.</li>
               <li><Cyan>Five refresh paths</Cyan>, each owning a column range so they never clobber each other:
                 <ul style={{ ...UL, marginTop: 8 }}>
-                  <li><strong>Fonteva / Salesforce</strong> (GitHub Actions, daily 06:30 UTC, <code style={CODE}>sf</code> CLI + SOQL): roster, EIN, region/province, Keeper of Exchequer name + email, certification status + signed 990 PDF URL</li>
+                  <li><strong>Fonteva / Salesforce</strong> (GitHub Actions, daily 06:30 UTC, <code style={CODE}>sf</code> CLI + SOQL): roster, EIN, region name, stewardship contact + email, certification status + signed 990 PDF URL</li>
                   <li><strong>ProPublica</strong> (Edge Function, daily 07:00 UTC via pg_cron): year-by-year 990 / 990-EZ / 990-PF + PDF return URLs</li>
                   <li><strong>e-Postcard bulk ZIP</strong> (GitHub Actions, monthly): latest 990-N per EIN</li>
                   <li><strong>Auto-Revocation List</strong> (Edge Function, monthly 5th 08:00 UTC via pg_cron, plus on-demand <code style={CODE}>repository_dispatch</code> button): revocations + reinstatements with effective dates</li>
@@ -121,8 +119,8 @@ export default function ComplianceDashboardCaseStudy() {
                 </ul>
               </li>
               <li><Cyan>Upsert + audit</Cyan> — every refresh writes a row to <code style={CODE}>refresh_runs</code> with counts, status, and a JSONB details blob. Source-of-truth rules at the column level prevent overwrites.</li>
-              <li><Cyan>Frontend reads from a view</Cyan> — <code style={CODE}>chapters_with_status</code> (security_invoker) joins chapters + latest filing + IRS status + certification into one shape, so the React app reads from a single source. Nine tap-to-filter KPI cards scope the chapter list; province rollups drill from national view into any of the 12 provinces in one click.</li>
-              <li><Cyan>Auth</Cyan> — Supabase email/password, IHQ staff only, accounts created manually. No public signup, no email infrastructure. Phase 2 (now live at the DB layer) adds a <code style={CODE}>province_name</code> JWT claim via a custom access token hook, with RLS scoping per province for Province Keepers of Exchequer.</li>
+              <li><Cyan>Frontend reads from a view</Cyan> — <code style={CODE}>chapters_with_status</code> (security_invoker) joins entities + latest filing + IRS status + certification into one shape, so the React app reads from a single source. Nine tap-to-filter KPI cards scope the entity list; region rollups drill from national view into any of the 12 regions in one click.</li>
+              <li><Cyan>Auth</Cyan> — Supabase email/password, staff only, accounts created manually. No public signup, no email infrastructure. Phase 2 (now live at the DB layer) adds a <code style={CODE}>province_name</code> JWT claim via a custom access token hook, with RLS scoping per region.</li>
             </ol>
           </Section>
 
@@ -142,7 +140,7 @@ export default function ComplianceDashboardCaseStudy() {
             <p style={P}>
               The scraper is ~30 lines of Node. No HTML parsing, no headless browser, no fragile selectors.
               The JSON shape is the surface I'm coupling to. One full pass:
-              <Cyan> 3,672 filings imported across 434 chapters</Cyan>, back to 2008.{' '}
+              <Cyan> 3,672 filings imported across 434 entities</Cyan>, back to 2008.{' '}
               <Link to="/log/reverse-engineering-irs-teos" style={LINK}>Full writeup on the Signal Log →</Link>
             </p>
           </Section>
@@ -166,35 +164,35 @@ export default function ComplianceDashboardCaseStudy() {
             <Decision title="Audit row per refresh"
                       body="Every script run inserts a refresh_runs row with start/end time, processed/updated/error counts, and a JSONB details blob. Means I can answer 'when did this filing last sync?' or 'why did last Tuesday's refresh fail?' in seconds, without re-reading logs across three providers." />
             <Decision title="Standalone Supabase project, mergeable later"
-                      body="Could have lived inside the KAPSI Connect database (same nonprofit, same Postgres). Instead it's standalone — its own Supabase project, its own roster table, its own auth. Path to merging into Connect is a `compliance` schema swap once the data model stabilizes. Optionality > premature coupling." />
+                      body="This was built as a standalone platform in its own Supabase project rather than a direct extension of an existing portal. That kept scope tight while the data model matured. Optionality > premature coupling." />
             <Decision title="Manual account provisioning, no public signup"
-                      body="IHQ staff only. Accounts created by hand in Supabase Auth's dashboard. Trades convenience for blast-radius reduction: no email-confirmation infrastructure to operate, no signup-spam risk, and the moment of provisioning is also the moment of access review." />
+                      body="Staff only. Accounts created by hand in Supabase Auth's dashboard. This trades convenience for blast-radius reduction: no email-confirmation infrastructure to operate, no signup-spam risk, and the moment of provisioning is also the moment of access review." />
             <Decision title="One-click audit packets"
-                      body="Each chapter detail page bundles every PDF return on record into a ZIP plus a manifest, exportable as a print-friendly PDF for board / legal review. The grunt-work step the existing process used to take a half-day per chapter — now 8 seconds." />
+                      body="Each entity detail page bundles every PDF return on record into a ZIP plus a manifest, exportable as a print-friendly PDF for board / legal review. The same package that used to take a half day now completes in ~8 seconds." />
           </Section>
 
           {/* Trust & Phase 2 */}
           <Section num="07" title="Trust posture &amp; Phase 2" sub="what's defensible, what's next">
             <p style={P}>
-              Phase 1 is IHQ-staff-only with full read/write under a single role. Trust scaffolding is the boring,
+              Phase 1 is staff-only with full read/write under a single role. Trust scaffolding is the boring,
               load-bearing stuff:
             </p>
             <ul style={UL}>
               <li><Cyan>RLS on every table</Cyan> — no permissive USING(true) policies; staff role gates all reads</li>
               <li><Cyan>Audit row per refresh</Cyan>, attributed to the script + source, with counts and status</li>
-              <li><Cyan>Activity log per chapter</Cyan>, attributed to auth.uid() + email — every note timestamped and authored</li>
+              <li><Cyan>Activity log per entity</Cyan>, attributed to auth.uid() + email — every note timestamped and authored</li>
               <li><Cyan>JSONB raw payloads</Cyan> retained on every filing row, so any data quality question is one query away</li>
             </ul>
             <p style={P}>
-              <Cyan>Phase 2 — Province KOE login — is shipped at the data layer.</Cyan> A custom Supabase
+              <Cyan>Phase 2 — region-based role access — is shipped at the data layer.</Cyan> A custom Supabase
               access-token hook attaches the user's <code style={CODE}>province_name</code> to their JWT on
               every login; RLS policies on <code style={CODE}>chapters</code>, <code style={CODE}>filings</code>,
-              and <code style={CODE}>irs_org_status</code> scope reads to the chapters in that province. The
-              anon path the IHQ dashboard already uses is unchanged — phase 1 grants were tightened to{' '}
-              <code style={CODE}>anon</code> only so a logged-in province KOE doesn't inherit IHQ-wide reads.
+              and <code style={CODE}>irs_org_status</code> scope reads to the entities in that region. The
+              anon path the existing dashboard already uses is unchanged — phase 1 grants were tightened to{' '}
+              <code style={CODE}>anon</code> only so a logged-in region role doesn't inherit global reads.
               A <code style={CODE}>province_keepers</code> roster is auto-synced from the daily Fonteva job
               via a trigger, so adds/removes flow through without manual table edits. Remaining work to flip
-              it on: register the hook + invite users in the Supabase dashboard, and a small session-aware
+              it on: register the hook + invite users in the Supabase dashboard, and add a small session-aware
               login UI on the frontend.
             </p>
           </Section>
@@ -202,46 +200,46 @@ export default function ComplianceDashboardCaseStudy() {
           {/* Outcome / cost */}
           <Section num="08" title="Outcome" sub="cost, scale, what's next">
             <p style={P}>
-              In use today across IHQ leadership and finance. The headline numbers:
+              In use today in a production nonprofit context. The headline numbers:
             </p>
             <ul style={UL}>
-              <li><Cyan>702 active chapters</Cyan> + 12 provinces + Grand Chapter, tracked against five data sources, refreshed nightly</li>
+              <li><Cyan>702 active entities</Cyan> + 12 regions, tracked against five data sources, refreshed nightly</li>
               <li><Cyan>3,672 historical filings</Cyan> imported from TEOS on the first full pass, going back to 2008</li>
               <li><Cyan>~$300/yr total infrastructure cost</Cyan>, against vendor quotes of $110K–$246K</li>
-              <li><Cyan>~8 seconds</Cyan> to produce an audit packet that previously took half a day per chapter</li>
+              <li><Cyan>~8 seconds</Cyan> to produce an audit packet that previously took half a day manually</li>
             </ul>
             <p style={P}>
-              The differentiator over a pure status tracker is reconciling IHQ's <Cyan>internal</Cyan> chapter-certification
+              The differentiator over a pure status tracker is reconciling <Cyan>internal</Cyan> certification
               records against IRS reality. Three data-quality KPIs unique to this tool:
             </p>
             <ul style={UL}>
-              <li><Cyan>Chapters missing EINs in Fonteva</Cyan> — surfaces the data-entry punch list blocking IRS lookups</li>
-              <li><Cyan>Fonteva-certified but on the IRS Auto-Revocation List</Cyan> — chapters IHQ believes are in good standing but the IRS does not</li>
+              <li><Cyan>Entities missing EINs in Fonteva</Cyan> — surfaces the data-entry punch list blocking IRS lookups</li>
+              <li><Cyan>Fonteva-certified but on the IRS Auto-Revocation List</Cyan> — records marked in good standing but with IRS revocation conflicts</li>
               <li><Cyan>Certified without a 990 uploaded to Fonteva</Cyan> — completed cert packets missing the document that proves the filing</li>
             </ul>
             <p style={P}>Recently shipped:</p>
             <ul style={UL}>
               <li><Cyan>TEOS scraper promoted to weekly GitHub Actions cron</Cyan> (was a manual Node script)</li>
-              <li><Cyan>Province KOE auth + per-province RLS</Cyan> live at the DB layer (activation pending in Supabase dashboard)</li>
-              <li><Cyan>Salesforce/Fonteva roster sync</Cyan> — daily job that anchors the roster and pulls chapter certification + signed 990 PDF links from Fonteva</li>
+              <li><Cyan>Region-based auth + per-region RLS</Cyan> live at the DB layer (activation pending in Supabase dashboard)</li>
+              <li><Cyan>Salesforce/Fonteva roster sync</Cyan> — daily job that anchors the roster and pulls entity certification + signed 990 PDF links from Fonteva</li>
             </ul>
             <p style={P}>Punch list:</p>
             <ol style={OL}>
-              <li>Activate Phase 2: register the auth hook + invite Province KOEs in the Supabase dashboard, ship the session-aware login UI</li>
-              <li>16-chapter EIN punch list — chapters whose EINs are missing or malformed in Fonteva (already surfaced via the "Needs EIN in Fonteva" KPI card; needs data-entry on the Fonteva side)</li>
-              <li>Restyle the login page to match the main fraternity site's look</li>
-              <li>Nav/IA rework — Overview as default landing, drop the standalone "Chapters" nav item, move Data Refresh to admin-only</li>
-              <li>Audit a data quirk: 3 chapters returned 18 entries from TEOS (more than the 17 years 2008–2024 available — likely two filings in one tax year)</li>
+              <li>Activate Phase 2: register the auth hook + invite regional stewards in the Supabase dashboard, ship the session-aware login UI</li>
+              <li>16 entities with EIN issues — EINs are missing or malformed in Fonteva (already surfaced via the "Needs EIN in Fonteva" KPI card; needs data-entry on the Fonteva side)</li>
+              <li>Refine login page styling for the production theme</li>
+              <li>Nav/IA rework — Overview as default landing, move Data Refresh to admin-only</li>
+              <li>Audit a data quirk: 3 entities returned 18 entries from TEOS (more than the 17 years 2008–2024 available — likely two filings in one tax year)</li>
               <li>Public-facing read-only demo for portfolio purposes (separate Supabase project, sample data)</li>
             </ol>
-            <p style={P}>If you run a nonprofit with chapter affiliates and recognize the problem — <a href="mailto:dp@dgpugliese.dev" style={LINK}>dp@dgpugliese.dev</a>.</p>
+            <p style={P}>If you run an organization with distributed entities and recognize the problem — <a href="mailto:dp@dgpugliese.dev" style={LINK}>dp@dgpugliese.dev</a>.</p>
           </Section>
 
           {/* Disclaimer */}
           <div className="panel" style={{ padding: '16px 20px', borderLeft: '2px solid var(--amber)', marginBottom: 18 }}>
             <div className="mono" style={{ fontSize: 10, color: 'var(--amber)', letterSpacing: '0.18em', marginBottom: 8 }}>// DISCLOSURE</div>
             <div style={{ fontSize: 13, color: 'var(--fg-dim)', lineHeight: 1.65 }}>
-              Internal IHQ tooling for Kappa Alpha Psi Fraternity, Inc. Built as part of my role as Director of IT. Live link is gated behind staff login; visiting it as a non-staff user will land on the login screen. Source is private.
+              Internal compliance tooling built for a private nonprofit operations stack. Live link is gated behind staff login; visiting it as a non-staff user will land on the login screen. Source is private.
             </div>
           </div>
 
@@ -322,20 +320,20 @@ function Diagram() {
       <pre className="mono" style={{ fontSize: 12, color: 'var(--fg)', lineHeight: 1.55, margin: 0, whiteSpace: 'pre' }}>{`
   DATA SOURCES                          SUPABASE POSTGRES               FRONTEND
   ────────────                          ──────────────────               ────────
-  1. Fonteva / Salesforce ───┐  daily   chapters             ┐
+  1. Fonteva / Salesforce ───┐  daily   entities             ┐
      (roster + cert + PDFs)  │  06:30   filings              │
                              │          irs_org_status       │
   2. ProPublica API ─────────┤  daily   refresh_runs (audit) │
-     (year-by-year 990s)     │  07:00   chapter_contacts     ├──► Cloudflare Pages
-                             ├────────► province_keepers     │    React 18 + Vite
+     (year-by-year 990s)     │  07:00   entity_contacts      ├──► Cloudflare Pages
+                             ├────────► region_keepers      │    React 18 + Vite
   3. e-Postcard bulk ZIP ────┤  monthly                      │    Tailwind 3
      (latest 990-N per EIN)  │                               │
-                             │          RLS · IHQ staff role ┘
-  4. Auto-Revocation List ───┤  monthly + Province KOE scope
+                             │          RLS · staff role ┘
+  4. Auto-Revocation List ───┤  monthly + region scope
      (revocations + dates)   │          (security_invoker view)
                              │                  ↓
   5. TEOS internal JSON API ─┘  weekly  Phase 2 (DB live): province_name
-     (historical 990-N)               Sat  JWT claim → per-province RLS
+     (historical 990-N)               Sat  JWT claim → per-region RLS
 
   Refresh paths run on a mix of Supabase Edge Functions, GitHub Actions,
   pg_cron, and the Salesforce CLI. Every run writes an audit row to refresh_runs.

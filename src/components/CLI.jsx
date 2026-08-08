@@ -18,8 +18,9 @@ location: philadelphia, pa
 clearance level: full-stack ↔ infra ↔ identity`;
 
 const FILES = {
-  'about.md': `Director of IT, 10+ years across hybrid infra, cybersecurity, and full-stack engineering.
-Currently leading an AI-integrated IT function for a large nonprofit.`,
+  'about.md': `IT Director, Lead Solutions Architect, and founder of The IT Visionary.
+16+ years across enterprise infrastructure, cybersecurity, cloud platforms, and software development.
+Building resilient systems, secure workflows, and practical technology that ships.`,
   'resume.md': `feb 2024 — present  · director of IT       (current)
 jul 2023 — feb 2024  · IT manager           ergos technology partners
 apr 2022 — jul 2023  · lead PSE             SWK technologies

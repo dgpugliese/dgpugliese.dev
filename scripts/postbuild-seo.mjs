@@ -56,9 +56,9 @@ const routes = [
   },
   {
     path: '/compliance',
-    title: 'Compliance Dashboard · KAPSI 990 Tracker — Case Study · dgpugliese.dev',
+    title: 'Compliance Dashboard · Case Study · dgpugliese.dev',
     description:
-      'Case study: chapter-level IRS 990 compliance monitoring for an international fraternity. GitHub Actions cron, in production.',
+      'Case study: compliance operations dashboard for IRS Form 990 oversight across a distributed nonprofit network. GitHub Actions cron, in production.',
     image: `${SITE}/og.svg`,
   },
 ];

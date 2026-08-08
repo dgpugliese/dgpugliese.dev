@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 export function Resume() {
   const jobs = [
     {
-      title: 'Director of Information Technology', co: 'Kappa Alpha Psi Fraternity, Inc.', loc: 'Philadelphia, PA',
+      title: 'Director of Information Technology', co: 'Large National Membership Organization', loc: 'Philadelphia, PA',
       range: 'Feb 2024 — Present', current: true,
       bullets: [
-        'Lead IT strategy, engineering, and operations for an international fraternity with ~150K members across 770 chapters.',
+        'Lead IT strategy, engineering, and operations for a nationwide membership organization with large affiliate network scale.',
         'Designed and run production MCP server infrastructure connecting Claude to M365, Google Workspace, Cloudflare, Supabase, and Granola; established access patterns, scoping, and audit posture for non-human (agent) identities.',
-        'Lead architect on KAPSI Connect — headless React/Next.js portal (Cloudflare Pages → Node/Express middleware → Salesforce/Fonteva REST) with Stripe dues processing, WebAuthn/passkey auth, role-based JWT, and webhook-driven document signing.',
+        'Lead architect on a private member-platform product — headless React/Next.js portal (Cloudflare Pages → Node/Express middleware → Salesforce/Fonteva REST) with WebAuthn/passkey auth, role-based JWT, and webhook-driven document signing.',
         'Built physical + cloud infrastructure from the ground up — hypervisor environment, enterprise switching + UniFi access, AD remediation in tandem with Entra ID consolidation.',
         'Delivered org\'s first enterprise cybersecurity milestone — NIST 800-53 / CIS aligned with SOC 2-aligned controls. Commissioned org\'s first annual third-party pen test.',
         'Drive zero-touch employee lifecycle (M365/Entra ID provisioning, PowerShell automation, onboarding/offboarding SOPs); manage IT staff, annual budget, and vendor contracts; own incident response with structured root-cause analysis.',
@@ -142,13 +142,6 @@ export function Press() {
       kindColor: 'amber',
     },
     {
-      kind: 'FEATURED',
-      title: <i>The Journal of Kappa Alpha Psi</i>,
-      sub: 'Profile feature · page 28',
-      year: '2026',
-      href: 'https://online.flippingbook.com/view/282754758/28/',
-      kindColor: 'cyan',
-    },
     {
       kind: 'FEATURED',
       title: '"A Day in the Life of an Engineer" · SWK One Voice',

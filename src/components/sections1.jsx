@@ -12,19 +12,18 @@ export function About() {
         <div className="panel panel-corners" style={{ padding: '32px 36px' }}>
           <span className="panel-label">SUMMARY</span>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg)', margin: 0 }}>
-            <span style={{ color: 'var(--cyan)' }}>Ten years in IT, infra-first.</span> Came up the hands-on way —
-            racks, hypervisors, networking, backups &amp; DR, AD remediation. Grew into full-stack engineering and
-            platform architecture in parallel — these days I do <span style={{ color: 'var(--cyan)' }}>both</span>,
-            end to end.
+            <span style={{ color: 'var(--cyan)' }}>16+ years across enterprise IT and software.</span> David Pugliese
+            is an IT Director, Lead Solutions Architect, and MSP founder focused on resilient infrastructure,
+            cybersecurity, cloud platforms, and practical software development.
           </p>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-dim)', marginTop: 18 }}>
-            Day to day I work three surfaces: <span style={{ color: 'var(--violet)' }}>AI agent infrastructure</span> (production
+            His work spans three surfaces: <span style={{ color: 'var(--violet)' }}>AI agent infrastructure</span> (production
             MCP servers connecting Claude to enterprise SaaS), <span style={{ color: 'var(--cyan)' }}>full-stack platforms</span> (headless
             React/Node against Salesforce/Fonteva, Cloudflare, Supabase), and <span style={{ color: 'var(--cyan)' }}>applied security primitives</span> like
             {' '}<a href="https://obscr.app" target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)', textDecoration: 'underline' }}>Obscura</a> — a
             zero-knowledge file transfer tool with browser-side AES-256-GCM and Argon2id. On the IT-leadership side:
-            stood up the org's first NIST 800-53 / CIS aligned posture and SOC 2-aligned controls, and architected a
-            passwordless membership portal end-to-end for 150K-member scale on Cloudflare.
+            he has stood up NIST 800-53 / CIS aligned security postures, SOC 2-aligned controls, and passwordless
+            portals end-to-end on Cloudflare.
           </p>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-dim)', marginTop: 18 }}>
             I work best with teams that actually ship — recruiters with technical roles, operators who need fractional
@@ -117,13 +116,6 @@ export function Projects() {
     },
 
     {
-      id: 'CHAPTER-PATH', kind: 'WEB APP', tag: 'IN DEVELOPMENT', tagC: 'amber',
-      title: 'Chapter Path',
-      sub: 'White-label member portal platform · multi-tenant SaaS',
-      stack: ['SvelteKit 2', 'Svelte 5', 'Tailwind 4', 'Supabase', 'Stripe', 'Cloudflare Pages'],
-      detail: "Productized white-label of a portal I lead-architected for a fraternal organization with ~150K members. Each tenant gets an isolated Supabase project, Stripe account, and Cloudflare Pages deployment; per-deploy branding flows through env vars and CSS custom properties at runtime. Postgres schema spans ~25 tables with RLS enforced on every one — no permissive USING(true) writes — plus helper functions (is_admin(), has_grand_role(), current_member_id()) for role-based policies and a BEFORE-UPDATE trigger blocking self-elevation. Type-clean end-to-end against v1 schema; public marketing pages and email templates are next.",
-    },
-    {
       id: 'KINETIC-BRAIN', kind: 'KNOWLEDGE-OPS', tag: 'IN-USE', tagC: 'cyan',
       title: 'Kinetic Brain',
       sub: 'Structured memory vault for Claude Code · context-problem solver',
@@ -131,11 +123,11 @@ export function Projects() {
       detail: "A vault-as-memory architecture that fixes the 'every session starts cold' problem. Bootstrap reads, decision logs, append-only knowledge files, and session protocols give the agent stable context across projects. Not a second brain — Claude Code's brain.",
     },
     {
-      id: 'KAPSI-990', kind: 'DATA TOOL', tag: 'IN-USE', tagC: 'cyan',
-      title: 'Chapter Compliance Dashboard',
-      sub: 'IRS Form 990 compliance · 702 active chapters + 12 provinces · IHQ-staff login',
+      id: 'COMPLIANCE-990', kind: 'DATA TOOL', tag: 'IN-USE', tagC: 'cyan',
+      title: 'Nonprofit Compliance Dashboard',
+      sub: 'IRS Form 990 compliance for a nationwide affiliate network',
       stack: ['React', 'Vite', 'Tailwind', 'Supabase', 'IRS TEOS API', 'Edge Functions', 'GitHub Actions', 'Salesforce/Fonteva', 'Cloudflare Pages'],
-      detail: "Live IHQ tool tracking IRS Form 990 compliance across 702 active Kappa Alpha Psi chapters plus all 12 provinces and the Grand Chapter (IHQ-staff login). Aggregates five data sources — ProPublica Nonprofit Explorer (year-by-year 990 / 990-EZ / 990-PF), IRS e-Postcard bulk ZIP, IRS Auto-Revocation List, a custom scraper against the IRS TEOS internal JSON API for full historical 990-N back to 2008 (3,672 filings imported on last run; data the IRS bulk feeds don't publish), plus a daily Salesforce/Fonteva sync that anchors the chapter roster and pulls each chapter's latest certification + signed 990 PDF. Surfaces a 12-province heat grid, drill-into-chapter 990 history with timestamped activity logs, and one-click audit packets that bundle every PDF return on record. Phase 2 — Province KOE login with per-province RLS — shipped at the DB layer via a Supabase custom access-token hook. Refresh runs across Edge Functions, GitHub Actions, and pg_cron; every run writes an audit row. Built on infrastructure that scales for free at IHQ's volume — under $300/yr vs. vendor quotes of $110K–$246K.",
+      detail: "Live private dashboard for IRS Form 990 compliance across a nonprofit affiliate network. Aggregates five data sources — ProPublica Nonprofit Explorer (year-by-year 990 / 990-EZ / 990-PF), IRS e-Postcard bulk ZIP, IRS Auto-Revocation List, a custom scraper against the IRS TEOS internal JSON API for full historical 990-N back to 2008 (3,672 filings imported on last run; data the IRS bulk feeds don't publish), plus a daily Salesforce/Fonteva sync that anchors the affiliate roster and pulls each affiliate's latest certification + signed 990 PDF. Surfaces regional heat maps, drill-into-entity 990 history with timestamped activity logs, and one-click audit packets that bundle every PDF return on record. Phase 2 — region-aware access with per-region RLS — shipped at the DB layer via a Supabase custom access-token hook. Refresh runs across Edge Functions, GitHub Actions, and pg_cron; every run writes an audit row. Built on infrastructure that runs near-free at nonprofit scale — under $300/yr vs. vendor quotes of $110K–$246K.",
       caseStudy: '/compliance',
     },
     {

@@ -28,7 +28,7 @@ export function Hero() {
           <div className="mono" style={{ fontSize: 18, marginTop: 24, color: 'var(--fg-dim)', minHeight: 32 }}>
             <span style={{ color: 'var(--cyan)' }}>&gt; </span>
             <Typer phrases={[
-              'ai agent infrastructure // forward-deployed engineer',
+              'it director // lead solutions architect // msp founder',
               'ships production MCP servers for claude in the enterprise',
               'designs non-human identity & access scoping for agents',
               'full-stack platforms · zero-trust · cloud identity',
@@ -36,11 +36,11 @@ export function Hero() {
             ]} />
           </div>
           <div style={{ marginTop: 28, maxWidth: 600, fontSize: 16, lineHeight: 1.6, color: 'var(--fg-dim)' }}>
-            10+ years building and operating AI agent infrastructure, identity systems, and full-stack platforms in
-            production. Currently runs MCP servers connecting Claude to Microsoft 365, Google Workspace, Cloudflare,
-            and Supabase for a ~150K-user organization — and authored the non-human identity model the org now
-            defaults to for any new agent integration. Comfortable shipping end-to-end, briefing a CISO Friday
-            afternoon, and debugging OAuth at 2 a.m. Saturday.
+            16+ years designing resilient infrastructure, secure systems, and practical cloud software across enterprise
+            IT, cybersecurity, and modern application development. Through The IT Visionary, David delivers tailored
+            infrastructure, automation, and technology strategy while continuing to build open-source software and
+            cloud utilities. Comfortable shipping end-to-end, briefing a CISO Friday afternoon, and debugging OAuth at
+            2 a.m. Saturday.
           </div>
         </div>
 
@@ -350,7 +350,7 @@ function NowPlaying() {
   }, []);
 
   const data = now || {
-    shipping: { title: 'kapsi-connect v2.4 → cloudflare.pages', detail: 'webauthn flow + dues processor patch · eta 0:42' },
+    shipping: { title: 'platform observability suite', detail: 'infra hardening pass + MFA policy refresh · eta 0:42' },
   };
   const rows = [
     data.shipping && { key: 'shipping', glyph: '●', glyphColor: 'var(--green)', ...data.shipping },

@@ -21,7 +21,7 @@ export const posts = [
     body: [
       {
         heading: 'Why I\'m Doing This',
-        text: `For a decade I\'ve built and operated infrastructure, identity systems, and full-stack platforms — most recently as Director of IT for an international fraternity with members across North America. I\'ve also been shipping things on the side: a zero-knowledge file transfer tool (Obscura), a split-key dead-man\'s switch (SilentBeat), a compliance dashboard tracking 702 active nonprofit chapters\' IRS 990 filings. The through-line is privacy, security, and products that have to actually work — not demos. I\'m formalizing all of that into a build service: fixed scope, fixed price, fixed timeline, one builder, one accountable name.`,
+        text: `For a decade I\'ve built and operated infrastructure, identity systems, and full-stack platforms across nonprofit, public, and startup environments. I\'ve also been shipping things on the side: a zero-knowledge file transfer tool (Obscura), a split-key dead-man\'s switch (SilentBeat), and a compliance dashboard tracking nonprofit filing status. The through-line is privacy, security, and products that have to actually work — not demos. I\'m formalizing all of that into a build service: fixed scope, fixed price, fixed timeline, one builder, one accountable name.`,
       },
       {
         heading: 'What I Build',
@@ -53,15 +53,15 @@ export const posts = [
     body: [
       {
         heading: 'The Bulk-Data Problem',
-        text: `The IRS publishes a generous amount of nonprofit data. The Exempt Organizations Business Master File. The Auto-Revocation List. An AWS public dataset with full 990 returns at s3://irs-form-990/. But for 990-N e-Postcard filings — the form roughly 70% of small nonprofits file — the bulk feed contains exactly one row per organization: the most recent filing. No year-by-year history, no chronological view. If you want to know whether a particular nonprofit filed in 2018 and 2019 and 2020, the bulk feed will not tell you. That's the data gap I hit building a compliance dashboard for 702 active fraternity chapters.`,
+        text: `The IRS publishes a generous amount of nonprofit data. The Exempt Organizations Business Master File. The Auto-Revocation List. An AWS public dataset with full 990 returns at s3://irs-form-990/. But for 990-N e-Postcard filings — the form roughly 70% of small nonprofits file — the bulk feed contains exactly one row per organization: the most recent filing. No year-by-year history, no chronological view. If you want to know whether a particular nonprofit filed in 2018 and 2019 and 2020, the bulk feed will not tell you. That's the data gap I hit building a compliance dashboard for a large affiliate set filing under IRS rules.`,
       },
       {
         heading: 'The Network Tab Tells the Truth',
-        text: `I needed historical 990-N per chapter, back to 2008, with no obvious bulk source. The IRS's Tax Exempt Organization Search (TEOS) at apps.irs.gov/teos has the data — type in an EIN, get the full history rendered as a table. So I opened DevTools, pulled up the Network tab, and submitted a single EIN. The page made exactly one XHR: a GET to apps.irs.gov/teos/details/ePostSearch/{EIN}. No API key. No auth header. JSON response. Clean shape: an array of filings, one per row, each with tax_year, filing_date, form_type. Exactly the data I needed, served by the IRS's own backend in the cleanest format possible. The HTML page was a thin wrapper around it.`,
+        text: `I needed historical 990-N data back to 2008, with no obvious bulk source. The IRS's Tax Exempt Organization Search (TEOS) at apps.irs.gov/teos has it — type in an EIN and get the full history rendered as a table. So I opened DevTools, pulled up the Network tab, and submitted a single EIN. The page made exactly one XHR: a GET to apps.irs.gov/teos/details/ePostSearch/{EIN}. No API key. No auth header. JSON response. Clean shape: an array of filings, one per row, each with tax_year, filing_date, form_type. Exactly the data I needed, served by the IRS's own backend in the cleanest format possible. The HTML page was a thin wrapper around it.`,
       },
       {
         heading: 'Building the Scraper That Doesn\'t Scrape',
-        text: `The proof-of-concept was a 30-line Node script: read the EIN list from Supabase, throttle to one request per second to be a good citizen, hit the TEOS endpoint for each EIN, parse the JSON, upsert into a filings table. No HTML parsing, no headless browser, no Cheerio or Playwright. Critically: no fragile DOM selectors to break when the IRS updates its UI. The JSON shape is the surface I'm coupling to, not the markup. After one full pass: 3,672 filings imported across 434 chapters, going back to 2008. Since then the script has hardened — it now handles Akamai bot mitigation, retry/backoff, and a dry-run flag — but the shape is the same: hit the JSON API, upsert, write an audit row. The fetcher runs weekly on a GitHub Actions schedule for free; the data lands in Supabase free tier; the IRS serves the JSON at no cost to me. The whole pipeline runs at roughly $0/yr.`,
+        text: `The proof-of-concept was a 30-line Node script: read the EIN list from Supabase, throttle to one request per second to be a good citizen, hit the TEOS endpoint for each EIN, parse the JSON, upsert into a filings table. No HTML parsing, no headless browser, no Cheerio or Playwright. Critically: no fragile DOM selectors to break when the IRS updates its UI. The JSON shape is the surface I'm coupling to, not the markup. After one full pass: 3,672 filings imported across 434 organizations, going back to 2008. Since then the script has hardened — it now handles Akamai bot mitigation, retry/backoff, and a dry-run flag — but the shape is the same: hit the JSON API, upsert, write an audit row. The fetcher runs weekly on a GitHub Actions schedule for free; the data lands in Supabase free tier; the IRS serves the JSON at no cost to me. The whole pipeline runs at roughly $0/yr.`,
       },
       {
         heading: 'The Lesson',
@@ -137,7 +137,7 @@ export const posts = [
     body: [
       {
         heading: 'Where Most Orgs Start Wrong',
-        text: `They start with the full control catalog and freeze. NIST 800-53 has over 1,000 controls across 20 families. For a 150K-member nonprofit with a lean IT function, trying to satisfy everything is how you end up with a compliance theater exercise that protects nothing and costs everything. The catalog is a menu, not a checklist.`,
+        text: `They start with the full control catalog and freeze. NIST 800-53 has over 1,000 controls across 20 families. For a lean nonprofit IT function with no headcount cushion, trying to satisfy everything is how you end up with a compliance theater exercise that protects nothing and costs everything. The catalog is a menu, not a checklist.`,
       },
       {
         heading: 'What I Actually Prioritized',
