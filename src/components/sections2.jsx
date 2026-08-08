@@ -142,6 +142,7 @@ export function Press() {
       kindColor: 'amber',
     },
     {
+    {
       kind: 'FEATURED',
       title: '"A Day in the Life of an Engineer" · SWK One Voice',
       sub: 'Engineering profile selected for the company-wide conference',
