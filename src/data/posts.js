@@ -3,6 +3,49 @@
 
 export const posts = [
   {
+    slug: 'dorothy-salesforce-monitoring-bot',
+    date: '2026-08-25',
+    category: 'OPS',
+    categoryColor: 'green',
+    title: 'I Built a Bot That Reads the Storm Before It Touches Down',
+    summary:
+      'After a production email outage ran silent for 25 days, I built DOROTHY — a zero-dependency Python bot that sweeps 14 systems in a 150K-member Salesforce org every morning and emails a storm forecast. Here\'s the design.',
+    readTime: '5 min',
+    cta: {
+      label: 'WANT THE FULL ARCHITECTURE?',
+      text: 'The complete case study covers the design rules, the fingerprint runbook, the architecture, and the day-one findings.',
+      button: '→ READ THE DOROTHY CASE STUDY',
+      href: '/dorothy',
+      secondary: { button: '✉ dp@dgpugliese.dev', href: 'mailto:dp@dgpugliese.dev' },
+    },
+    body: [
+      {
+        heading: 'The Outage Nobody Saw',
+        text: `A scheduled job that delivers member-portal email died quietly in production. No error, no alert, nothing on any screen a human looks at. Mail queued for 25 days before a member asked why they never got their confirmation. The platform had known the whole time — the queue depth was one SOQL query away — but nothing was watching. A week later I found a second silent failure: an automation chain burning up to 110K async executions a day against a 250K budget. Same lesson twice: the data to catch both early already existed. What was missing was an outside observer with a routine.`,
+      },
+      {
+        heading: 'Silence Is an Alarm',
+        text: `So I built DOROTHY, named for the tornado-sensing rig in Twister. She's one Python file — standard library only, zero dependencies — running on GitHub Actions cron, authenticating into Salesforce as a read-only integration user over OAuth client-credentials. Deliberately outside the org, because a sick org can't be trusted to report on itself. And she emails every single morning, green days included, because the design rule that matters most is this: a monitoring system's failure mode must be loud. If DOROTHY ever misses a morning, her silence is itself the alert. If she crashes mid-run she exits non-zero and GitHub sends a failure notice — a dead monitor can never masquerade as a healthy org.`,
+      },
+      {
+        heading: 'Every Red Must Be Actionable',
+        text: `Raw monitoring reports symptoms, and symptoms cry wolf. The org has vendor-acknowledged failure storms that run hundreds of jobs deep every day — real, known, already being worked. If those show up as criticals every morning, the reader learns to delete the email, and the tool is dead. So DOROTHY carries a fingerprint runbook: a small JSON file mapping known error signatures to context — which vendor ticket covers it, why it happens, whether it's noise. Matching findings get annotated in place and demoted to warnings. The day that shipped, a digest with five criticals became a digest with one — the one that actually needed a human. When a vendor ticket closes, we delete its entry and the underlying check silently becomes a permanent regression guard.`,
+      },
+      {
+        heading: 'Slope, Not Just Level',
+        text: `Her sharpest trick is a state file the workflow commits back to the repo after every run — yesterday's limit percentages, installed package versions, key table row counts. That single file upgrades every check from level detection to change detection. A storage limit that jumps 20 points overnight alerts while still technically green. This matters because the storage incident that helped justify her existence crossed 100% three days before a level threshold would have fired. Levels tell you that you have a problem; slope tells you that you're about to. The same state file powers a package-version tripwire: if any managed package version changes overnight — including a vendor pushing an update nobody scheduled — that's a same-day critical with the exact old and new versions.`,
+      },
+      {
+        heading: 'What She Found in Week One',
+        text: `Production data storage over 100% of allocation, traced to a vendor error-log table of 838,000 rows that had never once shipped its logs. A vendor sync batch failing 600+ times a day, invisible because every failure was caught and retried forever. 100% of posted electronic receipts missing the gateway transaction id that ties them to the payment processor — a reconciliation gap Finance had been feeling for months but couldn't name. And the member-portal domain certificate quietly 74 days from expiry. None of these were exotic. All of them were one query away, every day, waiting for something to run the query.`,
+      },
+      {
+        heading: 'Where the AI Goes',
+        text: `There's an optional last stage: the day's findings, with their runbook annotations, go to a small Claude model that writes a two-sentence "My read" at the top of the digest — what deserves attention first, and why. The division of labor is the point. Detection stays deterministic and auditable; the LLM only prioritizes and narrates. If the API call fails, the note is skipped and the digest ships anyway. I think that's the right shape for AI in monitoring generally: never in the detection loop, always welcome at the narration layer. Total infrastructure cost: $0 a month. The nearest commercial equivalent is ~$100 a month and has never read our vendor tickets.`,
+      },
+    ],
+  },
+  {
     slug: 'taking-on-build-work',
     date: '2026-05-17',
     category: 'OPS',

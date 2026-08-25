@@ -116,6 +116,14 @@ export function Projects() {
     },
 
     {
+      id: 'DOROTHY', kind: 'MONITORING', tag: 'PRODUCTION', tagC: 'green',
+      title: 'DOROTHY',
+      sub: 'Salesforce/Fonteva monitoring bot · daily storm forecast',
+      stack: ['Python (stdlib only)', 'GitHub Actions', 'Salesforce REST/Tooling', 'OAuth Client-Credentials', 'Claude API', 'Fonteva'],
+      detail: "A read-only monitoring bot for a 150K-member production Salesforce/Fonteva org, named for the tornado sensor in Twister. Sweeps 14 systems every morning — governor limits, mail queues, async failures, package versions, payment-pipeline invariants, certificates, the live member site — and emails a storm forecast. Known issues are annotated and demoted by a JSON fingerprint runbook so every red means something new; state committed back per run turns level alarms into slope alarms; an optional Claude-written analyst note narrates the findings. Found production storage over allocation and a vendor batch failing 600×/day on its first run. Zero dependencies, $0/month.",
+      caseStudy: '/dorothy',
+    },
+    {
       id: 'KINETIC-BRAIN', kind: 'KNOWLEDGE-OPS', tag: 'IN-USE', tagC: 'cyan',
       title: 'Kinetic Brain',
       sub: 'Structured memory vault for Claude Code · context-problem solver',
