@@ -8,7 +8,7 @@ export default function DorothyCaseStudy() {
     description:
       'Case study: DOROTHY, a zero-dependency Salesforce/Fonteva monitoring bot that emails a daily storm forecast. Python stdlib, GitHub Actions, an LLM analyst layer, and a design rule that silence itself is an alarm.',
     path: '/dorothy',
-    image: 'https://dgpugliese.dev/og.svg',
+    image: 'https://dgpugliese.dev/dorothy-og.png',
   });
   return (
     <>
