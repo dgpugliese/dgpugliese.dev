@@ -55,6 +55,13 @@ const routes = [
     image: `${SITE}/og.svg`,
   },
   {
+    path: '/dorothy',
+    title: 'DOROTHY · Salesforce Monitoring Bot — Case Study · dgpugliese.dev',
+    description:
+      'Case study: DOROTHY, a zero-dependency Salesforce/Fonteva monitoring bot that emails a daily storm forecast. Python stdlib, GitHub Actions, an LLM analyst layer, and a design rule that silence itself is an alarm.',
+    image: `${SITE}/og.svg`,
+  },
+  {
     path: '/compliance',
     title: 'Compliance Dashboard · Case Study · dgpugliese.dev',
     description:
