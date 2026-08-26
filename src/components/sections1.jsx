@@ -12,28 +12,32 @@ export function About() {
         <div className="panel panel-corners" style={{ padding: '32px 36px' }}>
           <span className="panel-label">SUMMARY</span>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg)', margin: 0 }}>
-            <span style={{ color: 'var(--cyan)' }}>16+ years across enterprise IT and software.</span> David Pugliese
-            is an IT Director, Lead Solutions Architect, and MSP founder focused on resilient infrastructure,
-            cybersecurity, cloud platforms, and practical software development.
+            <span style={{ color: 'var(--cyan)' }}>IT Director, Solutions Architect, MSP founder.</span> 16+ years
+            bridging enterprise IT infrastructure, security, and modern cloud development — three things that are
+            usually three separate careers. Doing all of them is the whole point: I can design the system, secure it,
+            and write the code that runs it, without a handoff in between.
           </p>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-dim)', marginTop: 18 }}>
-            His work spans three surfaces: <span style={{ color: 'var(--violet)' }}>AI agent infrastructure</span> (production
-            MCP servers connecting Claude to enterprise SaaS), <span style={{ color: 'var(--cyan)' }}>full-stack platforms</span> (headless
-            React/Node against Salesforce/Fonteva, Cloudflare, Supabase), and <span style={{ color: 'var(--cyan)' }}>applied security primitives</span> like
-            {' '}<a href="https://obscr.app" target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)', textDecoration: 'underline' }}>Obscura</a> — a
-            zero-knowledge file transfer tool with browser-side AES-256-GCM and Argon2id. On the IT-leadership side:
-            he has stood up NIST 800-53 / CIS aligned security postures, SOC 2-aligned controls, and passwordless
-            portals end-to-end on Cloudflare.
+            Day to day that means running IT for a national membership organization, operating a solo MSP, and shipping
+            production software alongside both. The building work lands on three surfaces:{' '}
+            <span style={{ color: 'var(--violet)' }}>AI agent infrastructure</span> (production MCP servers, and
+            monitoring bots that watch systems from outside the systems they watch),{' '}
+            <span style={{ color: 'var(--cyan)' }}>full-stack platforms</span> (Cloudflare, Supabase, and headless
+            React/Node against Salesforce/Fonteva — including a realtime finance integration that replaced a $40K
+            vendor build), and <span style={{ color: 'var(--cyan)' }}>applied security primitives</span> like{' '}
+            <a href="https://obscr.app" target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)', textDecoration: 'underline' }}>Obscura</a>,
+            a zero-knowledge file transfer tool with browser-side AES-256-GCM and Argon2id.
           </p>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-dim)', marginTop: 18 }}>
-            I work best with teams that actually ship — recruiters with technical roles, operators who need fractional
-            infra leadership, founders who want someone who can both architect the system and write the OAuth callback
-            that fixes it at 2 a.m.
+            On the leadership side: NIST 800-53 / CIS aligned security posture, SOC 2-aligned controls, an
+            organization's first third-party pen test, and passwordless portals shipped end-to-end. I work best with
+            teams that actually ship — recruiters with technical roles, operators who need fractional infra leadership,
+            founders who want someone who can architect the system and write the OAuth callback that fixes it at 2 a.m.
           </p>
         </div>
-        <div className="panel panel-corners" style={{ padding: '24px 28px' }}>
+        <div className="panel panel-corners" style={{ padding: '24px 28px', display: 'flex', flexDirection: 'column' }}>
           <span className="panel-label">CORE_COMPETENCIES</span>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 4 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 4, flex: 1, justifyContent: 'space-between' }}>
             {[
               ['AI Agent Infrastructure & MCP Servers', 'violet'],
               ['Cloud Identity & Zero-Trust', 'cyan'],
@@ -45,7 +49,7 @@ export function About() {
               ['IT Org Leadership', 'amber'],
               ['Mentorship & Executive Briefing', 'amber'],
             ].map(([t, c]) => (
-              <div key={t} className="mono" style={{ fontSize: 12, padding: '6px 10px', borderLeft: `2px solid var(--${c})`, background: 'rgba(78, 201, 224, 0.04)', color: 'var(--fg)' }}>
+              <div key={t} className="mono" style={{ fontSize: 12, padding: '10px 12px', borderLeft: `2px solid var(--${c})`, background: 'rgba(78, 201, 224, 0.04)', color: 'var(--fg)' }}>
                 <span style={{ color: `var(--${c})`, opacity: 0.6, marginRight: 8 }}>▸</span>{t}
               </div>
             ))}
@@ -126,9 +130,9 @@ export function Projects() {
     {
       id: 'KINETIC-BRAIN', kind: 'KNOWLEDGE-OPS', tag: 'IN-USE', tagC: 'cyan',
       title: 'Kinetic Brain',
-      sub: 'Structured memory vault for Claude Code · context-problem solver',
-      stack: ['Claude Code', 'Obsidian', 'Markdown', 'Git', 'MCP'],
-      detail: "A vault-as-memory architecture that fixes the 'every session starts cold' problem. Bootstrap reads, decision logs, append-only knowledge files, and session protocols give the agent stable context across projects. Not a second brain — Claude Code's brain.",
+      sub: 'Structured memory vault for Claude Code · in daily use since 2026',
+      stack: ['Claude Code', 'Obsidian', 'Markdown', 'Git', 'MCP', 'Taskwarrior'],
+      detail: "A vault-as-memory architecture that fixes the 'every session starts cold' problem. Bootstrap reads, a deterministic session protocol, decision logs, append-only knowledge files, and a three-question capture gate give the agent stable context across three organizations — no re-explaining, no prompt scaffolding, no vector database. I built it for myself and run it every working day; it's the system behind most of the projects on this page. Private by design — it holds real operating context, so there's no public repo and there isn't going to be one. Not a second brain — Claude Code's brain.",
     },
     {
       id: 'COMPLIANCE-990', kind: 'DATA TOOL', tag: 'IN-USE', tagC: 'cyan',

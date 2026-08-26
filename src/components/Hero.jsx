@@ -28,19 +28,21 @@ export function Hero() {
           <div className="mono" style={{ fontSize: 18, marginTop: 24, color: 'var(--fg-dim)', minHeight: 32 }}>
             <span style={{ color: 'var(--cyan)' }}>&gt; </span>
             <Typer phrases={[
-              'it director // lead solutions architect // msp founder',
-              'ships production MCP servers for claude in the enterprise',
-              'designs non-human identity & access scoping for agents',
-              'full-stack platforms · zero-trust · cloud identity',
+              'it director // solutions architect // msp founder',
+              'bridging enterprise infrastructure, security, and cloud development',
+              'ships production agent infrastructure, monitoring, and crypto tooling',
+              'builds the systems vendors quote six figures for',
               'engineer who ships in production, not slides',
             ]} />
           </div>
           <div style={{ marginTop: 28, maxWidth: 600, fontSize: 16, lineHeight: 1.6, color: 'var(--fg-dim)' }}>
-            16+ years designing resilient infrastructure, secure systems, and practical cloud software across enterprise
-            IT, cybersecurity, and modern application development. Through The IT Visionary, David delivers tailored
-            infrastructure, automation, and technology strategy while continuing to build open-source software and
-            cloud utilities. Comfortable shipping end-to-end, briefing a CISO Friday afternoon, and debugging OAuth at
-            2 a.m. Saturday.
+            IT Director, Solutions Architect, and MSP founder — 16+ years bridging enterprise IT infrastructure,
+            security, and modern cloud development. Those are usually three separate careers. Doing all three means I
+            design the system, secure it, and write the code that runs it. I run IT for a national membership
+            organization, operate a solo MSP, and ship production software alongside both: monitoring bots, agent
+            infrastructure, zero-knowledge crypto tools, and the integrations that replace six-figure vendor quotes.
+            Equally comfortable briefing a CISO on Friday afternoon and debugging an OAuth callback at 2 a.m.
+            Saturday.
           </div>
         </div>
 
@@ -262,7 +264,7 @@ function Telemetry() {
       <span className="panel-label">TELEMETRY</span>
       <div className="telemetry-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginTop: 4 }}>
         {[
-          ['YRS_EXP', '10+', 'var(--cyan)'],
+          ['YRS_EXP', '16+', 'var(--cyan)'],
           ['MCP_SERVERS', '5+', 'var(--violet)'],
           ['UPTIME_SLA', '98%+', 'var(--green)'],
           ['CERTS', '25', 'var(--amber)'],
