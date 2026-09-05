@@ -6,12 +6,10 @@ export function Hero() {
   return (
     <section className="hero">
       <div className="hero-eyebrow">IT Director · Solutions Architect · MSP Founder</div>
-      {/* Condensed from the Aug 2026 LinkedIn-anchored rewrite (see git log) — review before finalizing */}
       <h1>I build the systems<br />vendors quote six figures for.</h1>
       <p className="hero-sub">
-        16+ years bridging enterprise IT infrastructure, security, and modern cloud development.
-        I run IT for a national membership organization, operate a solo MSP, and ship production
-        software alongside both.
+        16+ years bridging enterprise IT infrastructure, security, and modern cloud development —
+        usually three separate careers. I ship in production, not slides.
       </p>
       <div className="hero-actions">
         <a className="btn" href={CAL_URL} target="_blank" rel="noreferrer">Book a 30-min call →</a>

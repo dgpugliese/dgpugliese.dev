@@ -9,19 +9,18 @@ export function About() {
         <h2 className="sect-title">About</h2>
       </div>
       <div className="about-block">
-        {/* Condensed from the Aug 2026 LinkedIn-anchored rewrite (see git log) — review before finalizing */}
         <p>
-          IT Director, Solutions Architect, and MSP founder. 16+ years bridging enterprise IT
-          infrastructure, security, and modern cloud development — three things that are usually
-          three separate careers. Doing all of them is the point: I design the system, secure it,
-          and write the code that runs it.
+          IT Director, Solutions Architect, MSP founder — I run all three at once. Day to day:
+          IT for a national membership organization, a solo MSP on the side, and production
+          software for both — AI agent infrastructure, full-stack platforms on Cloudflare and
+          Supabase, and security tools like{' '}
+          <a href="https://obscr.app" target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)' }}>Obscura</a>,
+          a zero-knowledge file-transfer app I built and shipped myself.
         </p>
         <p>
-          Day to day that's running IT for a national membership organization, operating a solo
-          MSP, and shipping production software alongside both — AI agent infrastructure,
-          full-stack platforms on Cloudflare and Supabase, and applied security tools like{' '}
-          <a href="https://obscr.app" target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)' }}>Obscura</a>.
-          On the side, I speak on cybersecurity posture for member-driven nonprofits.
+          Equally comfortable briefing a CISO on a Friday and debugging an OAuth callback at
+          2 a.m. Saturday. On the side, I speak on cybersecurity posture for member-driven
+          nonprofits.
         </p>
         <div className="about-links">
           <Link to="/experience">Experience →</Link>

@@ -8,7 +8,7 @@
   --line-strong: rgba(255, 255, 255, 0.22);
   --cyan: #b91c1c;        /* accent — deep dark red (kept var name for compat) */
   --cyan-bright: #ef4444; /* accent hover state */
-  --green: #4ade80;
+  --green: #84a06b;
   --amber: #f59e0b;
   --violet: #a78bfa;
   --fg: #e8eaed;
@@ -244,7 +244,7 @@ section.sect {
 .chip-cyan { color: var(--cyan); background: rgba(185, 28, 28, 0.12); }
 .chip-violet { color: var(--violet); background: rgba(167, 139, 250, 0.12); }
 .chip-amber { color: var(--amber); background: rgba(245, 158, 11, 0.12); }
-.chip-green { color: var(--green); background: rgba(74, 222, 128, 0.12); }
+.chip-green { color: var(--green); background: rgba(132, 160, 107, 0.12); }
 
 /* Animations kept: cursor blink (still used by Typer-free code? no — retained for possible inline carets), pulse for loading states */
 @keyframes blink { 50% { opacity: 0; } }
