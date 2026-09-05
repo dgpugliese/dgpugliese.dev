@@ -7,7 +7,7 @@ export default function Uses() {
     title: 'Uses · dgpugliese.dev',
     description: 'The stack David Pugliese reaches for across identity, cloud, infrastructure, security, and engineering — plus verified certifications.',
     path: '/uses',
-    image: 'https://dgpugliese.dev/og.svg',
+    image: 'https://dgpugliese.dev/og.png',
   });
 
   const verifiedCount = certGroups.reduce((n, g) => n + (g.count - (g.inProgress || 0)), 0);

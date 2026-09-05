@@ -24,7 +24,7 @@ export default function App() {
   useEffect(() => {
     if (sessionStorage.getItem('greeted') === '1') return;
     sessionStorage.setItem('greeted', '1');
-    const hdr = 'color:#60a5fa;font-weight:700;font-family:JetBrains Mono,monospace;font-size:13px;line-height:1.6;';
+    const hdr = 'color:#ef4444;font-weight:700;font-family:JetBrains Mono,monospace;font-size:13px;line-height:1.6;';
     const body = 'color:#e8eaed;font-family:JetBrains Mono,monospace;font-size:12px;line-height:1.6;';
     const accent = 'color:#4ade80;font-family:JetBrains Mono,monospace;font-size:12px;line-height:1.6;';
     console.log('%c> _', hdr);

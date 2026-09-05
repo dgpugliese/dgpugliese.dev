@@ -21,7 +21,7 @@ export default function NotFound() {
             <Link to="/">Home — the headline, the work, the conversation</Link>
             <Link to="/experience">Experience — the roles and what shipped</Link>
             <Link to="/build">Build — fixed-price product builds</Link>
-            <Link to="/log">Writing — the Signal Log</Link>
+            <Link to="/log">Writing — field notes and build logs</Link>
           </div>
         </div>
       </main>

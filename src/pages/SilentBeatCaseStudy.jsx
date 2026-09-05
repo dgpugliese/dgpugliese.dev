@@ -9,7 +9,7 @@ export default function SilentBeatCaseStudy() {
     description:
       'Case study: SilentBeat, a zero-knowledge dead man\'s switch dispatcher built on Cloudflare Workers, Durable Objects, D1, split-key ECIES, and Argon2id.',
     path: '/silentbeat',
-    image: 'https://dgpugliese.dev/og.svg',
+    image: 'https://dgpugliese.dev/og.png',
   });
   return (
     <>

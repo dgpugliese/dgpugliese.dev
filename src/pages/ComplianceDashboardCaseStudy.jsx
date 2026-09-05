@@ -8,7 +8,7 @@ export default function ComplianceDashboardCaseStudy() {
     description:
       'Private case study: an internal compliance dashboard tracking IRS Form 990 obligations across a multi-region nonprofit network. Five data sources (four IRS feeds + Salesforce/Fonteva), automated refresh, $300/yr vs $110K–$246K vendor quotes.',
     path: '/compliance',
-    image: 'https://dgpugliese.dev/og.svg',
+    image: 'https://dgpugliese.dev/og.png',
   });
   return (
     <>
@@ -126,7 +126,7 @@ export default function ComplianceDashboardCaseStudy() {
               The scraper is ~30 lines of Node. No HTML parsing, no headless browser, no fragile selectors.
               The JSON shape is the surface I'm coupling to. One full pass:
               <Cyan> 3,672 filings imported across 434 entities</Cyan>, back to 2008.{' '}
-              <Link to="/log/reverse-engineering-irs-teos" style={LINK}>Full writeup on the Signal Log →</Link>
+              <Link to="/log/reverse-engineering-irs-teos" style={LINK}>Full writeup →</Link>
             </p>
           </Section>
 

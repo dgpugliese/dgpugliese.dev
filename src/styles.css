@@ -6,8 +6,8 @@
   --bg-elev: rgba(255, 255, 255, 0.035);
   --line: rgba(255, 255, 255, 0.12);
   --line-strong: rgba(255, 255, 255, 0.22);
-  --cyan: #3b82f6;        /* accent — electric blue */
-  --cyan-bright: #60a5fa; /* accent hover state */
+  --cyan: #b91c1c;        /* accent — deep dark red (kept var name for compat) */
+  --cyan-bright: #ef4444; /* accent hover state */
   --green: #4ade80;
   --amber: #f59e0b;
   --violet: #a78bfa;
@@ -214,7 +214,7 @@ section.sect {
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 .btn:hover {
-  background: rgba(59, 130, 246, 0.12);
+  background: rgba(185, 28, 28, 0.12);
   color: var(--cyan-bright);
 }
 .btn-ghost {
@@ -241,7 +241,7 @@ section.sect {
   color: var(--fg-dim);
   background: rgba(255, 255, 255, 0.06);
 }
-.chip-cyan { color: var(--cyan); background: rgba(59, 130, 246, 0.12); }
+.chip-cyan { color: var(--cyan); background: rgba(185, 28, 28, 0.12); }
 .chip-violet { color: var(--violet); background: rgba(167, 139, 250, 0.12); }
 .chip-amber { color: var(--amber); background: rgba(245, 158, 11, 0.12); }
 .chip-green { color: var(--green); background: rgba(74, 222, 128, 0.12); }
@@ -279,7 +279,7 @@ section.sect {
 .back-to-top:hover { color: var(--cyan); border-color: var(--cyan); }
 
 /* Selection */
-::selection { background: rgba(59, 130, 246, 0.3); color: #fff; }
+::selection { background: rgba(185, 28, 28, 0.3); color: #fff; }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 10px; }
@@ -460,7 +460,7 @@ section.sect {
 .notfound-links a:hover { color: var(--cyan-bright); }
 
 /* ─────────────────────────────────────
-   Blog / Signal Log
+   Blog / Writing
    ───────────────────────────────────── */
 .log-shell { min-height: 100vh; }
 .log-back {
@@ -475,8 +475,13 @@ section.sect {
   transition: color 0.15s;
 }
 .log-back:hover { color: var(--cyan); }
-.log-card { transition: border-color 0.15s; }
-.log-card:hover { border-color: var(--cyan); }
+.log-row-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--fg-faint);
+  padding-top: 4px;
+}
 
 @media (max-width: 900px) {
   .log-shell > div { padding: 48px 24px 80px !important; }

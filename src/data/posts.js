@@ -1,4 +1,4 @@
-// dgpugliese.dev — Signal Log / Blog posts
+// dgpugliese.dev — Writing / Blog posts
 // Add new entries to the TOP of the array (latest first).
 
 export const posts = [

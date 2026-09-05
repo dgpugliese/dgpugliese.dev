@@ -9,10 +9,10 @@ export function LogPost() {
   const post = posts.find(p => p.slug === slug);
 
   useSeo(post ? {
-    title: `${post.title} · Signal Log · dgpugliese.dev`,
+    title: `${post.title} · Writing · dgpugliese.dev`,
     description: post.summary,
     path: `/log/${post.slug}`,
-    image: 'https://dgpugliese.dev/og.svg',
+    image: 'https://dgpugliese.dev/og.png',
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
@@ -27,8 +27,8 @@ export function LogPost() {
       url: `https://dgpugliese.dev/log/${post.slug}`,
     },
   } : {
-    title: 'Not found · Signal Log · dgpugliese.dev',
-    description: 'Transmission not found.',
+    title: 'Not found · Writing · dgpugliese.dev',
+    description: 'Post not found.',
     path: `/log/${slug || ''}`,
   });
 
@@ -37,15 +37,17 @@ export function LogPost() {
       <div className="log-shell">
         <Nav />
         <div style={{ padding: '80px 60px', maxWidth: 860, margin: '0 auto' }}>
-          <Link to="/log" className="log-back">← SIGNAL_LOG</Link>
-          <div className="panel panel-corners" style={{ padding: '48px', marginTop: 32, textAlign: 'center' }}>
-            <span className="panel-label">404</span>
-            <div className="mono" style={{ color: 'var(--amber)', fontSize: 14, marginTop: 16 }}>// transmission not found</div>
-            <p style={{ color: 'var(--fg-dim)', marginTop: 16 }}>
+          <Link to="/log" className="log-back">← Writing</Link>
+          <div style={{ marginTop: 32 }}>
+            <span className="mono" style={{ color: 'var(--amber)', fontSize: 12, letterSpacing: '0.14em' }}>404</span>
+            <h1 style={{ margin: '10px 0 14px', fontSize: 'clamp(28px, 5vw, 44px)', fontWeight: 700, letterSpacing: '-0.01em' }}>
+              Post not found
+            </h1>
+            <p style={{ color: 'var(--fg-dim)', fontSize: 16, lineHeight: 1.7 }}>
               No post at <code style={{ color: 'var(--cyan)' }}>/log/{slug}</code>.
               It may have moved or never existed.
             </p>
-            <Link to="/log" className="btn" style={{ marginTop: 24, display: 'inline-flex' }}>→ RETURN TO LOG</Link>
+            <Link to="/log" className="btn" style={{ marginTop: 24, display: 'inline-flex' }}>← Return to Writing</Link>
           </div>
         </div>
         <Footer />
@@ -58,31 +60,27 @@ export function LogPost() {
       <Nav />
       <div style={{ padding: '60px 60px 120px', maxWidth: 860, margin: '0 auto' }}>
         {/* Back nav */}
-        <Link to="/log" className="log-back">← SIGNAL_LOG</Link>
+        <Link to="/log" className="log-back">← Writing</Link>
 
         {/* Post header */}
-        <div className="panel panel-corners" style={{ padding: '36px 40px', marginTop: 28 }}>
-          <span className="panel-label">TRANSMISSION</span>
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 18, flexWrap: 'wrap' }}>
-            <span className={`chip chip-${post.categoryColor}`}>● {post.category}</span>
+        <div style={{ marginTop: 28 }}>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 16, flexWrap: 'wrap' }}>
+            <span className="mono" style={{ fontSize: 11, color: 'var(--fg-faint)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{post.category}</span>
             <span className="mono" style={{ fontSize: 11, color: 'var(--fg-faint)', letterSpacing: '0.12em' }}>{post.date}</span>
-            <span className="mono" style={{ fontSize: 11, color: 'var(--fg-faint)', letterSpacing: '0.08em' }}>// {post.readTime} read</span>
+            <span className="mono" style={{ fontSize: 11, color: 'var(--fg-faint)' }}>{post.readTime} read</span>
           </div>
-          <h1 style={{ margin: '0 0 20px', fontSize: 'clamp(22px, 3.5vw, 36px)', fontWeight: 700, lineHeight: 1.2, letterSpacing: '-0.01em' }}>
+          <h1 style={{ margin: '0 0 20px', fontSize: 'clamp(28px, 4.5vw, 44px)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-0.01em' }}>
             {post.title}
           </h1>
-          <p style={{ margin: 0, fontSize: 16, color: 'var(--fg-dim)', lineHeight: 1.7, borderLeft: '2px solid var(--cyan)', paddingLeft: 16 }}>
+          <p style={{ margin: 0, fontSize: 17, color: 'var(--fg-dim)', lineHeight: 1.7, borderLeft: '2px solid var(--cyan)', paddingLeft: 18 }}>
             {post.summary}
           </p>
         </div>
 
         {/* Post body */}
-        <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div style={{ marginTop: 12 }}>
           {post.body.map((section, i) => (
-            <div key={i} className="panel" style={{ padding: '28px 32px' }}>
-              <div className="mono" style={{ fontSize: 10, color: 'var(--cyan)', letterSpacing: '0.2em', marginBottom: 10, opacity: 0.7 }}>
-                // {String(i + 1).padStart(2, '0')}
-              </div>
+            <div key={i} style={{ padding: '28px 0', borderTop: '1px solid var(--line)' }}>
               <h2 style={{ margin: '0 0 14px', fontSize: 18, fontWeight: 600, color: 'var(--fg)' }}>
                 {section.heading}
               </h2>
@@ -93,15 +91,16 @@ export function LogPost() {
           ))}
         </div>
 
-        {/* Optional CTA panel */}
+        {/* Optional CTA */}
         {post.cta && (
-          <div className="panel panel-corners" style={{ marginTop: 32, padding: '32px 36px', textAlign: 'center' }}>
-            <span className="panel-label">CTA</span>
-            <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.25em', marginBottom: 14 }}>◆ {post.cta.label || 'NEXT'} ◆</div>
-            <p style={{ fontSize: 16, color: 'var(--fg-dim)', maxWidth: 560, margin: '0 auto 22px', lineHeight: 1.6 }}>
+          <div style={{ marginTop: 8, paddingTop: 32, borderTop: '1px solid var(--line)' }}>
+            <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.14em', marginBottom: 12, textTransform: 'uppercase' }}>
+              {post.cta.label || 'Next'}
+            </div>
+            <p style={{ fontSize: 16, color: 'var(--fg-dim)', maxWidth: 560, margin: '0 0 20px', lineHeight: 1.6 }}>
               {post.cta.text}
             </p>
-            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               {post.cta.href.startsWith('/')
                 ? <Link to={post.cta.href} className="btn" style={{ textDecoration: 'none' }}>{post.cta.button}</Link>
                 : <a className="btn" href={post.cta.href} target="_blank" rel="noreferrer">{post.cta.button}</a>}
@@ -113,9 +112,9 @@ export function LogPost() {
         )}
 
         {/* Footer nav */}
-        <div style={{ marginTop: 40, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16, borderTop: '1px dashed var(--line)', paddingTop: 24 }}>
-          <Link to="/log" className="btn btn-ghost">← ALL POSTS</Link>
-          <Link to="/" className="btn btn-ghost">↩ HOME</Link>
+        <div style={{ marginTop: 40, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16, borderTop: '1px solid var(--line)', paddingTop: 24 }}>
+          <Link to="/log" className="btn btn-ghost">← All posts</Link>
+          <Link to="/" className="btn btn-ghost">Home</Link>
         </div>
       </div>
       <Footer />
@@ -123,18 +122,18 @@ export function LogPost() {
   );
 }
 
-// ─── Log Index Page ────────────────────────────────────────────────────────
+// ─── Writing Index Page ────────────────────────────────────────────────────
 export default function Log() {
   useSeo({
-    title: 'Signal Log · dgpugliese.dev',
+    title: 'Writing · dgpugliese.dev',
     description:
       'Notes from the field on AI agent infrastructure, zero-knowledge crypto, NIST 800-53 / SOC 2 compliance, and shipping platforms end-to-end.',
     path: '/log',
-    image: 'https://dgpugliese.dev/og.svg',
+    image: 'https://dgpugliese.dev/og.png',
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'Blog',
-      name: 'Signal Log',
+      name: 'Writing',
       description: 'Engineering notes by David Pugliese.',
       url: 'https://dgpugliese.dev/log',
       author: { '@type': 'Person', name: 'David Pugliese' },
@@ -146,56 +145,36 @@ export default function Log() {
       })),
     },
   });
-  const categories = ['ALL', ...Array.from(new Set(posts.map(p => p.category)))];
 
   return (
     <div className="log-shell">
       <Nav />
 
       <div style={{ padding: '80px 60px 120px', maxWidth: 900, margin: '0 auto' }}>
-        {/* Header */}
-        <div className="sect-head" style={{ marginBottom: 40 }}>
+        <div className="sect-head" style={{ marginBottom: 8 }}>
           <span className="sect-num">// </span>
           <h1 style={{ margin: 0, fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 700, letterSpacing: '-0.01em', color: 'var(--fg)' }}>
-            Signal Log
+            Writing
           </h1>
-          <span className="sect-sub">{posts.length} transmissions</span>
+          <span className="sect-sub">{posts.length} posts</span>
         </div>
 
-        {/* Category chips */}
-        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 32 }}>
-          {categories.map(cat => (
-            <span key={cat} className={cat === 'ALL' ? 'chip chip-cyan' : 'chip'} style={{ cursor: 'default' }}>
-              {cat}
-            </span>
-          ))}
-        </div>
-
-        {/* Post list */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          {posts.map((p, i) => (
-            <Link
-              key={p.slug}
-              to={`/log/${p.slug}`}
-              className="panel panel-corners log-card"
-              style={{ display: 'block', padding: '28px 32px', textDecoration: 'none', color: 'inherit' }}
-            >
-              <span className="panel-label">TX_{String(i + 1).padStart(2, '0')}</span>
-              <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 14, flexWrap: 'wrap' }}>
-                <span className={`chip chip-${p.categoryColor}`}>● {p.category}</span>
-                <span className="mono" style={{ fontSize: 11, color: 'var(--fg-faint)', letterSpacing: '0.12em' }}>{p.date}</span>
-                <span className="mono" style={{ fontSize: 11, color: 'var(--fg-faint)' }}>// {p.readTime}</span>
+        <div className="work-list">
+          {posts.map(p => (
+            <Link key={p.slug} to={`/log/${p.slug}`} className="work-row">
+              <span className="log-row-meta">{p.date}</span>
+              <div>
+                <h2 className="work-title">{p.title}</h2>
+                <p className="work-desc">{p.summary}</p>
+                <div className="work-tags">
+                  <span className="chip">{p.category}</span>
+                  <span className="chip">{p.readTime}</span>
+                </div>
               </div>
-              <h2 style={{ margin: '0 0 10px', fontSize: 'clamp(16px, 2.5vw, 20px)', fontWeight: 600, lineHeight: 1.3, color: 'var(--fg)' }}>
-                {p.title} <span style={{ color: 'var(--cyan)', fontSize: 15 }}>↗</span>
-              </h2>
-              <p style={{ margin: 0, fontSize: 14, color: 'var(--fg-dim)', lineHeight: 1.65 }}>
-                {p.summary}
-              </p>
+              <span className="work-arrow">↗</span>
             </Link>
           ))}
         </div>
-
       </div>
       <Footer />
     </div>

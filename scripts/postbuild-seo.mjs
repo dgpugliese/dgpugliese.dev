@@ -20,9 +20,9 @@ const { posts } = await import(pathToFileURL(join(__dirname, '..', 'src', 'data'
 
 const blogRoutes = posts.map(p => ({
   path: `/log/${p.slug}`,
-  title: `${p.title} · Signal Log · dgpugliese.dev`,
+  title: `${p.title} · Writing · dgpugliese.dev`,
   description: p.summary,
-  image: `${SITE}/og.svg`,
+  image: `${SITE}/og.png`,
 }));
 
 const routes = [
@@ -31,21 +31,21 @@ const routes = [
     title: 'Experience · dgpugliese.dev',
     description:
       '16+ years across enterprise IT, MSP leadership, and network engineering — the roles, what shipped, and the outcome each one left behind.',
-    image: `${SITE}/og.svg`,
+    image: `${SITE}/og.png`,
   },
   {
     path: '/uses',
     title: 'Uses · dgpugliese.dev',
     description:
       'The stack David Pugliese reaches for across identity, cloud, infrastructure, security, and engineering — plus verified certifications.',
-    image: `${SITE}/og.svg`,
+    image: `${SITE}/og.png`,
   },
   {
     path: '/log',
-    title: 'Signal Log · dgpugliese.dev',
+    title: 'Writing · dgpugliese.dev',
     description:
       'Notes from the field on AI agent infrastructure, zero-knowledge crypto, NIST 800-53 / SOC 2 compliance, and shipping platforms end-to-end.',
-    image: `${SITE}/og.svg`,
+    image: `${SITE}/og.png`,
   },
   {
     path: '/build',
@@ -59,14 +59,14 @@ const routes = [
     title: 'Obscura · Zero-Knowledge File Transfer — Case Study · dgpugliese.dev',
     description:
       'Case study: Obscura, a browser-side zero-knowledge file transfer tool. AES-256-GCM, Argon2id, Web Crypto API. The server only ever sees ciphertext.',
-    image: `${SITE}/og.svg`,
+    image: `${SITE}/og.png`,
   },
   {
     path: '/silentbeat',
     title: "SilentBeat · Honest Dead Man's Switch — Case Study · dgpugliese.dev",
     description:
       "Case study: SilentBeat, a zero-knowledge dead man's switch dispatcher built on Cloudflare Workers, Durable Objects, D1, split-key ECIES, and Argon2id.",
-    image: `${SITE}/og.svg`,
+    image: `${SITE}/og.png`,
   },
   {
     path: '/dorothy',
@@ -80,7 +80,7 @@ const routes = [
     title: 'Compliance Dashboard · Case Study · dgpugliese.dev',
     description:
       'Case study: compliance operations dashboard for IRS Form 990 oversight across a distributed nonprofit network. GitHub Actions cron, in production.',
-    image: `${SITE}/og.svg`,
+    image: `${SITE}/og.png`,
   },
 ];
 

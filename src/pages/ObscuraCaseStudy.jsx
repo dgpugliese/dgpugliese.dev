@@ -8,7 +8,7 @@ export default function ObscuraCaseStudy() {
     description:
       'Case study: Obscura, a browser-side zero-knowledge file transfer tool. AES-256-GCM, Argon2id, Web Crypto API. The server only ever sees ciphertext.',
     path: '/obscura',
-    image: 'https://dgpugliese.dev/og.svg',
+    image: 'https://dgpugliese.dev/og.png',
   });
   return (
     <>
