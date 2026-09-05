@@ -47,6 +47,16 @@ export default function ObscuraCaseStudy() {
             </div>
           </div>
 
+          {/* Screenshot */}
+          <div className="panel" style={{ padding: 0, marginBottom: 32, overflow: 'hidden' }}>
+            <img
+              src="/screenshots/obscura.jpg"
+              alt="Obscura homepage — 'Encrypt in the browser. Ship the ciphertext. Burn the link.'"
+              style={{ display: 'block', width: '100%', height: 'auto' }}
+              loading="lazy"
+            />
+          </div>
+
           {/* TL;DR */}
           <Section num="01" title="TL;DR" sub="60-second summary">
             <p style={P}>

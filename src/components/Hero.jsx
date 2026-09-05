@@ -47,7 +47,9 @@ function GitHubStrip() {
           <GitHubMark /> @dgpugliese
         </a>
         {user ? (
-          <span className="github-strip-stat">{user.public_repos} repos · {user.followers} followers</span>
+          <span className="github-strip-stat">
+            {user.public_repos} public repos · building since {new Date(user.created_at).getFullYear()}
+          </span>
         ) : err ? (
           <span className="github-strip-stat github-strip-note">offline — see github.com/dgpugliese</span>
         ) : (
@@ -55,8 +57,8 @@ function GitHubStrip() {
         )}
       </div>
       <div className="github-strip-row github-strip-row-note">
-        <span className="github-strip-note">Public repos/followers only — not a scraped contribution heatmap.</span>
-        <span className="github-strip-note">{user ? 'Live from the GitHub API' : err ? '' : 'Loading…'}</span>
+        <span className="github-strip-note">Real, live from the GitHub API.</span>
+        <span className="github-strip-note">{user ? 'Updated just now' : err ? '' : 'Loading…'}</span>
       </div>
     </div>
   );

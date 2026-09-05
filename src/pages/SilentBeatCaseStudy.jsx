@@ -47,6 +47,16 @@ export default function SilentBeatCaseStudy() {
             </div>
           </div>
 
+          {/* Screenshot */}
+          <div className="panel" style={{ padding: 0, marginBottom: 32, overflow: 'hidden' }}>
+            <img
+              src="/screenshots/silentbeat.jpg"
+              alt="SilentBeat homepage — 'If you go silent, someone gets the message.'"
+              style={{ display: 'block', width: '100%', height: 'auto' }}
+              loading="lazy"
+            />
+          </div>
+
           {/* TL;DR */}
           <Section num="01" title="TL;DR" sub="60-second summary">
             <p style={P}>
