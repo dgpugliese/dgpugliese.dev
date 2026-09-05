@@ -27,6 +27,20 @@ const blogRoutes = posts.map(p => ({
 
 const routes = [
   {
+    path: '/experience',
+    title: 'Experience · dgpugliese.dev',
+    description:
+      '16+ years across enterprise IT, MSP leadership, and network engineering — the roles, what shipped, and the outcome each one left behind.',
+    image: `${SITE}/og.svg`,
+  },
+  {
+    path: '/uses',
+    title: 'Uses · dgpugliese.dev',
+    description:
+      'The stack David Pugliese reaches for across identity, cloud, infrastructure, security, and engineering — plus verified certifications.',
+    image: `${SITE}/og.svg`,
+  },
+  {
     path: '/log',
     title: 'Signal Log · dgpugliese.dev',
     description:

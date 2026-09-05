@@ -1,5 +1,5 @@
-// Secure-comms channels surfaced by the VISUAL_ID barcode easter egg.
-// Order = decode order in the UI.
+// Contact channels shown on the Home contact section.
+// Order = display order in the UI.
 
 export const channels = [
   {

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Starfield, Clock } from '../components/fx.jsx';
+import { Nav, Footer } from '../components/Layout.jsx';
 import { useSeo } from '../lib/seo';
 
 export default function DorothyCaseStudy() {
@@ -12,23 +12,8 @@ export default function DorothyCaseStudy() {
   });
   return (
     <>
-      <Starfield />
-      <div className="grid-bg" />
-      <div className="glow glow-1" />
-      <div className="glow glow-2" />
-      <div className="scanline" />
-
-      <div className="statusbar">
-        <span><span className="dot">●</span> ONLINE</span>
-        <span className="sep">/</span>
-        <span>SYS / DGPUGLIESE.DEV / CASE_STUDY · DOROTHY</span>
-        <div className="right">
-          <span><Clock /></span>
-          <span style={{ color: 'var(--green)' }}>● READ-ONLY</span>
-        </div>
-      </div>
-
-      <main style={{ marginLeft: 0, marginTop: 36, position: 'relative', zIndex: 10 }}>
+      <Nav />
+      <main>
         <article className="case-study" style={{ maxWidth: 980, margin: '0 auto', padding: '60px 32px 120px' }}>
 
           <Link to="/" style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 12, color: 'var(--cyan)', textDecoration: 'none', letterSpacing: '0.15em', display: 'inline-block', marginBottom: 32 }}>
@@ -224,6 +209,7 @@ export default function DorothyCaseStudy() {
 
         </article>
       </main>
+      <Footer />
     </>
   );
 }

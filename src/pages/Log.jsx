@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { posts } from '../data/posts';
-import { Starfield } from '../components/fx.jsx';
+import { Nav, Footer } from '../components/Layout.jsx';
 import { useSeo } from '../lib/seo';
 
 // ─── Individual Post Page ──────────────────────────────────────────────────
@@ -35,10 +35,8 @@ export function LogPost() {
   if (!post) {
     return (
       <div className="log-shell">
-        <Starfield />
-        <div className="grid-bg" />
-        <div className="scanline" />
-        <div style={{ position: 'relative', zIndex: 10, padding: '80px 60px', maxWidth: 860, margin: '0 auto' }}>
+        <Nav />
+        <div style={{ padding: '80px 60px', maxWidth: 860, margin: '0 auto' }}>
           <Link to="/log" className="log-back">← SIGNAL_LOG</Link>
           <div className="panel panel-corners" style={{ padding: '48px', marginTop: 32, textAlign: 'center' }}>
             <span className="panel-label">404</span>
@@ -50,19 +48,15 @@ export function LogPost() {
             <Link to="/log" className="btn" style={{ marginTop: 24, display: 'inline-flex' }}>→ RETURN TO LOG</Link>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
 
   return (
     <div className="log-shell">
-      <Starfield />
-      <div className="grid-bg" />
-      <div className="scanline" />
-      <div className="glow glow-1" />
-      <div className="glow glow-2" />
-
-      <div style={{ position: 'relative', zIndex: 10, padding: '60px 60px 120px', maxWidth: 860, margin: '0 auto' }}>
+      <Nav />
+      <div style={{ padding: '60px 60px 120px', maxWidth: 860, margin: '0 auto' }}>
         {/* Back nav */}
         <Link to="/log" className="log-back">← SIGNAL_LOG</Link>
 
@@ -124,6 +118,7 @@ export function LogPost() {
           <Link to="/" className="btn btn-ghost">↩ HOME</Link>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
@@ -155,32 +150,16 @@ export default function Log() {
 
   return (
     <div className="log-shell">
-      <Starfield />
-      <div className="grid-bg" />
-      <div className="scanline" />
-      <div className="glow glow-1" />
-      <div className="glow glow-2" />
+      <Nav />
 
-      {/* Status bar */}
-      <div className="statusbar">
-        <span><span className="dot">●</span> ONLINE</span>
-        <span className="sep">/</span>
-        <span>SYS / DGPUGLIESE.DEV / SIGNAL_LOG</span>
-        <div className="right">
-          <span style={{ color: 'var(--green)' }}>● {posts.length} TRANSMISSIONS</span>
-        </div>
-      </div>
-
-      <div style={{ position: 'relative', zIndex: 10, padding: '80px 60px 120px', maxWidth: 900, margin: '0 auto' }}>
+      <div style={{ padding: '80px 60px 120px', maxWidth: 900, margin: '0 auto' }}>
         {/* Header */}
         <div className="sect-head" style={{ marginBottom: 40 }}>
-          <span className="sect-num">10 //</span>
+          <span className="sect-num">// </span>
           <h1 style={{ margin: 0, fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 700, letterSpacing: '-0.01em', color: 'var(--fg)' }}>
             Signal Log
           </h1>
-          <Link to="/" className="sect-sub" style={{ textDecoration: 'none', color: 'var(--cyan)', marginLeft: 'auto' }}>
-            ↩ HOME
-          </Link>
+          <span className="sect-sub">{posts.length} transmissions</span>
         </div>
 
         {/* Category chips */}
@@ -217,12 +196,8 @@ export default function Log() {
           ))}
         </div>
 
-        {/* Footer */}
-        <div className="mono" style={{ marginTop: 60, fontSize: 11, color: 'var(--fg-faint)', display: 'flex', justifyContent: 'space-between', borderTop: '1px dashed var(--line)', paddingTop: 16, flexWrap: 'wrap', gap: 8 }}>
-          <span>// dgpugliese.dev · signal log</span>
-          <span>// {posts.length} posts · philadelphia, pa</span>
-        </div>
       </div>
+      <Footer />
     </div>
   );
 }

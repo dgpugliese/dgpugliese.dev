@@ -1,0 +1,77 @@
+// Selected Work — shown on Home and referenced from /build.
+// tag/tagC = current real status (LIVE, IN-USE, PRODUCTION, SHIPPED, COMPLETE).
+
+export const projects = [
+  {
+    id: 'OBSCURA', kind: 'WEB APP', tag: 'LIVE', tagC: 'green',
+    title: 'Obscura',
+    sub: 'Zero-knowledge secure file transfer · obscr.app',
+    stack: ['Web Crypto API', 'AES-256-GCM', 'Argon2id', 'Zero-Knowledge'],
+    detail: "Browser-only file transfer with client-side AES-256-GCM. A random WebCrypto key lives in the URL fragment — never transmitted to the server. Optional passphrase mode wraps the key under an Argon2id-derived KEK. The server only ever sees ciphertext. Built solo end-to-end with a public Trust Center, privacy policy, and support posture.",
+    caseStudy: '/obscura',
+    live: 'https://obscr.app/',
+    repo: 'https://github.com/dgpugliese/obscura',
+  },
+  {
+    id: 'SILENTBEAT', kind: 'WEB APP', tag: 'LIVE', tagC: 'green',
+    title: 'SilentBeat',
+    sub: 'Honest dead man\'s switch · silentbeat.app',
+    stack: ['Cloudflare Workers', 'Durable Objects', 'D1', 'Split-Key', 'ECIES', 'Argon2id'],
+    detail: 'A check-in you keep. A message that ships if you don\'t. Split-key trust model — server holds share A, recipient holds share B (in a browser-generated rescue file). Neither half decrypts on its own; combined K never exists on a server.',
+    caseStudy: '/silentbeat',
+    live: 'https://silentbeat.app/',
+    repo: 'https://github.com/dgpugliese/silentbeat',
+  },
+  {
+    id: 'DOROTHY', kind: 'MONITORING', tag: 'PRODUCTION', tagC: 'green',
+    title: 'DOROTHY',
+    sub: 'Salesforce/Fonteva monitoring bot · daily storm forecast',
+    stack: ['Python (stdlib only)', 'GitHub Actions', 'Salesforce REST/Tooling', 'OAuth Client-Credentials', 'Claude API', 'Fonteva'],
+    detail: "A read-only monitoring bot for a 150K-member production Salesforce/Fonteva org, named for the tornado sensor in Twister. Sweeps 14 systems every morning — governor limits, mail queues, async failures, package versions, payment-pipeline invariants, certificates, the live member site — and emails a storm forecast. Known issues are annotated and demoted by a JSON fingerprint runbook so every red means something new; state committed back per run turns level alarms into slope alarms; an optional Claude-written analyst note narrates the findings. Found production storage over allocation and a vendor batch failing 600×/day on its first run. Zero dependencies, $0/month.",
+    caseStudy: '/dorothy',
+  },
+  {
+    id: 'KINETIC-BRAIN', kind: 'KNOWLEDGE-OPS', tag: 'IN-USE', tagC: 'cyan',
+    title: 'Kinetic Brain',
+    sub: 'Structured memory vault for Claude Code · in daily use since 2026',
+    stack: ['Claude Code', 'Obsidian', 'Markdown', 'Git', 'MCP', 'Taskwarrior'],
+    detail: "A vault-as-memory architecture that fixes the 'every session starts cold' problem. Bootstrap reads, a deterministic session protocol, decision logs, append-only knowledge files, and a three-question capture gate give the agent stable context across three organizations — no re-explaining, no prompt scaffolding, no vector database. I built it for myself and run it every working day; it's the system behind most of the projects on this page. Private by design — it holds real operating context, so there's no public repo and there isn't going to be one. Not a second brain — Claude Code's brain.",
+  },
+  {
+    id: 'COMPLIANCE-990', kind: 'DATA TOOL', tag: 'IN-USE', tagC: 'cyan',
+    title: 'Nonprofit Compliance Dashboard',
+    sub: 'IRS Form 990 compliance for a nationwide affiliate network',
+    stack: ['React', 'Vite', 'Tailwind', 'Supabase', 'IRS TEOS API', 'Edge Functions', 'GitHub Actions', 'Salesforce/Fonteva', 'Cloudflare Pages'],
+    detail: "Live private dashboard for IRS Form 990 compliance across a nonprofit affiliate network. Aggregates five data sources — ProPublica Nonprofit Explorer (year-by-year 990 / 990-EZ / 990-PF), IRS e-Postcard bulk ZIP, IRS Auto-Revocation List, a custom scraper against the IRS TEOS internal JSON API for full historical 990-N back to 2008 (3,672 filings imported on last run; data the IRS bulk feeds don't publish), plus a daily Salesforce/Fonteva sync that anchors the affiliate roster and pulls each affiliate's latest certification + signed 990 PDF. Surfaces regional heat maps, drill-into-entity 990 history with timestamped activity logs, and one-click audit packets that bundle every PDF return on record. Phase 2 — region-aware access with per-region RLS — shipped at the DB layer via a Supabase custom access-token hook. Refresh runs across Edge Functions, GitHub Actions, and pg_cron; every run writes an audit row. Built on infrastructure that runs near-free at nonprofit scale — under $300/yr vs. vendor quotes of $110K–$246K.",
+    caseStudy: '/compliance',
+  },
+  {
+    id: 'MCP-OPS', kind: 'PLATFORM', tag: 'PRODUCTION', tagC: 'green',
+    title: 'MCP Server Infrastructure',
+    sub: 'AI agent ↔ enterprise SaaS bridge',
+    stack: ['Anthropic Claude', 'MCP', 'M365', 'Google Workspace', 'Cloudflare', 'Supabase'],
+    detail: 'Designed and run production MCP servers connecting Claude to Microsoft 365, Google Workspace, Cloudflare, Supabase, and Granola. Established access patterns, scoping, and audit posture for non-human (agent) identities.',
+  },
+  {
+    id: 'INFRA-REBUILD', kind: 'INFRA', tag: 'SHIPPED', tagC: 'cyan',
+    title: 'Greenfield Hybrid Infra',
+    sub: 'Physical + cloud, built from scratch',
+    stack: ['Hyper-V', 'UniFi', 'Entra ID', 'Active Directory', 'Intune'],
+    detail: 'Built physical + cloud infra from the ground up. Deployed hypervisor environment, replaced legacy networking with enterprise switching + UniFi, remediated neglected AD in tandem with Entra ID consolidation.',
+  },
+  {
+    id: 'BVFD', kind: 'WEB APP', tag: 'LIVE', tagC: 'green',
+    title: 'bensalemvfd.org',
+    sub: 'Public web presence + crew tooling',
+    stack: ['HTML/JS', 'Tailwind', 'Supabase', 'Cloudflare', 'Node', 'First Due API'],
+    detail: 'Direct IT for Bensalem Volunteer Fire Department. Built and maintain bensalemvfd.org — Tailwind frontend on a Supabase backend, deployed on Cloudflare. Also prototyped an API-driven crew-points engine that polls the First Due API to cross-reference on-scene roster data and auto-credit members for fire calls, replacing manual tracking.',
+    href: 'https://bensalemvfd.org',
+  },
+  {
+    id: 'COMPLIANCE', kind: 'PROGRAM', tag: 'COMPLETE', tagC: 'green',
+    title: 'NIST 800-53 / SOC 2 Posture',
+    sub: 'Org-first cybersecurity milestone',
+    stack: ['NIST 800-53', 'CIS', 'Defender', 'Intune', 'Pen Test'],
+    detail: 'Aligned endpoint hardening + identity posture to NIST 800-53 / CIS. Commissioned org\'s first annual third-party pen test. Stood up SOC 2-aligned controls. Panelist, Cybersecurity Summit Philadelphia 2026.',
+  },
+];

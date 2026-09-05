@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Starfield, Clock } from '../components/fx.jsx';
+import { Nav, Footer } from '../components/Layout.jsx';
 import { useSeo } from '../lib/seo';
 
 const CAL_URL = 'https://cal.com/dgpugliese.dev/build-scoping';
@@ -146,23 +146,8 @@ export default function Build() {
 
   return (
     <>
-      <Starfield />
-      <div className="grid-bg" />
-      <div className="glow glow-1" />
-      <div className="glow glow-2" />
-      <div className="scanline" />
-
-      <div className="statusbar">
-        <span><span className="dot">●</span> ONLINE</span>
-        <span className="sep">/</span>
-        <span>SYS / DGPUGLIESE.DEV / BUILD</span>
-        <div className="right">
-          <span><Clock /></span>
-          <span style={{ color: 'var(--green)' }}>● ACCEPTING WORK</span>
-        </div>
-      </div>
-
-      <main style={{ marginLeft: 0, marginTop: 36, position: 'relative', zIndex: 10 }}>
+      <Nav />
+      <main>
         <article className="case-study" style={{ maxWidth: 980, margin: '0 auto', padding: '60px 32px 120px' }}>
 
           {/* Back nav */}
@@ -173,8 +158,8 @@ export default function Build() {
           {/* Hero */}
           <div className="panel panel-corners" style={{ padding: '40px 44px', marginBottom: 32 }}>
             <span className="panel-label">BUILD · CONCEPT TO SHIPPED</span>
-            <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.25em', marginBottom: 14 }}>
-              ◢ CONCEPT TO SHIPPED ◣
+            <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.2em', marginBottom: 14, textTransform: 'uppercase' }}>
+              Pick the outcome, not the hourly rate
             </div>
             <h1 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(48px, 8vw, 92px)', fontWeight: 700, lineHeight: 1, letterSpacing: '-0.03em', margin: 0, color: 'var(--fg)' }}>
               BUILD<span style={{ color: 'var(--cyan)' }}>.</span>
@@ -375,6 +360,7 @@ export default function Build() {
 
         </article>
       </main>
+      <Footer />
     </>
   );
 }
