@@ -562,35 +562,76 @@ section.sect {
   width: 100%;
   max-width: 640px;
   padding: 40px;
-  background: var(--bg-elev);
+  /* .panel's --bg-elev is a translucent tint meant to sit over the opaque
+     page background; the overlay floats over a blurred backdrop instead,
+     so it needs its own solid base with that same tint layered on top. */
+  background: linear-gradient(var(--bg-elev), var(--bg-elev)), var(--bg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 .overlay-close {
   position: absolute;
-  top: 12px;
-  right: 16px;
-  border: none;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
   background: none;
   color: var(--fg-faint);
-  font-size: 24px;
+  font-size: 18px;
   line-height: 1;
   cursor: pointer;
-  padding: 8px;
-  transition: color 0.15s;
+  transition: color 0.15s, border-color 0.15s;
 }
-.overlay-close:hover { color: var(--cyan); }
+.overlay-close:hover { color: var(--cyan); border-color: var(--cyan); }
+
+.overlay-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.overlay-avatar {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--fg);
+}
+.overlay-meta { display: flex; flex-direction: column; gap: 4px; }
+.overlay-meta-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--fg-faint);
+  text-transform: uppercase;
+}
+.overlay-kind {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--cyan-bright);
+  text-transform: uppercase;
+}
 .overlay-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 28px;
+  font-size: clamp(26px, 4vw, 34px);
   font-weight: 600;
+  line-height: 1.15;
   letter-spacing: -0.01em;
   color: var(--fg);
-  margin: 10px 0 6px;
+  margin: 0 0 14px;
 }
 .overlay-sub {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--fg-faint);
-  margin: 0 0 18px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--fg-dim);
+  margin: 0 0 24px;
 }
 .overlay-detail {
   font-size: 14px;
@@ -598,13 +639,55 @@ section.sect {
   color: var(--fg-dim);
   margin: 0 0 24px;
 }
-.overlay-links { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+.overlay-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  margin-bottom: 10px;
+}
+.overlay-block { margin-bottom: 24px; }
+.overlay-bullets { margin: 0; padding: 0; list-style: none; }
+.overlay-bullets li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--fg-dim);
+  margin-bottom: 10px;
+}
+.overlay-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--cyan-bright);
+}
+.overlay-result {
+  border-left: 2px solid var(--cyan-bright);
+  background: rgba(var(--cyan-rgb), 0.08);
+  border-radius: 0 6px 6px 0;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+}
+.overlay-result p { font-size: 14px; line-height: 1.6; color: var(--fg); margin: 0; }
+.overlay-rows { display: flex; flex-direction: column; gap: 18px; margin-bottom: 8px; }
+.overlay-row { display: grid; grid-template-columns: 110px 1fr; gap: 16px; }
+.overlay-row .overlay-label { margin-bottom: 0; padding-top: 2px; }
+.overlay-row p { font-size: 14px; line-height: 1.6; color: var(--fg-dim); margin: 0; }
+.overlay-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .overlay-stack {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
-  padding-top: 20px;
+  padding-top: 24px;
+  margin-top: 24px;
   border-top: 1px solid var(--line);
 }
 .stack-icon {
@@ -620,10 +703,10 @@ section.sect {
 }
 .stack-icon svg { width: 16px; height: 16px; }
 .stack-icon:hover { color: var(--cyan); background: rgba(var(--cyan-rgb), 0.12); }
-.stack-chip { height: 32px; }
+.stack-chip { height: 32px; border: 1px solid var(--line-strong); }
 @media (max-width: 560px) {
   .overlay-panel { padding: 28px 20px; }
-  .overlay-title { font-size: 22px; }
+  .overlay-row { grid-template-columns: 1fr; gap: 6px; }
 }
 
 /* ─────────────────────────────────────

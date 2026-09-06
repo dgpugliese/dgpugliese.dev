@@ -1,5 +1,11 @@
 // Selected Work — shown on Home and referenced from /build.
 // tag/tagC = current real status (LIVE, IN-USE, PRODUCTION, SHIPPED, COMPLETE).
+// period = a verified ship date/range. Only set where a real date exists elsewhere
+// on the site (case-study hero strips) — omit rather than guess; the overlay
+// falls back to the status tag when period is unset.
+// headline/shipped/result/context/problem/ownership are the overlay's structured
+// breakdown. All copy here is derived from `detail`/`sub` below — no new claims,
+// just reorganized. Flag anything that reads off before it ships again.
 
 export const projects = [
   {
@@ -11,6 +17,17 @@ export const projects = [
     caseStudy: '/obscura',
     live: 'https://obscr.app/',
     repo: 'https://github.com/dgpugliese/obscura',
+    period: 'SHIPPED 2026-05-05',
+    headline: 'Zero-knowledge file transfer, built to leak nothing.',
+    shipped: [
+      'Client-side AES-256-GCM — a random WebCrypto key lives only in the URL fragment, never sent to the server',
+      'Optional passphrase mode wraps the key under an Argon2id-derived KEK',
+      'Public Trust Center, privacy policy, and support posture',
+    ],
+    result: 'The server only ever sees ciphertext — the zero-knowledge claim holds because the key architecturally never reaches the backend, not because of a policy promise.',
+    context: "A file-transfer tool where 'zero-knowledge' is an architectural constraint, not a marketing line: the operator has no way to see what's transferred, even if compelled to look.",
+    problem: 'The random key lives in the URL fragment, which browsers never transmit to a server. That one design choice is what makes the zero-knowledge model actually true instead of just claimed.',
+    ownership: 'Designed and built solo, end-to-end — encryption model, UI, Trust Center, privacy policy, and support posture.',
   },
   {
     id: 'SILENTBEAT', kind: 'WEB APP', tag: 'LIVE', tagC: 'green',
@@ -21,6 +38,17 @@ export const projects = [
     caseStudy: '/silentbeat',
     live: 'https://silentbeat.app/',
     repo: 'https://github.com/dgpugliese/silentbeat',
+    period: 'SHIPPED 2026-05-06',
+    headline: "A dead man's switch that's actually honest about what it can see.",
+    shipped: [
+      'Split-key trust model — server holds share A, recipient holds share B in a browser-generated rescue file',
+      'Neither key share decrypts the message on its own',
+      'ECIES + Argon2id-backed key handling on Cloudflare Workers, Durable Objects, and D1',
+    ],
+    result: "The combined decryption key never exists on any server — the message only unlocks in the recipient's browser, with their half of the key.",
+    context: "A check-in you keep, and a message that ships if you don't. Most dead man's switches just ask you to trust the server with the message.",
+    problem: 'A server holding the full message, even encrypted at rest, is still a server that can be compelled or compromised to reveal it. Splitting the key changes what\'s actually possible, not just what\'s promised.',
+    ownership: 'Designed the split-key trust model and built the full stack solo — Cloudflare Workers, Durable Objects, D1, and the browser-side rescue file.',
   },
   {
     id: 'DOROTHY', kind: 'MONITORING', tag: 'PRODUCTION', tagC: 'green',
@@ -29,6 +57,17 @@ export const projects = [
     stack: ['Python (stdlib only)', 'GitHub Actions', 'Salesforce REST/Tooling', 'OAuth Client-Credentials', 'Claude API', 'Fonteva'],
     detail: "A read-only monitoring bot for a 150K-member production Salesforce/Fonteva org, named for the tornado sensor in Twister. Sweeps 14 systems every morning — governor limits, mail queues, async failures, package versions, payment-pipeline invariants, certificates, the live member site — and emails a storm forecast. Known issues are annotated and demoted by a JSON fingerprint runbook so every red means something new; state committed back per run turns level alarms into slope alarms; an optional Claude-written analyst note narrates the findings. Found production storage over allocation and a vendor batch failing 600×/day on its first run. Zero dependencies, $0/month.",
     caseStudy: '/dorothy',
+    period: 'SHIPPED 2026-08',
+    headline: 'A monitoring bot that only tells you what\'s new.',
+    shipped: [
+      'Sweeps 14 systems every morning — governor limits, mail queues, async failures, package versions, payment-pipeline invariants, certificates, the live member site',
+      'JSON fingerprint runbook annotates and demotes known issues, so every red alert means something new',
+      'State committed back per run turns level alarms into slope alarms; an optional Claude-written analyst note narrates the findings',
+    ],
+    result: 'Found a production storage over-allocation and a vendor batch job failing 600×/day on its first run. Zero dependencies, $0/month, for a 150K-member production org.',
+    context: 'Named for the tornado sensor in Twister — a read-only monitoring bot for a 150K-member production Salesforce/Fonteva org.',
+    problem: 'Most monitoring either repeats the same known issue every day or stays quiet until something breaks badly. Neither tells you what\'s actually new.',
+    ownership: 'Designed and built solo in Python (stdlib only) on GitHub Actions — the fingerprint runbook, the slope-alarm state model, and the Claude-written narration layer.',
   },
   {
     id: 'KINETIC-BRAIN', kind: 'KNOWLEDGE-OPS', tag: 'IN-USE', tagC: 'cyan',
@@ -36,6 +75,17 @@ export const projects = [
     sub: 'Structured memory vault for Claude Code · in daily use since 2026',
     stack: ['Claude Code', 'Obsidian', 'Markdown', 'Git', 'MCP', 'Taskwarrior'],
     detail: "A vault-as-memory architecture that fixes the 'every session starts cold' problem. Bootstrap reads, a deterministic session protocol, decision logs, append-only knowledge files, and a three-question capture gate give the agent stable context across three organizations — no re-explaining, no prompt scaffolding, no vector database. I built it for myself and run it every working day; it's the system behind most of the projects on this page. Private by design — it holds real operating context, so there's no public repo and there isn't going to be one. Not a second brain — Claude Code's brain.",
+    period: 'IN USE · SINCE 2026',
+    headline: "The system that fixes 'every session starts cold.'",
+    shipped: [
+      'Bootstrap reads, a deterministic session protocol, and decision logs that persist across sessions',
+      'Append-only knowledge files plus a three-question capture gate — no vector database, no prompt scaffolding',
+      'Stable context across three organizations without re-explaining anything',
+    ],
+    result: "It's the system behind most of the other projects on this page — run every working day, not a one-off experiment.",
+    context: 'Every new AI coding session starts cold by default — no memory of yesterday\'s decisions, an org\'s quirks, or why something was built the way it was.',
+    problem: 'Re-explaining context every session doesn\'t scale once you\'re operating across three organizations at once. The fix had to be structural, not a bigger prompt.',
+    ownership: 'Designed and built solo for personal daily use. Private by design — it holds real operating context, so there\'s no public repo and there isn\'t going to be one.',
   },
   {
     id: 'COMPLIANCE-990', kind: 'DATA TOOL', tag: 'IN-USE', tagC: 'cyan',
@@ -44,6 +94,16 @@ export const projects = [
     stack: ['React', 'Vite', 'Tailwind', 'Supabase', 'IRS TEOS API', 'Edge Functions', 'GitHub Actions', 'Salesforce/Fonteva', 'Cloudflare Pages'],
     detail: "Live private dashboard for IRS Form 990 compliance across a nonprofit affiliate network. Aggregates five data sources — ProPublica Nonprofit Explorer (year-by-year 990 / 990-EZ / 990-PF), IRS e-Postcard bulk ZIP, IRS Auto-Revocation List, a custom scraper against the IRS TEOS internal JSON API for full historical 990-N back to 2008 (3,672 filings imported on last run; data the IRS bulk feeds don't publish), plus a daily Salesforce/Fonteva sync that anchors the affiliate roster and pulls each affiliate's latest certification + signed 990 PDF. Surfaces regional heat maps, drill-into-entity 990 history with timestamped activity logs, and one-click audit packets that bundle every PDF return on record. Phase 2 — region-aware access with per-region RLS — shipped at the DB layer via a Supabase custom access-token hook. Refresh runs across Edge Functions, GitHub Actions, and pg_cron; every run writes an audit row. Built on infrastructure that runs near-free at nonprofit scale — under $300/yr vs. vendor quotes of $110K–$246K.",
     caseStudy: '/compliance',
+    headline: 'Five data sources, one nightly refresh, and 3,672 filings the IRS bulk feed doesn\'t publish.',
+    shipped: [
+      'Aggregates 5 sources: ProPublica Nonprofit Explorer, IRS e-Postcard bulk ZIP, IRS Auto-Revocation List, a custom TEOS scraper, and a daily Salesforce/Fonteva sync',
+      'Custom scraper against the IRS TEOS internal JSON API recovered full historical 990-N filings back to 2008 — 3,672 filings on last run, data the official bulk feeds don\'t publish',
+      'Region-aware access via a Supabase custom access-token hook (Phase 2, shipped at the DB layer); refresh runs across Edge Functions, GitHub Actions, and pg_cron with an audit row per run',
+    ],
+    result: 'Regional heat maps, drill-into-entity 990 history, and one-click audit packets — running at under $300/yr against vendor quotes of $110K–$246K.',
+    context: 'A nationwide nonprofit affiliate network needs to track IRS Form 990 compliance across every affiliate, but the IRS\'s own bulk data feeds have real gaps — particularly historical 990-N filings.',
+    problem: 'No single official feed publishes full 990-N history. Getting it required reverse-engineering the IRS TEOS internal JSON API directly.',
+    ownership: 'Designed and built the full pipeline solo — five-source aggregation, the TEOS scraper, region-aware RLS, and the audit-packet generator.',
   },
   {
     id: 'MCP-OPS', kind: 'PLATFORM', tag: 'PRODUCTION', tagC: 'green',
@@ -51,6 +111,16 @@ export const projects = [
     sub: 'AI agent ↔ enterprise SaaS bridge',
     stack: ['Anthropic Claude', 'MCP', 'M365', 'Google Workspace', 'Cloudflare', 'Supabase'],
     detail: 'Designed and run production MCP servers connecting Claude to Microsoft 365, Google Workspace, Cloudflare, Supabase, and Granola. Established access patterns, scoping, and audit posture for non-human (agent) identities.',
+    headline: 'Production infrastructure for AI agents that need real enterprise access.',
+    shipped: [
+      'Production MCP servers connecting Claude to Microsoft 365, Google Workspace, Cloudflare, Supabase, and Granola',
+      'Access patterns and scoping designed specifically for non-human (agent) identities',
+      'Audit posture that treats an AI agent as a real identity to govern, not an exception',
+    ],
+    result: 'Claude gets real, scoped access to the tools a business actually runs on — governed the same way any other identity would be.',
+    context: 'Connecting an AI agent to enterprise SaaS isn\'t the hard part — governing what it can do, and proving what it did, is.',
+    problem: 'Most agent-to-SaaS integrations either overshare access or skip auditability entirely. Neither is acceptable once the agent is touching production systems.',
+    ownership: 'Designed, built, and run the MCP server infrastructure and its access/audit model.',
   },
   {
     id: 'INFRA-REBUILD', kind: 'INFRA', tag: 'SHIPPED', tagC: 'cyan',
@@ -58,6 +128,16 @@ export const projects = [
     sub: 'Physical + cloud, built from scratch',
     stack: ['Hyper-V', 'UniFi', 'Entra ID', 'Active Directory', 'Intune'],
     detail: 'Built physical + cloud infra from the ground up. Deployed hypervisor environment, replaced legacy networking with enterprise switching + UniFi, remediated neglected AD in tandem with Entra ID consolidation.',
+    headline: 'Physical and cloud infrastructure, built from the ground up.',
+    shipped: [
+      'Deployed a hypervisor environment (Hyper-V) from scratch',
+      'Replaced legacy networking with enterprise switching and UniFi',
+      'Remediated a neglected Active Directory environment in tandem with Entra ID consolidation',
+    ],
+    result: 'A hybrid physical + cloud environment built on current infrastructure and identity practices, not inherited technical debt.',
+    context: 'Inherited an environment running on legacy networking with a neglected Active Directory setup.',
+    problem: 'You can\'t consolidate identity into Entra ID cleanly on top of a neglected on-prem AD — the on-prem side had to be remediated in the same pass, not after.',
+    ownership: 'Planned and executed the rebuild — hypervisor, networking, and identity remediation.',
   },
   {
     id: 'BVFD', kind: 'WEB APP', tag: 'LIVE', tagC: 'green',
@@ -66,6 +146,16 @@ export const projects = [
     stack: ['HTML/JS', 'Tailwind', 'Supabase', 'Cloudflare', 'Node', 'First Due API'],
     detail: 'Direct IT for Bensalem Volunteer Fire Department. Built and maintain bensalemvfd.org — Tailwind frontend on a Supabase backend, deployed on Cloudflare. Also prototyped an API-driven crew-points engine that polls the First Due API to cross-reference on-scene roster data and auto-credit members for fire calls, replacing manual tracking.',
     href: 'https://bensalemvfd.org',
+    headline: 'Volunteer fire department IT, including the parts nobody was tracking.',
+    shipped: [
+      'Built and maintain bensalemvfd.org — Tailwind frontend on a Supabase backend, deployed on Cloudflare',
+      'Prototyped an API-driven crew-points engine polling the First Due API against on-scene roster data',
+      'Auto-credits members for fire calls, replacing manual point tracking',
+    ],
+    result: 'A live public site plus a crew-points system that replaces a manual process with an automated one.',
+    context: 'Volunteer with Bensalem VFD, providing direct IT for the department alongside operational duties.',
+    problem: 'Crew credit for fire calls was tracked manually — reliant on someone remembering to log it, with no cross-reference against actual on-scene data.',
+    ownership: 'Direct IT for the department; designed, built, and maintain the site and the crew-points prototype.',
   },
   {
     id: 'COMPLIANCE', kind: 'PROGRAM', tag: 'COMPLETE', tagC: 'green',
@@ -73,5 +163,15 @@ export const projects = [
     sub: 'Org-first cybersecurity milestone',
     stack: ['NIST 800-53', 'CIS', 'Defender', 'Intune', 'Pen Test'],
     detail: 'Aligned endpoint hardening + identity posture to NIST 800-53 / CIS. Commissioned org\'s first annual third-party pen test. Stood up SOC 2-aligned controls. Panelist, Cybersecurity Summit Philadelphia 2026.',
+    headline: 'The org\'s first real third-party security audit.',
+    shipped: [
+      'Aligned endpoint hardening and identity posture to NIST 800-53 / CIS',
+      'Commissioned the organization\'s first annual third-party penetration test',
+      'Stood up SOC 2-aligned controls',
+    ],
+    result: 'A cybersecurity posture the org could actually defend to a third party — not just internal policy on paper. Panelist, Cybersecurity Summit Philadelphia 2026, on the same work.',
+    context: 'The organization had never commissioned an outside party to test its security posture.',
+    problem: 'Internal policy alignment doesn\'t mean much until it\'s been tested by someone with no incentive to say it\'s fine.',
+    ownership: 'Led the alignment work, commissioned and managed the pen test, and stood up the SOC 2-aligned controls.',
   },
 ];
