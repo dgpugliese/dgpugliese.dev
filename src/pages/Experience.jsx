@@ -4,7 +4,7 @@ import { jobs } from '../data/experience.js';
 
 export default function Experience() {
   useSeo({
-    title: 'Experience · dgpugliese.dev',
+    title: 'Career · dgpugliese.dev',
     description: '16+ years across enterprise IT, MSP leadership, and network engineering — the roles, what shipped, and the outcome each one left behind.',
     path: '/experience',
     image: 'https://dgpugliese.dev/og.png',
@@ -17,7 +17,7 @@ export default function Experience() {
         <section className="sect">
           <div className="sect-head">
             <span className="sect-mark" />
-            <h1 className="sect-title" style={{ margin: 0 }}>Experience</h1>
+            <h1 className="sect-title" style={{ margin: 0 }}>Career</h1>
           </div>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-dim)', maxWidth: 700, marginBottom: 40 }}>
             16+ years across enterprise IT, MSP leadership, and network engineering. Paid work,

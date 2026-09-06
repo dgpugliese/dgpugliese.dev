@@ -9,7 +9,7 @@ export function LogPost() {
   const post = posts.find(p => p.slug === slug);
 
   useSeo(post ? {
-    title: `${post.title} · Writing · dgpugliese.dev`,
+    title: `${post.title} · Field Notes · dgpugliese.dev`,
     description: post.summary,
     path: `/log/${post.slug}`,
     image: 'https://dgpugliese.dev/og.png',
@@ -27,7 +27,7 @@ export function LogPost() {
       url: `https://dgpugliese.dev/log/${post.slug}`,
     },
   } : {
-    title: 'Not found · Writing · dgpugliese.dev',
+    title: 'Not found · Field Notes · dgpugliese.dev',
     description: 'Post not found.',
     path: `/log/${slug || ''}`,
   });
@@ -37,7 +37,7 @@ export function LogPost() {
       <div className="log-shell">
         <Nav />
         <div style={{ padding: '80px 60px', maxWidth: 860, margin: '0 auto' }}>
-          <Link to="/log" className="log-back">← Writing</Link>
+          <Link to="/log" className="log-back">← Field Notes</Link>
           <div style={{ marginTop: 32 }}>
             <span className="mono" style={{ color: 'var(--amber)', fontSize: 12, letterSpacing: '0.14em' }}>404</span>
             <h1 style={{ margin: '10px 0 14px', fontSize: 'clamp(28px, 5vw, 44px)', fontWeight: 700, letterSpacing: '-0.01em' }}>
@@ -47,7 +47,7 @@ export function LogPost() {
               No post at <code style={{ color: 'var(--cyan)' }}>/log/{slug}</code>.
               It may have moved or never existed.
             </p>
-            <Link to="/log" className="btn" style={{ marginTop: 24, display: 'inline-flex' }}>← Return to Writing</Link>
+            <Link to="/log" className="btn" style={{ marginTop: 24, display: 'inline-flex' }}>← Return to Field Notes</Link>
           </div>
         </div>
         <Footer />
@@ -125,7 +125,7 @@ export function LogPost() {
 // ─── Writing Index Page ────────────────────────────────────────────────────
 export default function Log() {
   useSeo({
-    title: 'Writing · dgpugliese.dev',
+    title: 'Field Notes · dgpugliese.dev',
     description:
       'Notes from the field on AI agent infrastructure, zero-knowledge crypto, NIST 800-53 / SOC 2 compliance, and shipping platforms end-to-end.',
     path: '/log',
@@ -133,7 +133,7 @@ export default function Log() {
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'Blog',
-      name: 'Writing',
+      name: 'Field Notes',
       description: 'Engineering notes by David Pugliese.',
       url: 'https://dgpugliese.dev/log',
       author: { '@type': 'Person', name: 'David Pugliese' },
@@ -154,7 +154,7 @@ export default function Log() {
         <div className="sect-head" style={{ marginBottom: 8 }}>
           <span className="sect-mark" />
           <h1 style={{ margin: 0, fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 700, letterSpacing: '-0.01em', color: 'var(--fg)' }}>
-            Writing
+            Field Notes
           </h1>
           <span className="sect-sub">{posts.length} posts</span>
         </div>

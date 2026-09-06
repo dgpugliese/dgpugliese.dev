@@ -24,9 +24,9 @@ export function About() {
           nonprofits.
         </p>
         <div className="about-links">
-          <Link to="/experience">Experience →</Link>
-          <Link to="/uses">Uses →</Link>
-          <Link to="/log">Writing →</Link>
+          <Link to="/experience">Career →</Link>
+          <Link to="/uses">Stack →</Link>
+          <Link to="/log">Field Notes →</Link>
         </div>
       </div>
     </section>

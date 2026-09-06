@@ -19,9 +19,9 @@ export default function NotFound() {
           <p>The page you're looking for doesn't exist, moved, or never made it past deployment.</p>
           <div className="notfound-links">
             <Link to="/">Home — the headline, the work, the conversation</Link>
-            <Link to="/experience">Experience — the roles and what shipped</Link>
-            <Link to="/build">Build — fixed-price product builds</Link>
-            <Link to="/log">Writing — field notes and build logs</Link>
+            <Link to="/experience">Career — the roles and what shipped</Link>
+            <Link to="/build">Hire Me — fixed-price product builds</Link>
+            <Link to="/log">Field Notes — build logs and lessons learned</Link>
           </div>
         </div>
       </main>

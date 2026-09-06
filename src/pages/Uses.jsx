@@ -4,7 +4,7 @@ import { groups, certGroups } from '../data/uses.js';
 
 export default function Uses() {
   useSeo({
-    title: 'Uses · dgpugliese.dev',
+    title: 'Stack · dgpugliese.dev',
     description: 'The stack David Pugliese reaches for across identity, cloud, infrastructure, security, and engineering — plus verified certifications.',
     path: '/uses',
     image: 'https://dgpugliese.dev/og.png',
@@ -19,7 +19,7 @@ export default function Uses() {
         <section className="sect">
           <div className="sect-head">
             <span className="sect-mark" />
-            <h1 className="sect-title" style={{ margin: 0 }}>Uses</h1>
+            <h1 className="sect-title" style={{ margin: 0 }}>Stack</h1>
           </div>
           <p className="uses-intro">
             What I reach for across identity, cloud, infrastructure, security, and engineering —
