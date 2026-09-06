@@ -86,7 +86,7 @@ export function Nav() {
   return (
     <header className="site-nav">
       <div className="site-nav-inner">
-        <Link to="/" className="site-nav-brand">DGPUGLIESE</Link>
+        <Link to="/" className="site-nav-brand">dgpugliese<span className="site-nav-brand-dot">.</span></Link>
         <nav className="site-nav-links">
           <Link to="/experience">Experience</Link>
           <Link to="/uses">Uses</Link>

@@ -81,7 +81,8 @@ main { position: relative; }
 .site-nav-inner {
   max-width: 1180px;
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 24px;
   padding: 10px 24px;
@@ -93,11 +94,14 @@ main { position: relative; }
   letter-spacing: 0.14em;
   color: var(--fg);
   text-decoration: none;
+  justify-self: start;
 }
+.site-nav-brand-dot { color: var(--cyan); }
 .site-nav-links {
   display: flex;
   gap: 22px;
   flex-wrap: wrap;
+  justify-self: center;
 }
 .site-nav-links a {
   font-family: 'JetBrains Mono', monospace;
@@ -110,7 +114,7 @@ main { position: relative; }
 }
 .site-nav-links a:hover { color: var(--fg); }
 .site-nav-actions {
-  margin-left: auto;
+  justify-self: end;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -653,7 +657,7 @@ section.sect {
 @media (max-width: 900px) {
   .site-nav-links { display: none; }
   .site-nav-actions { display: none; }
-  .site-nav-toggle { display: flex; }
+  .site-nav-toggle { display: flex; justify-self: end; grid-column: 3; }
   .site-nav-inner { padding: 10px 20px; }
   .site-nav-mobile {
     display: flex;
