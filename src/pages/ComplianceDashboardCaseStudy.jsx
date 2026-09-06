@@ -261,7 +261,7 @@ function Section({ num, title, sub, children }) {
   return (
     <section style={{ marginBottom: 28 }}>
       <div className="sect-head">
-        <span className="sect-num">{num} //</span>
+        <span className="sect-num">{num}</span><span className="sect-mark" />
         <h2 className="sect-title">{title}</h2>
         <span className="sect-sub">{sub}</span>
       </div>

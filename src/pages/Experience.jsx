@@ -16,7 +16,7 @@ export default function Experience() {
       <main>
         <section className="sect">
           <div className="sect-head">
-            <span className="sect-num">// </span>
+            <span className="sect-mark" />
             <h1 className="sect-title" style={{ margin: 0 }}>Experience</h1>
           </div>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-dim)', maxWidth: 700, marginBottom: 40 }}>

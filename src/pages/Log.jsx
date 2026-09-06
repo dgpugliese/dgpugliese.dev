@@ -152,7 +152,7 @@ export default function Log() {
 
       <div style={{ padding: '80px 60px 120px', maxWidth: 900, margin: '0 auto' }}>
         <div className="sect-head" style={{ marginBottom: 8 }}>
-          <span className="sect-num">// </span>
+          <span className="sect-mark" />
           <h1 style={{ margin: 0, fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 700, letterSpacing: '-0.01em', color: 'var(--fg)' }}>
             Writing
           </h1>

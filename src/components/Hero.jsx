@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Highlight } from './Highlight.jsx';
 
 const CAL_URL = 'https://cal.com/dgpugliese.dev/build-scoping';
 
@@ -11,26 +12,13 @@ function GitHubMark(props) {
   );
 }
 
-function BrushStroke() {
-  return (
-    <svg className="brush-stroke" viewBox="0 0 220 24" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M4 16 C 30 4, 55 22, 85 12 S 140 4, 170 14 S 210 18, 216 10" />
-    </svg>
-  );
-}
-
 export function Hero() {
   return (
     <section className="hero">
       <div className="hero-eyebrow">IT Director · Solutions Architect · MSP Founder</div>
       <h1>
         I build the systems<br />
-        vendors quote{' '}
-        <span className="hero-highlight">
-          six figures
-          <BrushStroke />
-        </span>{' '}
-        for.
+        vendors quote <Highlight>six figures</Highlight> for.
       </h1>
       <p className="hero-sub">
         16+ years bridging enterprise IT infrastructure, security, and modern cloud development —

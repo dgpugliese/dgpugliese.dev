@@ -237,8 +237,17 @@ section.sect {
 .sect-num {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
-  color: var(--cyan);
+  color: var(--fg-faint);
   letter-spacing: 0.2em;
+  align-self: center;
+}
+.sect-mark {
+  width: 20px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--cyan);
+  align-self: center;
+  flex: 0 0 auto;
 }
 .sect-title {
   font-family: 'Space Grotesk', sans-serif;

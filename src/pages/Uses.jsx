@@ -18,7 +18,7 @@ export default function Uses() {
       <main>
         <section className="sect">
           <div className="sect-head">
-            <span className="sect-num">// </span>
+            <span className="sect-mark" />
             <h1 className="sect-title" style={{ margin: 0 }}>Uses</h1>
           </div>
           <p className="uses-intro">

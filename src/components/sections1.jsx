@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projects.js';
+import { Highlight } from './Highlight.jsx';
 
 export function About() {
   return (
     <section className="sect" id="about">
       <div className="sect-head">
-        <span className="sect-num">// </span>
+        <span className="sect-mark" />
         <h2 className="sect-title">About</h2>
       </div>
       <div className="about-block">
@@ -36,8 +37,8 @@ export function SelectedWork() {
   return (
     <section className="sect" id="work">
       <div className="sect-head">
-        <span className="sect-num">// </span>
-        <h2 className="sect-title">Selected Work</h2>
+        <span className="sect-mark" />
+        <h2 className="sect-title">Selected <Highlight>Work</Highlight></h2>
       </div>
       <div className="work-list">
         {projects.map(p => {

@@ -171,7 +171,7 @@ export default function Build() {
         {/* The offer */}
         <section className="sect">
           <div className="sect-head">
-            <span className="sect-num">// </span>
+            <span className="sect-mark" />
             <h2 className="sect-title">The offer</h2>
             <span className="sect-sub">what you get</span>
           </div>
@@ -185,7 +185,7 @@ export default function Build() {
         {/* What I build best */}
         <section className="sect">
           <div className="sect-head">
-            <span className="sect-num">// </span>
+            <span className="sect-mark" />
             <h2 className="sect-title">What I build best</h2>
             <span className="sect-sub">the niche</span>
           </div>
@@ -207,7 +207,7 @@ export default function Build() {
         {/* How it works */}
         <section className="sect">
           <div className="sect-head">
-            <span className="sect-num">// </span>
+            <span className="sect-mark" />
             <h2 className="sect-title">How it works</h2>
             <span className="sect-sub">the process</span>
           </div>
@@ -230,7 +230,7 @@ export default function Build() {
         {/* Recent builds */}
         <section className="sect" id="builds">
           <div className="sect-head">
-            <span className="sect-num">// </span>
+            <span className="sect-mark" />
             <h2 className="sect-title">Recent builds</h2>
             <span className="sect-sub">proof of work</span>
           </div>
@@ -272,7 +272,7 @@ export default function Build() {
         {/* Pricing */}
         <section className="sect">
           <div className="sect-head">
-            <span className="sect-num">// </span>
+            <span className="sect-mark" />
             <h2 className="sect-title">Pricing</h2>
             <span className="sect-sub">what it costs</span>
           </div>
@@ -304,7 +304,7 @@ export default function Build() {
         {/* About */}
         <section className="sect">
           <div className="sect-head">
-            <span className="sect-num">// </span>
+            <span className="sect-mark" />
             <h2 className="sect-title">About</h2>
             <span className="sect-sub">who's building this</span>
           </div>
@@ -325,7 +325,7 @@ export default function Build() {
         {/* FAQ */}
         <section className="sect">
           <div className="sect-head">
-            <span className="sect-num">// </span>
+            <span className="sect-mark" />
             <h2 className="sect-title">Frequently asked</h2>
             <span className="sect-sub">the answers</span>
           </div>
@@ -365,7 +365,7 @@ export default function Build() {
         {/* Closing CTA — same plain treatment as Home's Contact */}
         <section className="sect" id="contact" style={{ paddingBottom: 40 }}>
           <div className="sect-head">
-            <span className="sect-num">// </span>
+            <span className="sect-mark" />
             <h2 className="sect-title">Contact</h2>
           </div>
           <div className="contact-block">

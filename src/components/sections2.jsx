@@ -5,7 +5,7 @@ export function Contact() {
   return (
     <section className="sect" id="contact" style={{ paddingBottom: 40 }}>
       <div className="sect-head">
-        <span className="sect-num">// </span>
+        <span className="sect-mark" />
         <h2 className="sect-title">Contact</h2>
       </div>
       <div className="contact-block">
