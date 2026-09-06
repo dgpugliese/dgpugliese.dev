@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projects.js';
 import { Highlight } from './Highlight.jsx';
+import { ProjectOverlay } from './ProjectOverlay.jsx';
 
 export function About() {
   return (
@@ -34,6 +36,9 @@ export function About() {
 }
 
 export function SelectedWork() {
+  const [activeId, setActiveId] = useState(null);
+  const active = projects.find(p => p.id === activeId) || null;
+
   return (
     <section className="sect" id="work">
       <div className="sect-head">
@@ -41,31 +46,21 @@ export function SelectedWork() {
         <h2 className="sect-title">Selected <Highlight>Work</Highlight></h2>
       </div>
       <div className="work-list">
-        {projects.map(p => {
-          const isInternal = !!p.caseStudy;
-          const isExternal = !p.caseStudy && !!p.href;
-          const Tag = isInternal ? Link : isExternal ? 'a' : 'div';
-          const wrapperProps = isInternal
-            ? { to: p.caseStudy }
-            : isExternal
-              ? { href: p.href, target: '_blank', rel: 'noreferrer' }
-              : {};
-          const isClickable = isInternal || isExternal;
-          return (
-            <Tag key={p.id} {...wrapperProps} className="work-row">
-              <span className="work-status">● {p.tag}</span>
-              <div>
-                <h3 className="work-title">{p.title}</h3>
-                <p className="work-desc">{p.sub}</p>
-                <div className="work-tags">
-                  {p.stack.slice(0, 4).map(s => <span key={s} className="chip">{s}</span>)}
-                </div>
+        {projects.map(p => (
+          <button key={p.id} type="button" className="work-row" onClick={() => setActiveId(p.id)}>
+            <span className="work-status">● {p.tag}</span>
+            <div>
+              <h3 className="work-title">{p.title}</h3>
+              <p className="work-desc">{p.sub}</p>
+              <div className="work-tags">
+                {p.stack.slice(0, 4).map(s => <span key={s} className="chip">{s}</span>)}
               </div>
-              {isClickable && <span className="work-arrow">↗</span>}
-            </Tag>
-          );
-        })}
+            </div>
+            <span className="work-arrow">↗</span>
+          </button>
+        ))}
       </div>
+      <ProjectOverlay project={active} onClose={() => setActiveId(null)} />
     </section>
   );
 }
