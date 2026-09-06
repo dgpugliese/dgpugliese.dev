@@ -99,45 +99,32 @@ main { position: relative; }
 .site-nav-brand-dot { color: var(--cyan); }
 .site-nav-links {
   display: flex;
-  gap: 13px; /* + 9px dot padding on each link = 22px between labels */
+  gap: 22px;
   flex-wrap: wrap;
   justify-self: center;
 }
 .site-nav-links a {
-  position: relative;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--fg-dim);
   text-decoration: none;
-  padding-right: 9px;
+  /* The always-present hover period holds its own advance width, so pull it
+     back out of the layout to keep label-to-label spacing at the flex gap. */
+  margin-right: calc(-1ch - 0.14em);
   transition: color 0.15s;
 }
 .site-nav-links a::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 50%;
-  width: 4px;
-  height: 4px;
-  margin-top: -2px;
-  border-radius: 50%;
-  background: var(--cyan-bright);
+  content: '.';
+  color: var(--cyan-bright);
   opacity: 0;
-  transform: scale(0.4);
-  transition: opacity 0.15s, transform 0.15s;
+  transition: opacity 0.15s;
 }
-.site-nav-links a:last-child { margin-right: -9px; } /* keep the group optically centered */
 .site-nav-links a:hover,
 .site-nav-links a:focus-visible { color: var(--fg); }
 .site-nav-links a:hover::after,
-.site-nav-links a:focus-visible::after { opacity: 1; transform: scale(1); }
-@media (prefers-reduced-motion: reduce) {
-  .site-nav-links a::after { transition: opacity 0.15s; transform: none; }
-  .site-nav-links a:hover::after,
-  .site-nav-links a:focus-visible::after { transform: none; }
-}
+.site-nav-links a:focus-visible::after { opacity: 1; }
 .site-nav-actions {
   justify-self: end;
   display: flex;
