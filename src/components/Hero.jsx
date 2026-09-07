@@ -15,27 +15,46 @@ function GitHubMark(props) {
 export function Hero() {
   return (
     <section className="hero">
-      <div className="hero-eyebrow">IT Director · Solutions Architect · MSP Founder</div>
-      <h1>
-        I build the systems<br />
-        vendors quote <Highlight>six figures</Highlight> for.
-      </h1>
-      <p className="hero-sub">
-        16+ years bridging enterprise IT infrastructure, security, and modern cloud development —
-        usually three separate careers. I ship in production, not slides.
-      </p>
-      <div className="hero-actions">
-        <a className="btn" href={CAL_URL} target="_blank" rel="noreferrer">Book a 30-min call →</a>
-        <a className="hero-secondary" href="mailto:dp@dgpugliese.dev">Prefer email? Get in touch</a>
+      <div className="hero-topline mono"><span>David Pugliese / Independent builder</span><span>Philadelphia, PA ↗</span></div>
+      <div className="hero-composition">
+        <div className="hero-copy">
+          <div className="hero-eyebrow">IT Director · Solutions Architect · MSP Founder</div>
+          <h1>I build the<br />systems.<br /><span className="hero-outline">End to end.</span></h1>
+          <p className="hero-statement">The ones vendors quote <Highlight>six figures</Highlight> for.</p>
+          <p className="hero-sub">16+ years across enterprise infrastructure, security, and software. From the architecture to the last line of code.</p>
+          <div className="hero-actions">
+            <a className="btn" href="#work">Explore the work <span aria-hidden="true">↘</span></a>
+            <a className="hero-secondary" href={CAL_URL} target="_blank" rel="noreferrer">Let's talk ↗</a>
+          </div>
+        </div>
+        <div className="hero-art" aria-hidden="true">
+          <div className="art-grid" />
+          <svg className="architecture-mark" viewBox="0 0 520 560" fill="none">
+            <defs>
+              <linearGradient id="red-face" x1="100" y1="80" x2="450" y2="460" gradientUnits="userSpaceOnUse"><stop stopColor="#ff6b54"/><stop offset=".48" stopColor="#b91c1c"/><stop offset="1" stopColor="#590b10"/></linearGradient>
+              <linearGradient id="red-edge" x1="350" y1="100" x2="150" y2="480" gradientUnits="userSpaceOnUse"><stop stopColor="#dc493b"/><stop offset="1" stopColor="#32080c"/></linearGradient>
+            </defs>
+            <g className="architecture-layers">
+              {[0, 1, 2].map(i => <g key={i} transform={`translate(0 ${i * 104})`}>
+                <path d="M60 160 260 48 460 160 260 277Z" fill="url(#red-face)" stroke="#ed7461" strokeWidth=".8"/>
+                <path d="M60 160 260 277 460 160V207L260 324 60 207Z" fill="url(#red-edge)" stroke="#a72a28" strokeWidth=".8"/>
+                <path d="m260 107 99 56-99 58-99-58Z" fill="#190c0e" stroke="#e35243"/>
+                <path d="M260 107v45l59 34 40-23Z" fill="#570e15"/>
+                <path d="M260 152 200 186 161 163 260 107Z" fill="#8c1c22"/>
+              </g>)}
+            </g>
+          </svg>
+          <div className="art-caption mono"><span>Architecture</span><span>Engineering</span><span>Operations</span></div>
+        </div>
       </div>
-      <GitHubStrip />
+      <div className="hero-bottom"><span className="mono">I ship in production, not slides.</span><a href="#work" className="mono">Explore selected work ↓</a></div>
     </section>
   );
 }
 
 const ACTIVITY_WINDOW_DAYS = 60;
 
-function GitHubStrip() {
+export function GitHubStrip() {
   const [user, setUser] = useState(null);
   const [err, setErr] = useState(false);
   const [activity, setActivity] = useState(null);
@@ -54,30 +73,30 @@ function GitHubStrip() {
         const pages = await Promise.all(
           [1, 2, 3].map((p) =>
             fetch(`https://api.github.com/users/dgpugliese/events/public?per_page=100&page=${p}`)
-              .then((r) => (r.ok ? r.json() : []))
-              .catch(() => [])
+              .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
           )
         );
-        const pushEvents = pages.flat().filter((e) => e && e.type === 'PushEvent');
+        const cutoff = new Date();
+        cutoff.setUTCDate(cutoff.getUTCDate() - (ACTIVITY_WINDOW_DAYS - 1));
+        cutoff.setUTCHours(0, 0, 0, 0);
+        const pushEvents = pages.flat().filter((e) => e && e.type === 'PushEvent' && new Date(e.created_at) >= cutoff);
 
         const byDay = {};
         pushEvents.forEach((e) => {
           const day = e.created_at.slice(0, 10);
-          const commits = e.payload?.commits?.length || 1;
-          byDay[day] = (byDay[day] || 0) + commits;
+          byDay[day] = (byDay[day] || 0) + 1;
         });
 
         const days = [];
         const now = new Date();
         for (let i = ACTIVITY_WINDOW_DAYS - 1; i >= 0; i--) {
           const d = new Date(now);
-          d.setDate(d.getDate() - i);
+          d.setUTCDate(d.getUTCDate() - i);
           const key = d.toISOString().slice(0, 10);
           days.push({ date: key, count: byDay[key] || 0 });
         }
 
-        const totalCommits = pushEvents.reduce((sum, e) => sum + (e.payload?.commits?.length || 1), 0);
-        setActivity({ days, totalCommits, totalPushes: pushEvents.length });
+        setActivity({ days, totalPushes: pushEvents.length });
       } catch {
         setActivityErr(true);
       }
@@ -118,7 +137,7 @@ function activityLevel(count) {
 }
 
 function GitHubActivity({ activity, err }) {
-  if (err) return null;
+  if (err) return <p className="github-strip-note">Push activity unavailable. View the profile on GitHub.</p>;
   if (!activity) {
     return <div className="github-activity github-strip-note pulse">fetching push activity…</div>;
   }
@@ -126,13 +145,13 @@ function GitHubActivity({ activity, err }) {
     <div className="github-activity">
       <div className="github-activity-row">
         <span className="github-strip-note">
-          {activity.totalPushes} pushes · {activity.totalCommits} commits · last {ACTIVITY_WINDOW_DAYS} days
+          {activity.totalPushes} public pushes returned · last {ACTIVITY_WINDOW_DAYS} days
         </span>
-        <span className="github-strip-note">public activity only</span>
+        <span className="github-strip-note">GitHub API history may be incomplete</span>
       </div>
       <div className="github-activity-dots" title={`${activity.totalPushes} public pushes in the last ${ACTIVITY_WINDOW_DAYS} days`}>
         {activity.days.map((d) => (
-          <span key={d.date} className="github-activity-dot" data-level={activityLevel(d.count)} />
+          <span key={d.date} className="github-activity-dot" data-level={activityLevel(d.count)} title={`${d.date}: ${d.count} public pushes returned`} />
         ))}
       </div>
     </div>

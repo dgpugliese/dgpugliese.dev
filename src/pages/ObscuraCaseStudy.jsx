@@ -13,8 +13,8 @@ export default function ObscuraCaseStudy() {
   return (
     <>
       <Nav />
-      <main>
-        <article className="case-study" style={{ maxWidth: 980, margin: '0 auto', padding: '60px 32px 120px' }}>
+      <main id="main-content">
+        <article className="case-study editorial-case">
 
           {/* Back nav */}
           <Link to="/" style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 12, color: 'var(--cyan)', textDecoration: 'none', letterSpacing: '0.15em', display: 'inline-block', marginBottom: 32 }}>
@@ -22,16 +22,16 @@ export default function ObscuraCaseStudy() {
           </Link>
 
           {/* Hero */}
-          <div className="panel panel-corners" style={{ padding: '40px 44px', marginBottom: 32 }}>
-            <span className="panel-label">CASE_STUDY · OBSCURA</span>
+          <div className="case-hero">
+            <div className="page-intro-label mono">Case study</div>
             <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.25em', marginBottom: 14 }}>
-              ◢ ZERO-KNOWLEDGE FILE TRANSFER ◣
+              ZERO-KNOWLEDGE FILE TRANSFER
             </div>
-            <h1 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(48px, 8vw, 92px)', fontWeight: 700, lineHeight: 1, letterSpacing: '-0.03em', margin: 0, color: 'var(--fg)' }}>
-              OBSCURA<span style={{ color: 'var(--cyan)' }}>.</span>
+            <h1 className="case-title">
+              Obscura<span style={{ color: 'var(--cyan)' }}>.</span>
             </h1>
             <div className="mono" style={{ fontSize: 16, marginTop: 16, color: 'var(--fg-dim)' }}>
-              <span style={{ color: 'var(--cyan)' }}>&gt; </span>
+
               files encrypted in your browser. the server never sees your keys.
             </div>
             <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
@@ -58,7 +58,7 @@ export default function ObscuraCaseStudy() {
           </div>
 
           {/* TL;DR */}
-          <Section num="01" title="TL;DR" sub="60-second summary">
+          <Section title="TL;DR" sub="60-second summary">
             <p style={P}>
               Obscura is a public, browser-only file transfer tool that encrypts your files with <Cyan>AES-256-GCM</Cyan> in
               the browser before they ever leave your device. The server only ever sees ciphertext, and the key
@@ -73,7 +73,7 @@ export default function ObscuraCaseStudy() {
           </Section>
 
           {/* Why */}
-          <Section num="02" title="Why it exists" sub="the problem">
+          <Section title="Why it exists" sub="the problem">
             <p style={P}>
               Every common file-share tool — WeTransfer, Dropbox links, Google Drive — assumes you trust the host.
               Hosts can read your file. Subpoenas can read your file. Breaches can read your file.
@@ -91,7 +91,7 @@ export default function ObscuraCaseStudy() {
           </Section>
 
           {/* How it works */}
-          <Section num="03" title="How it works" sub="the architecture">
+          <Section title="How it works" sub="the architecture">
             <Diagram />
             <p style={P}>The flow, end to end:</p>
             <ol style={OL}>
@@ -111,7 +111,7 @@ export default function ObscuraCaseStudy() {
           </Section>
 
           {/* Stack */}
-          <Section num="04" title="The stack" sub="what's under the hood">
+          <Section title="The stack" sub="what's under the hood">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 14 }}>
               <StackPanel label="FRONTEND" items={['React 18', 'Single app view', 'Vanilla CSS · monospace HUD']} c="cyan" />
               <StackPanel label="CRYPTOGRAPHY" items={['Web Crypto API', 'AES-256-GCM (AEAD)', 'Argon2id (KDF)']} c="violet" />
@@ -122,7 +122,7 @@ export default function ObscuraCaseStudy() {
           </Section>
 
           {/* Design Decisions */}
-          <Section num="05" title="Design decisions" sub="and the reasoning">
+          <Section title="Design decisions" sub="and the reasoning">
             <Decision title="Argon2id over PBKDF2 / bcrypt"
                       body="PBKDF2 is fine but old; bcrypt has password-length quirks. Argon2id is the modern memory-hard winner of the Password Hashing Competition and is the OWASP-recommended default. Slightly heavier in browser, worth it." />
             <Decision title="AES-256-GCM, not CBC + HMAC"
@@ -138,7 +138,7 @@ export default function ObscuraCaseStudy() {
           </Section>
 
           {/* Trust posture */}
-          <Section num="06" title="Trust posture is the product" sub="verifiable, not theoretical">
+          <Section title="Trust posture is the product" sub="verifiable, not theoretical">
             <p style={P}>
               "Zero-knowledge" is a marketing word until the operator gives you a way to check. The unified Trust Center and
               public repo make Obscura's claim easier to audit:
@@ -156,7 +156,7 @@ export default function ObscuraCaseStudy() {
           </Section>
 
           {/* What it isn't */}
-          <Section num="07" title="What it isn't" sub="the honest gap">
+          <Section title="What it isn't" sub="the honest gap">
             <p style={P}>
               Obscura's wedge is <Cyan>anonymity-by-default and source-you-can-read</Cyan>. It is intentionally
               not an enterprise tool. The honest gap vs. commercial competitors:
@@ -175,7 +175,7 @@ export default function ObscuraCaseStudy() {
           </Section>
 
           {/* Shipped with Claude Code */}
-          <Section num="08" title="Shipped with Claude Code" sub="AI as engineering partner">
+          <Section title="Shipped with Claude Code" sub="AI as engineering partner">
             <p style={P}>
               Designed in Claude. Frontend and Cloudflare Worker written collaboratively in <Cyan>Claude Code</Cyan>.
               Cloudflare resources (Workers, R2, KV, custom domain) provisioned through the
@@ -187,7 +187,7 @@ export default function ObscuraCaseStudy() {
           </Section>
 
           {/* Outcome */}
-          <Section num="09" title="Outcome &amp; what's next" sub="the result">
+          <Section title="Outcome &amp; what's next" sub="the result">
             <p style={P}>
               Obscura is live at <a href="https://obscr.app/" target="_blank" rel="noreferrer" style={LINK}>obscr.app</a> and
               public-source at <a href="https://github.com/dgpugliese/obscura" target="_blank" rel="noreferrer" style={LINK}>github.com/dgpugliese/obscura</a>.
@@ -219,7 +219,7 @@ export default function ObscuraCaseStudy() {
 
           {/* CTA bottom */}
           <div className="panel panel-corners" style={{ padding: '32px 36px', textAlign: 'center', marginTop: 12 }}>
-            <span className="panel-label">END_OF_TRANSMISSION</span>
+            <span className="panel-label">Explore further</span>
             <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.25em', marginBottom: 16 }}>◆ TRY IT · INSPECT IT · BREAK IT ◆</div>
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
               <a className="btn" href="https://obscr.app/" target="_blank" rel="noreferrer">→ obscr.app</a>
@@ -246,16 +246,15 @@ const CODE = { fontFamily: 'JetBrains Mono, monospace', fontSize: '0.92em', back
 function Cyan({ children }) { return <span style={{ color: 'var(--cyan)' }}>{children}</span>; }
 function Dim({ children }) { return <span style={{ color: 'var(--fg-faint)', fontStyle: 'italic' }}>{children}</span>; }
 
-function Section({ num, title, sub, children }) {
+function Section({ title, sub, children }) {
   return (
-    <section style={{ marginBottom: 28 }}>
+    <section className="case-section">
       <div className="sect-head">
-        <span className="sect-num">{num}</span><span className="sect-mark" />
+        <span className="sect-mark" aria-hidden="true" />
         <h2 className="sect-title">{title}</h2>
         <span className="sect-sub">{sub}</span>
       </div>
-      <div className="panel panel-corners" style={{ padding: '28px 32px' }}>
-        <span className="panel-label">{num}_{title.toUpperCase().replace(/[^A-Z]+/g, '_').replace(/^_|_$/g, '')}</span>
+      <div className="case-section-body">
         {children}
       </div>
     </section>
@@ -290,7 +289,7 @@ function Decision({ title, body }) {
 /* Architecture diagram — pure SVG */
 function Diagram() {
   return (
-    <div style={{ background: 'rgba(5, 8, 16, 0.5)', border: '1px dashed var(--line)', padding: '20px 24px', marginBottom: 18, overflow: 'auto' }}>
+    <div style={{ background: 'var(--bg-elev)', border: '1px dashed var(--line)', padding: '20px 24px', marginBottom: 18, overflow: 'auto' }}>
       <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', letterSpacing: '0.2em', marginBottom: 12 }}>// FLOW</div>
       <pre className="mono" style={{ fontSize: 12, color: 'var(--fg)', lineHeight: 1.55, margin: 0, whiteSpace: 'pre' }}>{`
   SENDER (browser)              CLOUDFLARE WORKER              RECIPIENT (browser)

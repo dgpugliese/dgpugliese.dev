@@ -13,24 +13,24 @@ export default function DorothyCaseStudy() {
   return (
     <>
       <Nav />
-      <main>
-        <article className="case-study" style={{ maxWidth: 980, margin: '0 auto', padding: '60px 32px 120px' }}>
+      <main id="main-content">
+        <article className="case-study editorial-case">
 
           <Link to="/" style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 12, color: 'var(--cyan)', textDecoration: 'none', letterSpacing: '0.15em', display: 'inline-block', marginBottom: 32 }}>
             ← BACK TO PORTFOLIO
           </Link>
 
           {/* Hero */}
-          <div className="panel panel-corners" style={{ padding: '40px 44px', marginBottom: 32 }}>
-            <span className="panel-label">CASE_STUDY · DOROTHY</span>
+          <div className="case-hero">
+            <div className="page-intro-label mono">Case study</div>
             <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.25em', marginBottom: 14 }}>
-              ◢ READ THE STORM BEFORE IT TOUCHES DOWN ◣
+              READ THE STORM BEFORE IT TOUCHES DOWN
             </div>
-            <h1 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(48px, 8vw, 92px)', fontWeight: 700, lineHeight: 1, letterSpacing: '-0.03em', margin: 0, color: 'var(--fg)' }}>
+            <h1 className="case-title">
               DOROTHY<span style={{ color: 'var(--cyan)' }}>.</span>
             </h1>
             <div className="mono" style={{ fontSize: 16, marginTop: 16, color: 'var(--fg-dim)' }}>
-              <span style={{ color: 'var(--cyan)' }}>&gt; </span>
+
               a monitoring bot for a 150K-member Salesforce org. if she ever misses a morning, her silence is the alarm.
             </div>
             <div className="mono" style={{ display: 'flex', flexWrap: 'wrap', gap: 18, marginTop: 28, fontSize: 11, color: 'var(--fg-faint)', borderTop: '1px dashed var(--line)', paddingTop: 16, letterSpacing: '0.12em' }}>
@@ -42,7 +42,7 @@ export default function DorothyCaseStudy() {
           </div>
 
           {/* 01 TL;DR */}
-          <Section num="01" title="TL;DR" sub="60-second summary">
+          <Section title="TL;DR" sub="60-second summary">
             <p style={P}>
               DOROTHY — named for the tornado-sensing rig in <Dim>Twister</Dim> — is a read-only monitoring
               bot for a production Salesforce/Fonteva org serving ~150,000 members. Every morning she sweeps
@@ -60,7 +60,7 @@ export default function DorothyCaseStudy() {
           </Section>
 
           {/* 02 Why */}
-          <Section num="02" title="Why she exists" sub="the silent failures">
+          <Section title="Why she exists" sub="the silent failures">
             <p style={P}>
               Two incidents made the case. First, a scheduled job that delivers member-portal email died
               quietly — no error surfaced anywhere a human looks — and mail queued for <Cyan>25 days</Cyan> before
@@ -76,7 +76,7 @@ export default function DorothyCaseStudy() {
           </Section>
 
           {/* 03 Design rules */}
-          <Section num="03" title="Design rules" sub="the opinions that shaped her">
+          <Section title="Design rules" sub="the opinions that shaped her">
             <Decision
               title="Monitoring must live outside the system it monitors."
               body="If the org's scheduler is broken, an org-hosted monitor scheduled by it says nothing. DOROTHY runs on GitHub Actions cron and authenticates in over OAuth client-credentials as a read-only, API-only integration user."
@@ -96,7 +96,7 @@ export default function DorothyCaseStudy() {
           </Section>
 
           {/* 04 Architecture */}
-          <Section num="04" title="Architecture" sub="one file, one cron, one email">
+          <Section title="Architecture" sub="one file, one cron, one email">
             <Diagram />
             <p style={P}>
               State lives in a <code style={CODE}>state.json</code> the workflow commits back to the repo after
@@ -109,7 +109,7 @@ export default function DorothyCaseStudy() {
           </Section>
 
           {/* 05 What she watches */}
-          <Section num="05" title="What she watches" sub="14 systems, every morning">
+          <Section title="What she watches" sub="14 systems, every morning">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 12, marginBottom: 16 }}>
               <StackPanel label="PLATFORM VITALS" c="cyan" items={[
                 'All governor limits w/ per-limit thresholds',
@@ -143,7 +143,7 @@ export default function DorothyCaseStudy() {
           </Section>
 
           {/* 06 Knowledge layer */}
-          <Section num="06" title="The knowledge layer" sub="fingerprints.json — a runbook the bot reads">
+          <Section title="The knowledge layer" sub="fingerprints.json — a runbook the bot reads">
             <p style={P}>
               Raw monitoring reports symptoms. DOROTHY carries a small JSON runbook that maps known error
               signatures — an Apex class plus an error substring, or a section plus a message fragment — to
@@ -160,7 +160,7 @@ export default function DorothyCaseStudy() {
           </Section>
 
           {/* 07 Day one findings */}
-          <Section num="07" title="Findings" sub="what she caught before breakfast">
+          <Section title="Findings" sub="what she caught before breakfast">
             <ul style={UL}>
               <li>Production data storage at <Cyan>100%+ of allocation</Cyan> and climbing — traced to a vendor error-log table of 838K rows whose log-shipping flag showed it had never once shipped.</li>
               <li>A vendor sync batch failing <Cyan>hundreds of times daily</Cyan> against a query governor — invisible because the failures were caught and retried forever.</li>
@@ -171,7 +171,7 @@ export default function DorothyCaseStudy() {
           </Section>
 
           {/* 08 AI layer */}
-          <Section num="08" title="The AI layer" sub="deterministic checks, narrated">
+          <Section title="The AI layer" sub="deterministic checks, narrated">
             <p style={P}>
               An optional final stage sends the day's findings — with their fingerprint annotations — to a
               small Claude model, which writes a 2–3 sentence <Cyan>"My read"</Cyan> at the top of the
@@ -183,7 +183,7 @@ export default function DorothyCaseStudy() {
           </Section>
 
           {/* 09 Cost */}
-          <Section num="09" title="Cost &amp; ops posture" sub="the part CFOs like">
+          <Section title="Cost &amp; ops posture" sub="the part CFOs like">
             <ul style={UL}>
               <li><Cyan>$0/month infrastructure.</Cyan> GitHub Actions free tier, one SMTP relay already in use, no servers, no database.</li>
               <li>Closest commercial equivalent runs ~<Cyan>$100+/month</Cyan> — and doesn't know this org's payment pipeline or vendor ticket history.</li>
@@ -193,7 +193,7 @@ export default function DorothyCaseStudy() {
           </Section>
 
           {/* 10 Lessons */}
-          <Section num="10" title="Lessons" sub="what transferred">
+          <Section title="Lessons" sub="what transferred">
             <ul style={UL}>
               <li>Level thresholds can't see slope. The storage alarm was <Dim>correct</Dim> and still three days late — rate-of-change alerting is not a nice-to-have.</li>
               <li>Known issues must be first-class citizens of a monitoring system, or every digest cries wolf.</li>
@@ -223,16 +223,15 @@ const CODE = { fontFamily: 'JetBrains Mono, monospace', fontSize: '0.92em', back
 function Cyan({ children }) { return <span style={{ color: 'var(--cyan)' }}>{children}</span>; }
 function Dim({ children }) { return <span style={{ color: 'var(--fg-faint)', fontStyle: 'italic' }}>{children}</span>; }
 
-function Section({ num, title, sub, children }) {
+function Section({ title, sub, children }) {
   return (
-    <section style={{ marginBottom: 28 }}>
+    <section className="case-section">
       <div className="sect-head">
-        <span className="sect-num">{num}</span><span className="sect-mark" />
+        <span className="sect-mark" aria-hidden="true" />
         <h2 className="sect-title">{title}</h2>
         <span className="sect-sub">{sub}</span>
       </div>
-      <div className="panel panel-corners" style={{ padding: '28px 32px' }}>
-        <span className="panel-label">{num}_{title.toUpperCase().replace(/[^A-Z]+/g, '_').replace(/^_|_$/g, '')}</span>
+      <div className="case-section-body">
         {children}
       </div>
     </section>
@@ -267,7 +266,7 @@ function Decision({ title, body }) {
 /* Architecture diagram — pure ASCII */
 function Diagram() {
   return (
-    <div style={{ background: 'rgba(5, 8, 16, 0.5)', border: '1px dashed var(--line)', padding: '20px 24px', marginBottom: 18, overflow: 'auto' }}>
+    <div style={{ background: 'var(--bg-elev)', border: '1px dashed var(--line)', padding: '20px 24px', marginBottom: 18, overflow: 'auto' }}>
       <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', letterSpacing: '0.2em', marginBottom: 12 }}>// DAILY RUN</div>
       <pre className="mono" style={{ fontSize: 12, color: 'var(--fg)', lineHeight: 1.55, margin: 0, whiteSpace: 'pre' }}>{`
   GITHUB ACTIONS (cron, 7:00 AM)                 SALESFORCE / FONTEVA (prod)

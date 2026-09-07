@@ -13,8 +13,8 @@ export default function ComplianceDashboardCaseStudy() {
   return (
     <>
       <Nav />
-      <main>
-        <article className="case-study" style={{ maxWidth: 980, margin: '0 auto', padding: '60px 32px 120px' }}>
+      <main id="main-content">
+        <article className="case-study editorial-case">
 
           {/* Back nav */}
           <Link to="/" style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 12, color: 'var(--cyan)', textDecoration: 'none', letterSpacing: '0.15em', display: 'inline-block', marginBottom: 32 }}>
@@ -22,16 +22,16 @@ export default function ComplianceDashboardCaseStudy() {
           </Link>
 
           {/* Hero */}
-            <div className="panel panel-corners" style={{ padding: '40px 44px', marginBottom: 32 }}>
-            <span className="panel-label">CASE_STUDY · COMPLIANCE</span>
+            <div className="case-hero">
+            <div className="page-intro-label mono">Case study</div>
             <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.25em', marginBottom: 14 }}>
-              ◢ IRS FORM 990 COMPLIANCE · 702 ENTITIES + 12 REGIONS ◣
+              IRS FORM 990 COMPLIANCE · 702 ENTITIES + 12 REGIONS
             </div>
-            <h1 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(40px, 7vw, 80px)', fontWeight: 700, lineHeight: 1, letterSpacing: '-0.03em', margin: 0, color: 'var(--fg)' }}>
-              COMPLIANCE<br/>PLATFORM<span style={{ color: 'var(--cyan)' }}>.</span>
+            <h1 className="case-title">
+              Compliance<br/>Platform<span style={{ color: 'var(--cyan)' }}>.</span>
             </h1>
             <div className="mono" style={{ fontSize: 16, marginTop: 16, color: 'var(--fg-dim)' }}>
-              <span style={{ color: 'var(--cyan)' }}>&gt; </span>
+
               702 entities tracked across 12 regions · 5 data sources · refreshed nightly · $300/yr
             </div>
             <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
@@ -48,7 +48,7 @@ export default function ComplianceDashboardCaseStudy() {
           </div>
 
           {/* TL;DR */}
-          <Section num="01" title="TL;DR" sub="60-second summary">
+          <Section title="TL;DR" sub="60-second summary">
             <p style={P}>
               An internal tool tracking <Cyan>IRS Form 990</Cyan> filing status across 702 active nonprofit entities
               across 12 regions, so leadership can spot compliance gaps before entities drift into auto-revocation — and
@@ -68,7 +68,7 @@ export default function ComplianceDashboardCaseStudy() {
           </Section>
 
           {/* Why */}
-          <Section num="02" title="Why it exists" sub="the problem">
+          <Section title="Why it exists" sub="the problem">
             <p style={P}>
               Nonprofits that fail to file IRS Form 990 (or its 990-EZ / 990-N variants) for three consecutive
               years lose their tax-exempt status automatically. Reinstatement is painful, expensive, and visible
@@ -89,7 +89,7 @@ export default function ComplianceDashboardCaseStudy() {
           </Section>
 
           {/* How it works */}
-          <Section num="03" title="How it works" sub="the architecture">
+          <Section title="How it works" sub="the architecture">
             <Diagram />
             <p style={P}>The pipeline, end to end:</p>
             <ol style={OL}>
@@ -110,7 +110,7 @@ export default function ComplianceDashboardCaseStudy() {
           </Section>
 
           {/* The TEOS Discovery */}
-          <Section num="04" title="The TEOS discovery" sub="the technical wedge">
+          <Section title="The TEOS discovery" sub="the technical wedge">
             <p style={P}>
               The interesting engineering moment was the historical 990-N problem. The IRS doesn't publish a
               bulk feed of 990-N filings year by year — only the latest one per EIN. But TEOS, the IRS's search
@@ -131,7 +131,7 @@ export default function ComplianceDashboardCaseStudy() {
           </Section>
 
           {/* Stack */}
-          <Section num="05" title="The stack" sub="under the hood">
+          <Section title="The stack" sub="under the hood">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 14 }}>
               <StackPanel label="FRONTEND" items={['React 18 · Vite', 'Tailwind 3', 'Single-component prototype', 'framer-motion + lucide-react']} c="cyan" />
               <StackPanel label="DATABASE" items={['Supabase Postgres', 'RLS on every table', '`chapters_with_status` view', 'JSONB raw payloads for audit']} c="violet" />
@@ -141,7 +141,7 @@ export default function ComplianceDashboardCaseStudy() {
           </Section>
 
           {/* Design Decisions */}
-          <Section num="06" title="Design decisions" sub="and the reasoning">
+          <Section title="Design decisions" sub="and the reasoning">
             <Decision title="Five sources, column-level ownership"
                       body="Each refresh path owns a specific subset of columns; the others never write to those columns. revocation_date is owned by the Auto-Revocation refresh only; richer form types (990 / 990-EZ / 990-PF) are never overwritten by 990-N upserts; cert_* fields are owned exclusively by the Fonteva sync. Keeps multi-source refreshes idempotent without a brittle priority queue." />
             <Decision title="TEOS JSON API instead of an HTML scraper"
@@ -157,7 +157,7 @@ export default function ComplianceDashboardCaseStudy() {
           </Section>
 
           {/* Trust & Phase 2 */}
-          <Section num="07" title="Trust posture &amp; Phase 2" sub="what's defensible, what's next">
+          <Section title="Trust posture &amp; Phase 2" sub="what's defensible, what's next">
             <p style={P}>
               Phase 1 is staff-only with full read/write under a single role. Trust scaffolding is the boring,
               load-bearing stuff:
@@ -183,7 +183,7 @@ export default function ComplianceDashboardCaseStudy() {
           </Section>
 
           {/* Outcome / cost */}
-          <Section num="08" title="Outcome" sub="cost, scale, what's next">
+          <Section title="Outcome" sub="cost, scale, what's next">
             <p style={P}>
               In use today in a production nonprofit context. The headline numbers:
             </p>
@@ -230,7 +230,7 @@ export default function ComplianceDashboardCaseStudy() {
 
           {/* CTA bottom */}
           <div className="panel panel-corners" style={{ padding: '32px 36px', textAlign: 'center', marginTop: 12 }}>
-            <span className="panel-label">END_OF_TRANSMISSION</span>
+            <span className="panel-label">Explore further</span>
             <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.25em', marginBottom: 16 }}>◆ READ · QUESTION · ASK ◆</div>
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link to="/log/reverse-engineering-irs-teos" className="btn" style={{ textDecoration: 'none' }}>→ TEOS WRITEUP</Link>
@@ -257,16 +257,15 @@ const CODE = { fontFamily: 'JetBrains Mono, monospace', fontSize: '0.92em', back
 function Cyan({ children }) { return <span style={{ color: 'var(--cyan)' }}>{children}</span>; }
 function Dim({ children }) { return <span style={{ color: 'var(--fg-faint)', fontStyle: 'italic' }}>{children}</span>; }
 
-function Section({ num, title, sub, children }) {
+function Section({ title, sub, children }) {
   return (
-    <section style={{ marginBottom: 28 }}>
+    <section className="case-section">
       <div className="sect-head">
-        <span className="sect-num">{num}</span><span className="sect-mark" />
+        <span className="sect-mark" aria-hidden="true" />
         <h2 className="sect-title">{title}</h2>
         <span className="sect-sub">{sub}</span>
       </div>
-      <div className="panel panel-corners" style={{ padding: '28px 32px' }}>
-        <span className="panel-label">{num}_{title.toUpperCase().replace(/[^A-Z]+/g, '_').replace(/^_|_$/g, '')}</span>
+      <div className="case-section-body">
         {children}
       </div>
     </section>
@@ -301,7 +300,7 @@ function Decision({ title, body }) {
 /* Architecture diagram — pure ASCII */
 function Diagram() {
   return (
-    <div style={{ background: 'rgba(5, 8, 16, 0.5)', border: '1px dashed var(--line)', padding: '20px 24px', marginBottom: 18, overflow: 'auto' }}>
+    <div style={{ background: 'var(--bg-elev)', border: '1px dashed var(--line)', padding: '20px 24px', marginBottom: 18, overflow: 'auto' }}>
       <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', letterSpacing: '0.2em', marginBottom: 12 }}>// PIPELINE</div>
       <pre className="mono" style={{ fontSize: 12, color: 'var(--fg)', lineHeight: 1.55, margin: 0, whiteSpace: 'pre' }}>{`
   DATA SOURCES                          SUPABASE POSTGRES               FRONTEND

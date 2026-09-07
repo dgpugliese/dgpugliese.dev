@@ -1,3 +1,4 @@
+import { PageIntro } from '../components/PageIntro.jsx';
 import { Nav, Footer } from '../components/Layout.jsx';
 import { useSeo } from '../lib/seo';
 import { jobs } from '../data/experience.js';
@@ -13,19 +14,15 @@ export default function Experience() {
   return (
     <>
       <Nav />
-      <main>
+      <main className="editorial-page career-page" id="main-content">
         <section className="sect">
-          <div className="sect-head">
-            <span className="sect-mark" />
-            <h1 className="sect-title" style={{ margin: 0 }}>Career</h1>
-          </div>
-          <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-dim)', maxWidth: 700, marginBottom: 40 }}>
-            16+ years across enterprise IT, MSP leadership, and network engineering. Paid work,
-            what I owned, and the outcome that stuck.
-          </p>
+          <PageIntro label="Career" title="Built it." accent="Owned it. Ran it." aside={<p>David Pugliese<br />Philadelphia, PA</p>}>
+            <p>16+ years across enterprise IT, MSP leadership, and network engineering. The roles, the responsibility, and the work that stayed in production.</p>
+            <a className="hero-secondary" href="https://davidguypugliese.com" target="_blank" rel="noreferrer">View professional resume ↗</a>
+          </PageIntro>
           <div className="exp-list">
             {jobs.map((j, i) => (
-              <div key={i} className="exp-row">
+              <article key={i} className={`exp-row ${j.current ? 'exp-current' : ''}`}>
                 <span className="exp-range">{j.range}</span>
                 <div>
                   <div className="exp-title-row">
@@ -36,6 +33,7 @@ export default function Experience() {
                   </div>
                   <div className="exp-org">{j.co} <span style={{ color: 'var(--fg-faint)' }}>· {j.loc}</span></div>
                   <p className="exp-outcome"><strong>Outcome — </strong>{j.outcome}</p>
+                  <details className="career-details" open={j.current || undefined}><summary>Responsibilities and contributions <span aria-hidden="true">↗</span></summary>
                   <ul style={{ margin: '10px 0 0', padding: 0, listStyle: 'none' }}>
                     {j.bullets.map((b, k) => (
                       <li key={k} style={{ fontSize: 13, color: 'var(--fg-faint)', lineHeight: 1.6, marginBottom: 5, paddingLeft: 16, position: 'relative' }}>
@@ -43,8 +41,9 @@ export default function Experience() {
                       </li>
                     ))}
                   </ul>
+                  </details>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </section>

@@ -14,8 +14,8 @@ export default function SilentBeatCaseStudy() {
   return (
     <>
       <Nav />
-      <main>
-        <article className="case-study" style={{ maxWidth: 980, margin: '0 auto', padding: '60px 32px 120px' }}>
+      <main id="main-content">
+        <article className="case-study editorial-case">
 
           {/* Back nav */}
           <Link to="/" style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 12, color: 'var(--cyan)', textDecoration: 'none', letterSpacing: '0.15em', display: 'inline-block', marginBottom: 32 }}>
@@ -23,16 +23,16 @@ export default function SilentBeatCaseStudy() {
           </Link>
 
           {/* Hero */}
-          <div className="panel panel-corners" style={{ padding: '40px 44px', marginBottom: 32 }}>
-            <span className="panel-label">CASE_STUDY · SILENTBEAT</span>
+          <div className="case-hero">
+            <div className="page-intro-label mono">Case study</div>
             <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.25em', marginBottom: 14 }}>
-              ◢ HONEST DEAD MAN'S SWITCH ◣
+              HONEST DEAD MAN'S SWITCH
             </div>
-            <h1 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(48px, 8vw, 92px)', fontWeight: 700, lineHeight: 1, letterSpacing: '-0.03em', margin: 0, color: 'var(--fg)' }}>
-              SILENTBEAT<span style={{ color: 'var(--cyan)' }}>.</span>
+            <h1 className="case-title">
+              SilentBeat<span style={{ color: 'var(--cyan)' }}>.</span>
             </h1>
             <div className="mono" style={{ fontSize: 16, marginTop: 16, color: 'var(--fg-dim)' }}>
-              <span style={{ color: 'var(--cyan)' }}>&gt; </span>
+
               a check-in you keep. a message that ships if you don't.
             </div>
             <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
@@ -58,7 +58,7 @@ export default function SilentBeatCaseStudy() {
           </div>
 
           {/* TL;DR */}
-          <Section num="01" title="TL;DR" sub="60-second summary">
+          <Section title="TL;DR" sub="60-second summary">
             <p style={P}>
               SilentBeat is a dead-man's-switch where the server <Cyan>cannot read your payload</Cyan>. You write
               an encrypted message, name a recipient, set a timer. Check in before it expires; nothing
@@ -77,7 +77,7 @@ export default function SilentBeatCaseStudy() {
           </Section>
 
           {/* Why */}
-          <Section num="02" title="Why it exists" sub="the problem">
+          <Section title="Why it exists" sub="the problem">
             <p style={P}>
               Every dead-man's-switch product I could find either <Dim>(a)</Dim> called itself "zero-knowledge"
               while quietly holding the encryption key on the server, or <Dim>(b)</Dim> was honest about being
@@ -95,7 +95,7 @@ export default function SilentBeatCaseStudy() {
           </Section>
 
           {/* How it works */}
-          <Section num="03" title="How it works" sub="the architecture">
+          <Section title="How it works" sub="the architecture">
             <Diagram />
             <p style={P}>The flow, end to end:</p>
             <ol style={OL}>
@@ -113,7 +113,7 @@ export default function SilentBeatCaseStudy() {
           </Section>
 
           {/* Threat model */}
-          <Section num="04" title="The threat model is the spec" sub="security as specification">
+          <Section title="The threat model is the spec" sub="security as specification">
             <p style={P}>
               The single most important page on the site is{' '}
               <a href="https://silentbeat.app/threat-model.html" target="_blank" rel="noreferrer" style={LINK}>/threat-model.html</a>.
@@ -136,7 +136,7 @@ export default function SilentBeatCaseStudy() {
           </Section>
 
           {/* Decisions */}
-          <Section num="05" title="Decisions I'd defend in code review" sub="and the reasoning">
+          <Section title="Decisions I'd defend in code review" sub="and the reasoning">
             <Decision title="Argon2id PIN hashing in pure JS (@noble/hashes)"
                       body="Cloudflare Workers reject runtime WebAssembly.compile, so the obvious WASM path (libargon2) didn't work. Documented as the reason we ship Argon2id via @noble/hashes rather than bundling a WASM build." />
             <Decision title="Duress PIN wrapped under a master KEK (Workers Secret)"
@@ -150,7 +150,7 @@ export default function SilentBeatCaseStudy() {
           </Section>
 
           {/* Roadmap */}
-          <Section num="06" title="What I'd build next" sub="roadmap">
+          <Section title="What I'd build next" sub="roadmap">
             <ul style={UL}>
               <li>WebAuthn passkey UI — server side already implements it via <code style={CODE}>@simplewebauthn/server</code> v10; client flow is the holdout.</li>
               <li><Cyan>HKDF</Cyan> on the ECIES shared bits for label-domain separation.</li>
@@ -161,7 +161,7 @@ export default function SilentBeatCaseStudy() {
           </Section>
 
           {/* Stack */}
-          <Section num="07" title="The stack" sub="what's under the hood">
+          <Section title="The stack" sub="what's under the hood">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 14 }}>
               <StackPanel label="RUNTIME" items={['Cloudflare Workers', 'Hono router', 'Durable Objects', 'Cron Triggers']} c="cyan" />
               <StackPanel label="STORAGE" items={['D1 (switches, audit log)', 'R2 (ciphertext blobs)', 'KV (rate-limit, tokens)']} c="green" />
@@ -188,7 +188,7 @@ export default function SilentBeatCaseStudy() {
 
           {/* CTA bottom */}
           <div className="panel panel-corners" style={{ padding: '32px 36px', textAlign: 'center', marginTop: 12 }}>
-            <span className="panel-label">END_OF_TRANSMISSION</span>
+            <span className="panel-label">Explore further</span>
             <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.25em', marginBottom: 16 }}>◆ TRY IT · INSPECT IT · BREAK IT ◆</div>
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
               <a className="btn" href="https://silentbeat.app/" target="_blank" rel="noreferrer">→ silentbeat.app</a>
@@ -215,16 +215,15 @@ const CODE = { fontFamily: 'JetBrains Mono, monospace', fontSize: '0.92em', back
 function Cyan({ children }) { return <span style={{ color: 'var(--cyan)' }}>{children}</span>; }
 function Dim({ children }) { return <span style={{ color: 'var(--fg-faint)', fontStyle: 'italic' }}>{children}</span>; }
 
-function Section({ num, title, sub, children }) {
+function Section({ title, sub, children }) {
   return (
-    <section style={{ marginBottom: 28 }}>
+    <section className="case-section">
       <div className="sect-head">
-        <span className="sect-num">{num}</span><span className="sect-mark" />
+        <span className="sect-mark" aria-hidden="true" />
         <h2 className="sect-title">{title}</h2>
         <span className="sect-sub">{sub}</span>
       </div>
-      <div className="panel panel-corners" style={{ padding: '28px 32px' }}>
-        <span className="panel-label">{num}_{title.toUpperCase().replace(/[^A-Z]+/g, '_').replace(/^_|_$/g, '')}</span>
+      <div className="case-section-body">
         {children}
       </div>
     </section>
@@ -273,7 +272,7 @@ function Actor({ name, defend, caveat }) {
 /* Architecture diagram — pure ASCII */
 function Diagram() {
   return (
-    <div style={{ background: 'rgba(5, 8, 16, 0.5)', border: '1px dashed var(--line)', padding: '20px 24px', marginBottom: 18, overflow: 'auto' }}>
+    <div style={{ background: 'var(--bg-elev)', border: '1px dashed var(--line)', padding: '20px 24px', marginBottom: 18, overflow: 'auto' }}>
       <div className="mono" style={{ fontSize: 10, color: 'var(--fg-faint)', letterSpacing: '0.2em', marginBottom: 12 }}>// FLOW</div>
       <pre className="mono" style={{ fontSize: 12, color: 'var(--fg)', lineHeight: 1.55, margin: 0, whiteSpace: 'pre' }}>{`
   USER (browser)              CLOUDFLARE (Worker · DO · D1 · R2 · KV)         RECIPIENT (browser)
@@ -344,7 +343,7 @@ function AuditLog() {
 
   return (
     <div className="panel panel-corners" style={{ padding: '20px 22px', marginTop: 8, borderLeft: '2px solid var(--green)' }}>
-      <span className="panel-label">04B_LIVE_AUDIT_LOG · /api/log/root</span>
+      <span className="panel-label">Live audit log · /api/log/root</span>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
         <div className="mono" style={{ fontSize: 11, color: 'var(--fg-dim)' }}>signed root checkpoint · pulled live on page load</div>
         {data ? (

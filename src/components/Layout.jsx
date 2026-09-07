@@ -85,13 +85,14 @@ export function Nav() {
 
   return (
     <header className="site-nav">
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <div className="site-nav-inner">
         <Link to="/" className="site-nav-brand">dgpugliese<span className="site-nav-brand-dot">.</span></Link>
         <nav className="site-nav-links">
-          <Link to="/experience">Career</Link>
-          <Link to="/uses">Stack</Link>
-          <Link to="/build">Hire Me</Link>
-          <Link to="/log">Field Notes</Link>
+          <Link to="/experience" aria-current={location.pathname.startsWith('/experience') ? 'page' : undefined}>Career</Link>
+          <Link to="/uses" aria-current={location.pathname.startsWith('/uses') ? 'page' : undefined}>Stack</Link>
+          <Link to="/build" aria-current={location.pathname.startsWith('/build') ? 'page' : undefined}>Hire Me</Link>
+          <Link to="/log" aria-current={location.pathname.startsWith('/log') ? 'page' : undefined}>Field Notes</Link>
         </nav>
         <div className="site-nav-actions">
           <a className="site-nav-icon" href="https://github.com/dgpugliese" target="_blank" rel="noreferrer" aria-label="GitHub">
@@ -118,10 +119,10 @@ export function Nav() {
       </div>
       {open && (
         <div className="site-nav-mobile">
-          <Link to="/experience">Career</Link>
-          <Link to="/uses">Stack</Link>
-          <Link to="/build">Hire Me</Link>
-          <Link to="/log">Field Notes</Link>
+          <Link to="/experience" aria-current={location.pathname.startsWith('/experience') ? 'page' : undefined}>Career</Link>
+          <Link to="/uses" aria-current={location.pathname.startsWith('/uses') ? 'page' : undefined}>Stack</Link>
+          <Link to="/build" aria-current={location.pathname.startsWith('/build') ? 'page' : undefined}>Hire Me</Link>
+          <Link to="/log" aria-current={location.pathname.startsWith('/log') ? 'page' : undefined}>Field Notes</Link>
           <div className="site-nav-mobile-actions">
             <a href="https://github.com/dgpugliese" target="_blank" rel="noreferrer" aria-label="GitHub"><GitHubIcon /></a>
             <a href="https://linkedin.com/in/dgpugliese" target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedInIcon /></a>

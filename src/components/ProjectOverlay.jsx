@@ -1,17 +1,30 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { StackIcon } from '../data/stackIcons.jsx';
 
 export function ProjectOverlay({ project, onClose }) {
+  const panelRef = useRef(null);
   useEffect(() => {
     if (!project) return undefined;
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    const previousFocus = document.activeElement;
+    const panel = panelRef.current;
+    panel?.querySelector('button')?.focus();
+    const onKey = (e) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key !== 'Tab') return;
+      const items = [...panel.querySelectorAll('button, a[href], [tabindex="0"]')];
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
+    };
     document.addEventListener('keydown', onKey);
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = prevOverflow;
+      previousFocus?.focus();
     };
   }, [project, onClose]);
 
@@ -26,6 +39,7 @@ export function ProjectOverlay({ project, onClose }) {
   return (
     <div className="overlay-backdrop" onClick={onClose}>
       <div
+        ref={panelRef}
         className="overlay-panel panel"
         role="dialog"
         aria-modal="true"

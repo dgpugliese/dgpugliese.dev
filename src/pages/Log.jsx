@@ -1,3 +1,4 @@
+import { PageIntro } from '../components/PageIntro.jsx';
 import { Link, useParams } from 'react-router-dom';
 import { posts } from '../data/posts';
 import { Nav, Footer } from '../components/Layout.jsx';
@@ -36,7 +37,7 @@ export function LogPost() {
     return (
       <div className="log-shell">
         <Nav />
-        <div style={{ padding: '80px 60px', maxWidth: 860, margin: '0 auto' }}>
+        <main className="article-page" id="main-content">
           <Link to="/log" className="log-back">← Field Notes</Link>
           <div style={{ marginTop: 32 }}>
             <span className="mono" style={{ color: 'var(--amber)', fontSize: 12, letterSpacing: '0.14em' }}>404</span>
@@ -49,7 +50,7 @@ export function LogPost() {
             </p>
             <Link to="/log" className="btn" style={{ marginTop: 24, display: 'inline-flex' }}>← Return to Field Notes</Link>
           </div>
-        </div>
+        </main>
         <Footer />
       </div>
     );
@@ -58,27 +59,27 @@ export function LogPost() {
   return (
     <div className="log-shell">
       <Nav />
-      <div style={{ padding: '60px 60px 120px', maxWidth: 860, margin: '0 auto' }}>
+      <main className="article-page" id="main-content">
         {/* Back nav */}
-        <Link to="/log" className="log-back">← Writing</Link>
+        <Link to="/log" className="log-back">← Field Notes</Link>
 
         {/* Post header */}
-        <div style={{ marginTop: 28 }}>
+        <header className="article-header">
           <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 16, flexWrap: 'wrap' }}>
             <span className="mono" style={{ fontSize: 11, color: 'var(--fg-faint)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{post.category}</span>
             <span className="mono" style={{ fontSize: 11, color: 'var(--fg-faint)', letterSpacing: '0.12em' }}>{post.date}</span>
             <span className="mono" style={{ fontSize: 11, color: 'var(--fg-faint)' }}>{post.readTime} read</span>
           </div>
-          <h1 style={{ margin: '0 0 20px', fontSize: 'clamp(28px, 4.5vw, 44px)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-0.01em' }}>
+          <h1>
             {post.title}
           </h1>
           <p style={{ margin: 0, fontSize: 17, color: 'var(--fg-dim)', lineHeight: 1.7, borderLeft: '2px solid var(--cyan)', paddingLeft: 18 }}>
             {post.summary}
           </p>
-        </div>
+        </header>
 
         {/* Post body */}
-        <div style={{ marginTop: 12 }}>
+        <div className="article-body">
           {post.body.map((section, i) => (
             <div key={i} style={{ padding: '28px 0', borderTop: '1px solid var(--line)' }}>
               <h2 style={{ margin: '0 0 14px', fontSize: 18, fontWeight: 600, color: 'var(--fg)' }}>
@@ -116,7 +117,7 @@ export function LogPost() {
           <Link to="/log" className="btn btn-ghost">← All posts</Link>
           <Link to="/" className="btn btn-ghost">Home</Link>
         </div>
-      </div>
+      </main>
       <Footer />
     </div>
   );
@@ -150,18 +151,13 @@ export default function Log() {
     <div className="log-shell">
       <Nav />
 
-      <div style={{ padding: '80px 60px 120px', maxWidth: 900, margin: '0 auto' }}>
-        <div className="sect-head" style={{ marginBottom: 8 }}>
-          <span className="sect-mark" />
-          <h1 style={{ margin: 0, fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 700, letterSpacing: '-0.01em', color: 'var(--fg)' }}>
-            Field Notes
-          </h1>
-          <span className="sect-sub">{posts.length} posts</span>
-        </div>
-
-        <div className="work-list">
+      <main className="editorial-page notes-page" id="main-content">
+        <PageIntro label="Field Notes" title="From the field." accent="Into the details." aside={<p>Engineering notes.<br />Lessons from shipping.</p>}>
+          <p>Notes on building secure software, running infrastructure, and the decisions that only get interesting in production.</p>
+        </PageIntro>
+        <div className="notes-grid">
           {posts.map(p => (
-            <Link key={p.slug} to={`/log/${p.slug}`} className="work-row">
+            <Link key={p.slug} to={`/log/${p.slug}`} className="note-card">
               <span className="log-row-meta">{p.date}</span>
               <div>
                 <h2 className="work-title">{p.title}</h2>
@@ -175,7 +171,7 @@ export default function Log() {
             </Link>
           ))}
         </div>
-      </div>
+      </main>
       <Footer />
     </div>
   );

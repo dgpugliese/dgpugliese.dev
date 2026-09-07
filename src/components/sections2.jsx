@@ -9,7 +9,8 @@ export function Contact() {
         <h2 className="sect-title">Contact</h2>
       </div>
       <div className="contact-block">
-        <h2>Let's build something fast and reliable.</h2>
+        <h2>Have a hard problem?
+          Let's build the answer.</h2>
         <p>
           Recruiters, engineers, fractional advisory, and build clients — all welcome. Best
           response window: weekday mornings ET.

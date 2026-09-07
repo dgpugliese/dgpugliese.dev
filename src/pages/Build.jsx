@@ -1,3 +1,4 @@
+import { PageIntro } from '../components/PageIntro.jsx';
 import { Link } from 'react-router-dom';
 import { Nav, Footer } from '../components/Layout.jsx';
 import { useSeo } from '../lib/seo';
@@ -147,26 +148,11 @@ export default function Build() {
   return (
     <>
       <Nav />
-      <main>
-        {/* Hero — same plain treatment as Home */}
-        <section className="hero">
-          <div className="hero-eyebrow">Pick the outcome, not the hourly rate</div>
-          <h1>Build<span style={{ color: 'var(--cyan)' }}>.</span></h1>
-          <p className="hero-sub">
-            I build the product you've been quoting at <Cyan>$80k</Cyan> from agencies — in{' '}
-            <Cyan>4–8 weeks</Cyan>, fixed price. For founders, nonprofits, and small organizations
-            that need working software — not a Gantt chart.
-          </p>
-          <div className="hero-actions">
-            <a className="btn" href={CAL_URL} target="_blank" rel="noreferrer">Book a free 30-min scoping call →</a>
-            <a className="hero-secondary" href="#builds">See recent builds ↓</a>
-          </div>
-          <div className="github-strip mono">
-            <span><span style={{ color: 'var(--green)' }}>●</span> Accepting work</span>
-            <span>U.S. clients</span>
-            <span style={{ color: 'var(--cyan)' }}>{EMAIL}</span>
-          </div>
-        </section>
+      <main className="editorial-page build-page" id="main-content">
+        <PageIntro label="Hire Me · Build services" title="Your next product." accent="Built to run." aside={<div className="build-availability"><span className="mono">Accepting work</span><p>One builder.<br />From first conversation<br />to production.</p><a href={`mailto:${EMAIL}`}>{EMAIL} ↗</a></div>}>
+          <p>I build the product you've been quoting at <Cyan>$80k</Cyan> from agencies — in <Cyan>4–8 weeks</Cyan>, fixed price. For founders, nonprofits, and small organizations that need working software.</p>
+          <div className="hero-actions"><a className="btn" href={CAL_URL} target="_blank" rel="noreferrer">Book a free scoping call ↗</a><a className="hero-secondary" href="#builds">Explore recent builds ↓</a></div>
+        </PageIntro>
 
         {/* The offer */}
         <section className="sect">
@@ -211,20 +197,22 @@ export default function Build() {
             <h2 className="sect-title">How it works</h2>
             <span className="sect-sub">the process</span>
           </div>
-          <Step num="1" title="Scoping call · free, 30 minutes">
+          <div className="process-grid">
+          <Step title="Scoping call · free, 30 minutes">
             We talk through what you want, what success looks like, and whether I'm the right builder for it. No pressure, no
             sales pitch. If we're not a fit, I'll often know someone who is.
           </Step>
-          <Step num="2" title="Proposal + contract · within 48 hours">
+          <Step title="Proposal + contract · within 48 hours">
             Fixed scope, fixed price, fixed timeline — delivered in writing. You sign, you pay 50%, and your build slot is locked.
           </Step>
-          <Step num="3" title="Build · 4–8 weeks">
+          <Step title="Build · 4–8 weeks">
             Weekly demos every Friday. You see real software growing week by week. Scope changes get re-quoted in writing before
             any work happens — no creep, no surprises.
           </Step>
-          <Step num="4" title="Delivery + handoff" last>
+          <Step title="Delivery + handoff">
             Final 50% on delivery. You get the code, the deployment, the documentation, and 30 days of bug-fix support included.
           </Step>
+          </div>
         </section>
 
         {/* Recent builds */}
@@ -357,7 +345,7 @@ export default function Build() {
             Bug fixes covered for free during that window. After that, I offer monthly retainers for ongoing work and updates, or
             hourly engagements for one-off changes. Quoted on request.
           </Faq>
-          <Faq q="Where are you based?" last>
+          <Faq q="Where are you based?">
             United States. I work remotely with clients anywhere in the U.S.
           </Faq>
         </section>
@@ -397,17 +385,16 @@ function Dim({ children }) { return <span style={{ color: 'var(--fg-faint)', fon
 
 function Tile({ label, body, c }) {
   return (
-    <div style={{ borderLeft: `2px solid var(--${c})`, paddingLeft: 16 }}>
+    <div className="offer-card">
       <div className="mono" style={{ fontSize: 10, color: `var(--${c})`, letterSpacing: '0.14em', marginBottom: 10, textTransform: 'uppercase' }}>{label}</div>
       <div style={{ fontSize: 14, color: 'var(--fg-dim)', lineHeight: 1.6 }}>{body}</div>
     </div>
   );
 }
 
-function Step({ num, title, children, last }) {
+function Step({ title, children }) {
   return (
-    <div style={{ borderLeft: '2px solid var(--cyan)', paddingLeft: 16, paddingBottom: 22, marginBottom: last ? 0 : 0 }}>
-      <div className="mono" style={{ fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.14em', marginBottom: 4, textTransform: 'uppercase' }}>Step {num}</div>
+    <div className="process-card">
       <div style={{ fontSize: 16, fontWeight: 600, color: 'var(--fg)', marginBottom: 6 }}>{title}</div>
       <div style={{ fontSize: 14, color: 'var(--fg-dim)', lineHeight: 1.65 }}>{children}</div>
     </div>
@@ -439,7 +426,7 @@ function BuildRow({ name, tagline, replaces, does, stack, href, live }) {
 
 function Tier({ name, price, duration, body, c }) {
   return (
-    <div style={{ borderTop: `2px solid var(--${c})`, paddingTop: 18 }}>
+    <div className="pricing-card">
       <div className="mono" style={{ fontSize: 10, color: `var(--${c})`, letterSpacing: '0.16em', marginBottom: 8, textTransform: 'uppercase' }}>{name}</div>
       <div style={{ fontSize: 28, fontWeight: 700, color: 'var(--fg)', letterSpacing: '-0.01em' }}>{price}</div>
       <div className="mono" style={{ fontSize: 12, color: 'var(--fg-faint)', marginTop: 4, marginBottom: 14 }}>{duration}</div>
@@ -448,11 +435,11 @@ function Tier({ name, price, duration, body, c }) {
   );
 }
 
-function Faq({ q, children, last }) {
+function Faq({ q, children }) {
   return (
-    <div style={{ borderLeft: '2px solid var(--line)', paddingLeft: 14, marginBottom: last ? 0 : 16 }}>
-      <div style={{ fontSize: 15, fontWeight: 600, color: 'var(--fg)', marginBottom: 6 }}>{q}</div>
+    <details className="faq-item">
+      <summary>{q}<span aria-hidden="true">+</span></summary>
       <div style={{ fontSize: 14, color: 'var(--fg-dim)', lineHeight: 1.65 }}>{children}</div>
-    </div>
+    </details>
   );
 }

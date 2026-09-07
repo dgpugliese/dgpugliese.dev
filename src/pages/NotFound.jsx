@@ -12,7 +12,7 @@ export default function NotFound() {
   return (
     <>
       <Nav />
-      <main>
+      <main className="editorial-page" id="main-content">
         <div className="notfound">
           <span className="notfound-code mono">ERROR 404</span>
           <h1>Off the map.</h1>
