@@ -35,7 +35,9 @@ export function ProjectOverlay({ project, onClose }) {
         <button type="button" className="overlay-close" aria-label="Close" onClick={onClose}>×</button>
 
         <div className="overlay-head">
-          <span className="overlay-avatar">{p.title.charAt(0)}</span>
+          {p.logo
+            ? <img className="overlay-avatar overlay-avatar-logo" src={p.logo} alt="" />
+            : <span className="overlay-avatar">{p.title.charAt(0)}</span>}
           <div className="overlay-meta">
             <span className="overlay-meta-line">{p.id} · {p.period || p.tag}</span>
             <span className="overlay-kind">{p.kind}</span>

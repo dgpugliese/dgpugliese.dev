@@ -601,8 +601,10 @@ section.sect {
   font-family: 'JetBrains Mono', monospace;
   font-size: 16px;
   font-weight: 700;
+  object-fit: cover;
   color: var(--fg);
 }
+.overlay-avatar-logo { border: none; overflow: hidden; }
 .overlay-meta { display: flex; flex-direction: column; gap: 4px; }
 .overlay-meta-line {
   font-family: 'JetBrains Mono', monospace;

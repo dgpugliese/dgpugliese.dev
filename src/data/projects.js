@@ -1,5 +1,8 @@
 // Selected Work — shown on Home and referenced from /build.
 // tag/tagC = current real status (LIVE, IN-USE, PRODUCTION, SHIPPED, COMPLETE).
+// logo = path under /public to a real favicon/mark, pulled from the live product.
+// Only set where one actually exists — the overlay falls back to a letter
+// monogram otherwise. Don't invent a mark for internal/private work.
 // period = a verified ship date/range. Only set where a real date exists elsewhere
 // on the site (case-study hero strips) — omit rather than guess; the overlay
 // falls back to the status tag when period is unset.
@@ -11,6 +14,7 @@ export const projects = [
   {
     id: 'OBSCURA', kind: 'WEB APP', tag: 'LIVE', tagC: 'green',
     title: 'Obscura',
+    logo: '/logos/obscura.svg',
     sub: 'Zero-knowledge secure file transfer · obscr.app',
     stack: ['Web Crypto API', 'AES-256-GCM', 'Argon2id', 'Zero-Knowledge'],
     detail: "Browser-only file transfer with client-side AES-256-GCM. A random WebCrypto key lives in the URL fragment — never transmitted to the server. Optional passphrase mode wraps the key under an Argon2id-derived KEK. The server only ever sees ciphertext. Built solo end-to-end with a public Trust Center, privacy policy, and support posture.",
@@ -32,6 +36,7 @@ export const projects = [
   {
     id: 'SILENTBEAT', kind: 'WEB APP', tag: 'LIVE', tagC: 'green',
     title: 'SilentBeat',
+    logo: '/logos/silentbeat.svg',
     sub: 'Honest dead man\'s switch · silentbeat.app',
     stack: ['Cloudflare Workers', 'Durable Objects', 'D1', 'Split-Key', 'ECIES', 'Argon2id'],
     detail: 'A check-in you keep. A message that ships if you don\'t. Split-key trust model — server holds share A, recipient holds share B (in a browser-generated rescue file). Neither half decrypts on its own; combined K never exists on a server.',
