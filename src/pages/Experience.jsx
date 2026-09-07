@@ -33,7 +33,7 @@ export default function Experience() {
                   </div>
                   <div className="exp-org">{j.co} <span style={{ color: 'var(--fg-faint)' }}>· {j.loc}</span></div>
                   <p className="exp-outcome"><strong>Outcome — </strong>{j.outcome}</p>
-                  <details className="career-details" open={j.current || undefined}><summary>Responsibilities and contributions <span aria-hidden="true">↗</span></summary>
+                  <div className="career-details"><h3 className="career-responsibilities-title">Responsibilities and contributions</h3>
                   <ul style={{ margin: '10px 0 0', padding: 0, listStyle: 'none' }}>
                     {j.bullets.map((b, k) => (
                       <li key={k} style={{ fontSize: 13, color: 'var(--fg-faint)', lineHeight: 1.6, marginBottom: 5, paddingLeft: 16, position: 'relative' }}>
@@ -41,7 +41,7 @@ export default function Experience() {
                       </li>
                     ))}
                   </ul>
-                  </details>
+                  </div>
                 </div>
               </article>
             ))}
