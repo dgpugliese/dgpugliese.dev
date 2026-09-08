@@ -8,34 +8,28 @@ export function Contact() {
         <span className="sect-mark" />
         <h2 className="sect-title">Contact</h2>
       </div>
-      <div className="contact-block">
-        <h2>Have a hard problem?
-          Let's build the answer.</h2>
-        <p>
-          Recruiters, engineers, fractional advisory, and build clients — all welcome. Best
-          response window: weekday mornings ET.
-        </p>
-        <div className="contact-actions">
-          <a className="btn" href="mailto:dp@dgpugliese.dev">dp@dgpugliese.dev</a>
-          <Link className="btn btn-ghost" to="/build">Build services</Link>
-          <a className="btn btn-ghost" href="https://davidguypugliese.com" target="_blank" rel="noreferrer">Resume ↗</a>
+      <div className="contact-invitation">
+        <h2><a href="mailto:dp@dgpugliese.dev">Let's talk<span className="hero-period">.</span><span className="invitation-arrow" aria-hidden="true">↗</span></a></h2>
+        <div className="contact-context">
+          <p>Have a hard problem?<br />Let's build the answer.</p>
+          <p>Recruiters, engineers, fractional advisory, and build clients — all welcome.</p>
         </div>
-
-        <div style={{ marginTop: 40, display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 460 }}>
-          {channels.map(c => (
-            <div key={c.key} className="mono" style={{ display: 'flex', justifyContent: 'space-between', gap: 12, fontSize: 12, padding: '8px 0', borderTop: '1px solid var(--line)' }}>
-              <span style={{ color: 'var(--fg-faint)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{c.label}</span>
-              {c.href ? (
-                <a href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" style={{ color: c.pending ? 'var(--amber)' : 'var(--cyan)', textDecoration: 'none' }}>
-                  {c.value}
-                </a>
-              ) : (
-                <span style={{ color: 'var(--cyan)' }}>{c.value}</span>
-              )}
+      </div>
+      <div className="contact-details">
+        <div className="contact-direct">
+          {channels.map(channel => (
+            <div key={channel.key}>
+              <span className="contact-label mono">{channel.label}</span>
+              {channel.href ? <a href={channel.href}>{channel.value}</a> : <span>{channel.value}</span>}
             </div>
           ))}
         </div>
+        <div className="contact-resources">
+          <Link to="/build">Build services <span aria-hidden="true">↗</span></Link>
+          <a href="https://davidguypugliese.com" target="_blank" rel="noreferrer">Resume <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
+      <p className="contact-response mono">Best response window: weekday mornings ET</p>
     </section>
   );
 }

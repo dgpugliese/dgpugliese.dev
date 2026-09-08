@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Highlight } from './Highlight.jsx';
+import { TerminalAtmosphere } from './TerminalAtmosphere.jsx';
 
 const CAL_URL = 'https://cal.com/dgpugliese.dev/build-scoping';
 
@@ -15,37 +16,15 @@ function GitHubMark(props) {
 export function Hero() {
   return (
     <section className="hero">
-      <div className="hero-topline mono"><span>David Pugliese / Independent builder</span><span>Philadelphia, PA ↗</span></div>
-      <div className="hero-composition">
+      <div className="hero-composition hero-type-only">
         <div className="hero-copy">
           <div className="hero-eyebrow">IT Director · Solutions Architect · MSP Founder</div>
-          <h1>I build the<br />systems.<br /><span className="hero-outline">End to end.</span></h1>
+          <h1>I build systems<br /><span className="hero-outline">end to end<span className="hero-period">.</span></span></h1>
           <p className="hero-statement">The ones vendors quote <Highlight>six figures</Highlight> for.</p>
           <p className="hero-sub">16+ years across enterprise infrastructure, security, and software. From the architecture to the last line of code.</p>
-          <div className="hero-actions">
-            <a className="btn" href="#work">Explore the work <span aria-hidden="true">↘</span></a>
-            <a className="hero-secondary" href={CAL_URL} target="_blank" rel="noreferrer">Let's talk ↗</a>
-          </div>
+          <div className="hero-actions hero-text-actions"><a className="hero-secondary" href="#work">Explore the work ↓</a><a className="hero-secondary" href={CAL_URL} target="_blank" rel="noreferrer">Let's talk ↗</a></div>
         </div>
-        <div className="hero-art" aria-hidden="true">
-          <div className="art-grid" />
-          <svg className="architecture-mark" viewBox="0 0 520 560" fill="none">
-            <defs>
-              <linearGradient id="red-face" x1="100" y1="80" x2="450" y2="460" gradientUnits="userSpaceOnUse"><stop stopColor="#ff6b54"/><stop offset=".48" stopColor="#b91c1c"/><stop offset="1" stopColor="#590b10"/></linearGradient>
-              <linearGradient id="red-edge" x1="350" y1="100" x2="150" y2="480" gradientUnits="userSpaceOnUse"><stop stopColor="#dc493b"/><stop offset="1" stopColor="#32080c"/></linearGradient>
-            </defs>
-            <g className="architecture-layers">
-              {[0, 1, 2].map(i => <g key={i} transform={`translate(0 ${i * 104})`}>
-                <path d="M60 160 260 48 460 160 260 277Z" fill="url(#red-face)" stroke="#ed7461" strokeWidth=".8"/>
-                <path d="M60 160 260 277 460 160V207L260 324 60 207Z" fill="url(#red-edge)" stroke="#a72a28" strokeWidth=".8"/>
-                <path d="m260 107 99 56-99 58-99-58Z" fill="#190c0e" stroke="#e35243"/>
-                <path d="M260 107v45l59 34 40-23Z" fill="#570e15"/>
-                <path d="M260 152 200 186 161 163 260 107Z" fill="#8c1c22"/>
-              </g>)}
-            </g>
-          </svg>
-          <div className="art-caption mono"><span>Architecture</span><span>Engineering</span><span>Operations</span></div>
-        </div>
+        <TerminalAtmosphere />
       </div>
       <div className="hero-bottom"><span className="mono">I ship in production, not slides.</span><a href="#work" className="mono">Explore selected work ↓</a></div>
     </section>

@@ -16,14 +16,4 @@ export const channels = [
     href: null, // Signal usernames are looked up in-app; no universal deep link.
     note: 'encrypted · search username in Signal',
   },
-  {
-    key: 'PGP',
-    label: 'pgp',
-    // TODO: replace with real fingerprint once key is generated and published
-    // to keys.openpgp.org for dp@dgpugliese.dev.
-    value: 'pending — keys.openpgp.org',
-    href: 'https://keys.openpgp.org/search?q=dp%40dgpugliese.dev',
-    note: 'sign / encrypt · key search by email',
-    pending: true,
-  },
 ];
