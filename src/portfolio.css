@@ -315,3 +315,21 @@ summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 6px; }
   .contact-resources a:hover span, .contact-invitation h2 a:hover .invitation-arrow { transform: none; }
   .feature-card:hover .feature-visual img, .feature-card:focus-visible .feature-visual img { transform: translateY(8px) rotate(-3deg); }
 }
+
+/* Surface the evidence before the implementation detail. */
+.case-proof { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 32px; margin: 0 0 48px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+.case-proof h2 { font: 11px 'JetBrains Mono',monospace; text-transform: uppercase; letter-spacing: .08em; color: var(--cyan); margin: 0 0 16px; }
+.case-proof p { font-size: 15px; line-height: 1.8; color: var(--fg-dim); margin: 0; }
+@media(max-width:700px) { .case-proof { grid-template-columns: 1fr; gap: 26px; margin-bottom: 32px; } }
+@media(max-width:600px) {
+ .hero-type-only { padding-bottom: 24px; }
+ .terminal-atmosphere { height: 235px; margin-top: 16px; }
+ .terminal-heading { margin-bottom: 12px; }
+ .hero-eyebrow, .hero-bottom .mono, .work-category, .contact-label, .contact-response { font-size: 11px; }
+ .hero-bottom > span { max-width: 150px; }
+ .hero-bottom > a { max-width: 145px; }
+ .hero-bottom .mono { line-height: 1.6; }
+ .portfolio-home #work { padding-top: 36px; }
+ .contact-resources { flex-wrap: wrap; gap: 4px 24px; }
+ .site-footer { font-size: 11px; }
+}

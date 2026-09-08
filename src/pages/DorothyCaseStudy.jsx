@@ -1,3 +1,4 @@
+import { CaseProof } from '../components/CaseProof.jsx';
 import { Link } from 'react-router-dom';
 import { Nav, Footer } from '../components/Layout.jsx';
 import { useSeo } from '../lib/seo';
@@ -8,7 +9,7 @@ export default function DorothyCaseStudy() {
     description:
       'Case study: DOROTHY, a zero-dependency Salesforce/Fonteva monitoring bot that emails a daily storm forecast. Python stdlib, GitHub Actions, an LLM analyst layer, and a design rule that silence itself is an alarm.',
     path: '/dorothy',
-    image: 'https://dgpugliese.dev/dorothy-og.png',
+    image: 'https://dgpugliese.dev/dorothy-og-v2.png',
   });
   return (
     <>
@@ -40,6 +41,8 @@ export default function DorothyCaseStudy() {
               <span style={{ color: 'var(--cyan)' }}>PYTHON STDLIB · ZERO DEPS</span>
             </div>
           </div>
+
+          <CaseProof id="DOROTHY" />
 
           {/* 01 TL;DR */}
           <Section title="TL;DR" sub="60-second summary">

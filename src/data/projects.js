@@ -105,7 +105,7 @@ export const projects = [
       'Custom scraper against the IRS TEOS internal JSON API recovered full historical 990-N filings back to 2008 — 3,672 filings on last run, data the official bulk feeds don\'t publish',
       'Region-aware access via a Supabase custom access-token hook (Phase 2, shipped at the DB layer); refresh runs across Edge Functions, GitHub Actions, and pg_cron with an audit row per run',
     ],
-    result: 'Regional heat maps, drill-into-entity 990 history, and one-click audit packets — running at under $300/yr against vendor quotes of $110K–$246K.',
+    result: 'Recovered 3,672 historical filings and shipped regional heat maps, entity histories, and audit packets. Infrastructure runs under $300/year; vendor build quotes were $110K–$246K (different cost scopes).',
     context: 'A nationwide nonprofit affiliate network needs to track IRS Form 990 compliance across every affiliate, but the IRS\'s own bulk data feeds have real gaps — particularly historical 990-N filings.',
     problem: 'No single official feed publishes full 990-N history. Getting it required reverse-engineering the IRS TEOS internal JSON API directly.',
     ownership: 'Designed and built the full pipeline solo — five-source aggregation, the TEOS scraper, region-aware RLS, and the audit-packet generator.',

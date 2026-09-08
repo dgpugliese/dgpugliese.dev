@@ -1,3 +1,4 @@
+import { CaseProof } from '../components/CaseProof.jsx';
 import { Link } from 'react-router-dom';
 import { Nav, Footer } from '../components/Layout.jsx';
 import { useSeo } from '../lib/seo';
@@ -8,7 +9,7 @@ export default function ComplianceDashboardCaseStudy() {
     description:
       'Private case study: an internal compliance dashboard tracking IRS Form 990 obligations across a multi-region nonprofit network. Five data sources (four IRS feeds + Salesforce/Fonteva), automated refresh, $300/yr vs $110K–$246K vendor quotes.',
     path: '/compliance',
-    image: 'https://dgpugliese.dev/og.png',
+    image: 'https://dgpugliese.dev/og-v2.png',
   });
   return (
     <>
@@ -46,6 +47,8 @@ export default function ComplianceDashboardCaseStudy() {
               <span>BACK TO 2008</span>
             </div>
           </div>
+
+          <CaseProof id="COMPLIANCE-990" />
 
           {/* TL;DR */}
           <Section title="TL;DR" sub="60-second summary">

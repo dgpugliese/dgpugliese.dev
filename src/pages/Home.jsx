@@ -10,7 +10,7 @@ export default function Home() {
     description:
       'David Pugliese — IT Director, Lead Solutions Architect, and MSP founder with 16+ years across enterprise infrastructure, cybersecurity, cloud platforms, software development, and automation.',
     path: '/',
-    image: 'https://dgpugliese.dev/og.png',
+    image: 'https://dgpugliese.dev/og-v2.png',
   });
 
   return (

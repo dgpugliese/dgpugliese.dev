@@ -22,7 +22,7 @@ const blogRoutes = posts.map(p => ({
   path: `/log/${p.slug}`,
   title: `${p.title} · Writing · dgpugliese.dev`,
   description: p.summary,
-  image: `${SITE}/og.png`,
+  image: `${SITE}/og-v2.png`,
 }));
 
 const routes = [
@@ -31,56 +31,56 @@ const routes = [
     title: 'Experience · dgpugliese.dev',
     description:
       '16+ years across enterprise IT, MSP leadership, and network engineering — the roles, what shipped, and the outcome each one left behind.',
-    image: `${SITE}/og.png`,
+    image: `${SITE}/og-v2.png`,
   },
   {
     path: '/uses',
     title: 'Uses · dgpugliese.dev',
     description:
       'The stack David Pugliese reaches for across identity, cloud, infrastructure, security, and engineering — plus verified certifications.',
-    image: `${SITE}/og.png`,
+    image: `${SITE}/og-v2.png`,
   },
   {
     path: '/log',
     title: 'Writing · dgpugliese.dev',
     description:
       'Notes from the field on AI agent infrastructure, zero-knowledge crypto, NIST 800-53 / SOC 2 compliance, and shipping platforms end-to-end.',
-    image: `${SITE}/og.png`,
+    image: `${SITE}/og-v2.png`,
   },
   {
     path: '/build',
     title: 'Build Services · dgpugliese.dev',
     description:
       'Fixed-price product builds in 4–8 weeks. Privacy-minded internal tools, compliance products, and B2B web apps. Concept to shipped, by one experienced builder.',
-    image: `${SITE}/build-og.png`,
+    image: `${SITE}/build-og-v2.png`,
   },
   {
     path: '/obscura',
     title: 'Obscura · Zero-Knowledge File Transfer — Case Study · dgpugliese.dev',
     description:
       'Case study: Obscura, a browser-side zero-knowledge file transfer tool. AES-256-GCM, Argon2id, Web Crypto API. The server only ever sees ciphertext.',
-    image: `${SITE}/og.png`,
+    image: `${SITE}/og-v2.png`,
   },
   {
     path: '/silentbeat',
     title: "SilentBeat · Honest Dead Man's Switch — Case Study · dgpugliese.dev",
     description:
       "Case study: SilentBeat, a zero-knowledge dead man's switch dispatcher built on Cloudflare Workers, Durable Objects, D1, split-key ECIES, and Argon2id.",
-    image: `${SITE}/og.png`,
+    image: `${SITE}/og-v2.png`,
   },
   {
     path: '/dorothy',
     title: 'DOROTHY · Salesforce Monitoring Bot — Case Study · dgpugliese.dev',
     description:
       'Case study: DOROTHY, a zero-dependency Salesforce/Fonteva monitoring bot that emails a daily storm forecast. Python stdlib, GitHub Actions, an LLM analyst layer, and a design rule that silence itself is an alarm.',
-    image: `${SITE}/dorothy-og.png`,
+    image: `${SITE}/dorothy-og-v2.png`,
   },
   {
     path: '/compliance',
     title: 'Compliance Dashboard · Case Study · dgpugliese.dev',
     description:
       'Case study: compliance operations dashboard for IRS Form 990 oversight across a distributed nonprofit network. GitHub Actions cron, in production.',
-    image: `${SITE}/og.png`,
+    image: `${SITE}/og-v2.png`,
   },
 ];
 

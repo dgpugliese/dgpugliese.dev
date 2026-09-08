@@ -1,3 +1,4 @@
+import { CaseProof } from '../components/CaseProof.jsx';
 import { Link } from 'react-router-dom';
 import { Nav, Footer } from '../components/Layout.jsx';
 import { useSeo } from '../lib/seo';
@@ -8,7 +9,7 @@ export default function ObscuraCaseStudy() {
     description:
       'Case study: Obscura, a browser-side zero-knowledge file transfer tool. AES-256-GCM, Argon2id, Web Crypto API. The server only ever sees ciphertext.',
     path: '/obscura',
-    image: 'https://dgpugliese.dev/og.png',
+    image: 'https://dgpugliese.dev/og-v2.png',
   });
   return (
     <>
@@ -46,6 +47,8 @@ export default function ObscuraCaseStudy() {
               <a href="https://github.com/dgpugliese/obscura/releases" target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>v0.1.2 ↗</a>
             </div>
           </div>
+
+          <CaseProof id="OBSCURA" />
 
           {/* Screenshot */}
           <div className="panel" style={{ padding: 0, marginBottom: 32, overflow: 'hidden' }}>

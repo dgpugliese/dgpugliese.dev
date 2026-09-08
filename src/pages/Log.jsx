@@ -13,7 +13,7 @@ export function LogPost() {
     title: `${post.title} · Field Notes · dgpugliese.dev`,
     description: post.summary,
     path: `/log/${post.slug}`,
-    image: 'https://dgpugliese.dev/og.png',
+    image: 'https://dgpugliese.dev/og-v2.png',
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
@@ -130,7 +130,7 @@ export default function Log() {
     description:
       'Notes from the field on AI agent infrastructure, zero-knowledge crypto, NIST 800-53 / SOC 2 compliance, and shipping platforms end-to-end.',
     path: '/log',
-    image: 'https://dgpugliese.dev/og.png',
+    image: 'https://dgpugliese.dev/og-v2.png',
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'Blog',

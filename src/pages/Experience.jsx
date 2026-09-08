@@ -8,7 +8,7 @@ export default function Experience() {
     title: 'Career · dgpugliese.dev',
     description: '16+ years across enterprise IT, MSP leadership, and network engineering — the roles, what shipped, and the outcome each one left behind.',
     path: '/experience',
-    image: 'https://dgpugliese.dev/og.png',
+    image: 'https://dgpugliese.dev/og-v2.png',
   });
 
   return (

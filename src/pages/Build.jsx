@@ -12,7 +12,7 @@ export default function Build() {
     description:
       'Fixed-price product builds in 4–8 weeks. Privacy-minded internal tools, compliance products, and B2B web apps. Concept to shipped, by one experienced builder.',
     path: '/build',
-    image: 'https://dgpugliese.dev/build-og.png',
+    image: 'https://dgpugliese.dev/build-og-v2.png',
     jsonLd: {
       '@context': 'https://schema.org',
       '@graph': [
@@ -23,7 +23,7 @@ export default function Build() {
           description:
             'Fixed-price product builds in 4–8 weeks. Privacy-minded internal tools, compliance products, and B2B web apps. Concept to shipped, by one experienced builder.',
           url: 'https://dgpugliese.dev/build',
-          image: 'https://dgpugliese.dev/build-og.png',
+          image: 'https://dgpugliese.dev/build-og-v2.png',
           email: 'dp@dgpugliese.dev',
           areaServed: { '@type': 'Country', name: 'United States' },
           provider: {

@@ -25,8 +25,8 @@ export function Contact() {
           ))}
         </div>
         <div className="contact-resources">
-          <Link to="/build">Build services <span aria-hidden="true">↗</span></Link>
-          <a href="https://davidguypugliese.com" target="_blank" rel="noreferrer">Resume <span aria-hidden="true">↗</span></a>
+          <Link to="/build">Discuss a project <span aria-hidden="true">↗</span></Link>
+          <Link to="/experience">View my experience <span aria-hidden="true">↗</span></Link>
         </div>
       </div>
       <p className="contact-response mono">Best response window: weekday mornings ET</p>

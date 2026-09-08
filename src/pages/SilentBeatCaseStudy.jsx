@@ -1,3 +1,4 @@
+import { CaseProof } from '../components/CaseProof.jsx';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Nav, Footer } from '../components/Layout.jsx';
@@ -9,7 +10,7 @@ export default function SilentBeatCaseStudy() {
     description:
       'Case study: SilentBeat, a zero-knowledge dead man\'s switch dispatcher built on Cloudflare Workers, Durable Objects, D1, split-key ECIES, and Argon2id.',
     path: '/silentbeat',
-    image: 'https://dgpugliese.dev/og.png',
+    image: 'https://dgpugliese.dev/og-v2.png',
   });
   return (
     <>
@@ -46,6 +47,8 @@ export default function SilentBeatCaseStudy() {
               <span style={{ color: 'var(--cyan)' }}>v0.6</span>
             </div>
           </div>
+
+          <CaseProof id="SILENTBEAT" />
 
           {/* Screenshot */}
           <div className="panel" style={{ padding: 0, marginBottom: 32, overflow: 'hidden' }}>
