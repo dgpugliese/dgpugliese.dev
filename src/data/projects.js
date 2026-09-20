@@ -12,6 +12,29 @@
 
 export const projects = [
   {
+    id: 'POTHOLEJAWN', kind: 'AI AGENT', tag: 'LIVE', tagC: 'green',
+    title: 'potholejawn',
+    logo: '/logos/potholejawn.png',
+    sub: "AI agent over Philly's live 311 data · potholejawn.com",
+    stack: ['Claude (tool use)', 'Python 3.12', 'Flask', 'PostGIS / Carto SQL', 'OSRM', 'Leaflet', 'SSE', 'PWA'],
+    detail: "An AI agent that scans Philadelphia's live 311 data — 5.9 million rows — to route you around the potholes. Type two Philly places; the agent geocodes both, pulls the main route plus alternatives from OSRM, runs a PostGIS query against the city's live 311 API for open street-defect reports within 30 m of each route, and recommends the smoother drive with a plain-language briefing. Agent steps stream live over Server-Sent Events with a full 'What the agent did' audit trail, token counts included. A second analyst agent answers open-ended questions by writing guarded read-only SQL against the full dataset, reading its own errors and retrying. Built solo in one day at the Code & Coffee Philadelphia AI Agent Hackathon — 42 passing tests, prompt caching, rate limits, and a deterministic fallback so the demo never dies.",
+    caseStudy: '/potholejawn',
+    live: 'https://potholejawn.com',
+    repo: 'https://github.com/dgpugliese/potholejawn',
+    period: 'SHIPPED 2026-09-20',
+    headline: 'A one-day AI agent over 5.9 million rows of live city data.',
+    shipped: [
+      'Trip agent: geocode → OSRM routes → PostGIS scan of live 311 reports within 30 m of each route → recommendation with a plain-language briefing',
+      "Agent steps stream live over SSE with a full 'What the agent did' audit trail, token counts included",
+      'Analyst agent writes guarded read-only SQL against the 5.9M-row dataset, reads its own errors, and retries — every query shown in the UI',
+      'Prompt caching, per-IP + global rate limits, a 1-hour trip-result cache, and a plain-Python fallback planner',
+    ],
+    result: 'Live at potholejawn.com the same day it was started. Real result from live data: Temple → Citizens Bank Park, same 17-minute drive — one route passes 9 open pothole reports, the other 13.',
+    context: "Philadelphia publishes every 311 request since 2014, but answering a real question takes SQL skills and knowledge of the data's quirks. Residents, journalists, and council staff should be able to just ask.",
+    problem: "The model never writes the route SQL — that query is built from validated numbers only, radius clamped, every coordinate geofenced to Philadelphia. The analyst's SQL is treated as untrusted input: single SELECT, table allowlist, capped rows. Agent autonomy where it helps, hard rails where it matters.",
+    ownership: 'Designed and built solo in one day at the Code & Coffee Philadelphia AI Agent Hackathon — both agents, the shared tool loop, the map-first UI, guardrails, tests, and the production deployment.',
+  },
+  {
     id: 'OBSCURA', kind: 'WEB APP', tag: 'LIVE', tagC: 'green',
     title: 'Obscura',
     logo: '/logos/obscura.svg',

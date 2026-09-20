@@ -3,6 +3,49 @@
 
 export const posts = [
   {
+    slug: 'potholejawn-one-day-ai-agent',
+    date: '2026-09-20',
+    category: 'AI',
+    categoryColor: 'amber',
+    title: 'One Day, 5.9 Million Rows: Building an AI Agent at a Hackathon',
+    summary:
+      'At the Code & Coffee Philadelphia AI Agent Hackathon I built potholejawn — an agent that scans the city\'s live 311 data to route you around the potholes. It was live at potholejawn.com the same day. Here\'s what actually mattered under time pressure.',
+    readTime: '5 min',
+    cta: {
+      label: 'WANT THE FULL ARCHITECTURE?',
+      text: 'The complete case study covers the shared tool loop, the SQL cage, the SSE audit trail, and the same-evening cost-hardening pass.',
+      button: '→ READ THE POTHOLEJAWN CASE STUDY',
+      href: '/potholejawn',
+      secondary: { button: '↗ TRY IT AT POTHOLEJAWN.COM', href: 'https://potholejawn.com' },
+    },
+    body: [
+      {
+        heading: 'The Pitch',
+        text: `Philadelphia publishes every 311 request since 2014 — about 6 million rows — but answering a real question takes SQL skills and knowledge of the data's quirks. In 2026 the city closes illegal-dumping reports in about four days, while roughly 19% of pothole reports and 81% of abandoned-vehicle reports are still open. Residents, journalists, and council staff should be able to find that out by asking. So on hackathon day I built potholejawn: type where you are and where you're going, and an AI agent geocodes both places, pulls the driving routes from OSRM, scans each one against the city's live 311 API for open street-defect reports within 30 meters, and recommends the smoother drive — with every reported pothole plotted on the map.`,
+      },
+      {
+        heading: 'Guardrails First',
+        text: `The first hour went to the cage, not the intelligence. The model never writes the route SQL — that PostGIS query is built in plain Python from validated numbers only, with the search radius clamped to 10–100 meters and every coordinate geofenced to a Philadelphia bounding box. The second agent, a 311 analyst that answers open-ended questions by writing its own SQL against the full dataset, gets treated as untrusted input: single SELECT only, table allowlist, no comments, no admin functions, results capped at 200 rows. When its query fails, the error goes back to the model and it fixes its own SQL and retries. A run is hard-capped at 12 model turns. Building the rails first is what made everything after safe to ship fast.`,
+      },
+      {
+        heading: 'Let Them Watch It Think',
+        text: `Agent steps stream to the panel live over Server-Sent Events, so instead of a spinner you watch it geocode, fetch routes, and scan them. After a trip, a "What the agent did" section shows the full audit trail — every thought, tool call, SQL query, error, and token count — and the same trail lands in a per-run JSONL file. This was the most-discussed part of the demo, and I think it generalizes: transparency is agent UX. An agent you can audit is an agent you can put in front of strangers.`,
+      },
+      {
+        heading: 'The Demo Never Dies',
+        text: `Rule for demoing an LLM app to a room: assume the model call fails at the worst moment. If the API key is missing or the call errors, a plain-Python planner produces the same map and a simpler briefing. If the agent skips a route, a completeness check scans it anyway. The 42-test suite runs against a fake model client — no API key, no network — so the tool loop, the SQL cage, the geofence, and the fallback planner are all exercised deterministically, and a hackathon-day refactor can't silently break the thing you're about to present.`,
+      },
+      {
+        heading: 'The Evening Cost Pass',
+        text: `After judging, the hardening continued: Anthropic prompt caching on the agent loop (a system-prefix breakpoint plus a moving conversation breakpoint — verified on a real run with cache reads climbing from 1,204 to 3,252 tokens by the later steps, at ~10% of the normal price), an env-var model knob that drops the trip loop to a ~3× cheaper model without touching the code path, and a one-hour trip-result cache so a repeated route serves instantly without a single model token. Per-IP and global rate limits were already in. Prompt caching remains the cheapest optimization in agent engineering: one breakpoint decision, ~90% off repeated prefix tokens.`,
+      },
+      {
+        heading: 'What Transferred',
+        text: `One generic tool loop powered two very different agents — a trip router and a data analyst — and the abstraction paid for itself the same day. Honest framing beat impressive framing: the markers are resident reports, not verified potholes, and the UI says so. And the whole thing is live, installable as a PWA, and open source. Try Temple University to Citizens Bank Park: same 17-minute drive, one route passes 9 open pothole reports, the other 13. Now you know which one your suspension prefers.`,
+      },
+    ],
+  },
+  {
     slug: 'dorothy-salesforce-monitoring-bot',
     date: '2026-08-25',
     category: 'OPS',
