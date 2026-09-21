@@ -36,6 +36,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://dgpugliese.dev/potholejawn</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dgpugliese.dev/log/potholejawn-one-day-ai-agent</loc>
+    <lastmod>2026-09-20</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://dgpugliese.dev/compliance</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

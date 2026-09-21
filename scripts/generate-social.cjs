@@ -5,10 +5,11 @@ const cards = [
   ['og-v2.png', 'DAVID PUGLIESE / SYSTEMS BUILDER', ['I build systems', 'end to end'], 'Infrastructure, security, and software.'],
   ['build-og-v2.png', 'BUILD SERVICES / DAVID PUGLIESE', ['Your next product', 'built to run'], 'From the first conversation to production.'],
   ['dorothy-og-v2.png', 'CASE STUDY / DOROTHY', ['Read the storm', 'before it hits'], 'Salesforce monitoring. Built for the signals that matter.'],
+  ['potholejawn-og-v1.png', 'CASE STUDY / POTHOLEJAWN', ['Route around', 'the potholes'], 'An AI agent over 5.9 million rows of live Philly 311 data.'],
 ];
 (async () => {
   for (const [file, label, lines, sub] of cards) {
-    const dotX = file === 'og-v2.png' ? 493 : file === 'build-og-v2.png' ? 498 : 560;
+    const dotX = file === 'og-v2.png' ? 493 : file === 'build-og-v2.png' ? 498 : file === 'potholejawn-og-v1.png' ? 545 : 560;
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
       <rect width="1200" height="630" fill="#0a0a0c"/>
       <path d="M64 58H1136" stroke="#b91c1c" stroke-width="2"/>
