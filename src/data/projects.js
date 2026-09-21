@@ -98,6 +98,23 @@ export const projects = [
     ownership: 'Designed and built solo in Python (stdlib only) on GitHub Actions — the fingerprint runbook, the slope-alarm state model, and the Claude-written narration layer.',
   },
   {
+    id: 'CREDENTIAL-STUDIO', kind: 'PRINT OPS', tag: 'PRODUCTION', tagC: 'green',
+    title: 'Credential Studio',
+    sub: 'Membership credential printing for a nationwide affiliate network',
+    stack: ['Node.js', 'Express', 'SQLite', 'pdf-lib', 'Entra SSO', 'Salesforce/Fonteva'],
+    detail: "Replaced four disconnected manual credential pipelines — hand-typed Word mail merges, Crystal Reports, and a legacy Access-database card system — with a single self-hosted press-room app. Staff upload a Salesforce/Fonteva membership export and get live rendered proofs for certificates, financial cards, and photo ID cards; every output is gated by an explicit proof → approve → print workflow with a signed operator audit trail, and any edit automatically invalidates a stale approval. Drives a networked card printer directly, retiring the legacy ID-card software chain entirely. Role-based staff/IT access, nightly encrypted backups, and print-job verification. Phase 2 (designed, pending go-ahead): a nightly Salesforce sync that surfaces newly-converted members automatically, grouped by region and chapter, closing the loop on a process that used to start with a hand-maintained spreadsheet.",
+    headline: 'Four manual pipelines and a legacy Access database, replaced by one proof-gated print workflow.',
+    shipped: [
+      'Live rendered proofs for certificates, financial cards, and photo ID cards from a single Salesforce/Fonteva export upload',
+      'Proof → approve → print gate on every output, with a signed operator audit trail — edits automatically invalidate a stale approval',
+      'Drives a networked card printer directly, retiring the legacy ID-card software chain',
+    ],
+    result: 'Retired four separate manual pipelines — including a legacy Access-database card system — into one auditable workflow, with a direct Salesforce sync designed as the next phase.',
+    context: 'A nationwide affiliate network printed membership certificates, financial cards, and photo ID cards through four disconnected manual pipelines, hand-fed from a spreadsheet.',
+    problem: 'The legacy ID-card path ran through an unmaintained Access database and per-batch hand-remapping of merge fields — every print run risked a copy/paste error with no approval record behind it.',
+    ownership: 'Designed and built solo — the proof-gated print pipeline, the printer integration, the staff/IT access model, and the Phase 2 Salesforce sync design.',
+  },
+  {
     id: 'KINETIC-BRAIN', kind: 'KNOWLEDGE-OPS', tag: 'IN-USE', tagC: 'cyan',
     title: 'Kinetic Brain',
     sub: 'Structured memory vault for Claude Code · in daily use since 2026',
