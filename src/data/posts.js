@@ -13,7 +13,7 @@ export const posts = [
     readTime: '5 min',
     cta: {
       label: 'WANT THE FULL ARCHITECTURE?',
-      text: 'The complete case study covers the shared tool loop, the SQL cage, the SSE audit trail, and the same-evening cost-hardening pass.',
+      text: 'potholejawn has since grown into a product: its own pothole-aware router, live turn-by-turn navigation, and a Google Cloud pipeline. The case study covers where it is now.',
       button: '→ READ THE POTHOLEJAWN CASE STUDY',
       href: '/potholejawn',
       secondary: { button: '↗ TRY IT AT POTHOLEJAWN.COM', href: 'https://potholejawn.com' },
@@ -42,6 +42,10 @@ export const posts = [
       {
         heading: 'What Transferred',
         text: `One generic tool loop powered two very different agents — a trip router and a data analyst — and the abstraction paid for itself the same day. Honest framing beat impressive framing: the markers are resident reports, not verified potholes, and the UI says so. And the whole thing is live, installable as a PWA, and open source. Try Temple University to Citizens Bank Park: same 17-minute drive, one route passes 9 open pothole reports, the other 13. Now you know which one your suspension prefers.`,
+      },
+      {
+        heading: 'Update — October 2026',
+        text: `The hackathon version could only choose between routes someone else's router offered. potholejawn now plans its own: A* over a Philadelphia street graph with every open pothole report as a time penalty, each route verified with the same city-data query. Temple to Citizens Bank Park is now 7 reported potholes on the fastest route and 0 on the smooth one, same 17 minutes. It also navigates — GPS, voice, speed limits, pothole-ahead alerts, re-routing — and the analyst agent moved to the command line so the app could be about driving. The case study has the details.`,
       },
     ],
   },

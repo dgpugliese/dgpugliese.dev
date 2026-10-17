@@ -77,10 +77,10 @@ const routes = [
   },
   {
     path: '/potholejawn',
-    title: 'potholejawn · AI Agent Over Live 311 Data — Case Study · dgpugliese.dev',
+    title: 'potholejawn · Pothole-Aware Navigation — Case Study · dgpugliese.dev',
     description:
-      "Case study: potholejawn, an AI agent that scans Philadelphia's live 311 data — 5.9 million rows — to route you around the potholes. Built solo in one day at a hackathon. Claude tool use, PostGIS, SSE streaming, guarded SQL.",
-    image: `${SITE}/potholejawn-og-v1.png`,
+      "Case study: potholejawn, turn-by-turn navigation that routes around Philadelphia's potholes. Its own A* street graph with live 311 reports as penalties, every route verified against city data, voice navigation, and a Claude trip agent. Python, PostGIS, OSRM, Cloud Run.",
+    image: `${SITE}/potholejawn-og-v2.png`,
   },
   {
     path: '/compliance',
