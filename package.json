@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/postbuild-seo.mjs",
-    "preview": "vite preview",
-    "deploy": "wrangler pages deploy dist --project-name=dgpugliese-dev"
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -17,7 +16,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^5.4.10",
-    "wrangler": "^3.86.0"
+    "vite": "^5.4.10"
   }
 }

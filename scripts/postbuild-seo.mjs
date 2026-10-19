@@ -7,6 +7,14 @@
  * Reads dist/index.html, clones it per route, and rewrites the meta tags.
  * The SPA still mounts as normal from each cloned file — React Router takes
  * over once main.jsx executes.
+ *
+ * Files are written as /<route>.html, not /<route>/index.html: Cloudflare Pages
+ * serves foo.html at /foo but 308-redirects /foo to /foo/ for foo/index.html,
+ * and every canonical, og:url, and sitemap entry here uses the no-slash form.
+ *
+ * Also emits dist/404.html. There is no SPA catch-all in _redirects, so Pages
+ * answers unknown paths with this file and a real 404 status; the app still
+ * mounts and React Router renders <NotFound />.
  */
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
@@ -140,10 +148,15 @@ const indexHtml = await readFile(join(distDir, 'index.html'), 'utf8');
 for (const route of allRoutes) {
   const url = `${SITE}${route.path}`;
   const html = replaceMeta(indexHtml, { ...route, url });
-  const outDir = join(distDir, route.path.replace(/^\//, ''));
-  await mkdir(outDir, { recursive: true });
-  await writeFile(join(outDir, 'index.html'), html);
-  console.log(`  → ${route.path}/index.html`);
+  const outFile = join(distDir, `${route.path.replace(/^\//, '')}.html`);
+  await mkdir(dirname(outFile), { recursive: true });
+  await writeFile(outFile, html);
+  console.log(`  → ${route.path}.html`);
 }
 
-console.log(`✓ Emitted ${allRoutes.length} per-route HTML files`);
+const notFoundHtml = indexHtml
+  .replace(/<title>[^<]*<\/title>/, '<title>Not found · dgpugliese.dev</title>')
+  .replace(/<link rel="canonical" href="[^"]*"\s*\/?>/, '<meta name="robots" content="noindex" />');
+await writeFile(join(distDir, '404.html'), notFoundHtml);
+
+console.log(`✓ Emitted ${allRoutes.length} per-route HTML files + 404.html`);
