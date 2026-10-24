@@ -392,3 +392,43 @@ summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 6px; }
 @media (max-width: 700px) { .footer-top { flex-direction: column; gap: 32px; } .footer-cols { gap: 48px; } }
 .about-block p a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 4px; }
 .about-block p a:hover { text-decoration-color: var(--cyan); }
+
+/* ─────────────────────────────────────
+   Consistency pass — one header, one footer, one type scale.
+   Every page title, lede, and edge comes from these tokens.
+   ───────────────────────────────────── */
+:root {
+  --page-max: 1440px;
+  --page-pad: 48px;
+  --t-display: clamp(52px, 6.2vw, 92px);  /* home hero only */
+  --t-page: clamp(44px, 5.4vw, 76px);     /* every other page title */
+  --t-article: clamp(36px, 4.2vw, 58px);  /* long-form post titles */
+  --t-lede: 20px;
+  --t-body: 17px;
+}
+@media (max-width: 1100px) { :root { --page-pad: 28px; } }
+@media (max-width: 600px) { :root { --page-pad: 20px; --t-lede: 17px; --t-body: 16px; } }
+
+/* Slim header: ~56px tall */
+.site-nav-inner { max-width: var(--page-max); padding: 6px var(--page-pad); }
+.site-nav-brand { font-size: 17px; }
+.site-nav-links a { min-height: 36px; }
+.site-nav-icon, .theme-toggle { min-width: 36px; min-height: 36px; }
+.site-nav-actions { gap: 4px; }
+.site-nav-actions .btn { min-height: 32px; padding: 0 14px; border-radius: 999px; font-size: 11px; }
+.site-nav-divider { margin: 0 6px; }
+@media (max-width: 600px) { .site-nav-inner { padding: 6px var(--page-pad); } }
+
+/* Shared edges: content and footer line up with the logo */
+.hero, .editorial-page { padding-inline: var(--page-pad); }
+.site-footer, .site-footer.site-footer-map { max-width: var(--page-max); padding: 40px var(--page-pad) 48px; }
+
+/* Type scale */
+.hero h1, .hero-type-only h1 { font-size: var(--t-display); font-weight: 600; }
+.page-intro h1, .case-hero h1.case-title, .notfound h1 { font-size: var(--t-page) !important; font-weight: 600; line-height: 1.02; letter-spacing: -.06em; }
+.article-header h1 { font-size: var(--t-article); }
+.page-intro-aside > p, .case-hero > h1 + .mono, .hero-statement { font-size: var(--t-lede) !important; }
+.page-intro-copy p, .case-section-body > p, .about-block p { font-size: var(--t-body) !important; }
+
+/* 404 sits on the same left edge as every other page */
+.notfound { max-width: none; margin: 0; padding: 80px 0; text-align: left; }
