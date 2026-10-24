@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { MAILTO } from '../data/channels.js';
 
 const CAL_URL = 'https://cal.com/dgpugliese.dev/build-scoping';
 const THEME_COLOR = { dark: '#0a0a0c', light: '#fafafa' };
@@ -137,10 +138,38 @@ export function Nav() {
 
 export function Footer() {
   return (
-    <footer className="site-footer">
-      <span>dgpugliese.dev · philadelphia, pa</span>
-      <a href="mailto:dp@dgpugliese.dev">dp@dgpugliese.dev</a>
-      <span>© {new Date().getFullYear()} David Pugliese</span>
+    <footer className="site-footer site-footer-map">
+      <div className="footer-top">
+        <div className="footer-pitch">
+          <Link to="/" className="site-nav-brand">dgpugliese<span className="site-nav-brand-dot">.</span></Link>
+          <p>Systems built end to end — infrastructure, security, and software — by the person who runs them.</p>
+        </div>
+        <nav className="footer-cols mono" aria-label="Footer">
+          <div>
+            <span>Work</span>
+            <Link to="/potholejawn">potholejawn</Link>
+            <Link to="/obscura">Obscura</Link>
+            <Link to="/silentbeat">SilentBeat</Link>
+            <Link to="/dorothy">DOROTHY</Link>
+            <Link to="/compliance">Compliance</Link>
+          </div>
+          <div>
+            <span>Site</span>
+            <Link to="/experience">Career</Link>
+            <Link to="/uses">Stack</Link>
+            <Link to="/build">Hire me</Link>
+            <Link to="/log">Field notes</Link>
+            <a href={MAILTO}>Contact</a>
+          </div>
+        </nav>
+      </div>
+      <div className="footer-bottom mono">
+        <span>© {new Date().getFullYear()} David Pugliese · Philadelphia, PA</span>
+        <span className="footer-social">
+          <a href="https://github.com/dgpugliese" target="_blank" rel="noreferrer" aria-label="GitHub"><GitHubIcon /></a>
+          <a href="https://linkedin.com/in/dgpugliese" target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedInIcon /></a>
+        </span>
+      </div>
     </footer>
   );
 }

@@ -1,5 +1,5 @@
 import { Nav, Footer } from '../components/Layout.jsx';
-import { Hero, GitHubStrip } from '../components/Hero.jsx';
+import { Hero } from '../components/Hero.jsx';
 import { About, SelectedWork } from '../components/sections1.jsx';
 import { Contact } from '../components/sections2.jsx';
 import { useSeo } from '../lib/seo';
@@ -20,7 +20,6 @@ export default function Home() {
         <Hero />
         <SelectedWork />
         <About />
-        <section className="activity-section" aria-label="Public GitHub activity"><GitHubStrip /></section>
         <Contact />
       </main>
       <Footer />

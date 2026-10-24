@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projects.js';
-import { Highlight } from './Highlight.jsx';
 import { ProjectOverlay } from './ProjectOverlay.jsx';
 
 export function About() {
@@ -18,7 +17,7 @@ export function About() {
           IT for a national membership organization, a solo MSP on the side, and production
           software for both — AI agent infrastructure, full-stack platforms on Cloudflare and
           Supabase, and security tools like{' '}
-          <a href="https://obscr.app" target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)' }}>Obscura</a>,
+          <a href="https://obscr.app" target="_blank" rel="noreferrer">Obscura</a>,
           a zero-knowledge file-transfer app I built and shipped myself.
         </p>
         <p>
@@ -36,15 +35,19 @@ export function About() {
   );
 }
 
+// Featured cards + this many rows; the rest sit behind "All work".
+const HOME_LIST_COUNT = 4;
+
 export function SelectedWork() {
   const [activeId, setActiveId] = useState(null);
+  const [showAll, setShowAll] = useState(false);
   const active = projects.find(p => p.id === activeId) || null;
 
   return (
     <section className="sect" id="work">
       <div className="sect-head">
         <span className="sect-mark" />
-        <h2 className="sect-title">Selected <Highlight>Work</Highlight></h2>
+        <h2 className="sect-title">Selected Work</h2>
         <p className="work-intro">Built from scratch.<br />Running in the real world.</p>
       </div>
       <div className="featured-work">
@@ -58,7 +61,7 @@ export function SelectedWork() {
         ))}
       </div>
       <div className="work-list">
-        {projects.slice(2).map((p) => (
+        {projects.slice(2, showAll ? undefined : HOME_LIST_COUNT + 2).map((p) => (
           <button key={p.id} type="button" className="work-row" onClick={() => setActiveId(p.id)}>
             <span className="work-category mono">{p.kind}</span>
             <div>
@@ -72,6 +75,11 @@ export function SelectedWork() {
           </button>
         ))}
       </div>
+      {projects.length > HOME_LIST_COUNT + 2 && (
+        <button type="button" className="work-more mono" aria-expanded={showAll} onClick={() => setShowAll((v) => !v)}>
+          {showAll ? 'Show less ↑' : `All work (${projects.length}) ↓`}
+        </button>
+      )}
       <ProjectOverlay project={active} onClose={() => setActiveId(null)} />
     </section>
   );
