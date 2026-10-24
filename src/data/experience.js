@@ -88,10 +88,12 @@ export const jobs = [
   {
     title: 'Director of IT (Volunteer)', co: 'Bensalem Volunteer Fire Dept.', loc: 'Bensalem, PA',
     range: 'Aug 2018 — Present', volunteer: true,
-    outcome: 'Built and maintain bensalemvfd.org, and prototyped an API-driven crew-points system that replaced manual fire-call tracking.',
+    outcome: 'Built BVFD Command — the department\'s member app and public site — replacing a static site, spreadsheets and a shared OneDrive with one installable app.',
     bullets: [
       'Own IT direction, public-facing web presence, and digital tooling for crew operations.',
-      'Built and maintain bensalemvfd.org; Tailwind-styled frontend with a Supabase backend for dynamic content, deployed on Cloudflare.',
+      'Built BVFD Command (Next.js 16, Supabase, Vercel): readiness, training, stipend shifts, points, elections, recruitment, apparatus, expenses and documents in one installable app.',
+      'Designed its security model: Microsoft Entra sign-in, row-level security on every table, anonymous ballots, Vault-encrypted applicant SSNs; tested with pgTAP and Playwright + axe.',
+      'Built and maintained the previous bensalemvfd.org (Tailwind, Supabase, Cloudflare), including online recruitment applications and elections.',
       'Prototyped an API-driven points auto-award app — polls the First Due API to cross-reference on-scene roster data and automatically credit crew members for fire calls, replacing manual tracking.',
       'Manage station IT, dispatch integrations, and vendor relationships on a volunteer basis.',
       'Advise leadership on technology budgeting, grant-funded equipment refreshes, and member-facing communications.',

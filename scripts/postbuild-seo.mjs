@@ -91,6 +91,13 @@ const routes = [
     image: `${SITE}/potholejawn-og-v2.png`,
   },
   {
+    path: '/bvfd',
+    title: 'BVFD Command · Fire Department Member App — Case Study · dgpugliese.dev',
+    description:
+      'Case study: BVFD Command, the member app and public site of the Bensalem Volunteer Fire Department. Readiness, training, stipend shifts, elections and recruitment in one installable app. Next.js 16, Supabase with row-level security, Microsoft Entra sign-in, Vercel.',
+    image: `${SITE}/screenshots/bvfd-home-light.jpg`,
+  },
+  {
     path: '/compliance',
     title: 'Compliance Dashboard · Case Study · dgpugliese.dev',
     description:

@@ -8,6 +8,7 @@ import SilentBeatCaseStudy from './pages/SilentBeatCaseStudy.jsx';
 import ComplianceDashboardCaseStudy from './pages/ComplianceDashboardCaseStudy.jsx';
 import DorothyCaseStudy from './pages/DorothyCaseStudy.jsx';
 import PotholejawnCaseStudy from './pages/PotholejawnCaseStudy.jsx';
+import BvfdCaseStudy from './pages/BvfdCaseStudy.jsx';
 import Build from './pages/Build.jsx';
 import Log, { LogPost } from './pages/Log.jsx';
 import NotFound from './pages/NotFound.jsx';
@@ -58,6 +59,7 @@ export default function App() {
         <Route path="/compliance" element={<ComplianceDashboardCaseStudy />} />
         <Route path="/dorothy" element={<DorothyCaseStudy />} />
         <Route path="/potholejawn" element={<PotholejawnCaseStudy />} />
+        <Route path="/bvfd" element={<BvfdCaseStudy />} />
         <Route path="/build" element={<Build />} />
         <Route path="/log" element={<Log />} />
         <Route path="/log/:slug" element={<LogPost />} />
