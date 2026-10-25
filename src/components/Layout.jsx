@@ -143,6 +143,7 @@ export function Footer() {
         <div className="footer-pitch">
           <Link to="/" className="site-nav-brand">dgpugliese<span className="site-nav-brand-dot">.</span></Link>
           <p>Systems built end to end — infrastructure, security, and software — by the person who runs them.</p>
+          <a className="hero-cta footer-cta" href={CAL_URL} target="_blank" rel="noreferrer">Book a 30-min call <span aria-hidden="true">→</span></a>
         </div>
         <nav className="footer-cols mono" aria-label="Footer">
           <div>
@@ -152,6 +153,7 @@ export function Footer() {
             <Link to="/silentbeat">SilentBeat</Link>
             <Link to="/dorothy">DOROTHY</Link>
             <Link to="/compliance">Compliance</Link>
+            <Link to="/bvfd">bensalemvfd</Link>
           </div>
           <div>
             <span>Site</span>
@@ -159,16 +161,18 @@ export function Footer() {
             <Link to="/uses">Stack</Link>
             <Link to="/build">Hire me</Link>
             <Link to="/log">Field notes</Link>
-            <a href={MAILTO}>Contact</a>
+          </div>
+          <div>
+            <span>Elsewhere</span>
+            <a href="https://github.com/dgpugliese" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a href="https://linkedin.com/in/dgpugliese" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a href={MAILTO}>Email</a>
           </div>
         </nav>
       </div>
       <div className="footer-bottom mono">
         <span>© {new Date().getFullYear()} David Pugliese · Philadelphia, PA</span>
-        <span className="footer-social">
-          <a href="https://github.com/dgpugliese" target="_blank" rel="noreferrer" aria-label="GitHub"><GitHubIcon /></a>
-          <a href="https://linkedin.com/in/dgpugliese" target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedInIcon /></a>
-        </span>
+        <button type="button" className="footer-top-link" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Back to top ↑</button>
       </div>
     </footer>
   );

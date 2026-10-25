@@ -41,7 +41,11 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > window.innerHeight * 0.8);
+    // Hide near the bottom, where the footer has its own "Back to top".
+    const onScroll = () => {
+      const fromBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
+      setShowTop(window.scrollY > window.innerHeight * 0.8 && fromBottom > 420);
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
