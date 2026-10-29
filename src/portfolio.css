@@ -433,3 +433,19 @@ summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 6px; }
 
 /* 404 sits on the same left edge as every other page */
 .notfound { max-width: none; margin: 0; padding: 80px 0; text-align: left; }
+
+/* ─────────────────────────────────────
+   Readability pass — WCAG AA contrast, 11px floor for
+   labels, and footer links big enough to tap.
+   ───────────────────────────────────── */
+.about-block p a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--cyan); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.about-block p a:hover { color: var(--cyan); }
+.footer-cols span { opacity: 1; font-size: 11px; }
+.footer-cols div { gap: 0; }
+.site-footer .footer-cols a { display: inline-flex; align-items: center; min-height: 28px; }
+.chip { font-size: 10.5px; }
+.feature-number, .work-status, .work-category, .page-intro-label, .rail-caption, .rail-note, .contact-label, .contact-response { font-size: 11px; }
+@media (max-width: 600px) {
+  .portfolio-home .work-category, .page-intro-label, .hero-eyebrow { font-size: 11px; }
+  .site-footer .footer-cols a { min-height: 36px; }
+}
