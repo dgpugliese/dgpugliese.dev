@@ -19,7 +19,7 @@ function ScrollToTop() {
   return null;
 }
 
-export default function App() {
+export function AppRoutes() {
   const [showTop, setShowTop] = useState(false);
 
   // Console signature — for the engineers who actually open DevTools.
@@ -51,7 +51,7 @@ export default function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
 
       <Routes>
@@ -78,6 +78,14 @@ export default function App() {
           aria-label="Back to top"
         >↑</button>
       )}
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
     </BrowserRouter>
   );
 }

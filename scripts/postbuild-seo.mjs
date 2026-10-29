@@ -16,7 +16,7 @@
  * answers unknown paths with this file and a real 404 status; the app still
  * mounts and React Router renders <NotFound />.
  */
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -25,6 +25,11 @@ const distDir = join(__dirname, '..', 'dist');
 const SITE = 'https://dgpugliese.dev';
 
 const { posts } = await import(pathToFileURL(join(__dirname, '..', 'src', 'data', 'posts.js')).href);
+// Server bundle from `vite build --ssr` (see package.json). Each route's markup
+// is baked into its HTML so content paints before any JS runs.
+const ssrDir = join(__dirname, '..', 'dist-ssr');
+const { render } = await import(pathToFileURL(join(ssrDir, 'entry-server.js')).href);
+const withMarkup = (html, path) => html.replace('<div id="root"></div>', `<div id="root">${render(path)}</div>`);
 
 const blogRoutes = posts.map(p => ({
   path: `/log/${p.slug}`,
@@ -151,10 +156,11 @@ function replaceMeta(html, { title, description, image, url }) {
 const allRoutes = [...routes, ...blogRoutes];
 
 const indexHtml = await readFile(join(distDir, 'index.html'), 'utf8');
+await writeFile(join(distDir, 'index.html'), withMarkup(indexHtml, '/'));
 
 for (const route of allRoutes) {
   const url = `${SITE}${route.path}`;
-  const html = replaceMeta(indexHtml, { ...route, url });
+  const html = withMarkup(replaceMeta(indexHtml, { ...route, url }), route.path);
   const outFile = join(distDir, `${route.path.replace(/^\//, '')}.html`);
   await mkdir(dirname(outFile), { recursive: true });
   await writeFile(outFile, html);
@@ -164,6 +170,7 @@ for (const route of allRoutes) {
 const notFoundHtml = indexHtml
   .replace(/<title>[^<]*<\/title>/, '<title>Not found · dgpugliese.dev</title>')
   .replace(/<link rel="canonical" href="[^"]*"\s*\/?>/, '<meta name="robots" content="noindex" />');
-await writeFile(join(distDir, '404.html'), notFoundHtml);
+await writeFile(join(distDir, '404.html'), withMarkup(notFoundHtml, '/404'));
+await rm(ssrDir, { recursive: true, force: true });
 
 console.log(`✓ Emitted ${allRoutes.length} per-route HTML files + 404.html`);

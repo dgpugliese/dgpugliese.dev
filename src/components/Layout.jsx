@@ -50,7 +50,10 @@ function MoonIcon(props) {
 }
 
 function useTheme() {
-  const [theme, setTheme] = useState(getCurrentTheme);
+  // Prerendered HTML can't know the visitor's theme, so start from the server's
+  // guess and sync after hydration to keep the first client render identical.
+  const [theme, setTheme] = useState('dark');
+  useEffect(() => { setTheme(getCurrentTheme()); }, []);
 
   const toggle = () => {
     const next = theme === 'light' ? 'dark' : 'light';
@@ -171,7 +174,7 @@ export function Footer() {
         </nav>
       </div>
       <div className="footer-bottom mono">
-        <span>© {new Date().getFullYear()} David Pugliese · Philadelphia, PA</span>
+        <span suppressHydrationWarning>© {new Date().getFullYear()} David Pugliese · Philadelphia, PA</span>
         <button type="button" className="footer-top-link" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Back to top ↑</button>
       </div>
     </footer>
