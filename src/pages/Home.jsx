@@ -2,6 +2,7 @@ import { Nav, Footer } from '../components/Layout.jsx';
 import { Hero } from '../components/Hero.jsx';
 import { About, SelectedWork } from '../components/sections1.jsx';
 import { Contact } from '../components/sections2.jsx';
+import { Marquee } from '../components/Marquee.jsx';
 import { useSeo } from '../lib/seo';
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <main className="portfolio-home" id="main-content">
         <Hero />
         <SelectedWork />
+        <Marquee words={['Infrastructure', 'Security', 'Software', 'AI agents']} />
         <About />
         <Contact />
       </main>

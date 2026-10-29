@@ -198,18 +198,18 @@ export default function Build() {
             <span className="sect-sub">the process</span>
           </div>
           <div className="process-grid">
-          <Step title="Scoping call · free, 30 minutes">
+          <Step n={1} title="Scoping call · free, 30 minutes">
             We talk through what you want, what success looks like, and whether I'm the right builder for it. No pressure, no
             sales pitch. If we're not a fit, I'll often know someone who is.
           </Step>
-          <Step title="Proposal + contract · within 48 hours">
+          <Step n={2} title="Proposal + contract · within 48 hours">
             Fixed scope, fixed price, fixed timeline — delivered in writing. You sign, you pay 50%, and your build slot is locked.
           </Step>
-          <Step title="Build · 4–8 weeks">
+          <Step n={3} title="Build · 4–8 weeks">
             Weekly demos every Friday. You see real software growing week by week. Scope changes get re-quoted in writing before
             any work happens — no creep, no surprises.
           </Step>
-          <Step title="Delivery + handoff">
+          <Step n={4} title="Delivery + handoff">
             Final 50% on delivery. You get the code, the deployment, the documentation, and 30 days of bug-fix support included.
           </Step>
           </div>
@@ -278,6 +278,7 @@ export default function Build() {
               duration="6–8 weeks"
               body="A real product. Multiple features, billing where needed, integrations with your existing systems, polish. The right size for software you intend to actually run a business on."
               c="cyan"
+              featured
             />
           </div>
           <p style={{ ...P, marginTop: 24 }}>
@@ -392,9 +393,10 @@ function Tile({ label, body, c }) {
   );
 }
 
-function Step({ title, children }) {
+function Step({ n, title, children }) {
   return (
     <div className="process-card">
+      <span className="process-num" aria-hidden="true">{String(n).padStart(2, '0')}</span>
       <div style={{ fontSize: 16, fontWeight: 600, color: 'var(--fg)', marginBottom: 6 }}>{title}</div>
       <div style={{ fontSize: 14, color: 'var(--fg-dim)', lineHeight: 1.65 }}>{children}</div>
     </div>
@@ -424,11 +426,11 @@ function BuildRow({ name, tagline, replaces, does, stack, href, live }) {
   );
 }
 
-function Tier({ name, price, duration, body, c }) {
+function Tier({ name, price, duration, body, c, featured }) {
   return (
-    <div className="pricing-card">
+    <div className={featured ? 'pricing-card pricing-featured' : 'pricing-card'}>
       <div className="mono" style={{ fontSize: 10, color: `var(--${c})`, letterSpacing: '0.16em', marginBottom: 8, textTransform: 'uppercase' }}>{name}</div>
-      <div style={{ fontSize: 28, fontWeight: 700, color: 'var(--fg)', letterSpacing: '-0.01em' }}>{price}</div>
+      <div className="pricing-price" style={{ fontSize: 28, fontWeight: 700, color: 'var(--fg)', letterSpacing: '-0.01em' }}><small className="mono">from</small>{price.replace(/^from /, '')}</div>
       <div className="mono" style={{ fontSize: 12, color: 'var(--fg-faint)', marginTop: 4, marginBottom: 14 }}>{duration}</div>
       <div style={{ fontSize: 14, color: 'var(--fg-dim)', lineHeight: 1.65 }}>{body}</div>
     </div>
